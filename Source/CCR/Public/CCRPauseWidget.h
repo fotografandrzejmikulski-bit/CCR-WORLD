@@ -5,6 +5,7 @@
 #include "CCRPauseWidget.generated.h"
 
 class UCCRSettingsWidget;
+class UCCRChapterSelectWidget;
 
 /**
  * UCCRPauseWidget
@@ -50,6 +51,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Pause")
 	void OpenSettings();
 
+	/**
+	 * Open the chapter select / chapter replay screen.
+	 * Creates the chapter select widget on first use (requires ChapterSelectWidgetClass to be set).
+	 * Fires OnChapterSelectOpened() so Blueprint can hide the pause menu body.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Pause")
+	void OpenChapterSelect();
+
 	// ---- Blueprint-implementable notifications ----
 
 	/** Called when this widget is shown (game paused). */
@@ -74,6 +83,20 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
 	void OnSettingsClosed();
 
+	/**
+	 * Called when the chapter select screen is about to open.
+	 * Override in Blueprint to hide the pause menu body / play a transition.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	void OnChapterSelectOpened();
+
+	/**
+	 * Called when the chapter select screen is dismissed and the pause menu is restored.
+	 * Override in Blueprint to re-show the pause menu body / play a transition.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	void OnChapterSelectClosed();
+
 	/** Main menu level name (set in Blueprint or defaults) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Pause")
 	FName MainMenuLevelName = TEXT("MainMenu");
@@ -90,7 +113,21 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|Pause")
 	UCCRSettingsWidget* SettingsWidget = nullptr;
 
+	/**
+	 * Blueprint subclass of UCCRChapterSelectWidget to spawn when OpenChapterSelect() is called.
+	 * Assign in Blueprint defaults or propagate from the HUD.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Pause")
+	TSoftClassPtr<UCCRChapterSelectWidget> ChapterSelectWidgetClass;
+
+	/** Read-only reference to the live chapter select widget (null until first OpenChapterSelect()). */
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|Pause")
+	UCCRChapterSelectWidget* ChapterSelectWidget = nullptr;
+
 private:
 	UFUNCTION()
 	void HandleSettingsClosed();
+
+	UFUNCTION()
+	void HandleChapterSelectClosed();
 };

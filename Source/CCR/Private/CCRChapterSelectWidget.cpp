@@ -73,3 +73,9 @@ void UCCRChapterSelectWidget::SelectChapter(FName ChunkId, FName NodeId)
 			}
 		}));
 }
+
+void UCCRChapterSelectWidget::Close()
+{
+	OnClosed.Broadcast();
+	SetVisibility(ESlateVisibility::Collapsed);
+}

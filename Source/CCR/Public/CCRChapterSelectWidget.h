@@ -4,6 +4,8 @@
 #include "Blueprint/UserWidget.h"
 #include "CCRChapterSelectWidget.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCCRChapterSelectWidgetClosed);
+
 /**
  * FCCRChapterSelectEntry
  *
@@ -85,6 +87,14 @@ public:
 	 */
 	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|ChapterSelect")
 	void OnChapterLocked(FName ChunkId);
+
+	/** Close (collapse) the chapter select widget and notify listeners. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|ChapterSelect")
+	void Close();
+
+	/** Fired when Close() is called; owning menus subscribe to this. */
+	UPROPERTY(BlueprintAssignable, Category = "CCR|ChapterSelect")
+	FOnCCRChapterSelectWidgetClosed OnClosed;
 
 	/** World-state flag prefix used to mark visited chapters. */
 	static FName ChapterReachedFlag(FName ChunkId)

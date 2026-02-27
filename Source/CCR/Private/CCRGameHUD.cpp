@@ -12,6 +12,7 @@
 #include "CCRCutsceneSkipWidget.h"
 #include "CCRObjectiveWidget.h"
 #include "CCRInventoryWidget.h"
+#include "CCRChapterSelectWidget.h"
 #include "CCRGameState.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRStoryChunk.h"
@@ -103,6 +104,15 @@ void ACCRGameHUD::BeginPlay()
 		MainMenuWidget = CreateWidget<UCCRMainMenuWidget>(PC, MainMenuClass);
 		if (MainMenuWidget)
 		{
+			// Forward widget class references so the main menu can open them.
+			if (SettingsWidgetClass.IsValid())
+			{
+				MainMenuWidget->SettingsWidgetClass = SettingsWidgetClass;
+			}
+			if (ChapterSelectWidgetClass.IsValid())
+			{
+				MainMenuWidget->ChapterSelectWidgetClass = ChapterSelectWidgetClass;
+			}
 			MainMenuWidget->AddToViewport(CCRZOrder::MainMenu);
 		}
 	}
@@ -231,6 +241,27 @@ void ACCRGameHUD::BeginPlay()
 		}
 	}
 
+	// ---- Chapter select widget ----
+	TSubclassOf<UCCRChapterSelectWidget> ChapterSelectClass = ChapterSelectWidgetClass.IsValid()
+		? ChapterSelectWidgetClass.Get()
+		: nullptr;
+
+	if (!ChapterSelectClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: ChapterSelectWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRChapterSelectWidget in the HUD defaults."));
+	}
+	else
+	{
+		ChapterSelectWidget = CreateWidget<UCCRChapterSelectWidget>(PC, ChapterSelectClass);
+		if (ChapterSelectWidget)
+		{
+			ChapterSelectWidget->AddToViewport(CCRZOrder::ChapterSelect);
+			ChapterSelectWidget->SetVisibility(ESlateVisibility::Collapsed);
+		}
+	}
+
 	// ---- Subscribe to game phase changes ----
 	// Also apply the current phase immediately so widgets start in the correct
 	// visibility state (e.g. dialogue hidden while phase is Loading or Cinematic).
@@ -348,6 +379,28 @@ bool ACCRGameHUD::IsInventoryOpen() const
 		   InventoryWidget->GetVisibility() == ESlateVisibility::Visible;
 }
 
+void ACCRGameHUD::ToggleChapterSelect()
+{
+	if (!ChapterSelectWidget) return;
+	const bool bCurrentlyOpen = IsChapterSelectOpen();
+	SetChapterSelectVisible(!bCurrentlyOpen);
+}
+
+void ACCRGameHUD::SetChapterSelectVisible(bool bVisible)
+{
+	if (ChapterSelectWidget)
+	{
+		ChapterSelectWidget->SetVisibility(
+			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	}
+}
+
+bool ACCRGameHUD::IsChapterSelectOpen() const
+{
+	return ChapterSelectWidget &&
+		   ChapterSelectWidget->GetVisibility() == ESlateVisibility::Visible;
+}
+
 void ACCRGameHUD::TogglePause()
 {
 	APlayerController* PC = GetOwningPlayerController();
@@ -397,11 +450,18 @@ void ACCRGameHUD::TogglePause()
 			else
 			{
 				PauseWidget = CreateWidget<UCCRPauseWidget>(PC, PauseClass);
-				if (PauseWidget && SettingsWidgetClass.IsValid())
+				if (PauseWidget)
 				{
-					// Forward the settings widget class so the pause menu can
-					// open it without needing its own UPROPERTY to be set.
-					PauseWidget->SettingsWidgetClass = SettingsWidgetClass;
+					// Forward widget class references so the pause menu can open them
+					// without needing its own UPROPERTYs to be set.
+					if (SettingsWidgetClass.IsValid())
+					{
+						PauseWidget->SettingsWidgetClass = SettingsWidgetClass;
+					}
+					if (ChapterSelectWidgetClass.IsValid())
+					{
+						PauseWidget->ChapterSelectWidgetClass = ChapterSelectWidgetClass;
+					}
 				}
 			}
 		}
@@ -457,6 +517,7 @@ void ACCRGameHUD::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
 	if (NewPhase == ECCRGamePhase::Loading || NewPhase == ECCRGamePhase::Cinematic)
 	{
 		SetInventoryVisible(false);
+		SetChapterSelectVisible(false);
 	}
 
 	// Credits: visible during any end-game state. Visibility is driven by

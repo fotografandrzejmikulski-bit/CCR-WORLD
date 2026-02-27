@@ -4,6 +4,9 @@
 #include "Blueprint/UserWidget.h"
 #include "CCRMainMenuWidget.generated.h"
 
+class UCCRSettingsWidget;
+class UCCRChapterSelectWidget;
+
 /**
  * UCCRMainMenuWidget
  *
@@ -51,4 +54,79 @@ public:
 	/** Quit the application. */
 	UFUNCTION(BlueprintCallable, Category = "CCR|MainMenu")
 	void QuitGame();
+
+	/**
+	 * Open the settings screen.
+	 * Creates the settings widget on first use (requires SettingsWidgetClass to be set).
+	 * Fires OnSettingsOpened() so Blueprint can hide the main menu body.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|MainMenu")
+	void OpenSettings();
+
+	/**
+	 * Open the chapter select / chapter replay screen.
+	 * Creates the chapter select widget on first use (requires ChapterSelectWidgetClass).
+	 * Fires OnChapterSelectOpened() so Blueprint can hide the main menu body.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|MainMenu")
+	void OpenChapterSelect();
+
+	// ---- Blueprint-implementable notifications ----
+
+	/**
+	 * Called when the settings screen is about to open.
+	 * Override in Blueprint to hide the main menu body / play a transition.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	void OnSettingsOpened();
+
+	/**
+	 * Called when the settings screen is dismissed and the main menu is restored.
+	 * Override in Blueprint to re-show the main menu body.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	void OnSettingsClosed();
+
+	/**
+	 * Called when the chapter select screen is about to open.
+	 * Override in Blueprint to hide the main menu body / play a transition.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	void OnChapterSelectOpened();
+
+	/**
+	 * Called when the chapter select screen is dismissed and the main menu is restored.
+	 * Override in Blueprint to re-show the main menu body.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	void OnChapterSelectClosed();
+
+	/**
+	 * Blueprint subclass of UCCRSettingsWidget to spawn when OpenSettings() is called.
+	 * Assign in Blueprint defaults or propagate from the HUD.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|MainMenu")
+	TSoftClassPtr<UCCRSettingsWidget> SettingsWidgetClass;
+
+	/**
+	 * Blueprint subclass of UCCRChapterSelectWidget to spawn when OpenChapterSelect() is called.
+	 * Assign in Blueprint defaults or propagate from the HUD.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|MainMenu")
+	TSoftClassPtr<UCCRChapterSelectWidget> ChapterSelectWidgetClass;
+
+	/** Read-only reference to the live settings widget (null until first OpenSettings()). */
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|MainMenu")
+	UCCRSettingsWidget* SettingsWidget = nullptr;
+
+	/** Read-only reference to the live chapter select widget (null until first OpenChapterSelect()). */
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|MainMenu")
+	UCCRChapterSelectWidget* ChapterSelectWidget = nullptr;
+
+private:
+	UFUNCTION()
+	void HandleSettingsClosed();
+
+	UFUNCTION()
+	void HandleChapterSelectClosed();
 };

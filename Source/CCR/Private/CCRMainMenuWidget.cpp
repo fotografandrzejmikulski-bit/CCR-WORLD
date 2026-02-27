@@ -2,6 +2,8 @@
 #include "CCR.h"
 #include "CCRGameMode.h"
 #include "CCRResumeSubsystem.h"
+#include "CCRSettingsWidget.h"
+#include "CCRChapterSelectWidget.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 
@@ -47,4 +49,80 @@ void UCCRMainMenuWidget::QuitGame()
 	{
 		UKismetSystemLibrary::QuitGame(GetWorld(), PC, EQuitPreference::Quit, /*bIgnorePlatformRestrictions=*/false);
 	}
+}
+
+void UCCRMainMenuWidget::OpenSettings()
+{
+	if (!SettingsWidget)
+	{
+		TSubclassOf<UCCRSettingsWidget> SettingsClass = SettingsWidgetClass.IsValid()
+			? SettingsWidgetClass.Get()
+			: nullptr;
+
+		if (!SettingsClass)
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("UCCRMainMenuWidget: SettingsWidgetClass is not set. "
+					 "Assign a Blueprint subclass of UCCRSettingsWidget in the main menu widget defaults."));
+			return;
+		}
+
+		APlayerController* PC = GetOwningPlayer();
+		if (!PC) return;
+
+		SettingsWidget = CreateWidget<UCCRSettingsWidget>(PC, SettingsClass);
+		if (!SettingsWidget) return;
+
+		SettingsWidget->OnClosed.AddDynamic(this, &UCCRMainMenuWidget::HandleSettingsClosed);
+		SettingsWidget->AddToViewport(CCRZOrder::Settings);
+	}
+	else
+	{
+		SettingsWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+
+	OnSettingsOpened();
+}
+
+void UCCRMainMenuWidget::HandleSettingsClosed()
+{
+	OnSettingsClosed();
+}
+
+void UCCRMainMenuWidget::OpenChapterSelect()
+{
+	if (!ChapterSelectWidget)
+	{
+		TSubclassOf<UCCRChapterSelectWidget> ChapterClass = ChapterSelectWidgetClass.IsValid()
+			? ChapterSelectWidgetClass.Get()
+			: nullptr;
+
+		if (!ChapterClass)
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("UCCRMainMenuWidget: ChapterSelectWidgetClass is not set. "
+					 "Assign a Blueprint subclass of UCCRChapterSelectWidget in the main menu widget defaults."));
+			return;
+		}
+
+		APlayerController* PC = GetOwningPlayer();
+		if (!PC) return;
+
+		ChapterSelectWidget = CreateWidget<UCCRChapterSelectWidget>(PC, ChapterClass);
+		if (!ChapterSelectWidget) return;
+
+		ChapterSelectWidget->OnClosed.AddDynamic(this, &UCCRMainMenuWidget::HandleChapterSelectClosed);
+		ChapterSelectWidget->AddToViewport(CCRZOrder::ChapterSelect);
+	}
+	else
+	{
+		ChapterSelectWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+
+	OnChapterSelectOpened();
+}
+
+void UCCRMainMenuWidget::HandleChapterSelectClosed()
+{
+	OnChapterSelectClosed();
 }

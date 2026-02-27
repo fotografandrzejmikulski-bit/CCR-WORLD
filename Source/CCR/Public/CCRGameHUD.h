@@ -16,18 +16,29 @@ class UCCRCreditsWidget;
 class UCCRCutsceneSkipWidget;
 class UCCRObjectiveWidget;
 class UCCRInventoryWidget;
+class UCCRChapterSelectWidget;
 class UCCRStoryChunk;
 
 /**
  * ACCRGameHUD
  *
  * Manages the in-game widget stack:
- *   - UCCRDialogueWidget  (z-order 0) – dialogue and choice UI
- *   - UCCRQTEWidget       (z-order 1) – QTE progress overlay
- *   - UCCRPauseWidget     (z-order 10) – pause menu (created on demand)
+ *   - UCCRDialogueWidget        (z-order 0)  – dialogue and choice UI
+ *   - UCCRQTEWidget             (z-order 1)  – QTE progress overlay
+ *   - UCCRCutsceneSkipWidget    (z-order 2)  – skip hint during cinematics
+ *   - UCCRNotificationWidget    (z-order 3)  – transient notification toasts
+ *   - UCCRObjectiveWidget       (z-order 4)  – current objective display
+ *   - UCCRMainMenuWidget        (z-order 5)  – main menu overlay
+ *   - UCCRInventoryWidget       (z-order 6)  – inventory screen (toggle)
+ *   - UCCRChapterSelectWidget   (z-order 9)  – chapter select/replay screen (toggle)
+ *   - UCCRPauseWidget           (z-order 10) – pause menu (created on demand)
+ *   - UCCRSettingsWidget        (z-order 11) – settings screen (owned by pause/main-menu)
+ *   - UCCRCreditsWidget         (z-order 15) – end-game credits overlay
+ *   - UCCRChapterTransitionWidget (z-order 18) – chapter title card
+ *   - UCCRLoadingWidget         (z-order 20) – full-screen loading overlay
  *
  * Widget class references are soft-pointed so Blueprint sub-classes
- * (WBP_CCRDialogue, WBP_CCRQTE, WBP_CCRPause) can be assigned in the
+ * (WBP_CCRDialogue, WBP_CCRQTE, WBP_CCRPause, …) can be assigned in the
  * editor without requiring hard C++ dependencies.
  */
 UCLASS()
@@ -89,6 +100,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
 	TSoftClassPtr<UCCRInventoryWidget> InventoryWidgetClass;
 
+	/** Blueprint subclass of UCCRChapterSelectWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRChapterSelectWidget> ChapterSelectWidgetClass;
+
 	// ---- Live widget instances ----
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
@@ -126,6 +141,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
 	UCCRInventoryWidget* InventoryWidget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRChapterSelectWidget* ChapterSelectWidget = nullptr;
 
 	/** Show or hide the dialogue panel */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
@@ -166,6 +184,18 @@ public:
 	/** Returns true when the inventory widget is currently visible */
 	UFUNCTION(BlueprintPure, Category = "CCR|HUD")
 	bool IsInventoryOpen() const;
+
+	/** Toggle the chapter select screen (creates it on first use) */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void ToggleChapterSelect();
+
+	/** Show or hide the chapter select screen */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void SetChapterSelectVisible(bool bVisible);
+
+	/** Returns true when the chapter select screen is currently visible */
+	UFUNCTION(BlueprintPure, Category = "CCR|HUD")
+	bool IsChapterSelectOpen() const;
 
 	/** Toggle the pause menu (creates it on first use) */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")

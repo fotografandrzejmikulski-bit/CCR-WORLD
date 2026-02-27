@@ -1,6 +1,7 @@
 #include "CCRPauseWidget.h"
 #include "CCR.h"
 #include "CCRSettingsWidget.h"
+#include "CCRChapterSelectWidget.h"
 #include "CCRGameState.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -92,4 +93,44 @@ void UCCRPauseWidget::HandleSettingsClosed()
 {
 	// Settings widget hides itself; restore the pause menu body.
 	OnSettingsClosed();
+}
+
+void UCCRPauseWidget::OpenChapterSelect()
+{
+	if (!ChapterSelectWidget)
+	{
+		TSubclassOf<UCCRChapterSelectWidget> ChapterClass = ChapterSelectWidgetClass.IsValid()
+			? ChapterSelectWidgetClass.Get()
+			: nullptr;
+
+		if (!ChapterClass)
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("UCCRPauseWidget: ChapterSelectWidgetClass is not set. "
+					 "Assign a Blueprint subclass of UCCRChapterSelectWidget in the pause widget defaults."));
+			return;
+		}
+
+		APlayerController* PC = GetOwningPlayer();
+		if (!PC) return;
+
+		ChapterSelectWidget = CreateWidget<UCCRChapterSelectWidget>(PC, ChapterClass);
+		if (!ChapterSelectWidget) return;
+
+		ChapterSelectWidget->OnClosed.AddDynamic(this, &UCCRPauseWidget::HandleChapterSelectClosed);
+		ChapterSelectWidget->AddToViewport(CCRZOrder::ChapterSelect);
+	}
+	else
+	{
+		ChapterSelectWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+
+	// Notify Blueprint to hide the pause menu body.
+	OnChapterSelectOpened();
+}
+
+void UCCRPauseWidget::HandleChapterSelectClosed()
+{
+	// Chapter select widget hides itself; restore the pause menu body.
+	OnChapterSelectClosed();
 }
