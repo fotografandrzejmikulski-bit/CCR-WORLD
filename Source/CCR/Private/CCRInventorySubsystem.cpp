@@ -26,6 +26,7 @@ void UCCRInventorySubsystem::AddItem(FName ItemId, int32 Count)
 	const int32 NewCount = OldCount + Count;
 	WSM->SetInt(Key, NewCount);
 
+	KnownItems.Add(ItemId);
 	OnItemChanged.Broadcast(ItemId, Count, NewCount);
 }
 
@@ -85,15 +86,21 @@ bool UCCRInventorySubsystem::HasItems(FName ItemId, int32 Count) const
 
 void UCCRInventorySubsystem::ClearAll()
 {
-	// ClearAll() has no base implementation because inventory counts are stored
-	// in UCCRWorldStateSubsystemV2 (keys: "INV_<ItemId>"), which does not expose
-	// an iteration API for bulk deletion.  This is intentional.
-	// To clear inventory, either:
-	//   (a) Override this method in a subclass that maintains a registered item
-	//       list and calls UCCRWorldStateSubsystemV2::SetInt("INV_<Id>", 0) for each.
-	//   (b) Use UCCRWorldStateSubsystemV2::ImportState() to reset the entire world state.
-	UE_LOG(LogTemp, Error,
-		TEXT("UCCRInventorySubsystem::ClearAll() has no base-class implementation. "
-			 "Override in a subclass or use UCCRWorldStateSubsystemV2::ImportState() "
-			 "to reset the world state."));
+	UGameInstance* GI = GetGameInstance();
+	UCCRWorldStateSubsystemV2* WSM = GI ? GI->GetSubsystem<UCCRWorldStateSubsystemV2>() : nullptr;
+
+	if (WSM)
+	{
+		for (const FName& ItemId : KnownItems)
+		{
+			const int32 OldCount = WSM->GetInt(InventoryKey(ItemId));
+			if (OldCount != 0)
+			{
+				WSM->SetInt(InventoryKey(ItemId), 0);
+				OnItemChanged.Broadcast(ItemId, -OldCount, 0);
+			}
+		}
+	}
+
+	KnownItems.Reset();
 }

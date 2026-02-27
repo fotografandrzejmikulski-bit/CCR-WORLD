@@ -21,7 +21,7 @@ bool UCCRSpawnSubsystem::GetSpawnTransform(FName SpawnTag, FTransform& OutTransf
 {
 	if (SpawnTag.IsNone()) return false;
 
-	const FSpawnEntry* Entry = Registry.Find(SpawnTag);
+	const FCCRSpawnEntry* Entry = Registry.Find(SpawnTag);
 	if (!Entry) return false;
 
 	OutTransform = FTransform(Entry->Rotation, Entry->Location);

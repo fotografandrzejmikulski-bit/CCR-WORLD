@@ -97,4 +97,7 @@ public:
 private:
 	/** Returns the world-state Int key for a given item ID. */
 	static FName InventoryKey(FName ItemId);
+
+	/** Set of every item ID ever added this session; used by ClearAll(). */
+	TSet<FName> KnownItems;
 };
