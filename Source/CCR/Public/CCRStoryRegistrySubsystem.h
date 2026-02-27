@@ -28,6 +28,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Registry")
 	TArray<FName> GetAllChunkIds() const;
 
+	/**
+	 * Re-scan loaded assets and update the registry.
+	 * Call after async chunk loads complete so that chunks whose names differ
+	 * from their PrimaryAssetId name are indexed by their actual ChunkId.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Registry")
+	void RefreshRegistry();
+
 private:
 	TMap<FName, FPrimaryAssetId> ChunkRegistry;
 

@@ -131,7 +131,12 @@ void UCCRAudioSubsystem::SetMusicVolume(float Volume)
 	MusicVolume = FMath::Clamp(Volume, 0.f, 1.f);
 	if (MusicComponent)
 	{
-		MusicComponent->SetVolumeMultiplier(MusicVolume);
+		// Apply the duck multiplier if a cinematic is currently playing so we
+		// don't accidentally restore full volume while the sequence is still running.
+		const float AppliedVolume = bMusicDucked
+			? MusicVolume * FMath::Clamp(CinematicDuckVolume, 0.f, 1.f)
+			: MusicVolume;
+		MusicComponent->SetVolumeMultiplier(AppliedVolume);
 	}
 	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
 	{

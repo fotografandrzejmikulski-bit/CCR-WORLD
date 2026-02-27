@@ -46,13 +46,13 @@ bool UCCRResumeSubsystem::ResumeFromDefaultSlot()
 
 	if (!LevelName.IsEmpty())
 	{
-	// Track the delegate handle so we can remove only this specific callback
-	// even if multiple resume operations are attempted.
-	FDelegateHandle LevelLoadHandle;
-	LevelLoadHandle = FCoreUObjectDelegates::PostLoadMapWithWorld.AddWeakLambda(this,
-		[this, SpatialCopy, LevelLoadHandle](UWorld* LoadedWorld) mutable
+	// Use a shared handle so the lambda can remove itself even though the
+	// FDelegateHandle value isn't known until AddWeakLambda returns.
+	TSharedPtr<FDelegateHandle> SharedHandle = MakeShared<FDelegateHandle>();
+	*SharedHandle = FCoreUObjectDelegates::PostLoadMapWithWorld.AddWeakLambda(this,
+		[this, SpatialCopy, SharedHandle](UWorld* LoadedWorld)
 		{
-			FCoreUObjectDelegates::PostLoadMapWithWorld.Remove(LevelLoadHandle);
+			FCoreUObjectDelegates::PostLoadMapWithWorld.Remove(*SharedHandle);
 			OnLevelLoaded();
 
 			// Apply player transform

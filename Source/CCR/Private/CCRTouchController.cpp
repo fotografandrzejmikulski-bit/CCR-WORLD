@@ -52,6 +52,14 @@ void ACCRTouchController::HandleTouchBegin(ETouchIndex::Type FingerIndex, FVecto
 
 	FCCRNode CurrentNode;
 	if (!NRS->GetCurrentNode(CurrentNode)) return;
+
+	// Tap during a Dialogue node advances the narrative (tap-to-continue).
+	if (CurrentNode.NodeType == ECCRNodeType::Dialogue)
+	{
+		NRS->AdvanceDialogue();
+		return;
+	}
+
 	if (CurrentNode.NodeType != ECCRNodeType::QTE) return;
 
 	TimeWindowSec = CurrentNode.TimeWindowSec;

@@ -20,9 +20,9 @@ void UCCRStoryRegistrySubsystem::BuildRegistry()
 
 	for (const FPrimaryAssetId& AssetId : AssetIds)
 	{
-		// TODO: Replace with build-time registry for shipping builds to avoid synchronous asset lookups.
-		// For the Vertical Slice, GetPrimaryAssetObject returns the already-loaded object (if loaded),
-		// so this is non-blocking when assets are cooked and pre-loaded by the AssetManager scan.
+		// For already-loaded chunks, use the authoritative ChunkId from the object.
+		// For unloaded chunks, fall back to the PrimaryAssetName as the key;
+		// call RefreshRegistry() after async loads to fix up any mismatches.
 		if (UCCRStoryChunk* Chunk = Cast<UCCRStoryChunk>(AM.GetPrimaryAssetObject(AssetId)))
 		{
 			ChunkRegistry.Add(Chunk->ChunkId, AssetId);
@@ -31,6 +31,42 @@ void UCCRStoryRegistrySubsystem::BuildRegistry()
 		{
 			// Fallback: derive ChunkId from the asset name portion of the PrimaryAssetId
 			ChunkRegistry.Add(FName(*AssetId.PrimaryAssetName.ToString()), AssetId);
+		}
+	}
+}
+
+void UCCRStoryRegistrySubsystem::RefreshRegistry()
+{
+	// Re-examine any entry whose PrimaryAssetObject is now loaded so its
+	// authoritative ChunkId can replace the fallback name-derived key.
+	UAssetManager& AM = UAssetManager::Get();
+
+	TArray<FName> StaleKeys;
+	for (auto& Pair : ChunkRegistry)
+	{
+		if (UCCRStoryChunk* Chunk = Cast<UCCRStoryChunk>(AM.GetPrimaryAssetObject(Pair.Value)))
+		{
+			if (Chunk->ChunkId != Pair.Key)
+			{
+				StaleKeys.Add(Pair.Key);
+			}
+		}
+	}
+
+	for (const FName& OldKey : StaleKeys)
+	{
+		FPrimaryAssetId AssetId;
+		if (const FPrimaryAssetId* Found = ChunkRegistry.Find(OldKey))
+		{
+			AssetId = *Found;
+		}
+		ChunkRegistry.Remove(OldKey);
+		if (AssetId.IsValid())
+		{
+			if (UCCRStoryChunk* Chunk = Cast<UCCRStoryChunk>(AM.GetPrimaryAssetObject(AssetId)))
+			{
+				ChunkRegistry.Add(Chunk->ChunkId, AssetId);
+			}
 		}
 	}
 }

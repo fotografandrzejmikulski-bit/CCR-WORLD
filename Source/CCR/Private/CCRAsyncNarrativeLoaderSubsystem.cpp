@@ -1,4 +1,5 @@
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
+#include "CCRStoryRegistrySubsystem.h"
 #include "Engine/AssetManager.h"
 
 void UCCRAsyncNarrativeLoaderSubsystem::PreloadChunks(
@@ -13,7 +14,18 @@ void UCCRAsyncNarrativeLoaderSubsystem::PreloadChunks(
 		AM.GetPrimaryAssetPathList(Required, Paths);
 		if (Paths.Num() > 0)
 		{
-			RequiredHandle = AM.GetStreamableManager().RequestAsyncLoad(Paths);
+			RequiredHandle = AM.GetStreamableManager().RequestAsyncLoad(
+				Paths,
+				FStreamableDelegate::CreateWeakLambda(this, [this]()
+				{
+					// Refresh the registry so newly loaded chunks are indexed
+					// by their authoritative ChunkId rather than the fallback name.
+					if (UCCRStoryRegistrySubsystem* Registry =
+						GetGameInstance()->GetSubsystem<UCCRStoryRegistrySubsystem>())
+					{
+						Registry->RefreshRegistry();
+					}
+				}));
 		}
 	}
 
