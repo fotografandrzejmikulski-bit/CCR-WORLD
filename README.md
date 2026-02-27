@@ -155,9 +155,11 @@ Content/
 | Zasada | Opis |
 |---|---|
 | **ANDRZEJ = ojciec ZUZI** | Protagonista podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę |
-| **ZUZIA jest izolowana** | David i Weronika trzymają Zuzię z dala od Andrzeja przez całą grę |
+| **ZUZIA jest izolowana** | David i Weronika trzymają Zuzię z dala od Andrzeja. NIE dochodzi do fizycznego spotkania w Tomie 3. |
 | **WERONIKA tylko z DAVIDEM** | Weronika NIGDY nie spotkała Evy. Sceny Weroniki i Evy NIE krzyżują się |
 | **CIEŃ = alter ego ANDRZEJA** | Odkrycie w osi T17: Cień to wersja Andrzeja, który poddał się szukaniu |
+| **T19 – Rezonator, nie spotkanie** | Andrzej wysyła wiadomość do Zuzi przez Kosmiczny Rezonator Świadomości. Brak fizycznego spotkania. |
+| **Tom 4 – ZUZIA protagonistka** | Zuzia idzie śladami ojca przez 19 osi czasu – fundament Tomu 4 |
 | **Otwarcie gry** | Po tytule: ciepły szept dziecka — *„Czas nie płynie… czas oddycha."* |
 
 ### Complete Story Flow
@@ -184,7 +186,11 @@ PROLOGUE → szept dziecka: "Czas nie płynie… czas oddycha."
   → T16: KOD PAMIĘCI 2378
   → T17: POWROTY DO CIENIA 2378
   → T18: DEVIL MIND 2777
-  → T19: ŚWIATŁO KTÓRE TRWA ∞  ← FINAŁ: Andrzej odnajduje Zuzię
+  → T19: ŚWIATŁO KTÓRE TRWA ∞  ← FINAŁ TOMU 3:
+       Andrzej WYSYŁA OSTATNIĄ WIADOMOŚĆ do Zuzi przez Kosmiczny Rezonator Świadomości
+       NIE dochodzi do fizycznego spotkania
+       Andrzej rozpływa się w wieczności
+       ↓ PROLOG TOMU 4: Zuzia słyszy wiadomość ojca i idzie jego śladami →
 ```
 
 | Chunk | Oś | Lokacja | Postacie (skrócone) |
@@ -208,7 +214,7 @@ PROLOGUE → szept dziecka: "Czas nie płynie… czas oddycha."
 | `T16_01` | T16 | KOD PAMIĘCI 2378 | ANDRZEJ, DAVID, WERONIKA |
 | `T17_01` | T17 | POWROTY DO CIENIA 2378 | ANDRZEJ, CIEŃ, EIMSTAIN |
 | `T18_01` | T18 | DEVIL MIND 2777 | ANDRZEJ, CIEŃ, BATISTA |
-| `T19_01` | T19 | ŚWIATŁO KTÓRE TRWA ∞ | **ANDRZEJ + ZUZIA** (finał) |
+| `T19_01` | T19 | ŚWIATŁO KTÓRE TRWA ∞ | ANDRZEJ + EIMSTAIN (echo) + REZONATOR. **Brak fizycznego spotkania.** Andrzej wysyła wiadomość do Zuzi przez Kosmiczny Rezonator Świadomości. Prolog Tomu 4. |
 
 ### Authoring Story Content
 

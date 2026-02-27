@@ -1,5 +1,5 @@
 {
-  "_doc": "CCR WORLD – Character manifest. KLUCZOWE ZASADY NARRACYJNE: (1) ANDRZEJ = ojciec ZUZI, szuka jej przez WSZYSTKIE 19 osi czasu. (2) ZUZIA jest izolowana od ANDRZEJA przez cały czas gry (finał: oś T19). (3) WERONIKA trzyma TYLKO z DAVIDEM – nigdy nie spotkała EVY – ich sceny się NIE krzyżują. (4) CIEŃ = alternatywna wersja ANDRZEJA który poddał się (odkrycie: oś T17). (5) Gra zaczyna się szeptem dziecka: 'Czas nie płynie… czas oddycha.'",
+  "_doc": "CCR WORLD – Character manifest. KLUCZOWE ZASADY NARRACYJNE: (1) ANDRZEJ = ojciec ZUZI, szuka jej przez WSZYSTKIE 19 osi czasu – TOM 3. (2) ZUZIA i ANDRZEJ NIE spotykają się fizycznie w Tomie 3. W T19 Andrzej wysyła wiadomość przez Kosmiczny Rezonator Świadomości. (3) TOM 4: ZUZIA idzie śladami ojca jako protagonistka. (4) WERONIKA trzyma TYLKO z DAVIDEM – nigdy nie spotkała EVY. (5) CIEŃ = alternatywna wersja ANDRZEJA który poddał się (odkrycie: oś T17). (6) Gra zaczyna się szeptem dziecka: 'Czas nie płynie… czas oddycha.'",
   "characters": [
     {
       "assetName": "DA_Char_ANDRZEJ",
@@ -37,7 +37,7 @@
           "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Fear"
         }
       ],
-      "_notes": "PROTAGONISTA. Ojciec Zuzi. Podróżuje przez WSZYSTKIE 19 osi czasu aby odnaleźć córkę. Nie może poddać się – Cień to alternatywna wersja Andrzeja który poddał się szukaniu."
+      "_notes": "PROTAGONISTA TOMU 3. Ojciec Zuzi. Podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę. NIE SPOTYKA SIĘ Z ZUZIĄ fizycznie. W ostatniej osi T19 (∞) dociera do Kosmicznego Rezonatora Świadomości i wysyła Zuzi ostatnią wiadomość – po czym rozpływa się w wieczności. Cień = alternatywna wersja Andrzeja który poddał się szukaniu (odkrycie: oś T17)."
     },
     {
       "assetName": "DA_Char_ZUZIA",
@@ -75,7 +75,7 @@
           "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Fear"
         }
       ],
-      "_notes": "Córka Andrzeja. Jest izolowana od ojca przez cały czas gry. David i Weronika pilnują jej izolacji. Zuzia szuka ojca tak samo jak on jej – ale system ją blokuje. ZUZIA nigdy NIE pojawia się w tej samej scenie co Andrzej aż do osi T19 (finał)."
+      "_notes": "Córka Andrzeja. Jest izolowana od ojca przez cały Tom 3 gry. David i Weronika pilnują jej izolacji. ZUZIA NIE SPOTYKA SIĘ Z ANDRZEJEM fizycznie w żadnej osi czasu Tomu 3. W finałowej osi T19 (∞) Andrzej wysyła do niej ostatnią wiadomość przez Kosmiczny Rezonator Świadomości. TOM 4: ZUZIA jest protagonistką – idzie śladami ojca przez wszystkie 19 osi czasu."
     },
     {
       "assetName": "DA_Char_EVA",

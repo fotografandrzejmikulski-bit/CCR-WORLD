@@ -4,10 +4,12 @@
 
 | Zasada | Opis |
 |---|---|
-| **ANDRZEJ = ojciec ZUZI** | Protagonista podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę |
-| **ZUZIA jest izolowana** | David i Weronika trzymają Zuzię z dala od Andrzeja przez całą grę |
+| **ANDRZEJ = ojciec ZUZI** | Protagonista podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę – Tom 3 |
+| **ZUZIA jest izolowana** | David i Weronika trzymają Zuzię z dala od Andrzeja przez cały Tom 3. NIE dochodzi do fizycznego spotkania. |
 | **WERONIKA tylko z DAVIDEM** | Weronika NIGDY nie spotkała Evy. Weronika i Eva NIE pojawiają się razem |
 | **CIEŃ = alter ego ANDRZEJA** | Odkrycie w osi T17: Cień to wersja Andrzeja, który poddał się szukaniu |
+| **T19: REZONATOR, nie spotkanie** | W T19 (∞) Andrzej wysyła ostatnią wiadomość do Zuzi przez Kosmiczny Rezonator Świadomości. Nie dochodzi do fizycznego spotkania. Andrzej rozpływa się w wieczności. |
+| **TOM 4: ZUZIA jako protagonistka** | Zuzia odbiera wiadomość ojca przez Rezonator i idzie jego śladami – to fundament Tomu 4 |
 | **Otwarcie gry** | Po tytule: ciepły szept dziecka — *„Czas nie płynie… czas oddycha."* |
 
 ---
@@ -94,7 +96,10 @@ PROLOGUE (szept: "Czas nie plynie... czas oddycha.")
   -> T08 (2035) -> T09 (2045) -> T10 (2077) -> T11 (2100)
   -> T12 (Chicago 2135) -> T13 (2150) -> T14 (2222)
   -> T15 (Neo Paryż 2345) -> T16 (2378-A) -> T17 (2378-B)
-  -> T18 (Devil Mind 2777) -> T19 (∞ – FINAŁ: ojciec odnajduje córkę)
+  -> T18 (Devil Mind 2777)
+  -> T19 (∞ – FINAŁ T3: Andrzej WYSYŁA WIADOMOŚĆ przez Kosmiczny Rezonator Świadomości)
+         NIE dochodzi do fizycznego spotkania z Zuzią
+         Prolog Tomu 4: Zuzia słyszy wiadomość ojca → "Idę."
 ```
 
 ---
