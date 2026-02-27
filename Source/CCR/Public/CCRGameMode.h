@@ -13,8 +13,10 @@
  *   - ACCRGameHUD as the default HUD
  *   - ACCRGameState as the game state
  *
- * On PostLogin, kicks off the narrative resume flow if a save exists,
- * or starts the opening chunk for a new game.
+ * On PostLogin the game transitions to ECCRGamePhase::MainMenu so that
+ * UCCRMainMenuWidget is shown. The player then calls NewGame() or Continue()
+ * on the widget, which triggers StartNewGame() or UCCRResumeSubsystem
+ * respectively.
  */
 UCLASS()
 class CCR_API ACCRGameMode : public AGameModeBase
@@ -26,7 +28,15 @@ public:
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 
-	/** Chunk id to start when no save exists (new game entry point) */
+	/**
+	 * Begin a fresh game from the entry chunk.
+	 * Called by UCCRMainMenuWidget::NewGame() but also accessible from Blueprint.
+	 * Sets the Loading phase, preloads the entry chunk, and starts the narrative.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")
+	void StartNewGame();
+
+	/** Chunk id to start when beginning a new game */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Narrative")
 	FName NewGameStartChunkId = TEXT("CHUNK_INTRO");
 };

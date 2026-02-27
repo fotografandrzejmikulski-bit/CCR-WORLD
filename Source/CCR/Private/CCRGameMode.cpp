@@ -19,18 +19,22 @@ void ACCRGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
 
+	// Transition to MainMenu phase so UCCRMainMenuWidget is shown.
+	// UCCRMainMenuWidget::NewGame() / Continue() will drive the next transition.
+	if (UWorld* World = GetWorld())
+	{
+		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+		{
+			GS->SetGamePhase(ECCRGamePhase::MainMenu);
+		}
+	}
+}
+
+void ACCRGameMode::StartNewGame()
+{
 	UGameInstance* GI = GetGameInstance();
 	if (!GI) return;
 
-	// Attempt to resume from an existing save first
-	UCCRResumeSubsystem* Resume = GI->GetSubsystem<UCCRResumeSubsystem>();
-	if (Resume && Resume->ResumeFromDefaultSlot())
-	{
-		// Save exists – resume handled by UCCRResumeSubsystem
-		return;
-	}
-
-	// No save: start a new game from the entry chunk
 	if (NewGameStartChunkId.IsNone()) return;
 
 	UCCRStoryRegistrySubsystem* Registry = GI->GetSubsystem<UCCRStoryRegistrySubsystem>();
@@ -41,7 +45,7 @@ void ACCRGameMode::PostLogin(APlayerController* NewPlayer)
 	const FPrimaryAssetId AssetId = Registry->GetAssetIdForChunk(NewGameStartChunkId);
 	if (!AssetId.IsValid()) return;
 
-	// Transition to Loading phase so the HUD can display a loading overlay
+	// Transition to Loading phase so the HUD shows the loading overlay
 	// while the entry chunk streams in.
 	if (UWorld* World = GetWorld())
 	{
@@ -55,9 +59,7 @@ void ACCRGameMode::PostLogin(APlayerController* NewPlayer)
 	Required.Add(AssetId);
 	Loader->PreloadChunks(Required, {});
 
-	// Load chunk then start narrative
 	FSoftObjectPath AssetPath = UAssetManager::Get().GetPrimaryAssetPath(AssetId);
-	const FName CapturedChunkId = NewGameStartChunkId;
 
 	UAssetManager::Get().GetStreamableManager().RequestAsyncLoad(
 		AssetPath,

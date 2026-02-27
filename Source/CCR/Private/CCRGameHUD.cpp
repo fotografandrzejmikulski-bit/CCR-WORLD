@@ -3,9 +3,19 @@
 #include "CCRQTEWidget.h"
 #include "CCRPauseWidget.h"
 #include "CCRLoadingWidget.h"
+#include "CCRMainMenuWidget.h"
 #include "CCRGameState.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
+
+namespace CCRZOrder
+{
+	constexpr int32 Dialogue = 0;
+	constexpr int32 QTE      = 1;
+	constexpr int32 MainMenu = 5;
+	constexpr int32 Pause    = 10;
+	constexpr int32 Loading  = 20;
+}
 
 void ACCRGameHUD::BeginPlay()
 {
@@ -30,7 +40,7 @@ void ACCRGameHUD::BeginPlay()
 		DialogueWidget = CreateWidget<UCCRDialogueWidget>(PC, DlgClass);
 		if (DialogueWidget)
 		{
-			DialogueWidget->AddToViewport(0);
+			DialogueWidget->AddToViewport(CCRZOrder::Dialogue);
 		}
 	}
 
@@ -50,7 +60,7 @@ void ACCRGameHUD::BeginPlay()
 		QTEWidget = CreateWidget<UCCRQTEWidget>(PC, QTEClass);
 		if (QTEWidget)
 		{
-			QTEWidget->AddToViewport(1); // above dialogue
+			QTEWidget->AddToViewport(CCRZOrder::QTE);
 			QTEWidget->SetVisibility(ESlateVisibility::Collapsed);
 		}
 	}
@@ -72,7 +82,27 @@ void ACCRGameHUD::BeginPlay()
 		LoadingWidget = CreateWidget<UCCRLoadingWidget>(PC, LoadingClass);
 		if (LoadingWidget)
 		{
-			LoadingWidget->AddToViewport(20); // z-order 20: above QTE overlay (1) and pause menu (10)
+			LoadingWidget->AddToViewport(CCRZOrder::Loading);
+		}
+	}
+
+	// ---- Main menu widget ----
+	TSubclassOf<UCCRMainMenuWidget> MainMenuClass = MainMenuWidgetClass.IsValid()
+		? MainMenuWidgetClass.Get()
+		: nullptr;
+
+	if (!MainMenuClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: MainMenuWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRMainMenuWidget in the HUD defaults."));
+	}
+	else
+	{
+		MainMenuWidget = CreateWidget<UCCRMainMenuWidget>(PC, MainMenuClass);
+		if (MainMenuWidget)
+		{
+			MainMenuWidget->AddToViewport(CCRZOrder::MainMenu);
 		}
 	}
 
@@ -124,6 +154,15 @@ void ACCRGameHUD::SetLoadingVisible(bool bVisible)
 	if (LoadingWidget)
 	{
 		LoadingWidget->SetVisibility(
+			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	}
+}
+
+void ACCRGameHUD::SetMainMenuVisible(bool bVisible)
+{
+	if (MainMenuWidget)
+	{
+		MainMenuWidget->SetVisibility(
 			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	}
 }
@@ -191,7 +230,7 @@ void ACCRGameHUD::TogglePause()
 
 		if (PauseWidget)
 		{
-			PauseWidget->AddToViewport(10); // topmost z-order
+			PauseWidget->AddToViewport(CCRZOrder::Pause);
 		}
 
 		UGameplayStatics::SetGamePaused(this, true);
@@ -209,6 +248,9 @@ bool ACCRGameHUD::IsPaused() const
 
 void ACCRGameHUD::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
 {
+	// Main menu overlay: visible only during the MainMenu phase.
+	SetMainMenuVisible(NewPhase == ECCRGamePhase::MainMenu);
+
 	// Loading overlay: visible only during the Loading phase.
 	SetLoadingVisible(NewPhase == ECCRGamePhase::Loading);
 

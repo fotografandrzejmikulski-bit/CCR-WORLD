@@ -1,10 +1,10 @@
 #include "CCRSettingsSubsystem.h"
+#include "CCR.h"
 #include "CCRSettingsSaveGame.h"
 #include "Kismet/GameplayStatics.h"
 
 namespace CCRSettingsPrivate
 {
-	static const FString SlotName   = TEXT("CCRSettings");
 	static constexpr int32 UserIndex = 0;
 }
 
@@ -24,10 +24,10 @@ void UCCRSettingsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 void UCCRSettingsSubsystem::LoadOrCreate()
 {
-	if (UGameplayStatics::DoesSaveGameExist(CCRSettingsPrivate::SlotName, CCRSettingsPrivate::UserIndex))
+	if (UGameplayStatics::DoesSaveGameExist(CCRSaveSlots::Settings, CCRSettingsPrivate::UserIndex))
 	{
 		ActiveSettings = Cast<UCCRSettingsSaveGame>(
-			UGameplayStatics::LoadGameFromSlot(CCRSettingsPrivate::SlotName, CCRSettingsPrivate::UserIndex));
+			UGameplayStatics::LoadGameFromSlot(CCRSaveSlots::Settings, CCRSettingsPrivate::UserIndex));
 	}
 
 	if (!ActiveSettings)
@@ -40,7 +40,7 @@ void UCCRSettingsSubsystem::LoadOrCreate()
 void UCCRSettingsSubsystem::SaveNow()
 {
 	if (!ActiveSettings) return;
-	UGameplayStatics::SaveGameToSlot(ActiveSettings, CCRSettingsPrivate::SlotName, CCRSettingsPrivate::UserIndex);
+	UGameplayStatics::SaveGameToSlot(ActiveSettings, CCRSaveSlots::Settings, CCRSettingsPrivate::UserIndex);
 	OnSettingsChanged.Broadcast();
 }
 

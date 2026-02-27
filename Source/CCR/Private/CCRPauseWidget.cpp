@@ -1,6 +1,7 @@
 #include "CCRPauseWidget.h"
 #include "CCRGameState.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 void UCCRPauseWidget::NativeConstruct()
 {
@@ -42,8 +43,9 @@ void UCCRPauseWidget::ReturnToMainMenu()
 
 void UCCRPauseWidget::QuitGame()
 {
+	// UKismetSystemLibrary::QuitGame handles all platforms (including Android).
 	if (APlayerController* PC = GetOwningPlayer())
 	{
-		PC->ConsoleCommand(TEXT("quit"));
+		UKismetSystemLibrary::QuitGame(GetWorld(), PC, EQuitPreference::Quit, /*bIgnorePlatformRestrictions=*/false);
 	}
 }

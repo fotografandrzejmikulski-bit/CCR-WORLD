@@ -1,8 +1,8 @@
 #include "CCRSettingsSaveGame.h"
+#include "CCR.h"
 
 UCCRSettingsSaveGame::UCCRSettingsSaveGame()
 {
-	// Must match CCRSettingsPrivate::SlotName in CCRSettingsSubsystem.cpp
-	SaveSlotName = TEXT("CCRSettings");
+	SaveSlotName = CCRSaveSlots::Settings;
 	UserIndex    = 0;
 }

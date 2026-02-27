@@ -281,7 +281,7 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 
 	case ECCRNodeType::Jump:
 	{
-		// Cross-chunk jump: async-load the target chunk then start it.
+		// Cross-chunk jump: set Loading phase then async-load the target chunk.
 		const FName TargetChunkId   = Node->TargetChunkId;
 		const FName EntryNodeId     = Node->EntryNodeInTarget;
 
@@ -297,6 +297,9 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 				*TargetChunkId.ToString());
 			break;
 		}
+
+		// Show the loading overlay while the new chunk streams in.
+		CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::Loading);
 
 		// PreloadChunks stores a FStreamableHandle in UCCRAsyncNarrativeLoaderSubsystem
 		// (the "Required" bucket) so the asset is kept alive for the duration of the

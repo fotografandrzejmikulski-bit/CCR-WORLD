@@ -1,4 +1,5 @@
 #include "CCRResumeSubsystem.h"
+#include "CCR.h"
 #include "CCRWorldStateSaveGameV2.h"
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
@@ -11,16 +12,15 @@
 
 bool UCCRResumeSubsystem::ResumeFromDefaultSlot()
 {
-	static const FString SlotName = TEXT("CCRSaveSlot");
 	constexpr int32 UserIndex = 0;
 
-	if (!UGameplayStatics::DoesSaveGameExist(SlotName, UserIndex))
+	if (!UGameplayStatics::DoesSaveGameExist(CCRSaveSlots::WorldState, UserIndex))
 	{
 		return false;
 	}
 
 	UCCRWorldStateSaveGameV2* Save = Cast<UCCRWorldStateSaveGameV2>(
-		UGameplayStatics::LoadGameFromSlot(SlotName, UserIndex));
+		UGameplayStatics::LoadGameFromSlot(CCRSaveSlots::WorldState, UserIndex));
 	if (!Save) return false;
 
 	// 1. Import world state
