@@ -10,6 +10,7 @@
 #include "CCRChapterTransitionWidget.h"
 #include "CCRCreditsWidget.h"
 #include "CCRCutsceneSkipWidget.h"
+#include "CCRObjectiveWidget.h"
 #include "CCRGameState.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRStoryChunk.h"
@@ -185,6 +186,26 @@ void ACCRGameHUD::BeginPlay()
 		{
 			CutsceneSkipWidget->AddToViewport(CCRZOrder::Cinematic);
 			// Widget manages its own visibility via HandleNodeChanged
+		}
+	}
+
+	// ---- Objective widget ----
+	TSubclassOf<UCCRObjectiveWidget> ObjectiveClass = ObjectiveWidgetClass.IsValid()
+		? ObjectiveWidgetClass.Get()
+		: nullptr;
+
+	if (!ObjectiveClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: ObjectiveWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRObjectiveWidget in the HUD defaults."));
+	}
+	else
+	{
+		ObjectiveWidget = CreateWidget<UCCRObjectiveWidget>(PC, ObjectiveClass);
+		if (ObjectiveWidget)
+		{
+			ObjectiveWidget->AddToViewport(CCRZOrder::Objectives);
 		}
 	}
 

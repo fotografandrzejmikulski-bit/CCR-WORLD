@@ -16,6 +16,7 @@ namespace CCRZOrder
 	constexpr int32 QTE               = 1;
 	constexpr int32 Cinematic         = 2;
 	constexpr int32 Notification      = 3;
+	constexpr int32 Objectives        = 4;
 	constexpr int32 MainMenu          = 5;
 	constexpr int32 Pause             = 10;
 	constexpr int32 Settings          = 11;

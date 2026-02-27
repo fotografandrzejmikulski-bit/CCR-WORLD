@@ -14,6 +14,7 @@ class UCCRNotificationWidget;
 class UCCRChapterTransitionWidget;
 class UCCRCreditsWidget;
 class UCCRCutsceneSkipWidget;
+class UCCRObjectiveWidget;
 class UCCRStoryChunk;
 
 /**
@@ -79,6 +80,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
 	TSoftClassPtr<UCCRCutsceneSkipWidget> CutsceneSkipWidgetClass;
 
+	/** Blueprint subclass of UCCRObjectiveWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRObjectiveWidget> ObjectiveWidgetClass;
+
 	// ---- Live widget instances ----
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
@@ -110,6 +115,9 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
 	UCCRCutsceneSkipWidget* CutsceneSkipWidget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRObjectiveWidget* ObjectiveWidget = nullptr;
 
 	/** Show or hide the dialogue panel */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
