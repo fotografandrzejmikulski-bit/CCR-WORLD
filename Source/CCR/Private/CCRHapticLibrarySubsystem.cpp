@@ -57,7 +57,7 @@ void UCCRHapticLibrarySubsystem::PlayPatternInternal(const FCCRHapticPattern& Pa
 		UForceFeedbackEffect* Effect = Pattern.ForceFeedbackEffect.LoadSynchronous();
 		if (Effect)
 		{
-			PC->PlayHapticEffect(Effect, EControllerHand::Right, Pattern.Intensity);
+			PC->PlayHapticEffect(Effect, Pattern.Hand, Pattern.Intensity);
 			return;
 		}
 	}

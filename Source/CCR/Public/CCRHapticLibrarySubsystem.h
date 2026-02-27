@@ -27,10 +27,17 @@ struct FCCRHapticPattern
 
 	/**
 	 * Optional UE force-feedback asset. When set, it overrides Duration/Intensity
-	 * and is played via PlayForceFeedback on the player controller.
+	 * and is played via PlayHapticEffect on the player controller.
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSoftObjectPtr<UForceFeedbackEffect> ForceFeedbackEffect;
+
+	/**
+	 * Which controller hand receives the haptic effect when using a UForceFeedbackEffect.
+	 * Has no effect on the PlayDynamicForceFeedback path (which affects all motors).
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TEnumAsByte<EControllerHand> Hand = EControllerHand::Right;
 };
 
 /**

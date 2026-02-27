@@ -56,4 +56,21 @@ public:
 	// ---- Player spatial ----
 	UPROPERTY(BlueprintReadWrite, Category = "CCR|Save")
 	FCCRPlayerSpatialSave PlayerSpatial;
+
+	// ---- Slot metadata ----
+
+	/**
+	 * Cumulative gameplay time in seconds at the point of the save.
+	 * The calling code is responsible for updating this value;
+	 * UCCRSaveSlotManagerSubsystem writes it from UCCRPlayTimeSubsystem if available.
+	 */
+	UPROPERTY(BlueprintReadWrite, Category = "CCR|Save")
+	float PlayTimeSec = 0.f;
+
+	/**
+	 * Human-readable date-time string at the point of the save (local time).
+	 * Format: "YYYY-MM-DD HH:MM:SS" (written by UCCRSaveSlotManagerSubsystem).
+	 */
+	UPROPERTY(BlueprintReadWrite, Category = "CCR|Save")
+	FString SaveDateTime;
 };
