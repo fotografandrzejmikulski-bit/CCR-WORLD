@@ -22,3 +22,19 @@ UCCRGameInstance* UCCRGameInstance::Get(const UObject* WorldContextObject)
 	if (!World) return nullptr;
 	return Cast<UCCRGameInstance>(World->GetGameInstance());
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRGameInstance::OnCCRInit_Implementation()
+{
+// Default C++ implementation: no-op.
+// Override in a C++ subclass or Blueprint to register speakers, music cues,
+// VO cues, inventory item definitions, achievement definitions, etc.
+}
+
+void UCCRGameInstance::OnCCRShutdown_Implementation()
+{
+// Default C++ implementation: no-op.
+}

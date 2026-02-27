@@ -62,39 +62,39 @@ public:
 	// ---- Blueprint-implementable notifications ----
 
 	/** Called when this widget is shown (game paused). */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Pause")
 	void OnPaused();
 
 	/** Called when the game is about to resume. */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Pause")
 	void OnResumed();
 
 	/**
 	 * Called when the settings screen is about to open.
 	 * Override in Blueprint to hide the pause menu body / play a transition.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Pause")
 	void OnSettingsOpened();
 
 	/**
 	 * Called when the settings screen is dismissed and the pause menu is restored.
 	 * Override in Blueprint to re-show the pause menu body / play a transition.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Pause")
 	void OnSettingsClosed();
 
 	/**
 	 * Called when the chapter select screen is about to open.
 	 * Override in Blueprint to hide the pause menu body / play a transition.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Pause")
 	void OnChapterSelectOpened();
 
 	/**
 	 * Called when the chapter select screen is dismissed and the pause menu is restored.
 	 * Override in Blueprint to re-show the pause menu body / play a transition.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Pause")
 	void OnChapterSelectClosed();
 
 	/** Main menu level name (set in Blueprint or defaults) */

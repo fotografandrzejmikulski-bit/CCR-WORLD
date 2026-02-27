@@ -140,3 +140,12 @@ void ACCRInteractableActor::ApplySetOps()
 		}
 	}
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void ACCRInteractableActor::OnInteracted_Implementation()
+{
+// Default C++ implementation: no-op.
+}

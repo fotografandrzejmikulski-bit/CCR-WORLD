@@ -43,3 +43,17 @@ void UCCRObjectiveWidget::HandleObjectiveChanged(const FCCRObjective& Objective,
 {
 	OnObjectiveUpdated(Objective, NewState);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRObjectiveWidget::OnObjectiveUpdated_Implementation(const FCCRObjective& Objective, ECCRObjectiveState NewState)
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRObjectiveWidget::OnFullRefresh_Implementation(const TArray<FCCRObjective>& AllObjectives)
+{
+// Default C++ implementation: no-op.
+}

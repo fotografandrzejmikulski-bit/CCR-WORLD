@@ -126,3 +126,32 @@ void UCCRMainMenuWidget::HandleChapterSelectClosed()
 {
 	OnChapterSelectClosed();
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRMainMenuWidget::OnMainMenuReady_Implementation(bool bHasSave)
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRMainMenuWidget::OnSettingsOpened_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRMainMenuWidget::OnSettingsClosed_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRMainMenuWidget::OnChapterSelectOpened_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRMainMenuWidget::OnChapterSelectClosed_Implementation()
+{
+// Default C++ implementation: no-op.
+}

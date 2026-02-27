@@ -38,7 +38,7 @@ public:
 	 * @param ItemIds  All item IDs that have at least 1 item in inventory.
 	 * @param Counts   Matching counts for each ItemId.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Inventory")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Inventory")
 	void OnInventoryRefresh(const TArray<FName>& ItemIds, const TArray<int32>& Counts);
 
 	/**
@@ -47,14 +47,14 @@ public:
 	 * @param ItemDef  Loaded item definition (may be null if no DA_Item asset exists).
 	 * @param Count    Current item count.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Inventory")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Inventory")
 	void OnItemSelected(UCCRInventoryItemDefinition* ItemDef, int32 Count);
 
 	/**
 	 * Called after UseItem() successfully uses an item.
 	 * Override in Blueprint to play a use animation or update the detail panel.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Inventory")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Inventory")
 	void OnItemUsed(FName ItemId);
 
 	/** Refresh the inventory display. Fires OnInventoryRefresh. */

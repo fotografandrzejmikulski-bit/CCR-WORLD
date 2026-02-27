@@ -46,3 +46,31 @@ void UCCRQTEWidget::HandleNodeChanged(FName NodeId)
 	OnQTEPromptReady(Node.GestureType, Node.RequiredSwipeDir);
 }
 
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRQTEWidget::OnQTEPromptReady_Implementation(ECCRGestureType GestureType, ECCRSwipeDirection SwipeDir)
+{
+// Default C++ implementation: no-op.
+// Override to display gesture icon before the QTE timer starts.
+}
+
+void UCCRQTEWidget::UpdateProgress_Implementation(float Progress)
+{
+// Default C++ implementation: no-op.
+// Override to animate the progress arc/bar.
+}
+
+void UCCRQTEWidget::OnQTEStarted_Implementation(float TimeWindowSec)
+{
+// Default C++ implementation: no-op.
+// Override to show the QTE overlay.
+}
+
+void UCCRQTEWidget::OnQTEEnded_Implementation(bool bSuccess)
+{
+// Default C++ implementation: no-op.
+// Override to show success/failure feedback.
+}

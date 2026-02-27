@@ -36,7 +36,7 @@ public:
 	 * Called when the credits should begin (narrative ended).
 	 * Override in Blueprint to start the scrolling credits animation/sequence.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Credits")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Credits")
 	void OnCreditsBegin();
 
 	/**

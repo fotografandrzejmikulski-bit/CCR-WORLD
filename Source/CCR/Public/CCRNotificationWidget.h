@@ -37,7 +37,7 @@ public:
 	 * @param DurationSec  Suggested on-screen duration in seconds (0 = decide in BP).
 	 * @param Type         Visual category (Info, Warning, Checkpoint, Chapter).
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Notification")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Notification")
 	void OnNotificationReceived(const FText& Message, float DurationSec, ECCRNotificationType Type);
 
 private:

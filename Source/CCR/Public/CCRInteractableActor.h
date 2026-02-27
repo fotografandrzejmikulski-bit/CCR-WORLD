@@ -99,7 +99,7 @@ public:
 	 * Called when the interaction is triggered and all conditions are met.
 	 * Override in Blueprint for custom visual / audio feedback.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Interactable")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Interactable")
 	void OnInteracted();
 
 private:

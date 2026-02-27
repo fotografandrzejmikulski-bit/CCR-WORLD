@@ -134,3 +134,37 @@ void UCCRPauseWidget::HandleChapterSelectClosed()
 	// Chapter select widget hides itself; restore the pause menu body.
 	OnChapterSelectClosed();
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRPauseWidget::OnPaused_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRPauseWidget::OnResumed_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRPauseWidget::OnSettingsOpened_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRPauseWidget::OnSettingsClosed_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRPauseWidget::OnChapterSelectOpened_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRPauseWidget::OnChapterSelectClosed_Implementation()
+{
+// Default C++ implementation: no-op.
+}

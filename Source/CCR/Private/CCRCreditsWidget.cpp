@@ -45,3 +45,12 @@ void UCCRCreditsWidget::ReturnToMainMenu()
 	RemoveFromParent();
 	UGameplayStatics::OpenLevel(this, MainMenuLevelName);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRCreditsWidget::OnCreditsBegin_Implementation()
+{
+// Default C++ implementation: no-op.
+}

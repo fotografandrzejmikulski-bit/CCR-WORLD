@@ -142,3 +142,17 @@ void UCCRSettingsWidget::SetHighContrast(bool bEnabled)
 {
 	if (UCCRSettingsSubsystem* S = CCR_GetSettings(this)) S->SetHighContrast(bEnabled);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRSettingsWidget::OnSettingsOpened_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRSettingsWidget::OnSettingsClosed_Implementation()
+{
+// Default C++ implementation: no-op.
+}

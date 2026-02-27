@@ -35,22 +35,22 @@ public:
 	 * @param GestureType   LongPress, Tap, or Swipe.
 	 * @param SwipeDir      Required swipe direction (Any when GestureType != Swipe).
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|QTE")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|QTE")
 	void OnQTEPromptReady(ECCRGestureType GestureType, ECCRSwipeDirection SwipeDir);
 
 	/**
 	 * Called every tick while QTE is active.
 	 * @param Progress  0.0 = just started, 1.0 = success threshold reached.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|QTE")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|QTE")
 	void UpdateProgress(float Progress);
 
 	/** Called when QTE starts – show the widget. */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|QTE")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|QTE")
 	void OnQTEStarted(float TimeWindowSec);
 
 	/** Called when QTE ends. */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|QTE")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|QTE")
 	void OnQTEEnded(bool bSuccess);
 
 private:

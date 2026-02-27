@@ -74,3 +74,17 @@ void UCCRCutsceneSkipWidget::SkipCinematic()
 
 	SetVisibility(ESlateVisibility::Collapsed);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRCutsceneSkipWidget::OnCinematicStarted_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRCutsceneSkipWidget::OnCinematicEnded_Implementation()
+{
+// Default C++ implementation: no-op.
+}

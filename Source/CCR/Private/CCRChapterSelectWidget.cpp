@@ -79,3 +79,17 @@ void UCCRChapterSelectWidget::Close()
 	OnClosed.Broadcast();
 	SetVisibility(ESlateVisibility::Collapsed);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRChapterSelectWidget::OnChapterListReady_Implementation(const TArray<FCCRChapterSelectEntry>& Entries)
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRChapterSelectWidget::OnChapterLocked_Implementation(FName ChunkId)
+{
+// Default C++ implementation: no-op.
+}

@@ -34,7 +34,7 @@ public:
 	 * Called when any objective changes state.
 	 * Override in Blueprint to update the objective list item.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Objective")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Objective")
 	void OnObjectiveUpdated(const FCCRObjective& Objective, ECCRObjectiveState NewState);
 
 	/**
@@ -44,7 +44,7 @@ public:
 	 * @param AllObjectives  All registered objectives (including hidden ones)
 	 *                       so Blueprint can show the full history if desired.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Objective")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Objective")
 	void OnFullRefresh(const TArray<FCCRObjective>& AllObjectives);
 
 	/**

@@ -43,3 +43,17 @@ void UCCRLoadingWidget::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
 		OnLoadingFinished();
 	}
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRLoadingWidget::OnLoadingStarted_Implementation()
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRLoadingWidget::OnLoadingFinished_Implementation()
+{
+// Default C++ implementation: no-op.
+}

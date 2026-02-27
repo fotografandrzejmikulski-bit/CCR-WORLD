@@ -134,3 +134,22 @@ void UCCRInventoryWidget::Close()
 {
 	SetVisibility(ESlateVisibility::Collapsed);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRInventoryWidget::OnInventoryRefresh_Implementation(const TArray<FName>& ItemIds, const TArray<int32>& Counts)
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRInventoryWidget::OnItemSelected_Implementation(UCCRInventoryItemDefinition* ItemDef, int32 Count)
+{
+// Default C++ implementation: no-op.
+}
+
+void UCCRInventoryWidget::OnItemUsed_Implementation(FName ItemId)
+{
+// Default C++ implementation: no-op.
+}

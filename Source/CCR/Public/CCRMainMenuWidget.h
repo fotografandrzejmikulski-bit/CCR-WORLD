@@ -34,7 +34,7 @@ public:
 	 * @param bHasSave  True when a save game exists (show the "Continue" button).
 	 * Override in Blueprint to configure the initial UI state.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|MainMenu")
 	void OnMainMenuReady(bool bHasSave);
 
 	/**
@@ -77,28 +77,28 @@ public:
 	 * Called when the settings screen is about to open.
 	 * Override in Blueprint to hide the main menu body / play a transition.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|MainMenu")
 	void OnSettingsOpened();
 
 	/**
 	 * Called when the settings screen is dismissed and the main menu is restored.
 	 * Override in Blueprint to re-show the main menu body.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|MainMenu")
 	void OnSettingsClosed();
 
 	/**
 	 * Called when the chapter select screen is about to open.
 	 * Override in Blueprint to hide the main menu body / play a transition.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|MainMenu")
 	void OnChapterSelectOpened();
 
 	/**
 	 * Called when the chapter select screen is dismissed and the main menu is restored.
 	 * Override in Blueprint to re-show the main menu body.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|MainMenu")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|MainMenu")
 	void OnChapterSelectClosed();
 
 	/**

@@ -34,14 +34,14 @@ public:
 	 * Called when a skippable cinematic begins.
 	 * Override in Blueprint to show a "Tap to skip" animation.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Cinematic")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Cinematic")
 	void OnCinematicStarted();
 
 	/**
 	 * Called when the cinematic ends (naturally or via skip).
 	 * Override in Blueprint to hide the skip prompt.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Cinematic")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Cinematic")
 	void OnCinematicEnded();
 
 	/**

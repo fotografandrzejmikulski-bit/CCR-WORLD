@@ -52,13 +52,13 @@ public:
 	 * @param Title     Chapter title text (e.g. "Chapter 1 – The Awakening").
 	 * @param Subtitle  Optional subtitle (in-world location or thematic tagline).
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|ChapterTransition")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|ChapterTransition")
 	void OnShowChapterTitle(const FText& Title, const FText& Subtitle);
 
 	/**
 	 * Called when DismissTransition() is invoked.
 	 * Override in Blueprint to play a fade-out animation, then collapse the widget.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|ChapterTransition")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|ChapterTransition")
 	void OnDismissTransition();
 };

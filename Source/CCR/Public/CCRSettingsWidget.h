@@ -41,14 +41,14 @@ public:
 	 * Called when the settings widget is shown.
 	 * Override in Blueprint to populate sliders / toggle states from current values.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Settings")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Settings")
 	void OnSettingsOpened();
 
 	/**
 	 * Called just before the widget is hidden via Close().
 	 * Override in Blueprint to play a close animation.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Settings")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Settings")
 	void OnSettingsClosed();
 
 	/** Hide this widget and notify listeners. */

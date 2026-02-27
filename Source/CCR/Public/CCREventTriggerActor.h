@@ -71,11 +71,11 @@ public:
 	// ---- Events ----
 
 	/** Called when the trigger fires (pawn enters and conditions met). */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Trigger")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Trigger")
 	void OnTriggerFired(AActor* TriggeringActor);
 
 	/** Called when the pawn exits the trigger (only when bTriggerOnOverlapEnd = true). */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Trigger")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Trigger")
 	void OnTriggerExited(AActor* ExitingActor);
 
 	/** Manually reset the trigger so it can fire again (clears the FIRED flag). */

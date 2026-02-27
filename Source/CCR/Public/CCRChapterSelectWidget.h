@@ -69,7 +69,7 @@ public:
 	 * Called when the chapter list has been assembled and unlock states resolved.
 	 * Override in Blueprint to populate the scroll box.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|ChapterSelect")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|ChapterSelect")
 	void OnChapterListReady(const TArray<FCCRChapterSelectEntry>& Entries);
 
 	/**
@@ -85,7 +85,7 @@ public:
 	 * Called when the player attempts to select a locked chapter.
 	 * Override in Blueprint to show a "locked" animation or message.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|ChapterSelect")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|ChapterSelect")
 	void OnChapterLocked(FName ChunkId);
 
 	/** Close (collapse) the chapter select widget and notify listeners. */

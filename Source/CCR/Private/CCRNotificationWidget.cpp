@@ -35,3 +35,12 @@ void UCCRNotificationWidget::HandleNotificationRequested(
 {
 	OnNotificationReceived(Message, DurationSec, Type);
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void UCCRNotificationWidget::OnNotificationReceived_Implementation(const FText& Message, float DurationSec, ECCRNotificationType Type)
+{
+// Default C++ implementation: no-op.
+}

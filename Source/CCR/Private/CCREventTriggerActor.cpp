@@ -178,3 +178,17 @@ void ACCREventTriggerActor::ResetTrigger()
 		WSM->SetFlag(FName(*FString::Printf(TEXT("TRIG_%s_FIRED"), *TriggerTag.ToString())), false);
 	}
 }
+
+// ---------------------------------------------------------------------------
+// BlueprintNativeEvent default implementations
+// ---------------------------------------------------------------------------
+
+void ACCREventTriggerActor::OnTriggerFired_Implementation(AActor* TriggeringActor)
+{
+// Default C++ implementation: no-op.
+}
+
+void ACCREventTriggerActor::OnTriggerExited_Implementation(AActor* ExitingActor)
+{
+// Default C++ implementation: no-op.
+}

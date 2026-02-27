@@ -64,13 +64,13 @@ public:
 	 * Override in Blueprint to register speakers, music cues, VO cues,
 	 * inventory item definitions, achievement definitions, etc.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR")
 	void OnCCRInit();
 
 	/**
 	 * Called during Shutdown() before subsystems are torn down.
 	 * Override in Blueprint for any cleanup the project requires.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR")
 	void OnCCRShutdown();
 };

@@ -31,14 +31,14 @@ public:
 	 * Called when the game transitions into ECCRGamePhase::Loading.
 	 * Override in Blueprint to start a spinner animation, fade-in, etc.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Loading")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Loading")
 	void OnLoadingStarted();
 
 	/**
 	 * Called when the game transitions out of ECCRGamePhase::Loading.
 	 * Override in Blueprint to play a fade-out or hide the spinner.
 	 */
-	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Loading")
+	UFUNCTION(BlueprintNativeEvent, Category = "CCR|Loading")
 	void OnLoadingFinished();
 
 private:
