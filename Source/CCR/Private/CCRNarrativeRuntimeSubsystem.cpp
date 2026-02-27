@@ -147,6 +147,14 @@ void UCCRNarrativeRuntimeSubsystem::StartChunk(UCCRStoryChunk* Chunk, FName Over
 	// Entering a chunk means we are in interactive narrative play.
 	CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::Narrative);
 
+	// Mark the chapter as reached so UCCRChapterSelectWidget can unlock it.
+	if (UCCRWorldStateSubsystemV2* WSM = GetGameInstance()->GetSubsystem<UCCRWorldStateSubsystemV2>())
+	{
+		const FName ReachedFlag = FName(
+			*FString::Printf(TEXT("CHAPTER_%s_REACHED"), *Chunk->ChunkId.ToString()));
+		WSM->SetFlag(ReachedFlag, true);
+	}
+
 	// Notify listeners (e.g. ACCRGameHUD → chapter-transition overlay).
 	OnChunkStarted.Broadcast(Chunk);
 

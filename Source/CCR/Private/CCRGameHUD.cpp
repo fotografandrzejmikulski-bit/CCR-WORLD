@@ -9,6 +9,7 @@
 #include "CCRNotificationWidget.h"
 #include "CCRChapterTransitionWidget.h"
 #include "CCRCreditsWidget.h"
+#include "CCRCutsceneSkipWidget.h"
 #include "CCRGameState.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRStoryChunk.h"
@@ -163,6 +164,27 @@ void ACCRGameHUD::BeginPlay()
 		{
 			CreditsWidget->AddToViewport(CCRZOrder::Credits);
 			CreditsWidget->SetVisibility(ESlateVisibility::Collapsed);
+		}
+	}
+
+	// ---- Cutscene skip widget ----
+	TSubclassOf<UCCRCutsceneSkipWidget> SkipClass = CutsceneSkipWidgetClass.IsValid()
+		? CutsceneSkipWidgetClass.Get()
+		: nullptr;
+
+	if (!SkipClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: CutsceneSkipWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRCutsceneSkipWidget in the HUD defaults."));
+	}
+	else
+	{
+		CutsceneSkipWidget = CreateWidget<UCCRCutsceneSkipWidget>(PC, SkipClass);
+		if (CutsceneSkipWidget)
+		{
+			CutsceneSkipWidget->AddToViewport(CCRZOrder::Cinematic);
+			// Widget manages its own visibility via HandleNodeChanged
 		}
 	}
 
