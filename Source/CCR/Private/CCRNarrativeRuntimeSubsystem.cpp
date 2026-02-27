@@ -106,6 +106,25 @@ void UCCRNarrativeRuntimeSubsystem::ResolveQTE(bool bSuccess)
 	ExecuteNode(bSuccess ? Node->QTESuccessNodeId : Node->QTEFailNodeId);
 }
 
+void UCCRNarrativeRuntimeSubsystem::AdvanceDialogue()
+{
+	const FCCRNode* Node = FindNode(CurrentNodeId);
+	if (!Node || Node->NodeType != ECCRNodeType::Dialogue) return;
+
+	if (!Node->NextAfterDialogue.IsNone())
+	{
+		ExecuteNode(Node->NextAfterDialogue);
+	}
+}
+
+bool UCCRNarrativeRuntimeSubsystem::GetCurrentNode(FCCRNode& OutNode) const
+{
+	const FCCRNode* Node = FindNode(CurrentNodeId);
+	if (!Node) return false;
+	OutNode = *Node;
+	return true;
+}
+
 // ---------------------------------------------------------------------------
 // Node execution
 // ---------------------------------------------------------------------------

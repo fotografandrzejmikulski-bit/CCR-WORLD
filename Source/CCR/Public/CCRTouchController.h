@@ -47,4 +47,7 @@ private:
 
 	void StartQTE();
 	void EndQTE(bool bSuccess);
+
+	/** Push current QTE progress (0..1) to the QTE widget */
+	void UpdateQTEWidget(float Progress, bool bVisible);
 };

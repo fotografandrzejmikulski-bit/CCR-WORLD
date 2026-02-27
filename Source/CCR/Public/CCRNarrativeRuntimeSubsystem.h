@@ -48,11 +48,22 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")
 	void ResolveQTE(bool bSuccess);
 
+	/** Advance from a Dialogue node to the next node (tap-to-continue) */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")
+	void AdvanceDialogue();
+
 	UFUNCTION(BlueprintPure, Category = "CCR|Narrative")
 	FName GetCurrentNodeId() const { return CurrentNodeId; }
 
 	UFUNCTION(BlueprintPure, Category = "CCR|Narrative")
 	FName GetCurrentChunkId() const { return CurrentChunk ? CurrentChunk->ChunkId : NAME_None; }
+
+	/**
+	 * Returns a copy of the current node data so that UI can read dialogue text,
+	 * speaker tag, etc. Returns false if no node is active.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")
+	bool GetCurrentNode(FCCRNode& OutNode) const;
 
 	/** Predictive preloading: follow node graph and enqueue referenced chunks */
 	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")

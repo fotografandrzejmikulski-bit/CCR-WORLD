@@ -15,13 +15,16 @@ public class CCR : ModuleRules
 			"CoreUObject",
 			"Engine",
 			"InputCore",
-			"GameplayTags"
+			"GameplayTags",
+			"UMG",
+			"EngineSettings"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]
 		{
 			"Slate",
-			"SlateCore"
+			"SlateCore",
+			"RHI"
 		});
 	}
 }
