@@ -1,9 +1,21 @@
 #include "CCRPerformanceGovernorSubsystem.h"
+#include "CCRSettingsSubsystem.h"
 #include "RHI.h"
 
 void UCCRPerformanceGovernorSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+
+	// Check if the player has manually overridden the performance tier in settings.
+	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		if (Settings->IsPerformanceTierOverridden())
+		{
+			Tier = Settings->GetPerformanceTierOverride();
+			return;
+		}
+	}
+
 	DetectTier();
 }
 

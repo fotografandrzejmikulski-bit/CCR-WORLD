@@ -68,4 +68,9 @@ public:
 	/** Returns true when the pause widget is currently visible */
 	UFUNCTION(BlueprintPure, Category = "CCR|HUD")
 	bool IsPaused() const;
+
+private:
+	/** Reacts to ACCRGameState::OnGamePhaseChanged to drive widget visibility. */
+	UFUNCTION()
+	void HandleGamePhaseChanged(ECCRGamePhase NewPhase);
 };

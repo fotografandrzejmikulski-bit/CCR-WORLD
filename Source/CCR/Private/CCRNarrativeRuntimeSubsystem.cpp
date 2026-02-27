@@ -2,6 +2,9 @@
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
 #include "CCRPerformanceGovernorSubsystem.h"
+#include "CCRStoryRegistrySubsystem.h"
+#include "CCRStoryChunk.h"
+#include "Engine/AssetManager.h"
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -206,14 +209,55 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 
 	case ECCRNodeType::Jump:
 	{
-		// Cross-chunk jump – request async load then continue
+		// Cross-chunk jump: async-load the target chunk then start it.
+		const FName TargetChunkId   = Node->TargetChunkId;
+		const FName EntryNodeId     = Node->EntryNodeInTarget;
+
+		UCCRStoryRegistrySubsystem* Registry =
+			GetGameInstance()->GetSubsystem<UCCRStoryRegistrySubsystem>();
+		if (!Registry) break;
+
+		const FPrimaryAssetId AssetId = Registry->GetAssetIdForChunk(TargetChunkId);
+		if (!AssetId.IsValid())
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("UCCRNarrativeRuntimeSubsystem: Jump target chunk '%s' not found in registry."),
+				*TargetChunkId.ToString());
+			break;
+		}
+
+		// PreloadChunks stores a FStreamableHandle in UCCRAsyncNarrativeLoaderSubsystem
+		// (the "Required" bucket) so the asset is kept alive for the duration of the
+		// new chunk's use. RequestAsyncLoad below is the trigger that fires our
+		// completion callback; the Loader's handle prevents the chunk from being
+		// GC'd between the callback and StartChunk returning.
 		if (UCCRAsyncNarrativeLoaderSubsystem* Loader =
 			GetGameInstance()->GetSubsystem<UCCRAsyncNarrativeLoaderSubsystem>())
 		{
 			TArray<FPrimaryAssetId> Required;
-			Required.Add(FPrimaryAssetId(TEXT("CCRStoryChunk"), Node->TargetChunkId));
+			Required.Add(AssetId);
 			Loader->PreloadChunks(Required, {});
 		}
+
+		const FSoftObjectPath AssetPath = UAssetManager::Get().GetPrimaryAssetPath(AssetId);
+
+		UAssetManager::Get().GetStreamableManager().RequestAsyncLoad(
+			AssetPath,
+			FStreamableDelegate::CreateWeakLambda(this,
+				[this, AssetId, EntryNodeId]()
+				{
+					UCCRStoryChunk* Chunk = Cast<UCCRStoryChunk>(
+						UAssetManager::Get().GetPrimaryAssetObject(AssetId));
+					if (Chunk)
+					{
+						StartChunk(Chunk, EntryNodeId);
+					}
+					else
+					{
+						UE_LOG(LogTemp, Warning,
+							TEXT("UCCRNarrativeRuntimeSubsystem: Jump — failed to get chunk object after async load."));
+					}
+				}));
 		break;
 	}
 

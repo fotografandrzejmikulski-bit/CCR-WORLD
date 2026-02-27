@@ -54,6 +54,15 @@ void ACCRGameHUD::BeginPlay()
 		}
 	}
 	// Note: PauseWidget is created on demand in TogglePause().
+
+	// ---- Subscribe to game phase changes ----
+	if (UWorld* World = GetWorld())
+	{
+		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+		{
+			GS->OnGamePhaseChanged.AddDynamic(this, &ACCRGameHUD::HandleGamePhaseChanged);
+		}
+	}
 }
 
 void ACCRGameHUD::SetDialogueVisible(bool bVisible)
@@ -137,3 +146,21 @@ bool ACCRGameHUD::IsPaused() const
 	return UGameplayStatics::IsGamePaused(GetWorld());
 }
 
+// ---------------------------------------------------------------------------
+// Phase-driven widget visibility
+// ---------------------------------------------------------------------------
+
+void ACCRGameHUD::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
+{
+	// Dialogue panel: visible during Narrative and QTE phases only.
+	const bool bShowDialogue = (NewPhase == ECCRGamePhase::Narrative ||
+	                            NewPhase == ECCRGamePhase::QTE);
+	SetDialogueVisible(bShowDialogue);
+
+	// QTE overlay: only during QTE phase (the controller drives per-node show/hide,
+	// but if we leave QTE phase externally we force-hide it).
+	if (NewPhase != ECCRGamePhase::QTE)
+	{
+		SetQTEVisible(false);
+	}
+}

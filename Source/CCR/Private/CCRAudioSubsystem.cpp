@@ -1,5 +1,6 @@
 #include "CCRAudioSubsystem.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
+#include "CCRSettingsSubsystem.h"
 #include "Components/AudioComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Engine/World.h"
@@ -11,6 +12,14 @@
 void UCCRAudioSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
+
+	// Load persisted audio volumes from settings
+	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		MusicVolume = Settings->GetMusicVolume();
+		VOVolume    = Settings->GetVOVolume();
+		SFXVolume   = Settings->GetSFXVolume();
+	}
 
 	UCCRNarrativeRuntimeSubsystem* NRS = GetGameInstance()->GetSubsystem<UCCRNarrativeRuntimeSubsystem>();
 	if (NRS)
@@ -124,6 +133,10 @@ void UCCRAudioSubsystem::SetMusicVolume(float Volume)
 	{
 		MusicComponent->SetVolumeMultiplier(MusicVolume);
 	}
+	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		Settings->SetMusicVolume(MusicVolume);
+	}
 }
 
 // ---------------------------------------------------------------------------
@@ -173,6 +186,10 @@ void UCCRAudioSubsystem::SetVOVolume(float Volume)
 	{
 		VOComponent->SetVolumeMultiplier(VOVolume);
 	}
+	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		Settings->SetVOVolume(VOVolume);
+	}
 }
 
 // ---------------------------------------------------------------------------
@@ -200,4 +217,8 @@ void UCCRAudioSubsystem::PlaySFXAtLocation(USoundBase* Cue, FVector Location)
 void UCCRAudioSubsystem::SetSFXVolume(float Volume)
 {
 	SFXVolume = FMath::Clamp(Volume, 0.f, 1.f);
+	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		Settings->SetSFXVolume(SFXVolume);
+	}
 }
