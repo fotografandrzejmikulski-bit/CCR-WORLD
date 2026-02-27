@@ -109,7 +109,7 @@ void UCCRCheckpointSubsystem::CommitCheckpoint()
 	{
 		Save->PlayTimeSec = PT->GetPlayTimeSec();
 	}
-	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%M-%D %h:%i:%S"));
+	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%m-%d %H:%M:%S"));
 
 	UGameplayStatics::SaveGameToSlot(Save, Save->SaveSlotName, Save->UserIndex);
 

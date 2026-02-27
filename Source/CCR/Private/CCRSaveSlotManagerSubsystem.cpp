@@ -3,6 +3,7 @@
 #include "CCRWorldStateSaveGameV2.h"
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
+#include "CCRPlayTimeSubsystem.h"
 #include "CCRResumeSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -83,7 +84,11 @@ bool UCCRSaveSlotManagerSubsystem::SaveToSlot(int32 SlotIndex)
 		Save->WSFlagBits, Save->WSFloats, Save->WSInts);
 
 	// Metadata
-	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%M-%D %h:%i:%S"));
+	if (UCCRPlayTimeSubsystem* PT = GI->GetSubsystem<UCCRPlayTimeSubsystem>())
+	{
+		Save->PlayTimeSec = PT->GetPlayTimeSec();
+	}
+	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%m-%d %H:%M:%S"));
 
 	// Player spatial
 	if (UWorld* World = GI->GetWorld())
