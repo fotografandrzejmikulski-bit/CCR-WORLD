@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk – ŁĘCZNA – LUBLIN · 2010–2018 | Axis: T03.",
+  "_doc": "UCCRStoryChunk – ŁĘCZNA – LUBLIN · 2010–2018 | Axis: T03. Weronika = byłą żona Andrzeja, David = jej kochanek. Czarne charaktery – nigdy nie pomagają.",
   "chunks": [
     {
       "assetName": "DA_Story_T03_01",
@@ -9,15 +9,15 @@
       "EntryNodeId": "T03_01_010",
       "ChapterTitle": "ŁĘCZNA – LUBLIN",
       "ChapterSubtitle": "2010–2018",
-      "_narrative": "Współczesna Polska, Łęczna i Lublin. David jest opiekunem/ojczymem Zuzi i izoluje ją od Andrzeja. Weronika jest z Davidem (zawsze razem) i jest jego podporządkowaną partnerką. Evy tu nie ma. Andrzej próbuje odwiedzić Zuzię, David odmawia.",
-      "_gameplay": "QTE: Swipe Right – Andrzej prześlizguje się przez zamknięte drzwi zanim David je zarygluje. Wybór: próbować rozmawiać z Davidem (bezpośrednio) lub przez Weronikę (pośrednio, wolniejsza ale mniej konfrontacyjna ścieżka).",
-      "_visual": "Szary blok z lat 70. w Łęcznej. Klatka schodowa z latarnią. Telewizor w tle. Paleta: zimne listopadowe barwy, brązowe tapety, żółtawe światło. UI: nowoczesny telefon z SMS. Muzyka: MUS_Leczna z ambientem bloku.",
+      "_narrative": "Współczesna Polska, Łęczna i Lublin. Weronika to była żona Andrzeja — porzuciła go dla Davida, swojego kochanka. Razem z Davidem wzięli pod opiekę prawną Zuzię i odcinają ją od ojca. Oboje są bezwzględni, nigdy nie pomagają Andrzejowi. David blokuje drzwi fizycznie, Weronika atakuje słowami i dokumentami. Andrzej próbuje odwiedzić Zuzię — napotyka mur obojga.",
+      "_gameplay": "QTE: Swipe Right – Andrzej wślizguje się przez korytarz zanim David zatrzaśnie drzwi klatki. Wybór: odpowiedzieć na atak słowny Weroniki (bezpośrednio, eskalacja) lub milczeć i działać (bez eskalacji, trudniej mechanicznie). Weronika jest równie blokująca co David.",
+      "_visual": "Szary blok z lat 70. w Łęcznej. Klatka schodowa z latarnią. Telewizor w tle. Paleta: zimne listopadowe barwy, brązowe tapety, żółtawe światło. UI: nowoczesny telefon z SMS-em z numerem adwokata. Muzyka: MUS_Leczna z ambientem bloku.",
       "Nodes": [
         {
           "NodeId": "T03_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "Łęczna, 2010. Blok przy ulicy Kościuszki. Wiem, że Zuzia tu była. David otworzył drzwi i powiedział jedno zdanie – i to zdanie zatrzasnęło mi świat przed nosem. Nie odejdę stąd bez odpowiedzi.",
+          "DialogueText": "Łęczna, 2010. Blok przy Kościuszki. Weronika i David. Moja była żona i jej kochanek – teraz prawnymi opiekunami mojej córki. Weronika odeszła i zabrała Zuzię. Stałem pod tymi drzwiami sto razy. Za każdym razem ten sam mur.",
           "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T03_01_020",
           "bCheckpoint": true
@@ -26,8 +26,8 @@
           "NodeId": "T03_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "DAVID",
-          "DialogueText": "Andrzej. Nie ma tu nic dla ciebie. Zuzia jest bezpieczna, zdrowa i nie chce z tobą kontaktu. Taka jej decyzja. Szanuję ją i ty też powinieneś.",
-          "ExpressionTag": "Neutral",
+          "DialogueText": "Andrzej. Sąd przyznał nam opiekę. Mam nakaz sądowy z adnotacją 'zakaz zbliżania'. Jeśli nie odejdziesz natychmiast, dzwonię na policję. Zuzia nie chce cię widzieć. Taka jej decyzja i taka nasza.",
+          "ExpressionTag": "Cold",
           "NextAfterDialogue": "T03_01_030",
           "bCheckpoint": false
         },
@@ -42,19 +42,28 @@
               "Value": 1
             }
           ],
-          "NextAfterSet": "T03_01_040"
+          "NextAfterSet": "T03_01_035"
+        },
+        {
+          "NodeId": "T03_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(za Davidem, zimno) Andrzej, nie masz tu czego szukać. Zniszczyłeś rodzinę i masz czelność wracać? Zuzia jest pod naszą opieką i tak zostanie. Adwokat już czeka na twój ruch.",
+          "ExpressionTag": "Contemptuous",
+          "NextAfterDialogue": "T03_01_040",
+          "bCheckpoint": false
         },
         {
           "NodeId": "T03_01_040",
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "David, daj mi choć minutę z Zuzią. Jeden telefon.",
+              "Label": "Weronika, byłaś moją żoną. Zuzia to nasza córka – nie jego.",
               "TargetNodeId": "T03_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "Weronika, wiem że jesteś za tymi drzwiami. Powiedz mu żeby ustąpił.",
+              "Label": "Milczeć i szukać wejścia – słowa nic tu nie zmienią.",
               "TargetNodeId": "T03_01_050",
               "ShowConditions": []
             }
@@ -73,7 +82,7 @@
           "NodeId": "T03_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "Drzwi zamknięte na klucz. Weronika stoi za nim – widzę jej sylwetkę przez szybę. Muszę spróbować inaczej.",
+          "DialogueText": "David zatrzasnął drzwi. Weronika stoi za szybą z telefonem w dłoni. Muszę działać szybciej.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T03_01_050",
           "bCheckpoint": false
@@ -82,7 +91,7 @@
           "NodeId": "T03_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "Wślizgnąłem się na klatkę schodową. Czuję, że Zuzia jest za tymi drzwiami. Jeszcze jeden krok.",
+          "DialogueText": "Wślizgnąłem się na korytarz zanim drzwi się zatrzasnęły. Weronika krzyczy za mną – ale Zuzia jest tu, w tym bloku. Czuję to.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T03_01_070",
           "bCheckpoint": true
@@ -91,8 +100,8 @@
           "NodeId": "T03_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "WERONIKA",
-          "DialogueText": "Andrzej... nie powinam tego mówić przy Davidzie, ale... Zuzia pytała o ciebie ostatni tydzień. David nie wie, że ci to mówię. Ona tu jest. Ale nie możemy tego teraz... nie przy nim. Zrozum, proszę.",
-          "ExpressionTag": "Neutral",
+          "DialogueText": "(wrzeszczy w korytarzu) Wynoś się! Mam numer do dzielnicowego! David – zadzwoń teraz! Nie ma prawa tu być!",
+          "ExpressionTag": "Furious",
           "NextAfterDialogue": "T03_01_080",
           "bCheckpoint": false
         },
