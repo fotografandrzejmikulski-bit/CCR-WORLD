@@ -48,6 +48,11 @@ void UCCRCheckpointSubsystem::MarkSafeWindow()
 	}
 }
 
+void UCCRCheckpointSubsystem::SetActiveSpawnTag(FName SpawnTag)
+{
+	ActiveSpawnTag = SpawnTag;
+}
+
 void UCCRCheckpointSubsystem::CommitCheckpoint()
 {
 	bPendingCheckpoint = false;
@@ -90,6 +95,7 @@ void UCCRCheckpointSubsystem::CommitCheckpoint()
 			const FRotator CtrlRot = PC->GetControlRotation();
 			Spatial.CameraYaw   = CtrlRot.Yaw;
 			Spatial.CameraPitch = CtrlRot.Pitch;
+			Spatial.SpawnTag    = ActiveSpawnTag;
 			Spatial.bHasSpatial = true;
 
 			Save->PlayerSpatial = Spatial;

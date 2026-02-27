@@ -5,6 +5,7 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRStoryRegistrySubsystem.h"
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
+#include "CCRSpawnSubsystem.h"
 #include "CCRGameState.h"
 #include "Engine/AssetManager.h"
 #include "Engine/StreamableManager.h"
@@ -66,16 +67,45 @@ bool UCCRResumeSubsystem::ResumeFromDefaultSlot()
 			FCoreUObjectDelegates::PostLoadMapWithWorld.Remove(*SharedHandle);
 			OnLevelLoaded();
 
-			// Apply player transform
+			// Apply player position.
+			// Priority:
+			//   1. SpawnTag is set and UCCRSpawnSubsystem has a matching point → use it.
+			//   2. Fall back to the serialised PlayerTransform (raw baked position).
 			if (SpatialCopy.bHasSpatial)
 			{
 				if (APlayerController* PC = LoadedWorld->GetFirstPlayerController())
 				{
+					FTransform SpawnTransform;
+					bool bUsedSpawnTag = false;
+
+					if (!SpatialCopy.SpawnTag.IsNone())
+					{
+						if (UGameInstance* GI = LoadedWorld->GetGameInstance())
+						{
+							if (UCCRSpawnSubsystem* SpawnSys = GI->GetSubsystem<UCCRSpawnSubsystem>())
+							{
+								bUsedSpawnTag = SpawnSys->GetSpawnTransform(SpatialCopy.SpawnTag, SpawnTransform);
+							}
+						}
+					}
+
 					if (APawn* Pawn = PC->GetPawn())
 					{
-						Pawn->SetActorTransform(SpatialCopy.PlayerTransform, false, nullptr, ETeleportType::TeleportPhysics);
+						const FTransform& FinalTransform = bUsedSpawnTag
+							? SpawnTransform
+							: SpatialCopy.PlayerTransform;
+
+						Pawn->SetActorTransform(FinalTransform, false, nullptr, ETeleportType::TeleportPhysics);
 					}
-					PC->SetControlRotation(FRotator(SpatialCopy.CameraPitch, SpatialCopy.CameraYaw, 0.f));
+
+					// Camera rotation: use the spawn point's yaw when applying SpawnTag,
+					// otherwise restore the baked camera rotation from the save.
+					const FRotator SpawnRotator = bUsedSpawnTag ? SpawnTransform.Rotator() : FRotator::ZeroRotator;
+					const FRotator CameraRot = bUsedSpawnTag
+						? FRotator(0.f, SpawnRotator.Yaw, 0.f)
+						: FRotator(SpatialCopy.CameraPitch, SpatialCopy.CameraYaw, 0.f);
+
+					PC->SetControlRotation(CameraRot);
 				}
 			}
 		});
