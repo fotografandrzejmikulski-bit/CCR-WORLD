@@ -83,7 +83,7 @@ bool UCCRSaveSlotManagerSubsystem::SaveToSlot(int32 SlotIndex)
 		Save->WSFlagBits, Save->WSFloats, Save->WSInts);
 
 	// Metadata
-	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%m-%d %H:%M:%S"));
+	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%M-%D %h:%i:%S"));
 
 	// Player spatial
 	if (UWorld* World = GI->GetWorld())

@@ -3,6 +3,7 @@
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRWorldStateSaveGameV2.h"
 #include "CCRNotificationSubsystem.h"
+#include "CCRPlayTimeSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
 void UCCRCheckpointSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -102,6 +103,13 @@ void UCCRCheckpointSubsystem::CommitCheckpoint()
 			Save->PlayerSpatial = Spatial;
 		}
 	}
+
+	// Metadata: play time + timestamp
+	if (UCCRPlayTimeSubsystem* PT = GetGameInstance()->GetSubsystem<UCCRPlayTimeSubsystem>())
+	{
+		Save->PlayTimeSec = PT->GetPlayTimeSec();
+	}
+	Save->SaveDateTime = FDateTime::Now().ToString(TEXT("%Y-%M-%D %h:%i:%S"));
 
 	UGameplayStatics::SaveGameToSlot(Save, Save->SaveSlotName, Save->UserIndex);
 

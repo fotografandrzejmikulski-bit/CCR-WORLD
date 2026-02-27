@@ -6,6 +6,7 @@
 #include "CCRStoryRegistrySubsystem.h"
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
 #include "CCRSpawnSubsystem.h"
+#include "CCRPlayTimeSubsystem.h"
 #include "CCRGameState.h"
 #include "Engine/AssetManager.h"
 #include "Engine/StreamableManager.h"
@@ -34,6 +35,12 @@ bool UCCRResumeSubsystem::ResumeFromDefaultSlot()
 			Save->WSFlagBits,
 			Save->WSFloats,
 			Save->WSInts);
+	}
+
+	// 2. Restore cumulative play time
+	if (UCCRPlayTimeSubsystem* PT = GetGameInstance()->GetSubsystem<UCCRPlayTimeSubsystem>())
+	{
+		PT->SetPlayTimeSec(Save->PlayTimeSec);
 	}
 
 	PendingChunkId = Save->CurrentChunkId;
