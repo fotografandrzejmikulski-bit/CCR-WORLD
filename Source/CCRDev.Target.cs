@@ -1,21 +1,37 @@
 // CCRDev.Target.cs
 //
 // Build target for the developer / personal device build.
-// Produces a universal APK in Development configuration.
+// Produces a SELF-CONTAINED universal APK (all game data embedded inside).
+// No adb or USB debugging is required — just copy the APK to your device.
 //
-// How to build:
-//   RunUAT BuildCookRun \
-//     -project="CCR.uproject" \
-//     -targetplatform=Android \
-//     -target=CCRDev \
-//     -configuration=Development \
-//     -cook -build -stage -package \
-//     -deploy          (automatically installs on a connected device via adb)
-//
-// The resulting .apk is located in:
-//   Binaries/Android/
-// Install manually with:
-//   adb install -r Binaries/Android/CCR-Android-Development-arm64.apk
+// ┌──────────────────────────────────────────────────────────────────┐
+// │  HOW TO BUILD                                                    │
+// │                                                                  │
+// │  RunUAT BuildCookRun \                                           │
+// │    -project="CCR.uproject" \                                     │
+// │    -targetplatform=Android \                                     │
+// │    -target=CCRDev \                                              │
+// │    -configuration=Development \                                  │
+// │    -cook -build -stage -package                                  │
+// │                                                                  │
+// │  Output APK:                                                     │
+// │    Binaries/Android/CCR-Android-Development-arm64.apk            │
+// │                                                                  │
+// │  HOW TO INSTALL (no adb needed)                                  │
+// │                                                                  │
+// │  Option A — GitHub Actions artifact:                             │
+// │    Open the workflow run on GitHub → Artifacts → download        │
+// │    CCR-dev-apk.zip → extract the .apk → tap to install          │
+// │                                                                  │
+// │  Option B — Google Drive:                                        │
+// │    Upload the .apk to Google Drive, open on device, tap Install  │
+// │                                                                  │
+// │  Option C — USB file transfer:                                   │
+// │    Copy .apk via USB to device storage, open with file manager   │
+// │                                                                  │
+// │  Note: on first install enable "Install unknown apps" in         │
+// │  Settings → Apps → (your file manager or browser app)           │
+// └──────────────────────────────────────────────────────────────────┘
 
 using UnrealBuildTool;
 using System.Collections.Generic;
@@ -40,7 +56,9 @@ public class CCRDevTarget : TargetRules
 
 		// ---- Android-specific ----
 		// The per-config INI file Config/Android/DevelopmentAndroidGame.ini
-		// sets bEnableBundle=False, bEnableUniversalAPK=True so adb install works,
-		// and enables on-screen debug messages for the developer.
+		// sets bEnableBundle=False, bEnableUniversalAPK=True and
+		// bPackageDataInsideApk=True so the APK is fully self-contained
+		// (no separate OBB push via adb needed).
+		// On-screen debug messages are also enabled for the developer.
 	}
 }
