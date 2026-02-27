@@ -39,7 +39,7 @@ Content/CCR/
 |   +-- T16_KodPamieci2378/         <- Os 16: KOD PAMIECI 2378
 |   +-- T17_PowrotyCienia2378/      <- Os 17: POWROTY DO CIENIA 2378
 |   +-- T18_DevilMind2777/          <- Os 18: DEVIL MIND 2777
-|   +-- "T19_SwiatloCo Trwa"/       <- Os 19: SWIATLO KTORE TRWA INFINITY (final)
+|   +-- T19_SwiatloKtoreTrwa/        <- Os 19: SWIATLO KTORE TRWA INFINITY (final)
 +-- Characters/
 +-- Items/
 +-- Blueprints/
@@ -57,7 +57,7 @@ Content/CCR/
 |   |   +-- BATISTA/  WERONIKA/  DAVID/  KAFKA/
 |   +-- UI/  Items/
 +-- Cinematics/
-    +-- Prologue/  T18_DevilMind2777/  T19_SwiatloCo Trwa/
+    +-- Prologue/  T18_DevilMind2777/  T19_SwiatloKtoreTrwa/
 ```
 
 ---
@@ -131,7 +131,7 @@ Kazda os czasu = osobna mapa `.umap`. Prefiks: `L_CCR_<AxisId>`.
 | `L_CCR_T16` | `Maps/T16_KodPamieci2378.umap` | T16 | Kod Pamieci 2378 |
 | `L_CCR_T17` | `Maps/T17_PowrotyCienia2378.umap` | T17 | Powroty do Cienia 2378 |
 | `L_CCR_T18` | `Maps/T18_DevilMind2777.umap` | T18 | Devil Mind 2777 |
-| `L_CCR_T19` | `Maps/T19_SwiatloCo Trwa.umap` | T19 | Swiatlo Ktore Trwa ∞ (final) |
+| `L_CCR_T19` | `Maps/T19_SwiatloKtoreTrwa.umap` | T19 | Swiatlo Ktore Trwa ∞ (final) |
 
 **Setup dla kazdego poziomu:**
 1. Dodaj `BP_CCRGameMode` do WorldSettings -> GameMode Override.

@@ -348,7 +348,7 @@ Zniszczona Ziemia 2777 – czerwone niebo, czarne ruiny, pulsujące wieże AI. P
 **Podtytuł:** ∞  
 **Postacie:** ANDRZEJ, EIMSTAIN  
 **Węzłów:** 15  
-**Plik:** `T19_SwiatloCo Trwa/T19_STORY.json`  
+**Plik:** `T19_SwiatloKtoreTrwa/T19_STORY.json`  
 
 #### 📖 Fabularnie
 FINAŁ TOMU 3. Andrzej dociera do Kosmicznego Rezonatora Świadomości – ostatniego miejsca za wszystkimi osiami czasu. Zuzia tu nie jest. Andrzej aktywuje Rezonator i nagrywa ostatnią wiadomość dla córki – transmisja przez wszystkie 19 osi jednocześnie. Po wysłaniu Andrzej rozpływa się w wieczności. EPILOG: Zuzia (głos, brak portretu) odbiera wiadomość. Tom 4 zapowiedziany.  
