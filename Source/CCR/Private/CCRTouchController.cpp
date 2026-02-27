@@ -89,6 +89,7 @@ void ACCRTouchController::HandleTouchBegin(ETouchIndex::Type FingerIndex, FVecto
 	case ECCRGestureType::Swipe:
 		// Record start position; direction evaluated on TouchEnd
 		bSwipeTracking = true;
+		QTEHeldTime    = 0.f;
 		RequiredSwipe  = CurrentNode.RequiredSwipeDir;
 		TouchStartPos  = FVector2D(Location.X, Location.Y);
 		// Show QTE widget immediately so player sees the prompt
@@ -239,8 +240,23 @@ void ACCRTouchController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// ---- Swipe timeout ----
-	// (No explicit timer needed: the NRS node stays active until resolved.)
+	// ---- Swipe tick (progress + timeout) ----
+	// bSwipeTracking and bQTEActive are mutually exclusive: HandleTouchBegin
+	// returns early when either is true, so only one path runs per frame.
+	// Track elapsed time and push widget progress so the UI reflects the
+	// remaining window. Fail the QTE if the player hasn't swiped in time.
+	if (bSwipeTracking)
+	{
+		QTEHeldTime += DeltaTime;
+		const float Progress = FMath::Clamp(QTEHeldTime / TimeWindowSec, 0.f, 1.f);
+		UpdateQTEWidget(Progress, /*bVisible=*/true);
+		if (QTEHeldTime >= TimeWindowSec)
+		{
+			bSwipeTracking = false;
+			EndQTE(false);
+		}
+		return;
+	}
 
 	// ---- LongPress tick ----
 	if (!bQTEActive) return;
