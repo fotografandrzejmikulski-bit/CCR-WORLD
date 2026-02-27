@@ -4,6 +4,7 @@
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRPlayTimeSubsystem.h"
+#include "CCRCheckpointSubsystem.h"
 #include "CCRResumeSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -102,6 +103,10 @@ bool UCCRSaveSlotManagerSubsystem::SaveToSlot(int32 SlotIndex)
 			const FRotator CtrlRot  = PC->GetControlRotation();
 			Spatial.CameraYaw       = CtrlRot.Yaw;
 			Spatial.CameraPitch     = CtrlRot.Pitch;
+			if (UCCRCheckpointSubsystem* CP = GI->GetSubsystem<UCCRCheckpointSubsystem>())
+			{
+				Spatial.SpawnTag = CP->GetActiveSpawnTag();
+			}
 			Spatial.bHasSpatial     = true;
 			Save->PlayerSpatial     = Spatial;
 		}
