@@ -65,6 +65,18 @@ void ACCRGameHUD::BeginPlay()
 	}
 }
 
+void ACCRGameHUD::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	if (UWorld* World = GetWorld())
+	{
+		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+		{
+			GS->OnGamePhaseChanged.RemoveDynamic(this, &ACCRGameHUD::HandleGamePhaseChanged);
+		}
+	}
+	Super::EndPlay(EndPlayReason);
+}
+
 void ACCRGameHUD::SetDialogueVisible(bool bVisible)
 {
 	if (DialogueWidget)

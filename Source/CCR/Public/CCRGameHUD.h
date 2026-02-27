@@ -27,6 +27,7 @@ class CCR_API ACCRGameHUD : public AHUD
 
 public:
 	virtual void BeginPlay() override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 	// ---- Widget class references (assign Blueprint subclasses in editor) ----
 
