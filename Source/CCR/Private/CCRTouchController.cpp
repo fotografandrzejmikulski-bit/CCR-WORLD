@@ -1,5 +1,6 @@
 #include "CCRTouchController.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
+#include "CCRCinematicSubsystem.h"
 #include "CCRGameHUD.h"
 #include "CCRQTEWidget.h"
 #include "CCRTypes.h"
@@ -57,6 +58,16 @@ void ACCRTouchController::HandleTouchBegin(ETouchIndex::Type FingerIndex, FVecto
 	if (CurrentNode.NodeType == ECCRNodeType::Dialogue)
 	{
 		NRS->AdvanceDialogue();
+		return;
+	}
+
+	// Tap during a skippable Cinematic node requests a skip.
+	if (CurrentNode.NodeType == ECCRNodeType::Cinematic && CurrentNode.bSkippable)
+	{
+		if (UCCRCinematicSubsystem* Cinematic = GI->GetSubsystem<UCCRCinematicSubsystem>())
+		{
+			Cinematic->SkipCinematic();
+		}
 		return;
 	}
 

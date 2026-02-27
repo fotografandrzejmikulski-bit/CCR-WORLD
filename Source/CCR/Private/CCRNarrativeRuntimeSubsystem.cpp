@@ -1,6 +1,7 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
+#include "CCRCheckpointSubsystem.h"
 #include "CCRPerformanceGovernorSubsystem.h"
 #include "CCRStoryRegistrySubsystem.h"
 #include "CCRStoryChunk.h"
@@ -21,6 +22,16 @@ static void CCR_SetGamePhase(UGameInstance* GI, ECCRGamePhase Phase)
 		{
 			GS->SetGamePhase(Phase);
 		}
+	}
+}
+
+/** Internal helper: notify UCCRCheckpointSubsystem that a safe save window has opened. */
+static void CCR_MarkCheckpointSafeWindow(UGameInstance* GI)
+{
+	if (!GI) return;
+	if (UCCRCheckpointSubsystem* CP = GI->GetSubsystem<UCCRCheckpointSubsystem>())
+	{
+		CP->MarkSafeWindow();
 	}
 }
 
@@ -221,6 +232,8 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 	{
 	case ECCRNodeType::Dialogue:
 		// Dialogue text is consumed by UI; runtime just holds position.
+		// Opening a stable dialogue node is a safe moment to commit any pending checkpoint.
+		CCR_MarkCheckpointSafeWindow(GetGameInstance());
 		break;
 
 	case ECCRNodeType::Choice:
@@ -235,6 +248,8 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 			}
 		}
 		OnChoicePresented.Broadcast(Visible);
+		// Player is now at a choice — safe to commit any pending checkpoint.
+		CCR_MarkCheckpointSafeWindow(GetGameInstance());
 		break;
 	}
 
@@ -254,10 +269,14 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 		// Set QTE phase so HUD and other systems know we are in a gesture window.
 		// Phase is restored to Narrative in ResolveQTE().
 		CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::QTE);
+		// QTE start is a stable pause — commit any pending checkpoint.
+		CCR_MarkCheckpointSafeWindow(GetGameInstance());
 		break;
 
 	case ECCRNodeType::Cinematic:
 		// Cinematic playback handled externally; runtime waits.
+		// Cinematic start is a safe window (level sequence hasn't begun yet).
+		CCR_MarkCheckpointSafeWindow(GetGameInstance());
 		break;
 
 	case ECCRNodeType::Jump:

@@ -215,6 +215,10 @@ struct FCCRNode
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName NextAfterCinematic;
 
+	/** Allow the player to skip this cinematic with a tap/touch. */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bSkippable = true;
+
 	// ---- Jump ----
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName TargetChunkId;
