@@ -1,5 +1,6 @@
 #include "CCRCinematicSubsystem.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
+#include "CCRAudioSubsystem.h"
 #include "CCRGameState.h"
 #include "CCRTypes.h"
 #include "LevelSequence.h"
@@ -93,6 +94,12 @@ void UCCRCinematicSubsystem::PlaySequenceForCurrentNode()
 		GS->SetGamePhase(ECCRGamePhase::Cinematic);
 	}
 
+	// Duck background music for cinematic
+	if (UCCRAudioSubsystem* Audio = GetGameInstance()->GetSubsystem<UCCRAudioSubsystem>())
+	{
+		Audio->DuckMusicForCinematic(true);
+	}
+
 	// Destroy any previous sequence actor
 	if (IsValid(SequenceActor))
 	{
@@ -159,13 +166,21 @@ void UCCRCinematicSubsystem::StopAndAdvance()
 {
 	bPlaying = false;
 
+	UGameInstance* GI = GetGameInstance();
+
 	// Restore game phase to Narrative
-	if (UWorld* World = GetGameInstance() ? GetGameInstance()->GetWorld() : nullptr)
+	if (UWorld* World = GI ? GI->GetWorld() : nullptr)
 	{
 		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
 		{
 			GS->SetGamePhase(ECCRGamePhase::Narrative);
 		}
+	}
+
+	// Restore full music volume
+	if (UCCRAudioSubsystem* Audio = GI ? GI->GetSubsystem<UCCRAudioSubsystem>() : nullptr)
+	{
+		Audio->DuckMusicForCinematic(false);
 	}
 
 	// Destroy the sequence actor

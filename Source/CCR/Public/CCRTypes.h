@@ -86,6 +86,20 @@ struct FCCRCondition
 // SetOp – single "write" instruction
 // ---------------------------------------------------------------------------
 
+/**
+ * How the value is applied to the existing world-state variable.
+ * Set:      variable = Value
+ * Add:      variable += Value   (Flag: treated as Set)
+ * Multiply: variable *= Value   (Flag: treated as Set)
+ */
+UENUM(BlueprintType)
+enum class ECCRSetOpMode : uint8
+{
+	Set      UMETA(DisplayName = "Set"),
+	Add      UMETA(DisplayName = "Add"),
+	Multiply UMETA(DisplayName = "Multiply"),
+};
+
 USTRUCT(BlueprintType)
 struct FCCRSetOp
 {
@@ -97,7 +111,11 @@ struct FCCRSetOp
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	ECCRStateValueType ValueType = ECCRStateValueType::Flag;
 
-	/** Value to set (cast to matching type) */
+	/** How to apply the value: Set (default), Add, or Multiply */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRSetOpMode Mode = ECCRSetOpMode::Set;
+
+	/** Operand value (cast to matching type) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float Value = 0.f;
 };

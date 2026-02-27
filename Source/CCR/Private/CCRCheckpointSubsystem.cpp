@@ -52,6 +52,7 @@ void UCCRCheckpointSubsystem::CommitCheckpoint()
 	if (!Save) return;
 
 	// Narrative position
+	Save->CurrentAxisId  = NRS->GetCurrentAxisId();
 	Save->CurrentChunkId = NRS->GetCurrentChunkId();
 	Save->CurrentNodeId  = PendingNodeId.IsNone() ? NRS->GetCurrentNodeId() : PendingNodeId;
 

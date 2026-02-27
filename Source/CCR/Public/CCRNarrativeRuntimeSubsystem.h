@@ -65,6 +65,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "CCR|Narrative")
 	FName GetCurrentChunkId() const { return CurrentChunk ? CurrentChunk->ChunkId : NAME_None; }
 
+	UFUNCTION(BlueprintPure, Category = "CCR|Narrative")
+	FName GetCurrentAxisId() const { return CurrentChunk ? CurrentChunk->AxisId : NAME_None; }
+
 	/**
 	 * Returns a copy of the current node data so that UI can read dialogue text,
 	 * speaker tag, etc. Returns false if no node is active.

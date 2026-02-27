@@ -222,3 +222,24 @@ void UCCRAudioSubsystem::SetSFXVolume(float Volume)
 		Settings->SetSFXVolume(SFXVolume);
 	}
 }
+
+// ---------------------------------------------------------------------------
+// Cinematic ducking
+// ---------------------------------------------------------------------------
+
+void UCCRAudioSubsystem::DuckMusicForCinematic(bool bDuck)
+{
+	if (bMusicDucked == bDuck) return; // already in the desired state
+	bMusicDucked = bDuck;
+
+	if (MusicComponent)
+	{
+		const float TargetVolume = bDuck
+			? MusicVolume * FMath::Clamp(CinematicDuckVolume, 0.f, 1.f)
+			: MusicVolume;
+
+		// Fade the music component to the target volume over a short time
+		// so the transition is smooth rather than an abrupt jump.
+		MusicComponent->AdjustVolume(CinematicDuckFadeDuration, TargetVolume);
+	}
+}

@@ -4,11 +4,25 @@
 #include "CCRPerformanceGovernorSubsystem.h"
 #include "CCRStoryRegistrySubsystem.h"
 #include "CCRStoryChunk.h"
+#include "CCRGameState.h"
 #include "Engine/AssetManager.h"
 
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+
+/** Internal helper: update the game phase via ACCRGameState if possible. */
+static void CCR_SetGamePhase(UGameInstance* GI, ECCRGamePhase Phase)
+{
+	if (!GI) return;
+	if (UWorld* World = GI->GetWorld())
+	{
+		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+		{
+			GS->SetGamePhase(Phase);
+		}
+	}
+}
 
 void UCCRNarrativeRuntimeSubsystem::RebuildCache()
 {
@@ -71,9 +85,40 @@ void UCCRNarrativeRuntimeSubsystem::ApplySetOps(const TArray<FCCRSetOp>& SetOps)
 	{
 		switch (Op.ValueType)
 		{
-		case ECCRStateValueType::Flag:  WSM->SetFlag(Op.Key, Op.Value != 0.f); break;
-		case ECCRStateValueType::Float: WSM->SetFloat(Op.Key, Op.Value); break;
-		case ECCRStateValueType::Int:   WSM->SetInt(Op.Key, static_cast<int32>(Op.Value)); break;
+		case ECCRStateValueType::Flag:
+			// Add and Multiply are not meaningful for booleans; treat them as Set.
+			WSM->SetFlag(Op.Key, Op.Value != 0.f);
+			break;
+
+		case ECCRStateValueType::Float:
+			switch (Op.Mode)
+			{
+			case ECCRSetOpMode::Add:
+				WSM->SetFloat(Op.Key, WSM->GetFloat(Op.Key) + Op.Value);
+				break;
+			case ECCRSetOpMode::Multiply:
+				WSM->SetFloat(Op.Key, WSM->GetFloat(Op.Key) * Op.Value);
+				break;
+			default: // ECCRSetOpMode::Set
+				WSM->SetFloat(Op.Key, Op.Value);
+				break;
+			}
+			break;
+
+		case ECCRStateValueType::Int:
+			switch (Op.Mode)
+			{
+			case ECCRSetOpMode::Add:
+				WSM->SetInt(Op.Key, WSM->GetInt(Op.Key) + static_cast<int32>(Op.Value));
+				break;
+			case ECCRSetOpMode::Multiply:
+				WSM->SetInt(Op.Key, FMath::RoundToInt32(WSM->GetInt(Op.Key) * Op.Value));
+				break;
+			default: // ECCRSetOpMode::Set
+				WSM->SetInt(Op.Key, static_cast<int32>(Op.Value));
+				break;
+			}
+			break;
 		}
 	}
 }
@@ -87,6 +132,9 @@ void UCCRNarrativeRuntimeSubsystem::StartChunk(UCCRStoryChunk* Chunk, FName Over
 	if (!Chunk) return;
 	CurrentChunk = Chunk;
 	RebuildCache();
+
+	// Entering a chunk means we are in interactive narrative play.
+	CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::Narrative);
 
 	const FName EntryNode = OverrideEntryNodeId.IsNone() ? Chunk->EntryNodeId : OverrideEntryNodeId;
 	ExecuteNode(EntryNode);
@@ -105,6 +153,9 @@ void UCCRNarrativeRuntimeSubsystem::ResolveQTE(bool bSuccess)
 {
 	const FCCRNode* Node = FindNode(CurrentNodeId);
 	if (!Node || Node->NodeType != ECCRNodeType::QTE) return;
+
+	// Leaving QTE — restore narrative phase before executing the next node.
+	CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::Narrative);
 
 	ExecuteNode(bSuccess ? Node->QTESuccessNodeId : Node->QTEFailNodeId);
 }
@@ -200,7 +251,9 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 		break;
 
 	case ECCRNodeType::QTE:
-		// Execution paused; resolved via ResolveQTE()
+		// Set QTE phase so HUD and other systems know we are in a gesture window.
+		// Phase is restored to Narrative in ResolveQTE().
+		CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::QTE);
 		break;
 
 	case ECCRNodeType::Cinematic:

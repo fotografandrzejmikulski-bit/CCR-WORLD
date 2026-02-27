@@ -84,6 +84,32 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Audio")
 	void PlaySFXAtLocation(USoundBase* Cue, FVector Location);
 
+	// ---- Cinematic audio ducking ----
+
+	/**
+	 * Duck or restore music volume for cinematic playback.
+	 * When bDuck is true, music is faded to CinematicDuckVolume.
+	 * When false, it is restored to the full MusicVolume.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Audio")
+	void DuckMusicForCinematic(bool bDuck);
+
+	/**
+	 * Music volume multiplier applied while a cinematic is playing.
+	 * Default 0.3 leaves ambient music audible but clearly secondary.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Audio",
+		meta = (ClampMin = "0.0", ClampMax = "1.0"))
+	float CinematicDuckVolume = 0.3f;
+
+	/**
+	 * Duration in seconds of the music volume fade when entering or leaving
+	 * cinematic ducking.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Audio",
+		meta = (ClampMin = "0.0"))
+	float CinematicDuckFadeDuration = 0.5f;
+
 	// ---- Volume control ----
 
 	UFUNCTION(BlueprintCallable, Category = "CCR|Audio")
@@ -128,4 +154,6 @@ private:
 	float MusicVolume = 1.f;
 	float VOVolume    = 1.f;
 	float SFXVolume   = 1.f;
+
+	bool bMusicDucked = false;
 };
