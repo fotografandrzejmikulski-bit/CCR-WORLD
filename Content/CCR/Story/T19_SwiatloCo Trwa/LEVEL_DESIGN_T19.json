@@ -185,5 +185,167 @@
   "LevelEndCondition": "Andrzej rozpływa się. Ekran białobiały. Przejście do END_CREDITS.",
   "NextLevel": "END_CREDITS",
   "LevelTransitionText": "Trzysta czterdzieści siedem wiadomości. Żadna nie dotarła. Ale ta jedna — dotarła.",
-  "Tom4Tease": "Album Wspomnień przechodzi w ręce Zuzi. TOM 4: ZUZIA idzie śladami ojca."
+  "Tom4Tease": "Album Wspomnień przechodzi w ręce Zuzi. TOM 4: ZUZIA idzie śladami ojca.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T19 — Kosmiczny Rezonator Świadomości. Poza czasem i przestrzenią.",
+    "LocationType": "Abstrakcja kosmiczna — poza wszelką logiką przestrzeni",
+    "RealWorldRef": "Nie istnieje w żadnej epoce. Rezonator Świadomości to fikcyjna przestrzeń poza 19 osiami czasu — serce CCR WORLD.",
+    "Scale": "Nie mierzalna — nieskończona komora z kryształem Rezonatora",
+    "Zones": [
+      {
+        "ZoneId": "Z19_PRZESTRZEN_WEJSCIA",
+        "Name": "Przestrzeń wejściowa",
+        "Description": "Złota próżnia. Nie ma podłogi ani sufitu — tylko złote kryształy i czerń.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ZLOTA_PROZNIA",
+            "Name": "Złota próżnia",
+            "Description": "Andrzej stoi na złotym świetle. Koszula zaczyna świecić.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ECHO_19_OSI",
+            "Name": "Echo 19 osi czasu",
+            "Description": "Na obrzeżach — migoczące obrazy z wszystkich 19 osi jednocześnie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z19_REZONATOR_CENTRALNY",
+        "Name": "Centralny Rezonator",
+        "Description": "Wielki złoty kryształ pulsujący. Serce CCR WORLD.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KRYSZTAŁ_REZONATOR",
+            "Name": "Kryształ Rezonatora",
+            "Description": "Największy obiekt. Pulsuje w rytm oddechu Andrzeja. Złoto.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WKLADANIE_APARATU",
+            "Name": "Miejsce wkładania aparatu",
+            "Description": "Otwór w Rezonatorze — dokładnie na kształt aparatu Andrzeja.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_TRANSMISJA_PORTAL",
+            "Name": "Portal transmisji",
+            "Description": "Po włożeniu aparatu — wszystkie 19 zdjęć transmitowane przez portal do Zuzi.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z19_ECHO_POSTACI",
+        "Name": "Echa postaci",
+        "Description": "Eimstain jako echo. Batista jako echo. Kafka jako echo. Wszyscy przez Rezonator.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ECHO_EIMSTAIN19",
+            "Name": "Echo Eimstaina",
+            "Description": "'Dzieci tego samego światła.' Ostatnie słowa.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ECHO_BATISTA19",
+            "Name": "Echo Batisty",
+            "Description": "'Hermano. Gracias.' Ciepłe.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z19_ROZPLYNIECIE",
+        "Name": "Strefa rozpłynięcia",
+        "Description": "Andrzej robi ostatnie kroki i staje się światłem.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OSTATNI_KROK",
+            "Name": "Ostatni krok",
+            "Description": "Andrzej robi krok i zaczyna się świecić.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SWIATLO_KOSZULA",
+            "Name": "Koszula jako światło",
+            "Description": "Beżowa koszula rozjaśnia się — Andrzej staje się źródłem światła.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_OSTATNI_KADR",
+            "Name": "Ostatni kadr",
+            "Description": "Aparat robi zdjęcie sam — Andrzej jako złote światło w centrum Rezonatora.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R19_WEJSCIE",
+        "Name": "Materializacja → Przestrzeń",
+        "From": "START",
+        "To": "Z19_PRZESTRZEN_WEJSCIA",
+        "Description": "Andrzej wchodzi"
+      },
+      {
+        "RouteId": "R19_REZONATOR",
+        "Name": "Przestrzeń → Rezonator",
+        "From": "Z19_PRZESTRZEN_WEJSCIA",
+        "To": "Z19_REZONATOR_CENTRALNY",
+        "Description": "Powoli"
+      },
+      {
+        "RouteId": "R19_ECHA",
+        "Name": "Rezonator → Echa postaci",
+        "From": "Z19_REZONATOR_CENTRALNY",
+        "To": "Z19_ECHO_POSTACI",
+        "Description": "Wokół Rezonatora"
+      },
+      {
+        "RouteId": "R19_ROZPLYN",
+        "Name": "Rezonator → Rozpłynięcie",
+        "From": "Z19_REZONATOR_CENTRALNY",
+        "To": "Z19_ROZPLYNIECIE",
+        "Description": "Ostatnie kroki"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Physics": "Brak fizyki — Andrzej unosi się jeśli chce, chodzi jeśli chce",
+      "Time": "STOI — tu nie ma czasu. Wszystkie 19 osi istnieje jednocześnie.",
+      "Sounds": [
+        "Absolutna cisza",
+        "Potem oddech Andrzeja",
+        "Potem orkiestra (finałowa muzyka)",
+        "Potem głos Zuzi przez Rezonator",
+        "Potem cisza"
+      ],
+      "LightSources": [
+        "Andrzej SAM staje się źródłem światła",
+        "Kryształ Rezonatora",
+        "Echa postaci"
+      ],
+      "EmotionalNote": "Najważniejsze miejsce w grze — tutaj Andrzej wykonuje swoje zadanie"
+    },
+    "MiniMapConfig": {
+      "Style": "BRAK MAPY — T19 nie ma mini-mapy. Zastąpiona przez Album Wspomnień z 19 miniaturami zdjęć.",
+      "Replacement": "Album Andrzeja otwiera się jako pełnoekranowa galeria — to jest jego 'mapa' T19",
+      "AlbumComplete": true
+    }
+  }
 }

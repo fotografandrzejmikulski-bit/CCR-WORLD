@@ -185,5 +185,202 @@
   },
   "LevelEndCondition": "Andrzej odchodzi od mostu. Zuzia znika w mgle po czeskiej stronie.",
   "NextLevel": "T08",
-  "LevelTransitionText": "Widziałem ją. Kilkanaście metrów i cała przepaść."
+  "LevelTransitionText": "Widziałem ją. Kilkanaście metrów i cała przepaść.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T07 — Cieszyn / Český Těšín 2025. Most Przyjaźni nad Olzą.",
+    "LocationType": "Miasto pogranicza — Cieszyn (PL) + Český Těšín (CZ)",
+    "RealWorldRef": "Cieszyn, woj. śląskie. Granica Polski i Czech na moście nad rzeką Olzą. Most Przyjaźni (Most Přátelství).",
+    "Scale": "Mały obszar: most + nabrzeże + plac po obu stronach",
+    "NavigationStyle": "Liniowa przez most — Polska strona (dostępna) + Czeska (przez most)",
+    "Zones": [
+      {
+        "ZoneId": "Z07_PLAC_POLSKA",
+        "Name": "Plac po polskiej stronie",
+        "Description": "Plac Wolności w Cieszynie. Ławki, fontanna, restauracja 'Kawiarnia na Moście'.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICZKA_CIESZYN",
+            "Name": "Tabliczka 'CIESZYN'",
+            "Description": "Historyczna tabliczka przy moście. Rok założenia: 810.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAWIARNIA_MOST",
+            "Name": "Kawiarnia 'Na Moście'",
+            "Description": "Czynna od 7:00. Kawa na wynos. O świcie zamknięta.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FLAGA_PL",
+            "Name": "Flaga polska na słupie",
+            "Description": "Na końcu mostu po polskiej stronie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z07_MOST",
+        "Name": "Most Przyjaźni",
+        "Description": "Most nad rzeką Olzą. Długość ~80m. Barierki stalowe. Dwie flagi — PL i CZ. Mgiełka nad wodą o świcie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SRODEK_MOSTU",
+            "Name": "Środek mostu — granica",
+            "Description": "Tu przebiega granica PL/CZ. Metalowa tabliczka 'GRANICA' na barierze.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_BARIERKI",
+            "Name": "Barierki stalowe",
+            "Description": "Andrzej opiera się i zagląda przez barierki — Zuzia po czeskiej stronie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_OLZA",
+            "Name": "Widok na rzekę Olzę",
+            "Description": "Rzeka 40m poniżej. Mgła o świcie. Refleksy świtu na wodzie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "David blokuje wejście — QTE potrzebne"
+      },
+      {
+        "ZoneId": "Z07_RZEKA_NABRZEZE",
+        "Name": "Nabrzeże pod mostem",
+        "Description": "Chodnik wzdłuż Olzy. Ławki. Rybacy wczesnym rankiem. Alternatywna droga.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RYBAK",
+            "Name": "Rybak o świcie",
+            "Description": "Stary mężczyzna z wędką — nic nie mówi, tylko kiwa głową.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_CIEN_WODA",
+            "Name": "Cień Andrzeja na wodzie",
+            "Description": "Na powierzchni wody Olzy — kolisty zarys twarzy WYRAŹNY.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Dostępne od razu — obejście przez nabrzeże"
+      },
+      {
+        "ZoneId": "Z07_STRONA_CZESKA",
+        "Name": "Plac po czeskiej stronie",
+        "Description": "Náměstí Míru w Českém Těšíně. Cukiernia, urząd. ZUZIA stoi przy barierce.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICZKA_CESKY",
+            "Name": "Tabliczka 'ČESKÝ TĚŠÍN'",
+            "Description": "Czeska strona. Biało-czerwona flaga czeska.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ZUZIA_BARIERKA",
+            "Name": "Zuzia przy barierze",
+            "Description": "8-latka w niebieskim sweterku, warkocze. Stoi plecami, potem odwraca głowę.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FLAGA_CZ",
+            "Name": "Flaga czeska",
+            "Description": "Biało-czerwono-niebieska.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Andrzej może wejść na czeską stronę po QTE"
+      },
+      {
+        "ZoneId": "Z07_WERONIKA_DAVID_POZYCJA",
+        "Name": "Pozycja Weroniki i Davida",
+        "Description": "Polska strona mostu. Tu stoją i blokują.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BLOKADA_MOST",
+            "Name": "Blokada wejścia na most",
+            "Description": "David stoi z kawą. Weronika za nim z telefonem. Świt.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R07_PRZYBYCIE",
+        "Name": "Skrzyżowanie → Plac PL",
+        "From": "START",
+        "To": "Z07_PLAC_POLSKA",
+        "Description": "Andrzej podchodzi o świcie"
+      },
+      {
+        "RouteId": "R07_PLAC_NABRZEZE",
+        "Name": "Plac → Nabrzeże",
+        "From": "Z07_PLAC_POLSKA",
+        "To": "Z07_RZEKA_NABRZEZE",
+        "Description": "Schodki przy kawiarni"
+      },
+      {
+        "RouteId": "R07_MOST_GLOWNY",
+        "Name": "Plac PL → Most",
+        "From": "Z07_PLAC_POLSKA",
+        "To": "Z07_MOST",
+        "Description": "Przez Davida i Weronikę — QTE"
+      },
+      {
+        "RouteId": "R07_MOST_CZ",
+        "Name": "Most → Strona czeska",
+        "From": "Z07_MOST",
+        "To": "Z07_STRONA_CZESKA",
+        "Description": "Po QTE — Andrzej może przejść"
+      },
+      {
+        "RouteId": "R07_NABRZEZE_MOST",
+        "Name": "Nabrzeże → Pod most",
+        "From": "Z07_RZEKA_NABRZEZE",
+        "To": "Z07_MOST",
+        "Description": "Widok z dołu — Andrzej widzi Zuzię"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Chłodny świt — ok. 6°C, wiosna",
+      "Weather": "Mgła nad Olzą. Blady błękit nieba. Pierwsze promienie słońca.",
+      "LightSources": [
+        "Latarnie mostowe dopiero gasną",
+        "Blade słońce zza chmur",
+        "Odbicia na wodzie"
+      ],
+      "NPC_Density": "Niska — 6:00 rano. Rybak na nabrzeżu, piekarnia otwiera się.",
+      "Special": "DRAMATYCZNA chwila — most jako metafora bariery między ojcem a córką",
+      "Sounds": [
+        "Rzeka Olza — płynąca woda",
+        "Wiatr na moście",
+        "Flagi trzepoczą",
+        "Dalekie auto na ulicy Cieszyna"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Topograficzna mapa pogranicza — dwie flagi, rzeka przez środek",
+      "Scale": "1:600",
+      "BorderLine": "Czerwona linia na środku mostu — granica PL/CZ",
+      "RiverVisualization": "Niebieska rzeka z animowanym przepływem",
+      "ZuziaIcon": "Mała niebieska sylwetka dziewczynki po czeskiej stronie"
+    }
+  }
 }

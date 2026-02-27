@@ -160,5 +160,203 @@
     ]
   },
   "LevelEndCondition": "Andrzej wychodzi z Bełżyc z pendrivem.",
-  "NextLevel": "T05"
+  "NextLevel": "T05",
+  "CityMap": {
+    "_doc": "Mapa lokacji T04 — Bełżyce, 2016. Rynek małego miasteczka.",
+    "LocationType": "Małe polskie miasteczko — rynek z ratuszem, letni jarmark",
+    "RealWorldRef": "Bełżyce, woj. lubelskie. Ok. 6000 mieszkańców. Rynek z kościołem i ratuszem.",
+    "Scale": "Średni obszar: rynek + 3 uliczki + fontanna",
+    "NavigationStyle": "Otwarty — mały rynek z kilkoma wyjściami",
+    "Zones": [
+      {
+        "ZoneId": "Z04_RYNEK",
+        "Name": "Rynek Główny",
+        "Description": "Brukowany rynek. Ratusz z 1820 r. Lipy w środku. Fontanna. Letni upał.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RATUSZ_BELZYCE",
+            "Name": "Ratusz 1820",
+            "Description": "Biały z zielonym dachem. Zegar na wieży — gra melodię co godzinę.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FONTANNA",
+            "Name": "Fontanna z rybą",
+            "Description": "Stara kamienna fontanna. Eva czeka tu przy fontannie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LIPY_RYNEK",
+            "Name": "Lipy na rynku",
+            "Description": "Stare lipy — cień i zapach miodu. Ławki pod nimi.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_TABLICA_REJESTRACYJNA",
+            "Name": "Tablica rynku",
+            "Description": "'BEŁŻYCE — Miasto i Gmina. Założone 1397'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z04_KAWIARNIA",
+        "Name": "Kawiarnia 'Pod Lipą'",
+        "Description": "Taras z parasolami. Kawy, lody, wieńczaki. Stolik Evy w cieniu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_STOLIK_EVY",
+            "Name": "Stolik Evy",
+            "Description": "Przy oknie, w cieniu. Zimna kawa i notatnik.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_MENU_KAWIARNIA",
+            "Name": "Menu na tablicy",
+            "Description": "Kawa 5 zł, lody waniliowe 3 zł. 2016 rok.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z04_KIOSK_RUCHU",
+        "Name": "Kiosk Ruchu",
+        "Description": "Gazety, lody, gumy. Stara pani sprzedaje.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_GAZETY_2016",
+            "Name": "Gazety lipiec 2016",
+            "Description": "'Gazeta Wyborcza', 'Polityka'. Artykuł o prawach ojca?",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z04_ULICZKA_RATUSZ",
+        "Name": "Uliczka za Ratuszem",
+        "Description": "Wąska, cienista. Kafka czeka tu z notatnikiem. Kot śpi przy murze.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KAFKA_MUREK",
+            "Name": "Kafka przy murku",
+            "Description": "Stoi niedbale, odwraca się co chwilę.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_KOT",
+            "Name": "Rdzawy kot",
+            "Description": "Śpi na ciepłym bruku. Symbol spokoju.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z04_KOSCIOL_BELZYCE",
+        "Name": "Kościół pw. Wniebowzięcia NMP",
+        "Description": "XVII-wieczny kościół. Zamknięty w południe. Cień Andrzeja na ścianie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CIEN_KOSCIOL_BELZYCE",
+            "Name": "Cień Andrzeja na kościelnej ścianie",
+            "Description": "Na jasno pobielonej ścianie. Coraz wyraźniejszy.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": false,
+        "NavigationNote": "Zamknięty — tylko obejście zewnętrzne"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R04_START",
+        "Name": "Autobus → Rynek",
+        "From": "START",
+        "To": "Z04_RYNEK",
+        "Description": "Andrzej wysiadł z autobusiku PKS",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R04_RYNEK_KAWIARNIA",
+        "Name": "Rynek → Kawiarnia",
+        "From": "Z04_RYNEK",
+        "To": "Z04_KAWIARNIA",
+        "Description": "Przy lipach po lewej",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R04_RYNEK_KIOSK",
+        "Name": "Rynek → Kiosk",
+        "From": "Z04_RYNEK",
+        "To": "Z04_KIOSK_RUCHU",
+        "Description": "Narożnik przy ratuszu",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R04_RYNEK_ULICZKA",
+        "Name": "Rynek → Uliczka za ratuszem",
+        "From": "Z04_RYNEK",
+        "To": "Z04_ULICZKA_RATUSZ",
+        "Description": "Przejście pod ratuszem",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R04_RYNEK_KOSCIOL",
+        "Name": "Rynek → Kościół",
+        "From": "Z04_RYNEK",
+        "To": "Z04_KOSCIOL_BELZYCE",
+        "Description": "Plac po prawej",
+        "IsWalkable": true
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Upał — ok. 32°C, sierpień",
+      "Weather": "Czyste niebo, mocne słońce, kurz na bruku",
+      "LightSources": [
+        "Pełne słońce",
+        "Cień pod lipami",
+        "Parasole kawiarni"
+      ],
+      "NPC_Density": "Umiarkowana — letnie południe, część ludzi śpi",
+      "NPC_Behaviors": [
+        "Starsi mieszkańcy na ławkach",
+        "Dzieci przy fontannie",
+        "Barman w kawiarni"
+      ],
+      "Smells": [
+        "Lipa w kwiecie",
+        "Smażone jajka z pobliskiego baru",
+        "Rozgrzany bruk"
+      ],
+      "Sounds": [
+        "Fontanna",
+        "Pszczoły przy lipach",
+        "Zegar ratuszowy bije 12",
+        "Kosiarka gdzieś w oddali"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Letnia mapa turystyczna — pastelowe kolory, odręczne napisy",
+      "Scale": "1:400",
+      "MarkedPoints": [
+        "Fontanna (Eva)",
+        "Uliczka za ratuszem (Kafka)",
+        "Kiosk (gazety)"
+      ],
+      "Compass": true
+    }
+  }
 }

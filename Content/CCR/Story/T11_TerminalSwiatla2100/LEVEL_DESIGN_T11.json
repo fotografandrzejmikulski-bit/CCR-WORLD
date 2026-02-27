@@ -167,5 +167,186 @@
     ]
   },
   "LevelEndCondition": "Andrzej przez śluzę powietrzną. Stacja oddala się.",
-  "NextLevel": "T12"
+  "NextLevel": "T12",
+  "CityMap": {
+    "_doc": "Mapa lokacji T11 — Orbitalna stacja kosmiczna 2100.",
+    "LocationType": "Stacja kosmiczna — orbita niska Ziemi",
+    "RealWorldRef": "Fikcja 2100. Stacja orbitalna ISS-3 generacji lub ISS-X. Orbita 400km, prędkość 7.6km/s.",
+    "Scale": "Zamknięta przestrzeń: 6 modułów + śluzy",
+    "NavigationStyle": "Mikrograwiracja — poruszanie się przez pchanie od ścian",
+    "Zones": [
+      {
+        "ZoneId": "Z11_MODUL_WEJSCIOWY",
+        "Name": "Moduł wejściowy",
+        "Description": "Śluza powietrzna i główny korytarz. Andrzej materializuje się tu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SLUZA",
+            "Name": "Śluza powietrzna",
+            "Description": "Stalowa śluza z oknem — widok na Ziemię.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KORYTARZ_GLOWNY",
+            "Name": "Główny korytarz",
+            "Description": "Andrzej odczuwa nieważkość po raz pierwszy. Przedmioty unoszą się.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_TERMINAL_TRANSMISJI",
+        "Name": "Terminal transmisji",
+        "Description": "Główna sala z terminalem. David blokuje wejście główne.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TERMINAL_GLOWNY",
+            "Name": "Terminal transmisyjny",
+            "Description": "Skomplikowany interfejs 2100. David stoi przed nim.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_DAVID_TERMINAL",
+            "Name": "David blokuje terminal",
+            "Description": "Masywny, w mundurze technika. Blokuje drogę.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WERONIKA_BOCZNE",
+            "Name": "Weronika przy bocznym wejściu",
+            "Description": "Pilnuje bocznego wejścia. Kombinezon z obcasami.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_MODUL_NAUKI",
+        "Name": "Moduł naukowy",
+        "Description": "Eksperymenty biologiczne. Rośliny w mikrograwitacji. Brak kamer.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ROSLINY_ORBITAL",
+            "Name": "Rośliny w nieważkości",
+            "Description": "Drzewko pomarańczowe unoszące się w powietrzu.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_TRZECIE_WEJSCIE",
+            "Name": "Trzecie wejście do terminalu",
+            "Description": "Ukryte za modułem naukowym. Andrzej musi tu przejść.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_OKNO_PANORAMICZNE",
+        "Name": "Moduł z widokiem na Ziemię",
+        "Description": "Ogromne okno panoramiczne. Widok na niebieską planetę.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ZIEMIA_Z_ORBITY",
+            "Name": "Ziemia z orbity 400km",
+            "Description": "Niebieskobiała planeta. Kontynenty widoczne. Najpiękniejszy widok gry.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WSCHOD_SLONCA_ORBITAL",
+            "Name": "Wschód słońca co 90 min",
+            "Description": "Słońce wschodzi co 90 minut — stacja okrąża Ziemię.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_TECHNICZNE_SLUZY",
+        "Name": "Śluzy techniczne",
+        "Description": "Małe śluzy dla napraw zewnętrznych. Andrzej się tu przemieszcza.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SLUZA_TECH",
+            "Name": "Techniczna śluza B",
+            "Description": "Wyjście awaryjne — Andrzej ucieka tą drogą.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Wyjście po misji"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R11_MATERIALIZACJA",
+        "Name": "Materializacja → Korytarz",
+        "From": "START",
+        "To": "Z11_MODUL_WEJSCIOWY",
+        "Description": "Andrzej pojawia się w śluzie"
+      },
+      {
+        "RouteId": "R11_KORYTARZ_TERMINAL",
+        "Name": "Korytarz → Terminal",
+        "From": "Z11_MODUL_WEJSCIOWY",
+        "To": "Z11_TERMINAL_TRANSMISJI",
+        "Description": "Główny korytarz"
+      },
+      {
+        "RouteId": "R11_OKNO",
+        "Name": "Korytarz → Okno panoramiczne",
+        "From": "Z11_MODUL_WEJSCIOWY",
+        "To": "Z11_OKNO_PANORAMICZNE",
+        "Description": "Moduł po prawej"
+      },
+      {
+        "RouteId": "R11_NAUKA_TERMINAL",
+        "Name": "Moduł nauki → Terminal (bok)",
+        "From": "Z11_MODUL_NAUKI",
+        "To": "Z11_TERMINAL_TRANSMISJI",
+        "Description": "Trzecie wejście"
+      },
+      {
+        "RouteId": "R11_UCIECZKA",
+        "Name": "Terminal → Śluzy tech.",
+        "From": "Z11_TERMINAL_TRANSMISJI",
+        "To": "Z11_TECHNICZNE_SLUZY",
+        "Description": "Ucieczka przez śluzy"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Gravity": "Mikrograwitacja — obiekty unoszą się, Andrzej pcha się od ścian",
+      "ViewFromWindow": "Ziemia 400km poniżej. Co 90 minut wschód słońca.",
+      "Temperature": "Sterylne 21°C w modułach, -270°C za ścianami",
+      "OxygenSystem": "Widoczne rury systemu życiowego — utrata jakiejkolwiek grozi asfiksją",
+      "Sounds": [
+        "System wentylacji",
+        "Cichy hum silników orbitalnych",
+        "Cisza próżni za ścianami",
+        "Metaliczne echo kroków"
+      ],
+      "NPC_Density": "Bardzo niska — załoga 6 osób, David i Weronika, 4 techników"
+    },
+    "MiniMapConfig": {
+      "Style": "Schemat stacji ISS-style — modularny, widok z góry",
+      "Scale": "1:200",
+      "ModuleColors": {
+        "Wejście": "szary",
+        "Terminal": "czerwony (zagrożenie)",
+        "Nauki": "zielony",
+        "Okno": "niebieski"
+      },
+      "GravityIndicator": "Strzałki pokazujące kierunek ruchu w nieważkości"
+    }
+  }
 }

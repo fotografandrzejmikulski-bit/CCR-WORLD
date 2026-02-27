@@ -164,5 +164,128 @@
   },
   "LevelEndCondition": "Cień znika. Andrzej jeden — pełen.",
   "NextLevel": "T18",
-  "LevelTransitionText": "On się zatrzymał. Ja nie zatrzymałem."
+  "LevelTransitionText": "On się zatrzymał. Ja nie zatrzymałem.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T17 — Sala Lustrzana 2378. Nieskończona galeria luster.",
+    "LocationType": "Abstrakcyjna przestrzeń — Sala Lustrzana",
+    "RealWorldRef": "Fikcja. Sala lustrzana w instytucji archiwów 2378. Zaprojektowana jako test tożsamości dla archiwistów — każde lustro pokazuje 'co mogłeś być'.",
+    "Scale": "Nieskończona pozornie: 1 główny korytarz + 6 sal bocznych z lustrami",
+    "Zones": [
+      {
+        "ZoneId": "Z17_KORYTARZ_GLOWNY",
+        "Name": "Główny korytarz luster",
+        "Description": "Nieskończony korytarz z lustrami po obu stronach. Każde lustro = inna wersja Andrzeja.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_LUSTRO_WEJSCIE",
+            "Name": "Pierwsze lustro",
+            "Description": "Andrzej jako 18-latek — przed tatuażami, przed Weroniką.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LUSTRO_SRODKOWE",
+            "Name": "Lustro środkowe",
+            "Description": "Andrzej który nigdy nie robił zdjęć.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LUSTRO_GLOWNE",
+            "Name": "GŁÓWNE lustro — Cień",
+            "Description": "Tu stoi Cień. Odwrócony plecami. Obraca się gdy Andrzej podchodzi.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z17_SALA_WERSJE",
+        "Name": "Sale boczne — wersje Andrzeja",
+        "Description": "6 sal bocznych. Każda sala to inna linia życia Andrzeja.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SALA_1_BEZ_TATUA",
+            "Name": "Sala 1: Andrzej bez tatuaży",
+            "Description": "Elegancki urzędnik. Nie spotkał Weroniki.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SALA_2_ZATRZYMAL",
+            "Name": "Sala 2: Andrzej który się zatrzymał",
+            "Description": "Ten który się poddał po T07 — to jest Cień.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SALA_6_FINALNA",
+            "Name": "Sala 6: Andrzej teraz",
+            "Description": "Odbicie prawdziwe — tatuaże, okulary, zmęczenie, aparat.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z17_CENTRUM_LUSTRA",
+        "Name": "Centrum — rozbicie lustra",
+        "Description": "Miejsce finałowego QTE. Andrzej i Cień razem rozbijają główne lustro.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ROZBITE_LUSTRO",
+            "Name": "Rozbite główne lustro",
+            "Description": "Po QTE — tysiąc kawałków. Każdy kawałek odbija inną twarz Andrzeja.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R17_WEJSCIE",
+        "Name": "Wejście → Korytarz",
+        "From": "START",
+        "To": "Z17_KORYTARZ_GLOWNY",
+        "Description": "Andrzej wchodzi do sali"
+      },
+      {
+        "RouteId": "R17_SALE_BOCZNE",
+        "Name": "Korytarz → Sale boczne",
+        "From": "Z17_KORYTARZ_GLOWNY",
+        "To": "Z17_SALA_WERSJE",
+        "Description": "Po bokach korytarza"
+      },
+      {
+        "RouteId": "R17_CENTRUM",
+        "Name": "Korytarz → Centrum",
+        "From": "Z17_KORYTARZ_GLOWNY",
+        "To": "Z17_CENTRUM_LUSTRA",
+        "Description": "Na końcu korytarza — lustro główne"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Illusion": "Sala wydaje się nieskończona — lustra w lustrach w lustrach",
+      "Temperature": "Lekko chłodna — 17°C",
+      "Sounds": [
+        "Echo własnych kroków — wielokrotne",
+        "Ciche pęknięcia luster gdy Andrzej się porusza",
+        "Cisza przed odkryciem"
+      ],
+      "LightSources": [
+        "Każde lustro odbija inne źródło światła — brak jednego źródła"
+      ],
+      "TimeDistortion": "Zegar w tej sali nie działa — Andrzej nie wie ile czasu spędził"
+    },
+    "MiniMapConfig": {
+      "Style": "Symetryczna mapa lustrzana — pionowo symetryczna jak karty Rorschacha",
+      "Scale": "1:200",
+      "InfinityVisual": "Korytarz na mapie kończy się '...' — symbolizuje nieskończoność",
+      "CienPosition": "Złoty punkt na końcu korytarza — Cień przy lustrze głównym"
+    }
+  }
 }

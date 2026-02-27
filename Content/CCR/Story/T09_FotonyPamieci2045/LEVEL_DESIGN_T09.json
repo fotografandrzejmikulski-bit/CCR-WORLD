@@ -156,5 +156,144 @@
   },
   "LevelEndCondition": "Andrzej ma zapis fotonu. Laboratorium gaśnie.",
   "NextLevel": "T10",
-  "LevelTransitionText": "Echo dziecka w aparacie. Niosę ją ze sobą."
+  "LevelTransitionText": "Echo dziecka w aparacie. Niosę ją ze sobą.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T09 — Laboratorium Fotonów Pamięci, Polska 2045. Podziemne centrum badań wspomnień.",
+    "LocationType": "Podziemne laboratorium — centrum badań fotonów pamięci",
+    "RealWorldRef": "Fikcja 2045, Polska. Podziemne centrum badawcze 200m pod ziemią — wzorowane na CERN lub NCBJ Świerk.",
+    "Scale": "Zamknięty obszar: poziom B1-B3, 3 sale",
+    "NavigationStyle": "Pionowa (windy) + liniowa między salami",
+    "Zones": [
+      {
+        "ZoneId": "Z09_WINDA_WEJSCIE",
+        "Name": "Winda zejściowa",
+        "Description": "Stalowa kapsuła windy schodzi 200m pod ziemię. Ściany z tytanu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_PANEL_WINDY",
+            "Name": "Panel windy",
+            "Description": "Poziomy: B1 (galeria), B2 (laboratorium), B3 (reaktor fotonów).",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z09_GALERIA_FOTONOW",
+        "Name": "Galeria Fotonów (B1)",
+        "Description": "Otwarta sala z unoszącymi się fotonami wspomnień — jak galaktyka.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_FOTONY_UNOSZACE",
+            "Name": "Unoszące się fotony",
+            "Description": "Setki świetlnych kulek — każda to czyjeś wspomnienie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FOTON_ZUZIA",
+            "Name": "Foton Zuzi — niebieski",
+            "Description": "Niebieska kula, kolor niebieskiego sweterka. Pulsuje nieregularnie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_STACJA_ODCZYTU",
+            "Name": "Stacja odczytu fotonów",
+            "Description": "Aparat specjalny do 'słuchania' fotonów.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z09_LABORATORIUM_B2",
+        "Name": "Laboratorium (B2)",
+        "Description": "Eimstain pracuje tu. Ekrany z analizą fotonów. Zegarek z 19 tarczami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_EIMSTAIN_LAB09",
+            "Name": "Eimstain przy ekranach",
+            "Description": "Wyjaśnia mechanizm fotonów pamięci. Zegarek na stole.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ANALIZA_FOTONOW",
+            "Name": "Analiza fotonów na ekranie",
+            "Description": "Wykres życia Zuzi jako seria fotonów — każdy rok to inny foton.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z09_REAKTOR_FOTONOW",
+        "Name": "Reaktor fotonów (B3)",
+        "Description": "Centrum gdzie fotony się tworzą. Potężne pole elektromagnetyczne.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_REAKTOR",
+            "Name": "Rdzeń reaktora fotonów",
+            "Description": "Pulsujące złote światło. TUTAJ foton Zuzi jest najsilniejszy.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Dostępne dopiero po rozmowie z Eimstainem"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R09_WINDA_B1",
+        "Name": "Winda → Galeria",
+        "From": "Z09_WINDA_WEJSCIE",
+        "To": "Z09_GALERIA_FOTONOW",
+        "Description": "Zjazd windą B1"
+      },
+      {
+        "RouteId": "R09_B1_B2",
+        "Name": "Galeria → Lab",
+        "From": "Z09_GALERIA_FOTONOW",
+        "To": "Z09_LABORATORIUM_B2",
+        "Description": "Korytarz z galerii do laboratorium"
+      },
+      {
+        "RouteId": "R09_B2_B3",
+        "Name": "Lab → Reaktor",
+        "From": "Z09_LABORATORIUM_B2",
+        "To": "Z09_REAKTOR_FOTONOW",
+        "Description": "Po rozmowie z Eimstainem"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Depth": "200 metrów pod powierzchnią ziemi",
+      "Gravity": "Normalna ale odczuwalna głębokość — ciśnienie w uszach w windzie",
+      "LightSources": [
+        "Fotony — główne źródło światła w galerii",
+        "Niebieskie LED w laboratorium",
+        "Złoty rdzeń reaktora"
+      ],
+      "Temperature": "Chłodne 16°C — stałe niezależnie od pory roku",
+      "Sounds": [
+        "Absolutna cisza — 200m pod ziemią",
+        "Fotony dźwięczą jak kryształy",
+        "Hum reaktora fotonów"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Przekrój pionowy — jak schemat miniszachtu",
+      "Scale": "1:300",
+      "Levels": [
+        "B1: Galeria",
+        "B2: Laboratorium",
+        "B3: Reaktor"
+      ],
+      "FotonDensityMap": "Niebieskie kółka — gęstość fotonów (im gęściej, tym więcej wspomnień)"
+    }
+  }
 }

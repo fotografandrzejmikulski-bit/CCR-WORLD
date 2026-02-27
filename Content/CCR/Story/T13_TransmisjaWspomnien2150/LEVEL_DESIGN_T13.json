@@ -154,5 +154,137 @@
     ]
   },
   "LevelEndCondition": "Andrzej z zapisem głosu Zuzi.",
-  "NextLevel": "T14"
+  "NextLevel": "T14",
+  "CityMap": {
+    "_doc": "Mapa lokacji T13 — Centrum Transmisji Wspomnień, 2150.",
+    "LocationType": "Centrum medyczne / neurotechnologiczne — transmisje neuro",
+    "RealWorldRef": "Fikcja 2150. Centrum Neuro-Transmisji Wspomnień — jak szpital ale dla wspomnień.",
+    "Scale": "Budynek miejski: lobby + sale zabiegowe + konsola techniczna",
+    "Zones": [
+      {
+        "ZoneId": "Z13_LOBBY_2150",
+        "Name": "Lobby centrum 2150",
+        "Description": "Futurystyczne, spokojne jak spa. Hologramy wspomnień klientów na ścianach.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RECEPCJA_2150",
+            "Name": "Recepcja 2150",
+            "Description": "Asystent-AI. 'Zapraszamy. Twoje wspomnienia są bezpieczne.'",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_HOLOGRAMY_KLIEN",
+            "Name": "Hologramy wspomnień klientów",
+            "Description": "Na ścianach — jak zdjęcia w ramkach, ale ruchome.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z13_SALA_TRANSMISJI",
+        "Name": "Sala transmisji",
+        "Description": "Okrągła sala z fotelami transmisji. Miękkie fioletowe światło.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_FOTEL_TRANSMISJI",
+            "Name": "Fotel transmisji",
+            "Description": "Jak fotel dentystyczny z koroną neuronalną. Andrzej siada.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KORONA_NEURALNA",
+            "Name": "Korona neuralna",
+            "Description": "Delikatna metalowa siatka na głowie — łączy z siecią wspomnień.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_HOLOGRAM_WSPOMNIEN",
+            "Name": "Hologram wspomnień wokół fotela",
+            "Description": "Po połączeniu — wspomnienia materializują się wokół.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z13_KONSOLA_BATISTY",
+        "Name": "Konsola operatora (Batista)",
+        "Description": "Batista przy konsoli. Ekrany z parametrami transmisji.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KONSOLA_TRANSMISJI",
+            "Name": "Konsola transmisji",
+            "Description": "Batista monitoruje dane — tętno, fale mózgowe, siłę połączenia.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z13_KORYTARZ_PAMIEC",
+        "Name": "Korytarz wspomnień",
+        "Description": "Korytarz z półprzezroczystymi drzwiami — za każdymi cudze wspomnienie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OKNO_CUDZEJ_PAMIECI",
+            "Name": "Okno cudzej pamięci",
+            "Description": "Przez szybę widać czyjąś pamięć — jak film.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Eksploracja opcjonalna"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R13_LOBBY_SALA",
+        "Name": "Lobby → Sala transmisji",
+        "From": "Z13_LOBBY_2150",
+        "To": "Z13_SALA_TRANSMISJI",
+        "Description": "Po zapisaniu się"
+      },
+      {
+        "RouteId": "R13_SALA_KONSOLA",
+        "Name": "Sala → Konsola",
+        "From": "Z13_SALA_TRANSMISJI",
+        "To": "Z13_KONSOLA_BATISTY",
+        "Description": "Batista obok"
+      },
+      {
+        "RouteId": "R13_KORYTARZ_OPC",
+        "Name": "Sala → Korytarz",
+        "From": "Z13_SALA_TRANSMISJI",
+        "To": "Z13_KORYTARZ_PAMIEC",
+        "Description": "Opcjonalne"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Style": "Spa + szpital + galeria sztuki",
+      "Temperature": "Ciepłe 22°C — komfortowe dla transmisji",
+      "Sounds": [
+        "Delikatna muzyka neuro-uspokajająca",
+        "Szum transmisji podczas sesji",
+        "Głosy ze wspomnień"
+      ],
+      "LightSources": [
+        "Fioletowe LED",
+        "Hologramy wspomnień",
+        "Słabe naturalne przez okna"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Plan spa/medyczny — okrągłe sale, miękkie kolory",
+      "Scale": "1:300",
+      "ActiveZone": "Sala transmisji podświetlona gdy Andrzej w sesji"
+    }
+  }
 }

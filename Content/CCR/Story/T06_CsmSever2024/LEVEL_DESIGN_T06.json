@@ -145,5 +145,184 @@
   },
   "LevelEndCondition": "Andrzej wychodzi z CSM z wydrukiem.",
   "NextLevel": "T07",
-  "LevelTransitionText": ""
+  "LevelTransitionText": "",
+  "CityMap": {
+    "_doc": "Mapa lokacji T06 — CSM Sever, Czechy 2024. Centrum badań naukowych.",
+    "LocationType": "Centrum naukowe — nowoczesny kampus badawczy",
+    "RealWorldRef": "Czechy, 2024. Fikcyjne CSM Sever — inspirowane centrami badań typu CERN lub CESNET. Lokalizacja: okolice Pragi lub Ostravy.",
+    "Scale": "Średni obszar: 2 budynki + korytarze + parking",
+    "NavigationStyle": "Liniowa z bezpieczeństwem biometrycznym",
+    "Zones": [
+      {
+        "ZoneId": "Z06_LOBBY",
+        "Name": "Hol główny CSM",
+        "Description": "Nowoczesne szkło i stal. Recepcja, hologramy instytucji, plakaty badań.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RECEPCJA",
+            "Name": "Recepcja CSM",
+            "Description": "Identyfikatory dla gości. Andrzej jest tu bez dokumentów.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_HOLOGRAM_LOGO",
+            "Name": "Hologram logo CSM",
+            "Description": "Obracające się logo z napisem 'Centrum Studií Mnohovrstevnatosti'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_KORYTARZ_A",
+        "Name": "Korytarz A — badań podstawowych",
+        "Description": "Biały, sterylny. Holograficzne ekrany z danymi. Kamery co 8m.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_EKRANY_HOLOGRAF",
+            "Name": "Holograficzne ekrany danych",
+            "Description": "Pierwsze hologramy 19 osi czasu widoczne jako wizualizacja naukowa!",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAMERA_BEZP",
+            "Name": "Kamery bezpieczeństwa",
+            "Description": "Co 8m. Obrót 180° co 4 sekundy.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_BIURO_EIMSTAIN",
+        "Name": "Biuro Eimstaina",
+        "Description": "Duże biuro z panoramicznym widokiem na korytarz. Ekrany z danymi 19 osi.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BIURKO_EIMST_CSM",
+            "Name": "Biurko badacza",
+            "Description": "Zegarek z 19 tarczami na biurku. Wydruk osi czasu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_EKRAN_19_OSI",
+            "Name": "Ekran z 19 osiami czasu",
+            "Description": "Pierwsza pełna wizualizacja. Andrzej widzi wszystkie 19 osi jako sieć.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_OKNO_PANORAMICZNE",
+            "Name": "Okno panoramiczne",
+            "Description": "Widok na parking i las nocą.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_LAB_CENTRALNY",
+        "Name": "Laboratorium centralne",
+        "Description": "Największa sala. Sprzęt badawczy. Kafka pracuje tu nocami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CENTRUM_BADAN",
+            "Name": "Centrum badań",
+            "Description": "Hologramy cząsteczek i osi czasu. Przyrządy pomiarowe.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAFKA_LAB",
+            "Name": "Kafka przy analizatorze",
+            "Description": "Nerwowy, odwraca się. Trzyma wydruk dla Andrzeja.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_PARKING",
+        "Name": "Parking zewnętrzny",
+        "Description": "Noc. Kilka samochodów. Droga ucieczki.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SAMOCHOD_EIMSTAIN",
+            "Name": "Stary samochód Eimstaina",
+            "Description": "Tesla 2019 — zaskakująco stare auto dla naukowca.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Wyjście z budynku"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R06_WEJSCIE",
+        "Name": "Parking → Lobby",
+        "From": "START",
+        "To": "Z06_LOBBY",
+        "Description": "Andrzej przychodzi nocą"
+      },
+      {
+        "RouteId": "R06_LOBBY_KORYTARZ",
+        "Name": "Lobby → Korytarz A",
+        "From": "Z06_LOBBY",
+        "To": "Z06_KORYTARZ_A",
+        "Description": "Po prawej od recepcji — stealth obok kamery"
+      },
+      {
+        "RouteId": "R06_KORYTARZ_BIURO",
+        "Name": "Korytarz → Biuro Eimstaina",
+        "From": "Z06_KORYTARZ_A",
+        "To": "Z06_BIURO_EIMSTAIN",
+        "Description": "Drzwi z kodem 4-cyfrowym"
+      },
+      {
+        "RouteId": "R06_BIURO_LAB",
+        "Name": "Biuro → Lab",
+        "From": "Z06_BIURO_EIMSTAIN",
+        "To": "Z06_LAB_CENTRALNY",
+        "Description": "Przejście przez sterowną bramkę"
+      },
+      {
+        "RouteId": "R06_WYJSCIE",
+        "Name": "Lab → Parking",
+        "From": "Z06_LAB_CENTRALNY",
+        "To": "Z06_PARKING",
+        "Description": "Wyjście ewakuacyjne"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Sterylne 20°C — klimatyzacja",
+      "Weather": "Noc, czysta, zimna (Czechy, październik 2024)",
+      "LightSources": [
+        "LED strip na suficie korytarzy",
+        "Niebieskie hologramy",
+        "Monitor w biurze Eimstaina"
+      ],
+      "NPC_Density": "Niska — nocna zmiana, 3-4 osoby",
+      "SecurityLevel": "Biometryczne bramki, kamery co 8m, ochroniarz przy wejściu",
+      "Sounds": [
+        "Wentylacja — cichy szum",
+        "Klawiatura Kafki",
+        "Hologramy dźwięczą delikatnie"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Plan budynku CAD — nowoczesny, niebieskie linie",
+      "Scale": "1:400",
+      "SecurityZones": "Czerwone strefy przy kamerach — niebezpieczne",
+      "CameraFOV": "Szare sektory na mapie — pole widzenia kamer"
+    }
+  }
 }

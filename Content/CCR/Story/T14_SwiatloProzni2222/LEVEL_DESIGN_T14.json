@@ -150,5 +150,126 @@
   },
   "LevelEndCondition": "Andrzej rusza do T15. Stacja oddala się w gwiazdy.",
   "NextLevel": "T15",
-  "LevelTransitionText": "Dzieci tego samego światła."
+  "LevelTransitionText": "Dzieci tego samego światła.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T14 — Stacja kosmiczna w głębokiej próżni, 2222.",
+    "LocationType": "Stacja w głębokiej przestrzeni kosmicznej — między gwiazdozbiorami",
+    "RealWorldRef": "Fikcja 2222. Stacja badawcza w przestrzeni między Układem Słonecznym a najbliższymi gwiazdami. Odległość od Ziemi: 0.3 roku świetlnego.",
+    "Scale": "Mała stacja: 3 moduły + obserwatorium",
+    "Zones": [
+      {
+        "ZoneId": "Z14_OBSERWATORIUM",
+        "Name": "Obserwatorium gwiezdne",
+        "Description": "Okno 360°. Gwiazdy we wszystkich kierunkach. Ziemia niewidoczna gołym okiem.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OKNO_360",
+            "Name": "Okno panoramiczne 360°",
+            "Description": "Kosmos ze wszystkich stron. Absolutna czerń z gwiazdami.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_5_OSI_OKNO",
+            "Name": "5 świecących punktów",
+            "Description": "5 punktów w przestrzeni — to 5 osi między Andrzejem a T19.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_EIMSTAIN_HOLOGRAM14",
+            "Name": "Hologram Eimstaina",
+            "Description": "Transmituje z T06 lub T02. Zegarek z 5 tarczami do celu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z14_MODUL_BYTOWY",
+        "Name": "Moduł bytowy",
+        "Description": "Minimalistyczne życie w przestrzeni. Hamak, komputer, fotografia Zuzi przyklejona magnetycznie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_FOTO_ZUZI_PRZYK",
+            "Name": "Zdjęcie Zuzi przyklejone",
+            "Description": "Andrzej przykleił je magnesem do ściany. Niebieski sweter.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LUSTRO",
+            "Name": "Małe lustro w module",
+            "Description": "Andrzej widzi siebie — 14 osi starszy, zmęczony, ale zdeterminowany.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z14_SILOWNIA_NAPEDOWA",
+        "Name": "Siłownia napędowa",
+        "Description": "Silniki jonowe. Pulsują. Cień Andrzeja rozciąga się na tle silników.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SILNIKI_JONOWE",
+            "Name": "Silniki jonowe",
+            "Description": "Niebieskawa poświata. Cień Andrzeja szczególnie wyraźny.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_CIEN_GWIEZDNY",
+            "Name": "Cień Andrzeja na gwiezdnym tle",
+            "Description": "PRAWIE TWARZ — ostatni krok przed T17.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R14_MATERIALIZACJA",
+        "Name": "Wejście → Obserwatorium",
+        "From": "START",
+        "To": "Z14_OBSERWATORIUM",
+        "Description": "Andrzej materializuje się w obserwatorium"
+      },
+      {
+        "RouteId": "R14_OBS_BYTOWY",
+        "Name": "Obserwatorium → Bytowy",
+        "From": "Z14_OBSERWATORIUM",
+        "To": "Z14_MODUL_BYTOWY",
+        "Description": "Środkowy korytarz"
+      },
+      {
+        "RouteId": "R14_BYTOWY_SILOWNIA",
+        "Name": "Bytowy → Siłownia",
+        "From": "Z14_MODUL_BYTOWY",
+        "To": "Z14_SILOWNIA_NAPEDOWA",
+        "Description": "Tylny korytarz"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Location": "0.3 roku świetlnego od Ziemi",
+      "Crew": "Andrzej jest SAM — stacja automatyczna",
+      "Temperature": "21°C wewnątrz, -270°C na zewnątrz",
+      "Communication": "Opóźnienie sygnału do Ziemi: 4 miesiące w jedną stronę",
+      "Gravity": "Sztuczna grawitacja od obrotu stacji",
+      "Sounds": [
+        "ABSOLUTNA CISZA z zewnątrz",
+        "Oddech Andrzeja — jedyny dźwięk",
+        "Pulsowanie silników jonowych"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Kosmiczny schemat — czarne tło, białe linie, gwiazdy jako tło",
+      "Scale": "1:150",
+      "StarField": "Tło mapy to prawdziwa mapa gwiazdozbiorów z roku 2222"
+    }
+  }
 }

@@ -155,5 +155,146 @@
     ]
   },
   "LevelEndCondition": "Andrzej trzyma kopię listu. Korytarze ciemnieją.",
-  "NextLevel": "T11"
+  "NextLevel": "T11",
+  "CityMap": {
+    "_doc": "Mapa lokacji T10 — Archiwum Ciszy 2077. Podziemne archiwum niedostarczonych wiadomości.",
+    "LocationType": "Archiwum podziemne — biblioteka nieodesłanych wiadomości",
+    "RealWorldRef": "Fikcja 2077. Podziemna instytucja archiwizująca wszystkie niedostarczone wiadomości z historii świata.",
+    "Scale": "Ogromny obszar: 12 korytarzy (Sekcje A-L), poziom centralny",
+    "NavigationStyle": "Labiryntowa biblioteka — jak nieskończone regały",
+    "Zones": [
+      {
+        "ZoneId": "Z10_WEJSCIE_ARCHIWUM",
+        "Name": "Wejście Archiwum",
+        "Description": "Hol wejściowy z recepcją Kafki. Tablica: 'ARCHIWUM CISZY — 847 mln wiadomości'.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICA_ARCHIWUM",
+            "Name": "Tablica archiwum",
+            "Description": "Liczba wiadomości zmienia się w czasie rzeczywistym.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAFKA_BIURKO_A",
+            "Name": "Biurko Kafki — archiwista",
+            "Description": "Pierwsza scena z Kafką jako archiwistą 2077.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z10_SEKCJA_Z",
+        "Name": "Sekcja Z — Zuzia",
+        "Description": "Alejka szuflad z nazwiskiem Zuzia. 347 szuflad z oznaczeniem 'OD: ZUZIA DO: TATA'.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_347_SZUFLAD",
+            "Name": "347 szuflad Zuzi",
+            "Description": "Widoczne z końca alejki — cała ściana z imieniem.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SZUFLADA_001",
+            "Name": "Szuflada #001/347",
+            "Description": "Pierwsza. Andrzej otwiera ją. List Zuzi w środku.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SZUFLADA_347",
+            "Name": "Szuflada #347/347",
+            "Description": "Ostatnia. Data: tydzień przed T19.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z10_CENTRALNY_HOLL",
+        "Name": "Centralny hol",
+        "Description": "Ogromna przestrzeń z widokiem na wszystkie 12 sekcji. Cicha jak grobowiec.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WIDOK_Z_GORY",
+            "Name": "Widok z antresoli",
+            "Description": "Widok na cały Centralny Hol — metafora ogromu niedostarczonej miłości.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_CIEN_ARCHIWUM",
+            "Name": "Cień Andrzeja na regałach",
+            "Description": "Przemieszcza się po szufladach Zuzi z nabożeństwem.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z10_KONSERWATORNIA",
+        "Name": "Sala konserwatorska",
+        "Description": "Gdzie Kafka naprawia uszkodzone wiadomości. Łkanie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KAFKA_PLACZE",
+            "Name": "Kafka w konservatorni",
+            "Description": "Płacze nad aktem niemożliwym do naprawienia.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R10_WEJSCIE_HOL",
+        "Name": "Wejście → Hol centralny",
+        "From": "Z10_WEJSCIE_ARCHIWUM",
+        "To": "Z10_CENTRALNY_HOLL",
+        "Description": "Przez bramę biblioteczną"
+      },
+      {
+        "RouteId": "R10_HOL_Z",
+        "Name": "Hol → Sekcja Z",
+        "From": "Z10_CENTRALNY_HOLL",
+        "To": "Z10_SEKCJA_Z",
+        "Description": "Sekcja Z — ostatnia alejka"
+      },
+      {
+        "RouteId": "R10_HOL_KONSERW",
+        "Name": "Hol → Konservatornia",
+        "From": "Z10_CENTRALNY_HOLL",
+        "To": "Z10_KONSERWATORNIA",
+        "Description": "Lewe skrzydło"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Size": "Rozciąga się na 3 km w głąb — nie da się dotrzeć do końca",
+      "Temperature": "Chłodne 15°C — archiwum ma stałą temperaturę",
+      "LightSources": [
+        "Ciepłe żarówki Edison przy każdej szufladzie",
+        "Antresola oświetlona z góry"
+      ],
+      "Sounds": [
+        "Szept — niedostarczone słowa unoszą się w powietrzu",
+        "Szuflada się otwiera z cichym dźwiękiem",
+        "Kafka płacze gdzieś w głębi"
+      ],
+      "Smell": "Stary papier, wosk, czas"
+    },
+    "MiniMapConfig": {
+      "Style": "Schemat biblioteki — jak katalog Dewey'a",
+      "Scale": "1:2000 (ogromna przestrzeń)",
+      "Sections": "Sekcje A-L zaznaczone kolorami",
+      "SectionZ": "Podświetlona czerwono — cel gracza",
+      "InfinityNote": "Mapa nie ma końca — dalsze sekcje są zamazane 'mgłą'"
+    }
+  }
 }

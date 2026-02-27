@@ -200,5 +200,193 @@
   },
   "LevelEndCondition": "Andrzej wychodzi przez kościelne drzwi na śnieg. Fade to black.",
   "NextLevel": "T02",
-  "LevelTransitionText": "Rok 1679 za tobą. Czas oddycha."
+  "LevelTransitionText": "Rok 1679 za tobą. Czas oddycha.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T01 — Polska barokowa, 1679. Małe miasto przy kościele farnym.",
+    "LocationType": "Historyczne miasto — barok XVII w.",
+    "RealWorldRef": "Polska, 1679 — małe miasto w rejonie lubelskim. Barokowy kościół farny typowy dla miast Lubelszczyzny XVII w.",
+    "Scale": "Mały obszar gry: kościół + plac + 2 uliczki",
+    "NavigationStyle": "Liniowa z odgałęzieniami",
+    "Zones": [
+      {
+        "ZoneId": "Z01_KOSCIOL",
+        "Name": "Kościół farny",
+        "Description": "Barokowy kościół — główna scena. Grube kamienne mury, drewniane ławki, złocony ołtarz, świece.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OLTARZ",
+            "Name": "Ołtarz główny",
+            "Description": "Złocony krzyż, świece, ornaty. Centrum kościoła.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LAWKI",
+            "Name": "Ławki kościelne",
+            "Description": "Drewniane, ciasne. Rysunek Zuzi jest między ławkami row 4.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_WITRAZE",
+            "Name": "Witraże",
+            "Description": "Kolorowe witraże z roku ~1640. Rzucają tęczowe cienie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z01_ZAKRYSTIA",
+        "Name": "Zakrystia",
+        "Description": "Boczne pomieszczenie za ołtarzem. Eimstain czeka przy biurku z pergaminami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BIURKO_EIMT",
+            "Name": "Biurko Eimstaina",
+            "Description": "Stare biurko z dokumentami i zegarkiem kieszonkowym.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_PERGAMINY",
+            "Name": "Regał pergaminów",
+            "Description": "Zwoje z zapiskami dotyczącymi osi czasu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z01_PLAC",
+        "Name": "Plac przed kościołem",
+        "Description": "Zaśnieżony bruk. Latarnia olejowa. Ślady kroków w śniegu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BRAMA_KOSCIOL",
+            "Name": "Brama kościelna",
+            "Description": "Ogromne dębowe drzwi okuте żelazem. Wejście/wyjście.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_LATARNIA",
+            "Name": "Latarnia olejowa",
+            "Description": "Jedyne światło na zewnątrz. Rzuca długie cienie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z01_DZWONNICA",
+        "Name": "Dzwonnica",
+        "Description": "Opcjonalna eksploracja. Widok z góry na miasto. Ślad Zuzi na schodach.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_DZWON",
+            "Name": "Wielki dzwon",
+            "Description": "Odlany 1612. Inskrypcja: 'Czas oddechu'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_MIASTO",
+            "Name": "Widok na miasto z dzwonnicy",
+            "Description": "Nocne miasto w śniegu — widok na dachy i zaśnieżone ulice.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Opcjonalne — schody przy lewej nawie"
+      },
+      {
+        "ZoneId": "Z01_ULICZKA_BOCZNA",
+        "Name": "Boczna uliczka",
+        "Description": "Wąska, kamienna. Cień Andrzeja na murze — tu po raz pierwszy ożywa.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CIEN_MUR",
+            "Name": "Ściana z Cieniem",
+            "Description": "Mokry kamień. Cień Andrzeja deformuje się i porusza niezależnie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Przejście od kościoła do placu"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R01_WEJSCIE",
+        "Name": "Wejście na plac",
+        "From": "START",
+        "To": "Z01_PLAC",
+        "Description": "Andrzej wchodzi ze śniegu",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_PLAC_KOSCIOL",
+        "Name": "Plac → Kościół",
+        "From": "Z01_PLAC",
+        "To": "Z01_KOSCIOL",
+        "Description": "Przez główne drzwi",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_KOSCIOL_ZAKRYSTIA",
+        "Name": "Kościół → Zakrystia",
+        "From": "Z01_KOSCIOL",
+        "To": "Z01_ZAKRYSTIA",
+        "Description": "Boczne przejście za ołtarzem",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_DZWONNICA",
+        "Name": "Kościół → Dzwonnica",
+        "From": "Z01_KOSCIOL",
+        "To": "Z01_DZWONNICA",
+        "Description": "Schody przy lewej nawie",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_ULICZKA",
+        "Name": "Plac → Boczna uliczka",
+        "From": "Z01_PLAC",
+        "To": "Z01_ULICZKA_BOCZNA",
+        "Description": "Wąska brama przy kościele",
+        "IsWalkable": true
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Mróz — ok. -10°C",
+      "Snow": true,
+      "SnowDepth": "Świeży śnieg, 5-8 cm na bruku",
+      "WindSound": "Cichy — tylko w dzwonnicy słyszalny",
+      "LightSources": [
+        "Świece w kościele",
+        "Latarnia olejowa na placu",
+        "Witraże od księżyca"
+      ],
+      "PopulationNote": "Noc — miasto śpi. BRAK NPC poza kościołem",
+      "Era_Details": "XVII wiek — brak elektryczności, brak szkła w oknach domów (drewniane okiennice)"
+    },
+    "MiniMapConfig": {
+      "Style": "Stara mapa pergaminowa — ręcznie rysowana",
+      "Orientation": "N na górze",
+      "PlayerIcon": "Mała sylwetka w kapeluszu z aparatem",
+      "Scale": "1:200 (kościół + otoczenie)",
+      "VisibleFromStart": true,
+      "ZonesMarked": [
+        "Z01_KOSCIOL",
+        "Z01_PLAC",
+        "Z01_ZAKRYSTIA"
+      ]
+    }
+  }
 }

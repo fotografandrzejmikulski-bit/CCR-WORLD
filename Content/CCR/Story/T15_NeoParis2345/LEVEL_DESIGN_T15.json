@@ -161,5 +161,184 @@
     ]
   },
   "LevelEndCondition": "Andrzej odchodzi z Neo Paryża w deszczu z finalnymi koordynatami.",
-  "NextLevel": "T16"
+  "NextLevel": "T16",
+  "CityMap": {
+    "_doc": "Mapa lokacji T15 — Neo Paris 2345. Futurystyczny Paryż z zachowaną historyczną architekturą.",
+    "LocationType": "Futurystyczne metropolis — Neo Paryż 2345",
+    "RealWorldRef": "Paryż, Francja. 2345 rok. Zachowano historyczną architekturę jako dziedzictwo UNESCO, ale z holograficzną warstwą futurystyczną.",
+    "Scale": "Duże miasto: 4 dzielnice + Wieża Eiffla + Sekwana",
+    "Zones": [
+      {
+        "ZoneId": "Z15_SEKWANA_NABRZEZE",
+        "Name": "Nabrzeże Sekwany",
+        "Description": "Woda czystej Sekwany — pluskają ryby (rzeka przywrócona do natury). Latające taxi nad wodą.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_LATAJACE_TAXI",
+            "Name": "Latające taxi Uber-Air",
+            "Description": "Pojazdy 2345 przesuwają się nad Sekwaną.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAWIARNIA_SEKWANA",
+            "Name": "Kawiarnia przy Sekwanie",
+            "Description": "Eva czeka tu. Mokra od deszczu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_EIFFEL_WODA",
+            "Name": "Wieża Eiffla w odbiciu Sekwany",
+            "Description": "W mokrym bruku i wodzie Sekwany — z holograficzną powłoką.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_WIEŻA_EIFFLA_2345",
+        "Name": "Wieża Eiffla 2345",
+        "Description": "Oryginalna wieża z 1889 z holograficzną powłoką danych. Cokolwiek się dzieje na świecie jest wyświetlane.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WIEŻA_HOLOGRAFICZNA",
+            "Name": "Wieża Eiffla z hologramem",
+            "Description": "Oryginalna stalowa wieża + holograficzna powłoka 300m nad nią.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_HOLOGRAM_WIESCI",
+            "Name": "Dane świata na wieży",
+            "Description": "Aktualne dane planetarne wyświetlane na hologramie wieży.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_ALEJE_HISTORYCZNE",
+        "Name": "Aleje historyczne",
+        "Description": "Zachowane chodniki Paryża. Kamienny bruk. Mokry od deszczu. Kafka w alei.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KAFKA_ALEJA",
+            "Name": "Kafka w alei",
+            "Description": "Ostatni wpis kronikarza. Jedwabna marynarka, notes.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KOT_PARYSKI",
+            "Name": "Rdzawy kot pod parasolem",
+            "Description": "Kot siedzi pod parasolem kawiarni — symbol Paryża we wszystkich epokach.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KALUZA_CIEN",
+            "Name": "Kałuża z Cieniem Andrzeja",
+            "Description": "Cień na mokrym bruku — prawie twarz. Andrzej nadepnie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_DZIELNICA_FUTUR",
+        "Name": "Dzielnica futurystyczna",
+        "Description": "Nowe budynki 2345 z organiczną architekturą — żywe, oddychające ściany.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ZYWABUD",
+            "Name": "Żywa fasada budynku",
+            "Description": "Ściana pokryta roślinami + solarami + LED. Oddycha.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_METRO_HISTORYCZNE",
+        "Name": "Metro historyczne — zachowane",
+        "Description": "Zachowane wejście do metra z 1900 r. Nadal działa — trasa turystyczna.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_METRO_ART_NOUVEAU",
+            "Name": "Wejście metra Art Nouveau",
+            "Description": "Metalowe drzwi z 1900 roku. Neon 'MÉTROPOLITAIN' nadal działa.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Opcjonalne — droga ucieczki"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R15_PRZYBYCIE",
+        "Name": "Teleport → Nabrzeże",
+        "From": "START",
+        "To": "Z15_SEKWANA_NABRZEZE",
+        "Description": "Andrzej pojawia się w deszczu"
+      },
+      {
+        "RouteId": "R15_NABRZEZE_WIEŻA",
+        "Name": "Nabrzeże → Wieża",
+        "From": "Z15_SEKWANA_NABRZEZE",
+        "To": "Z15_WIEŻA_EIFFLA_2345",
+        "Description": "Wzdłuż Sekwany"
+      },
+      {
+        "RouteId": "R15_WIEŻA_ALEJE",
+        "Name": "Wieża → Aleje",
+        "From": "Z15_WIEŻA_EIFFLA_2345",
+        "To": "Z15_ALEJE_HISTORYCZNE",
+        "Description": "Na wschód od Wieży"
+      },
+      {
+        "RouteId": "R15_ALEJE_FUTUR",
+        "Name": "Aleje → Futurystyczna",
+        "From": "Z15_ALEJE_HISTORYCZNE",
+        "To": "Z15_DZIELNICA_FUTUR",
+        "Description": "Za rogiem"
+      },
+      {
+        "RouteId": "R15_METRO",
+        "Name": "Aleje → Metro",
+        "From": "Z15_ALEJE_HISTORYCZNE",
+        "To": "Z15_METRO_HISTORYCZNE",
+        "Description": "Wyjście z alei"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Weather": "Delikatny deszcz. Mokry bruk. Zapach mokrego kamienia i kawy.",
+      "Temperature": "14°C — chłodny wieczór wiosenny",
+      "LightSources": [
+        "Hologram Wieży Eiffla — oświetla całą okolicę",
+        "LED kawiarni",
+        "Latające taxi z reflektorami",
+        "Mokry bruk odbija wszystko"
+      ],
+      "Sounds": [
+        "Deszcz na bruku",
+        "Latające taxi — elektryczny szum",
+        "Paryska muzyka z kawiarni",
+        "Kafka mruczy pod nosem notując"
+      ],
+      "Smell": "Deszcz + kawa + mokre liście + hologram (ozonu)"
+    },
+    "MiniMapConfig": {
+      "Style": "Art deco z futurystycznym overlayem — mapa stylizowana na plakat z 1925 z holograficznymi poprawkami",
+      "Scale": "1:2000",
+      "Landmarks": "Wieża Eiffla jako centralny punkt orientacyjny",
+      "WeatherLayer": "Animowane krople deszczu na mapie"
+    }
+  }
 }
