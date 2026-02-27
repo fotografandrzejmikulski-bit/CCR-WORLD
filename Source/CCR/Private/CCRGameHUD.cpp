@@ -99,6 +99,18 @@ void ACCRGameHUD::TogglePause()
 		}
 		else
 		{
+			// Fallback: no widget — still restore the game phase so the rest
+			// of the game (HUD visibility, audio, etc.) is not left in Paused.
+			UE_LOG(LogTemp, Warning,
+				TEXT("ACCRGameHUD: TogglePause resume — PauseWidget is null; "
+					 "restoring phase to Narrative directly."));
+			if (UWorld* World = GetWorld())
+			{
+				if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+				{
+					GS->SetGamePhase(ECCRGamePhase::Narrative);
+				}
+			}
 			UGameplayStatics::SetGamePaused(this, false);
 		}
 	}

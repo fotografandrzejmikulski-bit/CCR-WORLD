@@ -154,8 +154,13 @@ void UCCRCinematicSubsystem::SkipCinematic()
 	if (SequencePlayer)
 	{
 		SequencePlayer->Stop();
+		// StopAndAdvance is called via OnSequenceFinished delegate after Stop()
 	}
-	// StopAndAdvance is called via OnSequenceFinished delegate after Stop()
+	else
+	{
+		// SequencePlayer became null while bPlaying was still set — clean up directly.
+		StopAndAdvance();
+	}
 }
 
 // ---------------------------------------------------------------------------
