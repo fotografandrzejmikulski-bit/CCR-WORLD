@@ -78,6 +78,21 @@ bool UCCRSettingsSubsystem::GetSubtitlesAlwaysOn() const
 	return ActiveSettings ? ActiveSettings->bSubtitlesAlwaysOn : false;
 }
 
+float UCCRSettingsSubsystem::GetFontScale() const
+{
+	return ActiveSettings ? ActiveSettings->FontScale : 1.f;
+}
+
+bool UCCRSettingsSubsystem::GetReducedMotion() const
+{
+	return ActiveSettings ? ActiveSettings->bReducedMotion : false;
+}
+
+bool UCCRSettingsSubsystem::GetHighContrast() const
+{
+	return ActiveSettings ? ActiveSettings->bHighContrast : false;
+}
+
 // ---------------------------------------------------------------------------
 // Setters
 // ---------------------------------------------------------------------------
@@ -122,5 +137,26 @@ void UCCRSettingsSubsystem::SetSubtitlesAlwaysOn(bool bEnabled)
 {
 	if (!ActiveSettings) return;
 	ActiveSettings->bSubtitlesAlwaysOn = bEnabled;
+	SaveNow();
+}
+
+void UCCRSettingsSubsystem::SetFontScale(float Scale)
+{
+	if (!ActiveSettings) return;
+	ActiveSettings->FontScale = FMath::Clamp(Scale, 0.5f, 2.f);
+	SaveNow();
+}
+
+void UCCRSettingsSubsystem::SetReducedMotion(bool bEnabled)
+{
+	if (!ActiveSettings) return;
+	ActiveSettings->bReducedMotion = bEnabled;
+	SaveNow();
+}
+
+void UCCRSettingsSubsystem::SetHighContrast(bool bEnabled)
+{
+	if (!ActiveSettings) return;
+	ActiveSettings->bHighContrast = bEnabled;
 	SaveNow();
 }

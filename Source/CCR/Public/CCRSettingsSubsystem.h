@@ -53,6 +53,20 @@ public:
 	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
 	bool GetSubtitlesAlwaysOn() const;
 
+	// ---- Accessibility ----
+
+	/** Returns the global UI font-scale multiplier (default 1.0). */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	float GetFontScale() const;
+
+	/** Returns true when reduced-motion mode is active. */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	bool GetReducedMotion() const;
+
+	/** Returns true when high-contrast mode is active. */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	bool GetHighContrast() const;
+
 	// ---- Setters (each triggers an immediate save) ----
 
 	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
@@ -72,6 +86,18 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
 	void SetSubtitlesAlwaysOn(bool bEnabled);
+
+	/** Set font scale [0.5..2.0] and persist. Fires OnSettingsChanged. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetFontScale(float Scale);
+
+	/** Enable / disable reduced-motion mode and persist. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetReducedMotion(bool bEnabled);
+
+	/** Enable / disable high-contrast mode and persist. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetHighContrast(bool bEnabled);
 
 private:
 	UPROPERTY()

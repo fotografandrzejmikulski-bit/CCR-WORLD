@@ -29,6 +29,21 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "CCR|Story")
 	FName EntryNodeId;
 
+	/**
+	 * Optional chapter title displayed by UCCRChapterTransitionWidget when this
+	 * chunk is first entered.  Leave empty to skip the transition card.
+	 * Example: "Chapter 1 – The Awakening"
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "CCR|Story")
+	FText ChapterTitle;
+
+	/**
+	 * Optional subtitle shown below ChapterTitle in the transition card.
+	 * Typically the in-world location or a thematic tagline.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "CCR|Story")
+	FText ChapterSubtitle;
+
 	/** All narrative nodes contained in this chunk */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "CCR|Story")
 	TArray<FCCRNode> Nodes;

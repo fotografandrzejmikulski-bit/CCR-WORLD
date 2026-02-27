@@ -9,6 +9,8 @@
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCCRNodeChanged,  FName, NodeId);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCCRChoicePresented, const TArray<FCCRChoiceOption>&, Choices);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCCRCheckpointRequested, FName, NodeId);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnCCRChunkStarted, UCCRStoryChunk*, Chunk);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCCRNarrativeEnded);
 
 /**
  * UCCRNarrativeRuntimeSubsystem
@@ -33,6 +35,21 @@ public:
 
 	UPROPERTY(BlueprintAssignable, Category = "CCR|Narrative")
 	FOnCCRCheckpointRequested OnCheckpointRequested;
+
+	/**
+	 * Fired whenever a new story chunk is started via StartChunk().
+	 * ACCRGameHUD subscribes to show the chapter-transition card when the
+	 * incoming chunk has a non-empty ChapterTitle.
+	 */
+	UPROPERTY(BlueprintAssignable, Category = "CCR|Narrative")
+	FOnCCRChunkStarted OnChunkStarted;
+
+	/**
+	 * Fired when an ECCRNodeType::End node is executed.
+	 * UCCRCreditsWidget subscribes to start the credits sequence.
+	 */
+	UPROPERTY(BlueprintAssignable, Category = "CCR|Narrative")
+	FOnCCRNarrativeEnded OnNarrativeEnded;
 
 	// ---- Public API ----
 

@@ -2,6 +2,7 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRWorldStateSubsystemV2.h"
 #include "CCRWorldStateSaveGameV2.h"
+#include "CCRNotificationSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 
 void UCCRCheckpointSubsystem::Initialize(FSubsystemCollectionBase& Collection)
@@ -103,4 +104,13 @@ void UCCRCheckpointSubsystem::CommitCheckpoint()
 	}
 
 	UGameplayStatics::SaveGameToSlot(Save, Save->SaveSlotName, Save->UserIndex);
+
+	// Notify the player that the checkpoint was committed successfully.
+	if (UCCRNotificationSubsystem* NS = GetGameInstance()->GetSubsystem<UCCRNotificationSubsystem>())
+	{
+		NS->ShowNotification(
+			NSLOCTEXT("CCR", "CheckpointSaved", "Checkpoint saved"),
+			3.f,
+			ECCRNotificationType::Checkpoint);
+	}
 }

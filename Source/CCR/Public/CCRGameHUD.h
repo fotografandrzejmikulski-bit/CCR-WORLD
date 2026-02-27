@@ -10,6 +10,10 @@ class UCCRPauseWidget;
 class UCCRLoadingWidget;
 class UCCRMainMenuWidget;
 class UCCRSettingsWidget;
+class UCCRNotificationWidget;
+class UCCRChapterTransitionWidget;
+class UCCRCreditsWidget;
+class UCCRStoryChunk;
 
 /**
  * ACCRGameHUD
@@ -58,6 +62,18 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
 	TSoftClassPtr<UCCRSettingsWidget> SettingsWidgetClass;
 
+	/** Blueprint subclass of UCCRNotificationWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRNotificationWidget> NotificationWidgetClass;
+
+	/** Blueprint subclass of UCCRChapterTransitionWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRChapterTransitionWidget> ChapterTransitionWidgetClass;
+
+	/** Blueprint subclass of UCCRCreditsWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRCreditsWidget> CreditsWidgetClass;
+
 	// ---- Live widget instances ----
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
@@ -77,6 +93,15 @@ public:
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
 	UCCRSettingsWidget* SettingsWidget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRNotificationWidget* NotificationWidget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRChapterTransitionWidget* ChapterTransitionWidget = nullptr;
+
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRCreditsWidget* CreditsWidget = nullptr;
 
 	/** Show or hide the dialogue panel */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
@@ -102,6 +127,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetSettingsVisible(bool bVisible);
 
+	/** Show or hide the credits overlay */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void SetCreditsVisible(bool bVisible);
+
 	/** Toggle the pause menu (creates it on first use) */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void TogglePause();
@@ -114,4 +143,8 @@ private:
 	/** Reacts to ACCRGameState::OnGamePhaseChanged to drive widget visibility. */
 	UFUNCTION()
 	void HandleGamePhaseChanged(ECCRGamePhase NewPhase);
+
+	/** Reacts to UCCRNarrativeRuntimeSubsystem::OnChunkStarted to show chapter title cards. */
+	UFUNCTION()
+	void HandleChunkStarted(UCCRStoryChunk* Chunk);
 };

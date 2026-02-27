@@ -147,6 +147,9 @@ void UCCRNarrativeRuntimeSubsystem::StartChunk(UCCRStoryChunk* Chunk, FName Over
 	// Entering a chunk means we are in interactive narrative play.
 	CCR_SetGamePhase(GetGameInstance(), ECCRGamePhase::Narrative);
 
+	// Notify listeners (e.g. ACCRGameHUD → chapter-transition overlay).
+	OnChunkStarted.Broadcast(Chunk);
+
 	const FName EntryNode = OverrideEntryNodeId.IsNone() ? Chunk->EntryNodeId : OverrideEntryNodeId;
 	ExecuteNode(EntryNode);
 }
@@ -337,6 +340,7 @@ void UCCRNarrativeRuntimeSubsystem::ExecuteNode(FName NodeId)
 	}
 
 	case ECCRNodeType::End:
+		OnNarrativeEnded.Broadcast();
 		break;
 
 	default:

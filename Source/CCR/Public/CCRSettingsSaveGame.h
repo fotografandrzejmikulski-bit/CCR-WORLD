@@ -49,4 +49,20 @@ public:
 	/** Show subtitles even when VO is enabled */
 	UPROPERTY(BlueprintReadWrite, Category = "CCR|Settings")
 	bool bSubtitlesAlwaysOn = false;
+
+	/**
+	 * Global UI font-scale multiplier.
+	 * Clamped to [0.5, 2.0] by UCCRSettingsSubsystem::SetFontScale.
+	 * Default 1.0 = native font size.
+	 */
+	UPROPERTY(BlueprintReadWrite, Category = "CCR|Settings")
+	float FontScale = 1.f;
+
+	/** Suppress non-essential parallax, screen-shake, and flicker animations. */
+	UPROPERTY(BlueprintReadWrite, Category = "CCR|Settings")
+	bool bReducedMotion = false;
+
+	/** Use high-contrast colour overrides in dialogue, subtitles, and HUD. */
+	UPROPERTY(BlueprintReadWrite, Category = "CCR|Settings")
+	bool bHighContrast = false;
 };

@@ -6,7 +6,12 @@
 #include "CCRLoadingWidget.h"
 #include "CCRMainMenuWidget.h"
 #include "CCRSettingsWidget.h"
+#include "CCRNotificationWidget.h"
+#include "CCRChapterTransitionWidget.h"
+#include "CCRCreditsWidget.h"
 #include "CCRGameState.h"
+#include "CCRNarrativeRuntimeSubsystem.h"
+#include "CCRStoryChunk.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -99,6 +104,68 @@ void ACCRGameHUD::BeginPlay()
 		}
 	}
 
+	// ---- Notification widget ----
+	TSubclassOf<UCCRNotificationWidget> NotificationClass = NotificationWidgetClass.IsValid()
+		? NotificationWidgetClass.Get()
+		: nullptr;
+
+	if (!NotificationClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: NotificationWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRNotificationWidget in the HUD defaults."));
+	}
+	else
+	{
+		NotificationWidget = CreateWidget<UCCRNotificationWidget>(PC, NotificationClass);
+		if (NotificationWidget)
+		{
+			NotificationWidget->AddToViewport(CCRZOrder::Notification);
+		}
+	}
+
+	// ---- Chapter transition widget ----
+	TSubclassOf<UCCRChapterTransitionWidget> ChapterClass = ChapterTransitionWidgetClass.IsValid()
+		? ChapterTransitionWidgetClass.Get()
+		: nullptr;
+
+	if (!ChapterClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: ChapterTransitionWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRChapterTransitionWidget in the HUD defaults."));
+	}
+	else
+	{
+		ChapterTransitionWidget = CreateWidget<UCCRChapterTransitionWidget>(PC, ChapterClass);
+		if (ChapterTransitionWidget)
+		{
+			ChapterTransitionWidget->AddToViewport(CCRZOrder::ChapterTransition);
+			ChapterTransitionWidget->SetVisibility(ESlateVisibility::Collapsed);
+		}
+	}
+
+	// ---- Credits widget ----
+	TSubclassOf<UCCRCreditsWidget> CreditsClass = CreditsWidgetClass.IsValid()
+		? CreditsWidgetClass.Get()
+		: nullptr;
+
+	if (!CreditsClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: CreditsWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRCreditsWidget in the HUD defaults."));
+	}
+	else
+	{
+		CreditsWidget = CreateWidget<UCCRCreditsWidget>(PC, CreditsClass);
+		if (CreditsWidget)
+		{
+			CreditsWidget->AddToViewport(CCRZOrder::Credits);
+			CreditsWidget->SetVisibility(ESlateVisibility::Collapsed);
+		}
+	}
+
 	// ---- Subscribe to game phase changes ----
 	// Also apply the current phase immediately so widgets start in the correct
 	// visibility state (e.g. dialogue hidden while phase is Loading or Cinematic).
@@ -110,6 +177,15 @@ void ACCRGameHUD::BeginPlay()
 			HandleGamePhaseChanged(GS->GetGamePhase());
 		}
 	}
+
+	// ---- Subscribe to narrative chunk events ----
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UCCRNarrativeRuntimeSubsystem* NRS = GI->GetSubsystem<UCCRNarrativeRuntimeSubsystem>())
+		{
+			NRS->OnChunkStarted.AddDynamic(this, &ACCRGameHUD::HandleChunkStarted);
+		}
+	}
 }
 
 void ACCRGameHUD::EndPlay(const EEndPlayReason::Type EndPlayReason)
@@ -119,6 +195,13 @@ void ACCRGameHUD::EndPlay(const EEndPlayReason::Type EndPlayReason)
 		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
 		{
 			GS->OnGamePhaseChanged.RemoveDynamic(this, &ACCRGameHUD::HandleGamePhaseChanged);
+		}
+	}
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UCCRNarrativeRuntimeSubsystem* NRS = GI->GetSubsystem<UCCRNarrativeRuntimeSubsystem>())
+		{
+			NRS->OnChunkStarted.RemoveDynamic(this, &ACCRGameHUD::HandleChunkStarted);
 		}
 	}
 	Super::EndPlay(EndPlayReason);
@@ -165,6 +248,15 @@ void ACCRGameHUD::SetSettingsVisible(bool bVisible)
 	if (SettingsWidget)
 	{
 		SettingsWidget->SetVisibility(
+			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	}
+}
+
+void ACCRGameHUD::SetCreditsVisible(bool bVisible)
+{
+	if (CreditsWidget)
+	{
+		CreditsWidget->SetVisibility(
 			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	}
 }
@@ -272,5 +364,24 @@ void ACCRGameHUD::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
 	if (NewPhase != ECCRGamePhase::QTE)
 	{
 		SetQTEVisible(false);
+	}
+
+	// Credits: visible during any end-game state. Visibility is driven by
+	// UCCRCreditsWidget::HandleNarrativeEnded which subscribes directly to
+	// UCCRNarrativeRuntimeSubsystem::OnNarrativeEnded; no phase-based control needed.
+}
+
+// ---------------------------------------------------------------------------
+// Chapter transition handler
+// ---------------------------------------------------------------------------
+
+void ACCRGameHUD::HandleChunkStarted(UCCRStoryChunk* Chunk)
+{
+	if (!Chunk) return;
+	if (Chunk->ChapterTitle.IsEmpty()) return;
+
+	if (ChapterTransitionWidget)
+	{
+		ChapterTransitionWidget->ShowChapterTitle(Chunk->ChapterTitle, Chunk->ChapterSubtitle);
 	}
 }

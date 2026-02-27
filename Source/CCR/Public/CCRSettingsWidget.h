@@ -109,6 +109,32 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
 	void ClearPerformanceTierOverride();
 
+	// ---- Accessibility ----
+
+	/** Returns the global UI font-scale multiplier (default 1.0). */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	float GetFontScale() const;
+
+	/** Set font scale [0.5..2.0] and persist. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetFontScale(float Scale);
+
+	/** Returns true when reduced-motion mode is active. */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	bool GetReducedMotion() const;
+
+	/** Enable / disable reduced-motion mode and persist. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetReducedMotion(bool bEnabled);
+
+	/** Returns true when high-contrast mode is active. */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	bool GetHighContrast() const;
+
+	/** Enable / disable high-contrast mode and persist. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetHighContrast(bool bEnabled);
+
 	/** Fired when Close() is called; UCCRPauseWidget subscribes to this. */
 	UPROPERTY(BlueprintAssignable, Category = "CCR|Settings")
 	FOnCCRSettingsWidgetClosed OnClosed;

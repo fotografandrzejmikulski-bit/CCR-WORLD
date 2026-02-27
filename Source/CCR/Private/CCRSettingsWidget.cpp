@@ -105,3 +105,40 @@ void UCCRSettingsWidget::ClearPerformanceTierOverride()
 {
 	if (UCCRSettingsSubsystem* S = CCR_GetSettings(this)) S->ClearPerformanceTierOverride();
 }
+
+// ---------------------------------------------------------------------------
+// Accessibility
+// ---------------------------------------------------------------------------
+
+float UCCRSettingsWidget::GetFontScale() const
+{
+	if (const UCCRSettingsSubsystem* S = CCR_GetSettings(this)) return S->GetFontScale();
+	return 1.f;
+}
+
+void UCCRSettingsWidget::SetFontScale(float Scale)
+{
+	if (UCCRSettingsSubsystem* S = CCR_GetSettings(this)) S->SetFontScale(Scale);
+}
+
+bool UCCRSettingsWidget::GetReducedMotion() const
+{
+	if (const UCCRSettingsSubsystem* S = CCR_GetSettings(this)) return S->GetReducedMotion();
+	return false;
+}
+
+void UCCRSettingsWidget::SetReducedMotion(bool bEnabled)
+{
+	if (UCCRSettingsSubsystem* S = CCR_GetSettings(this)) S->SetReducedMotion(bEnabled);
+}
+
+bool UCCRSettingsWidget::GetHighContrast() const
+{
+	if (const UCCRSettingsSubsystem* S = CCR_GetSettings(this)) return S->GetHighContrast();
+	return false;
+}
+
+void UCCRSettingsWidget::SetHighContrast(bool bEnabled)
+{
+	if (UCCRSettingsSubsystem* S = CCR_GetSettings(this)) S->SetHighContrast(bEnabled);
+}
