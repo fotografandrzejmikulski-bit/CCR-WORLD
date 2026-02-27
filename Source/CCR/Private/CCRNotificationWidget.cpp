@@ -42,5 +42,8 @@ void UCCRNotificationWidget::HandleNotificationRequested(
 
 void UCCRNotificationWidget::OnNotificationReceived_Implementation(const FText& Message, float DurationSec, ECCRNotificationType Type)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRNotificationWidget::OnNotificationReceived has no C++ or Blueprint implementation."))
+#endif
 }

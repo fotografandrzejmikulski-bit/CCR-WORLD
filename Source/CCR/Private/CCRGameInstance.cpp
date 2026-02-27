@@ -29,12 +29,16 @@ UCCRGameInstance* UCCRGameInstance::Get(const UObject* WorldContextObject)
 
 void UCCRGameInstance::OnCCRInit_Implementation()
 {
-// Default C++ implementation: no-op.
-// Override in a C++ subclass or Blueprint to register speakers, music cues,
-// VO cues, inventory item definitions, achievement definitions, etc.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRGameInstance::OnCCRInit has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRGameInstance::OnCCRShutdown_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRGameInstance::OnCCRShutdown has no C++ or Blueprint implementation."))
+#endif
 }

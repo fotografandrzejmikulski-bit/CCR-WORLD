@@ -149,10 +149,16 @@ void UCCRSettingsWidget::SetHighContrast(bool bEnabled)
 
 void UCCRSettingsWidget::OnSettingsOpened_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRSettingsWidget::OnSettingsOpened has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRSettingsWidget::OnSettingsClosed_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRSettingsWidget::OnSettingsClosed has no C++ or Blueprint implementation."))
+#endif
 }

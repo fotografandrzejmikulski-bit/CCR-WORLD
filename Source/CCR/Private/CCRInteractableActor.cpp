@@ -147,5 +147,8 @@ void ACCRInteractableActor::ApplySetOps()
 
 void ACCRInteractableActor::OnInteracted_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] ACCRInteractableActor::OnInteracted has no C++ or Blueprint implementation."))
+#endif
 }

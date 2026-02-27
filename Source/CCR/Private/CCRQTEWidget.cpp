@@ -53,24 +53,32 @@ void UCCRQTEWidget::HandleNodeChanged(FName NodeId)
 
 void UCCRQTEWidget::OnQTEPromptReady_Implementation(ECCRGestureType GestureType, ECCRSwipeDirection SwipeDir)
 {
-// Default C++ implementation: no-op.
-// Override to display gesture icon before the QTE timer starts.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRQTEWidget::OnQTEPromptReady has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRQTEWidget::UpdateProgress_Implementation(float Progress)
 {
-// Default C++ implementation: no-op.
-// Override to animate the progress arc/bar.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRQTEWidget::UpdateProgress has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRQTEWidget::OnQTEStarted_Implementation(float TimeWindowSec)
 {
-// Default C++ implementation: no-op.
-// Override to show the QTE overlay.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRQTEWidget::OnQTEStarted has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRQTEWidget::OnQTEEnded_Implementation(bool bSuccess)
 {
-// Default C++ implementation: no-op.
-// Override to show success/failure feedback.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRQTEWidget::OnQTEEnded has no C++ or Blueprint implementation."))
+#endif
 }

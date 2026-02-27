@@ -20,6 +20,12 @@ enum class ECCRPerformanceTier : uint8
  * Also applies Unreal scalability CVars to match the detected tier and
  * re-applies them whenever the player changes the performance override
  * in UCCRSettingsSubsystem.
+ *
+ * UE5 quality CVars applied per tier:
+ *   sg.AntiAliasingQuality, sg.FoliageQuality, sg.ReflectionQuality,
+ *   sg.GlobalIlluminationQuality, r.AntiAliasingMethod (TSR/TAA/FXAA),
+ *   r.Lumen.DiffuseIndirect.Allow, r.Lumen.Reflections.Allow,
+ *   r.Nanite.Allow, t.MaxFPS (frame rate ceiling per tier).
  */
 UCLASS()
 class CCR_API UCCRPerformanceGovernorSubsystem : public UGameInstanceSubsystem
@@ -41,7 +47,16 @@ public:
 	int32 GetMaxPredictedChunks() const;
 
 	/**
+	 * Target FPS ceiling for the current tier.
+	 * High=60, Mid=60, Low=30.
+	 * Matches the t.MaxFPS value applied by ApplyQualitySettings().
+	 */
+	UFUNCTION(BlueprintPure, Category = "CCR|Performance")
+	int32 GetTargetFPS() const;
+
+	/**
 	 * Push scalability CVar values to the engine to match the current tier.
+	 * Covers all UE5 quality groups including Lumen, Nanite, TSR, and FPS cap.
 	 * Called automatically on Initialize and whenever settings change.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "CCR|Performance")

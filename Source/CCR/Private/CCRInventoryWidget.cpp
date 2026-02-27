@@ -141,15 +141,24 @@ void UCCRInventoryWidget::Close()
 
 void UCCRInventoryWidget::OnInventoryRefresh_Implementation(const TArray<FName>& ItemIds, const TArray<int32>& Counts)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRInventoryWidget::OnInventoryRefresh has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRInventoryWidget::OnItemSelected_Implementation(UCCRInventoryItemDefinition* ItemDef, int32 Count)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRInventoryWidget::OnItemSelected has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRInventoryWidget::OnItemUsed_Implementation(FName ItemId)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRInventoryWidget::OnItemUsed has no C++ or Blueprint implementation."))
+#endif
 }

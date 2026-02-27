@@ -86,10 +86,16 @@ void UCCRChapterSelectWidget::Close()
 
 void UCCRChapterSelectWidget::OnChapterListReady_Implementation(const TArray<FCCRChapterSelectEntry>& Entries)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRChapterSelectWidget::OnChapterListReady has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRChapterSelectWidget::OnChapterLocked_Implementation(FName ChunkId)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRChapterSelectWidget::OnChapterLocked has no C++ or Blueprint implementation."))
+#endif
 }

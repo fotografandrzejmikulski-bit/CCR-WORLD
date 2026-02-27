@@ -133,25 +133,40 @@ void UCCRMainMenuWidget::HandleChapterSelectClosed()
 
 void UCCRMainMenuWidget::OnMainMenuReady_Implementation(bool bHasSave)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRMainMenuWidget::OnMainMenuReady has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRMainMenuWidget::OnSettingsOpened_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRMainMenuWidget::OnSettingsOpened has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRMainMenuWidget::OnSettingsClosed_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRMainMenuWidget::OnSettingsClosed has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRMainMenuWidget::OnChapterSelectOpened_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRMainMenuWidget::OnChapterSelectOpened has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRMainMenuWidget::OnChapterSelectClosed_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRMainMenuWidget::OnChapterSelectClosed has no C++ or Blueprint implementation."))
+#endif
 }

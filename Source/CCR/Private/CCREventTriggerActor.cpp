@@ -185,10 +185,16 @@ void ACCREventTriggerActor::ResetTrigger()
 
 void ACCREventTriggerActor::OnTriggerFired_Implementation(AActor* TriggeringActor)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] ACCREventTriggerActor::OnTriggerFired has no C++ or Blueprint implementation."))
+#endif
 }
 
 void ACCREventTriggerActor::OnTriggerExited_Implementation(AActor* ExitingActor)
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] ACCREventTriggerActor::OnTriggerExited has no C++ or Blueprint implementation."))
+#endif
 }

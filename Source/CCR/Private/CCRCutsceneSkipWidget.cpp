@@ -81,10 +81,16 @@ void UCCRCutsceneSkipWidget::SkipCinematic()
 
 void UCCRCutsceneSkipWidget::OnCinematicStarted_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRCutsceneSkipWidget::OnCinematicStarted has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRCutsceneSkipWidget::OnCinematicEnded_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRCutsceneSkipWidget::OnCinematicEnded has no C++ or Blueprint implementation."))
+#endif
 }

@@ -126,18 +126,24 @@ bool UCCRDialogueWidget::ResolveSpeakerData(FName SpeakerTag, FCCRSpeakerData& O
 
 void UCCRDialogueWidget::OnDialogueNode_Implementation(const FText& Text, FName SpeakerTag, FName ExpressionTag)
 {
-// Default C++ implementation: no-op.
-// Override in Blueprint or a C++ subclass to display Text in the dialogue UI.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRDialogueWidget::OnDialogueNode has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRDialogueWidget::OnChoicePresented_Implementation(const TArray<FCCRChoiceOption>& Choices)
 {
-// Default C++ implementation: no-op.
-// Override in Blueprint or a C++ subclass to display choice buttons.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRDialogueWidget::OnChoicePresented has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRDialogueWidget::OnNarrativeEnd_Implementation()
 {
-// Default C++ implementation: no-op.
-// Override in Blueprint or a C++ subclass to hide the dialogue UI.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRDialogueWidget::OnNarrativeEnd has no C++ or Blueprint implementation."))
+#endif
 }

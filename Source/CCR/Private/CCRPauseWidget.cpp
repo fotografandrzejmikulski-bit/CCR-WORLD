@@ -141,30 +141,48 @@ void UCCRPauseWidget::HandleChapterSelectClosed()
 
 void UCCRPauseWidget::OnPaused_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRPauseWidget::OnPaused has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRPauseWidget::OnResumed_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRPauseWidget::OnResumed has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRPauseWidget::OnSettingsOpened_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRPauseWidget::OnSettingsOpened has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRPauseWidget::OnSettingsClosed_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRPauseWidget::OnSettingsClosed has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRPauseWidget::OnChapterSelectOpened_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRPauseWidget::OnChapterSelectOpened has no C++ or Blueprint implementation."))
+#endif
 }
 
 void UCCRPauseWidget::OnChapterSelectClosed_Implementation()
 {
-// Default C++ implementation: no-op.
+	// Default C++ implementation: no-op.
+#if !UE_BUILD_SHIPPING
+	UE_LOG(LogTemp, Verbose, TEXT("[CCR] UCCRPauseWidget::OnChapterSelectClosed has no C++ or Blueprint implementation."))
+#endif
 }
