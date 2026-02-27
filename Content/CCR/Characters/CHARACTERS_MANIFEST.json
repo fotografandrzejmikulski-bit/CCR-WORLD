@@ -1,5 +1,5 @@
 {
-  "_doc": "CCR WORLD – Character manifest. Create one DA_Char_<CharacterId> UCCRCharacterDataAsset in Content/CCR/Characters/ for each entry.",
+  "_doc": "CCR WORLD – Character manifest. Create one DA_Char_<CharacterId> UCCRCharacterDefinition in Content/CCR/Characters/ for each entry.",
 
   "characters": [
     {
@@ -7,6 +7,7 @@
       "CharacterId": "ALEKSY",
       "DisplayName": "Aleksy",
       "ShortName": "Aleksy",
+      "SpeakerTag": "ALEKSY",
       "VOKeyPrefix": "ALEKSY",
       "MetFlag": "",
       "bIsKeyCharacter": true,
@@ -26,6 +27,7 @@
       "CharacterId": "MARTA",
       "DisplayName": "Marta",
       "ShortName": "Marta",
+      "SpeakerTag": "MARTA",
       "VOKeyPrefix": "MARTA",
       "MetFlag": "MET_MARTA",
       "bIsKeyCharacter": true,
@@ -44,6 +46,7 @@
       "CharacterId": "KOZLOWSKI",
       "DisplayName": "Inżynier Kozłowski",
       "ShortName": "Kozłowski",
+      "SpeakerTag": "KOZLOWSKI",
       "VOKeyPrefix": "KOZLOWSKI",
       "MetFlag": "MET_KOZLOWSKI",
       "bIsKeyCharacter": true,
@@ -57,10 +60,31 @@
       "_notes": "Retired CCR engineer, now living in hiding at the old port. Knows the city's secrets."
     },
     {
+      "assetName": "DA_Char_ZOFIA",
+      "CharacterId": "ZOFIA",
+      "DisplayName": "Zofia",
+      "ShortName": "Zofia",
+      "SpeakerTag": "ZOFIA",
+      "VOKeyPrefix": "ZOFIA",
+      "MetFlag": "MET_ZOFIA",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": ["CIPHER_KEY"],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Angry" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Fear" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Surprised" }
+      ],
+      "_notes": "Young hacker operating from a hidden relay station in the Western Tower. Possesses the CCR cipher key needed to activate the beacon."
+    },
+    {
       "assetName": "DA_Char_NARRATOR",
       "CharacterId": "NARRATOR",
       "DisplayName": "Narrator",
       "ShortName": "",
+      "SpeakerTag": "NARRATOR",
       "VOKeyPrefix": "NARRATOR",
       "MetFlag": "",
       "bIsKeyCharacter": false,

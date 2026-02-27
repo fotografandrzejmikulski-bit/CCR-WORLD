@@ -151,7 +151,233 @@
         },
         {
           "NodeId": "CH2_01_END",
-          "NodeType": "End"
+          "NodeType": "Jump",
+          "TargetChunkId": "CH2_02",
+          "EntryNodeInTarget": "CH2_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH2_02",
+      "path": "Content/CCR/Story/Chapter2/",
+      "ChunkId": "CH2_02",
+      "AxisId": "CHAPTER2",
+      "EntryNodeId": "CH2_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH2_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Wieża Zachodnia. Wejście z tyłu — niezabezpieczone. Aleksy ryzykuje.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_02_020",
+          "NodeType": "QTE",
+          "GestureType": "Tap",
+          "TimeWindowSec": 2.5,
+          "QTESuccessNodeId": "CH2_02_030",
+          "QTEFailNodeId": "CH2_02_025"
+        },
+        {
+          "NodeId": "CH2_02_025",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Strażnik mnie niemal zobaczył. Muszę być ostrożniejszy.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH2_02_020",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_030",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Jestem w środku. Tu jest coś… jakieś urządzenie i ktoś przy nim.",
+          "ExpressionTag": "Surprised",
+          "NextAfterDialogue": "CH2_02_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_040",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZOFIA",
+          "DialogueText": "Stój! Kto ty jesteś? Jeśli to CCR wysłało cię… nie zbliżaj się.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH2_02_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_050",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Jestem Aleksy. Kozłowski mnie przysłał.",
+              "TargetNodeId": "CH2_02_060",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Potrzebuję klucza szyfrującego.",
+              "TargetNodeId": "CH2_02_070",
+              "ShowConditions": []
+            },
+            {
+              "Label": "[Nie mów nic — pokaż odznakę ojca]",
+              "TargetNodeId": "CH2_02_080",
+              "ShowConditions": [
+                { "Key": "CH1_BADGE_FOUND", "ValueType": "Flag", "CompareOp": "Equals", "CompareValue": 1 }
+              ]
+            }
+          ]
+        },
+        {
+          "NodeId": "CH2_02_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZOFIA",
+          "DialogueText": "Kozłowski? Żyje jeszcze? Dobrze wiedzieć. Może możesz mi zaufać.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZOFIA",
+          "DialogueText": "Prosto do rzeczy. Lubię. Ale najpierw — po co ci ten klucz?",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "CH2_02_075",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_075",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Chcę nadać sygnał przez sieć CCR. Powiedzieć ludziom prawdę.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZOFIA",
+          "DialogueText": "Ta odznaka... numer 0001. Twój ojciec był Adamem Kowalskim. Wiedziałam go. Przepraszam za stratę.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH2_02_085",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_085",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH2_ZOFIA_TRUSTS_ALEKSY", "ValueType": "Flag", "Mode": "Set", "Value": 1 },
+            { "Key": "CH2_FATHER_IDENTITY_KNOWN", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH2_02_090"
+        },
+        {
+          "NodeId": "CH2_02_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "MET_ZOFIA", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH2_02_100"
+        },
+        {
+          "NodeId": "CH2_02_100",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZOFIA",
+          "DialogueText": "Mam klucz. Weź go. Ale musisz mi obiecać — gdy sygnał wyjdzie, wspomnij też o tych, co zginęli.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH2_02_110",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_02_110",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Obiecuję.",
+              "TargetNodeId": "CH2_02_120",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Nie mogę nic obiecywać.",
+              "TargetNodeId": "CH2_02_125",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH2_02_120",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH2_PROMISED_ZOFIA", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH2_02_130"
+        },
+        {
+          "NodeId": "CH2_02_125",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZOFIA",
+          "DialogueText": "Rozumiem. Idź. I tak mi dajesz szansę, której nie było.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH2_02_130",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_130",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "INV_CIPHER_KEY", "ValueType": "Int", "Mode": "Add", "Value": 1 },
+            { "Key": "CH2_CIPHER_KEY_OBTAINED", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH2_02_140"
+        },
+        {
+          "NodeId": "CH2_02_140",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Mam klucz. Teraz z powrotem do Kozłowskiego — czas nadać sygnał.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH2_02_150",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_02_150",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH2_02_160",
+          "QTEFailNodeId": "CH2_02_155"
+        },
+        {
+          "NodeId": "CH2_02_155",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Enforcerzy! Muszę się cofnąć.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH2_02_150",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_02_160",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Aleksy wymknął się z Wieży. Klucz jest bezpieczny. Finał się zbliża.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_02_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH3_01",
+          "EntryNodeInTarget": "CH3_01_010"
         }
       ]
     }

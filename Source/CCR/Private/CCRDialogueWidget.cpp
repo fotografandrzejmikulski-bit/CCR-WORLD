@@ -57,7 +57,7 @@ void UCCRDialogueWidget::HandleNodeChanged(FName NodeId)
 	{
 		if (Node.NodeType == ECCRNodeType::Dialogue)
 		{
-			OnDialogueNode(Node.DialogueText, Node.SpeakerTag);
+			OnDialogueNode(Node.DialogueText, Node.SpeakerTag, Node.ExpressionTag);
 		}
 		else if (Node.NodeType == ECCRNodeType::End)
 		{

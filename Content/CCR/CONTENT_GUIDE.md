@@ -13,8 +13,9 @@ Content/CCR/
 ├── Story/                         ← UCCRStoryChunk data assets
 │   ├── Prologue/
 │   ├── Chapter1/
-│   └── Chapter2/
-├── Characters/                    ← UCCRCharacterDataAsset data assets
+│   ├── Chapter2/
+│   └── Chapter3/
+├── Characters/                    ← UCCRCharacterDefinition data assets
 ├── Items/                         ← UCCRInventoryItemDefinition data assets
 ├── Blueprints/
 │   ├── Widgets/                   ← UMG Widget Blueprints (WBP_*)
@@ -25,6 +26,7 @@ Content/CCR/
 │   │   ├── ALEKSY/                ← Voice-over lines for Aleksy
 │   │   ├── MARTA/                 ← Voice-over lines for Marta
 │   │   ├── KOZLOWSKI/             ← Voice-over lines for Kozłowski
+│   │   ├── ZOFIA/                 ← Voice-over lines for Zofia
 │   │   └── NARRATOR/              ← Narrator voice-over
 │   ├── SFX/                       ← Sound effects
 │   └── Ambient/                   ← Ambient sound loops
@@ -32,11 +34,14 @@ Content/CCR/
 │   ├── Portraits/
 │   │   ├── ALEKSY/                ← T_ALEKSY_Neutral.png, T_ALEKSY_Sad.png, …
 │   │   ├── MARTA/
+│   │   ├── KOZLOWSKI/
+│   │   ├── ZOFIA/                 ← T_ZOFIA_Neutral.png, T_ZOFIA_Fear.png, …
 │   │   └── NARRATOR/
 │   ├── UI/                        ← UI icons, backgrounds, buttons
 │   └── Items/                     ← Item icon textures (T_Item_<ItemId>.png)
 └── Cinematics/
-    └── Prologue/                  ← Level Sequences for prologue cutscenes
+    ├── Prologue/                  ← Level Sequences for prologue cutscenes
+    └── Chapter3/                  ← Level Sequences for finale cutscenes
 ```
 
 ---
@@ -48,7 +53,8 @@ Content/CCR/
 | `MainMenu` | `Maps/MainMenu.umap` | Main menu level (empty geometry, just the MainMenu widget) |
 | `Prologue` | `Maps/Prologue.umap` | Prologue chapter environment |
 | `Chapter1` | `Maps/Chapter1.umap` | Chapter 1 playable level |
-| `Chapter2` | `Maps/Chapter2.umap` | Chapter 2 playable level |
+| `Chapter2` | `Maps/Chapter2.umap` | Chapter 2 playable level — Old Port + Western Tower |
+| `Chapter3` | `Maps/Chapter3.umap` | Chapter 3 finale level — Old Port broadcast station |
 | `Loading` | `Maps/Loading.umap` | Empty transition level shown during async loads |
 
 **Setup for each level map:**
@@ -74,6 +80,23 @@ Create one `UCCRStoryChunk` data asset per narrative chunk.
 See `Story/Prologue/PROLOGUE_STORY.json` for a complete story manifest.
 See `Story/Chapter1/CHAPTER1_STORY.json` for Chapter 1 manifest.
 See `Story/Chapter2/CHAPTER2_STORY.json` for Chapter 2 manifest.
+See `Story/Chapter3/CHAPTER3_STORY.json` for Chapter 3 (Finale) manifest.
+
+### Complete story flow
+
+```
+PROLOGUE_01 → PROLOGUE_02 → CH1_01 → CH1_02 → CH2_01 → CH2_02 → CH3_01 → End
+```
+
+| Chunk | AxisId | Description |
+|---|---|---|
+| `PROLOGUE_01` | `PROLOGUE` | Aleksy wakes up, first choice, escapes the room, meets Marta |
+| `PROLOGUE_02` | `PROLOGUE` | Marta reveals what was taken; outro cinematic |
+| `CH1_01` | `CHAPTER1` | East Gate; find the CCR Beacon (+ optional father's badge) |
+| `CH1_02` | `CHAPTER1` | Marta: beacon is encrypted; Kozłowski introduced |
+| `CH2_01` | `CHAPTER2` | Old Port; meet Kozłowski; learn about Zofia and the cipher key |
+| `CH2_02` | `CHAPTER2` | Western Tower; meet Zofia; obtain cipher key; escape Enforcers |
+| `CH3_01` | `CHAPTER3` | Return to Kozłowski; broadcast the signal; finale + credits |
 
 ### Node ID naming convention
 
@@ -85,19 +108,30 @@ e.g.:  PRO_01_010   (Prologue, chunk 01, node 010)
 
 ---
 
-## Character Assets (UCCRCharacterDataAsset)
+## Character Assets (UCCRCharacterDefinition)
 
-Create one `UCCRCharacterDataAsset` per named character.
+Create one `UCCRCharacterDefinition` per named character.
 
 **To create in UE5 Editor:**
 1. Right-click in `Content/CCR/Characters/`.
-2. **Miscellaneous → Data Asset → CCRCharacterDataAsset**.
+2. **Miscellaneous → Data Asset → CCRCharacterDefinition**.
 3. Name it `DA_Char_<CharacterId>` (e.g. `DA_Char_ALEKSY`).
 4. Set `CharacterId` to match the filename suffix (e.g. `ALEKSY`).
-5. Fill `DisplayName`, `ShortName`, `VOKeyPrefix`, `MetFlag`.
-6. Add portrait entries to `Portraits[]` (one per expression state).
+5. Fill `DisplayName`, `ShortName`, `VOKeyPrefix`, `SpeakerTag`, `MetFlag`.
+6. Toggle `bIsKeyCharacter` for story-critical characters.
+7. Add portrait entries to `Portraits[]` — one `FCCRPortraitEntry` per expression state.
 
 See `Characters/CHARACTERS_MANIFEST.json` for all character definitions.
+
+**Characters:**
+
+| CharacterId | Display Name | Key? | MetFlag |
+|---|---|---|---|
+| `ALEKSY` | Aleksy | Yes | — |
+| `MARTA` | Marta | Yes | `MET_MARTA` |
+| `KOZLOWSKI` | Inżynier Kozłowski | Yes | `MET_KOZLOWSKI` |
+| `ZOFIA` | Zofia | Yes | `MET_ZOFIA` |
+| `NARRATOR` | Narrator | No | — |
 
 ### Portrait naming convention
 
@@ -106,9 +140,16 @@ T_<CharacterId>_<StateName>
 e.g.: T_ALEKSY_Neutral.png
       T_ALEKSY_Happy.png
       T_MARTA_Sad.png
+      T_ZOFIA_Fear.png
 ```
 
 Import portrait textures to `Content/CCR/Textures/Portraits/<CharacterId>/`.
+
+The expression state name in `FCCRPortraitEntry.StateName` must match
+`FCCRNode.ExpressionTag` on dialogue nodes for that character.
+`UCCRCharacterDefinition::GetPortraitForExpression(ExpressionTag)` resolves
+the correct portrait at runtime, falling back to "Neutral" when the tag is
+not found.
 
 ---
 
@@ -192,6 +233,7 @@ Register cues at startup via `UCCRAudioSubsystem::RegisterMusicCue(Key, Cue)`.
 | `PROLOGUE` | `MUS_Prologue.wav` | Prologue background music |
 | `CHAPTER1` | `MUS_Chapter1.wav` | Chapter 1 theme |
 | `CHAPTER2` | `MUS_Chapter2.wav` | Chapter 2 theme |
+| `CHAPTER3` | `MUS_Chapter3.wav` | Chapter 3 finale theme |
 | `TENSION` | `MUS_Tension.wav` | Tension / QTE music |
 
 ### Voice-over cues
@@ -228,6 +270,8 @@ Assign them to `FCCRNode.CinematicSequence` (soft object ptr) on Cinematic nodes
 |---|---|---|---|
 | `LS_Prologue_Intro` | `PROLOGUE_01` | `PRO_01_CIN_001` | Game intro cutscene |
 | `LS_Prologue_Outro` | `PROLOGUE_02` | `PRO_02_CIN_001` | Prologue ending cutscene |
+| `LS_Chapter3_Broadcast` | `CH3_01` | `CH3_01_CIN_001` | The signal broadcasts across the city |
+| `LS_Chapter3_Epilogue` | `CH3_01` | `CH3_01_CIN_002` | Epilogue — aftermath montage (skippable) |
 
 ---
 

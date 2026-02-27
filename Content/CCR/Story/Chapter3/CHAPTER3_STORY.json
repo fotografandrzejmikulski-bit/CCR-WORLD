@@ -1,0 +1,212 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 3 — Finale. Create data asset DA_Story_CH3_01 in Content/CCR/Story/Chapter3/.",
+
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH3_01",
+      "path": "Content/CCR/Story/Chapter3/",
+      "ChunkId": "CH3_01",
+      "AxisId": "CHAPTER3",
+      "EntryNodeId": "CH3_01_010",
+      "ChapterTitle": "Finał",
+      "ChapterSubtitle": "Prawda musi wyjść na jaw",
+      "Nodes": [
+        {
+          "NodeId": "CH3_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Port. Noc. Kozłowski czeka przy nadajniku. Czas na ostatni krok.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH3_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH3_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Masz klucz! Niesamowite. Daj — zainstalujemy go i będziemy gotowi.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH3_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_030",
+          "NodeType": "Condition",
+          "Conditions": [
+            { "Key": "CH2_FATHER_IDENTITY_KNOWN", "ValueType": "Flag", "CompareOp": "Equals", "CompareValue": 1 }
+          ],
+          "ConditionTrueNodeId": "CH3_01_035",
+          "ConditionFalseNodeId": "CH3_01_040"
+        },
+        {
+          "NodeId": "CH3_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Kozłowski… Zofia mi powiedziała. Mój ojciec był Adam Kowalski — założyciel CCR.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH3_01_037",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_037",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Wiedziałem, że w końcu się dowiesz. Twój ojciec zbudował ten system, żeby chronić ludzi. Oni go zniszczyli za to.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH3_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH3_BEACON_READY", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH3_01_050"
+        },
+        {
+          "NodeId": "CH3_01_050",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Gotowe. Naciśnij przycisk, kiedy będziesz gotowy. Gdy sygnał wyjdzie — nie będzie odwrotu.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH3_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH3_01_060",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Nadaj sygnał. Miasto musi wiedzieć.",
+              "TargetNodeId": "CH3_01_070",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Poczekaj — to nas zniszczy.",
+              "TargetNodeId": "CH3_01_065",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH3_01_065",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Aleksy. Już tu są. Nie ma czasu na wahania — albo teraz, albo nigdy.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH3_01_070",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_070",
+          "NodeType": "QTE",
+          "GestureType": "LongPress",
+          "TimeWindowSec": 4.0,
+          "QTESuccessNodeId": "CH3_01_080",
+          "QTEFailNodeId": "CH3_01_075"
+        },
+        {
+          "NodeId": "CH3_01_075",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "System wymaga pełnej aktywacji! Trzymaj!",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "CH3_01_070",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH3_SIGNAL_BROADCAST", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH3_01_CIN_001"
+        },
+        {
+          "NodeId": "CH3_01_CIN_001",
+          "NodeType": "Cinematic",
+          "CinematicSequence": "/Game/CCR/Cinematics/Chapter3/LS_Chapter3_Broadcast",
+          "NextAfterCinematic": "CH3_01_090",
+          "bSkippable": false,
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Sygnał wyszedł. Przez każdy głośnik w mieście CCR — głos Aleksyego, słowa jego ojca, prawda ukryta przez lata.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH3_01_100",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH3_01_100",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Obywatele CCR — przez lata kłamano wam. Mój ojciec zbudował ten system dla was. Odebrali go nam obydwu. Ale prawda jest już wolna.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH3_01_110",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_110",
+          "NodeType": "Condition",
+          "Conditions": [
+            { "Key": "CH2_PROMISED_ZOFIA", "ValueType": "Flag", "CompareOp": "Equals", "CompareValue": 1 }
+          ],
+          "ConditionTrueNodeId": "CH3_01_115",
+          "ConditionFalseNodeId": "CH3_01_120"
+        },
+        {
+          "NodeId": "CH3_01_115",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Pamiętajcie tych, którzy zginęli walcząc z tym kłamstwem. Ich krew nawadnia naszą przyszłość.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH3_01_120",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_120",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Słyszę ich — całe miasto się budzi. Aleksy, udało nam się.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH3_01_130",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH3_01_130",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Enforcerzy cofają się. Nie mogą powstrzymać tłumu, który już wie. Wygraliście.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH3_01_CIN_002",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_CIN_002",
+          "NodeType": "Cinematic",
+          "CinematicSequence": "/Game/CCR/Cinematics/Chapter3/LS_Chapter3_Epilogue",
+          "NextAfterCinematic": "CH3_01_140",
+          "bSkippable": true,
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH3_01_140",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Miasto CCR nigdy nie było takie samo po tej nocy. Jedni mówili o wyzwoleniu, inni o chaosie. Aleksy wybrał prawdę — i musiał z tym żyć.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH3_01_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH3_01_END",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

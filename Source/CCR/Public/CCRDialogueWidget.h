@@ -29,7 +29,7 @@ public:
 
 	/** Called when a dialogue node is active. Override in Blueprint to display text. */
 	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|UI")
-	void OnDialogueNode(const FText& Text, FName SpeakerTag);
+	void OnDialogueNode(const FText& Text, FName SpeakerTag, FName ExpressionTag);
 
 	/** Called when a choice node is active. Override in Blueprint to show buttons. */
 	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|UI")

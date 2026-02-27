@@ -241,6 +241,33 @@ struct FCCRNode
 };
 
 // ---------------------------------------------------------------------------
+// Portrait entry (per-expression)
+// ---------------------------------------------------------------------------
+
+/**
+ * One portrait entry in UCCRCharacterDefinition::Portraits.
+ * StateName must match FCCRNode::ExpressionTag used on dialogue nodes
+ * for this character.  Common values: "Neutral", "Happy", "Sad",
+ * "Angry", "Surprised", "Fear".
+ */
+USTRUCT(BlueprintType)
+struct FCCRPortraitEntry
+{
+	GENERATED_BODY()
+
+	/** Expression state identifier (e.g. "Neutral", "Happy"). */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName StateName;
+
+	/**
+	 * Portrait texture for this expression.
+	 * Soft-referenced so only the active expression is loaded.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<UTexture2D> Portrait;
+};
+
+// ---------------------------------------------------------------------------
 // Speaker data
 // ---------------------------------------------------------------------------
 
@@ -260,6 +287,8 @@ struct FCCRSpeakerData
 	/**
 	 * Optional portrait texture displayed alongside the dialogue text.
 	 * Soft-referenced so only the active speaker's portrait is in memory.
+	 * When UCCRCharacterDefinition::Portraits[] is populated the dialogue
+	 * widget should use GetPortraitForExpression() instead.
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSoftObjectPtr<UTexture2D> Portrait;

@@ -133,15 +133,38 @@ Content/
 ├── CCR/
 │   ├── Maps/          # UE5 level files (.umap) — one per chapter/area
 │   ├── Blueprints/    # Blueprint widgets (WBP_*) and actor BPs (BP_*)
-│   ├── Story/         # UCCRStoryChunk data assets (.uasset)
+│   ├── Story/
+│   │   ├── Prologue/  # UCCRStoryChunk assets: PROLOGUE_01, PROLOGUE_02
+│   │   ├── Chapter1/  # UCCRStoryChunk assets: CH1_01, CH1_02
+│   │   ├── Chapter2/  # UCCRStoryChunk assets: CH2_01, CH2_02
+│   │   └── Chapter3/  # UCCRStoryChunk assets: CH3_01 (Finale → End → Credits)
 │   ├── Characters/    # UCCRCharacterDefinition data assets (.uasset)
 │   ├── Items/         # UCCRInventoryItemDefinition data assets (.uasset)
 │   ├── Textures/      # Portrait and UI textures
-│   └── Audio/         # VO cues, music, and SFX
+│   ├── Audio/         # VO cues, music, and SFX
+│   └── Cinematics/    # Level Sequences for cutscenes
 ```
 
 > **Note:** Binary `.umap` and `.uasset` files are excluded from Git by `.gitignore`.
 > Use Perforce, Git LFS, or an asset server to manage binary Content files.
+> JSON manifest files in each Story / Characters / Items subfolder describe the full
+> data to enter in the UE5 Editor when creating the `.uasset` instances.
+
+### Complete Story Flow
+
+```
+PROLOGUE_01 → PROLOGUE_02 → CH1_01 → CH1_02 → CH2_01 → CH2_02 → CH3_01 → End
+```
+
+| Chunk | Chapter | Description |
+|---|---|---|
+| `PROLOGUE_01` | Prolog | Aleksy wakes up, first dialogue choices, QTE escape, meets Marta |
+| `PROLOGUE_02` | Prolog | Marta reveals the truth; outro cinematic; leads to Chapter 1 |
+| `CH1_01` | Rozdział 1 | East Gate; CCR Beacon found; optional father's badge |
+| `CH1_02` | Rozdział 1 | Beacon is encrypted; Kozłowski introduced |
+| `CH2_01` | Rozdział 2 | Old Port; meet Kozłowski; Zofia and cipher key revealed |
+| `CH2_02` | Rozdział 2 | Western Tower; meet Zofia; obtain cipher key; QTE escape |
+| `CH3_01` | Finał | Return to Kozłowski; activate beacon; broadcast the signal; credits |
 
 ### Authoring Story Content
 
@@ -161,11 +184,14 @@ Content/
 
 1. Create a `UCCRCharacterDefinition` data asset in `Content/CCR/Characters/`.
 2. Set `CharacterId` (must be unique; used as the `PrimaryAssetName`).
-3. Set `DisplayName` (localised text shown above the dialogue bubble).
-4. Assign a `Portrait` texture (soft reference; loaded on demand).
+3. Set `DisplayName` (localised text shown above the dialogue bubble) and `ShortName`.
+4. Set `SpeakerTag` to match `FCCRNode::SpeakerTag` in all dialogue nodes for this character.
 5. Set `VOKeyPrefix` — `UCCRAudioSubsystem` will auto-play `<VOKeyPrefix>_<NodeId>` cues.
-6. Set `SpeakerTag` to the same `FName` used in `FCCRNode::SpeakerTag` for this character's dialogue nodes.
-7. List any `AssociatedItemIds` referencing `CCRInventoryItem` assets in `Content/CCR/Items/`.
+6. Set `MetFlag` (e.g. `MET_MARTA`) — the world-state flag written when the player first meets this character.
+7. Add `FCCRPortraitEntry` items to `Portraits[]` — one per expression state (Neutral, Happy, Sad, Angry, Surprised, Fear).
+   - `StateName` must match values used in `FCCRNode::ExpressionTag` in the story nodes.
+   - `UCCRCharacterDefinition::GetPortraitForExpression(ExpressionTag)` resolves the correct portrait, falling back to "Neutral".
+8. List any `AssociatedItemIds` referencing `CCRInventoryItem` assets in `Content/CCR/Items/`.
 
 ### Authoring Inventory Items
 
