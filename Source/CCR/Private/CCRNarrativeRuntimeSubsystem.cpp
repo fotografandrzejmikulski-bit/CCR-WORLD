@@ -117,6 +117,17 @@ void UCCRNarrativeRuntimeSubsystem::AdvanceDialogue()
 	}
 }
 
+void UCCRNarrativeRuntimeSubsystem::FinishCinematic()
+{
+	const FCCRNode* Node = FindNode(CurrentNodeId);
+	if (!Node || Node->NodeType != ECCRNodeType::Cinematic) return;
+
+	if (!Node->NextAfterCinematic.IsNone())
+	{
+		ExecuteNode(Node->NextAfterCinematic);
+	}
+}
+
 bool UCCRNarrativeRuntimeSubsystem::GetCurrentNode(FCCRNode& OutNode) const
 {
 	const FCCRNode* Node = FindNode(CurrentNodeId);

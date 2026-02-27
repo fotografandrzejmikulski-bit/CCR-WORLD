@@ -17,7 +17,10 @@ public class CCR : ModuleRules
 			"InputCore",
 			"GameplayTags",
 			"UMG",
-			"EngineSettings"
+			"EngineSettings",
+			"LevelSequence",
+			"MovieScene",
+			"MovieSceneTracks"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[]

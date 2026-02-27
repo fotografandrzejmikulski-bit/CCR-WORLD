@@ -52,6 +52,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")
 	void AdvanceDialogue();
 
+	/**
+	 * Called by UCCRCinematicSubsystem when the Level Sequence finishes.
+	 * Moves the narrative to the node referenced by NextAfterCinematic.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Narrative")
+	void FinishCinematic();
+
 	UFUNCTION(BlueprintPure, Category = "CCR|Narrative")
 	FName GetCurrentNodeId() const { return CurrentNodeId; }
 

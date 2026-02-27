@@ -20,12 +20,29 @@ void ACCRTouchController::SetupInputComponent()
 	{
 		InputComponent->BindTouch(IE_Pressed,  this, &ACCRTouchController::HandleTouchBegin);
 		InputComponent->BindTouch(IE_Released, this, &ACCRTouchController::HandleTouchEnd);
+		InputComponent->BindAction("CCR_Pause", IE_Pressed, this, &ACCRTouchController::HandlePause);
 	}
 }
 
+// ---------------------------------------------------------------------------
+// HandlePause
+// ---------------------------------------------------------------------------
+
+void ACCRTouchController::HandlePause()
+{
+	if (ACCRGameHUD* HUD = Cast<ACCRGameHUD>(GetHUD()))
+	{
+		HUD->TogglePause();
+	}
+}
+
+// ---------------------------------------------------------------------------
+// HandleTouchBegin
+// ---------------------------------------------------------------------------
+
 void ACCRTouchController::HandleTouchBegin(ETouchIndex::Type FingerIndex, FVector Location)
 {
-	if (bQTEActive) return;
+	if (bQTEActive || bSwipeTracking) return;
 
 	UGameInstance* GI = GetGameInstance();
 	if (!GI) return;
@@ -33,27 +50,68 @@ void ACCRTouchController::HandleTouchBegin(ETouchIndex::Type FingerIndex, FVecto
 	UCCRNarrativeRuntimeSubsystem* NRS = GI->GetSubsystem<UCCRNarrativeRuntimeSubsystem>();
 	if (!NRS) return;
 
-	// Only start QTE if the current node is a QTE node
 	FCCRNode CurrentNode;
 	if (!NRS->GetCurrentNode(CurrentNode)) return;
 	if (CurrentNode.NodeType != ECCRNodeType::QTE) return;
 
-	// Sync window duration from the node definition
 	TimeWindowSec = CurrentNode.TimeWindowSec;
 
-	StartQTE();
+	switch (CurrentNode.GestureType)
+	{
+	case ECCRGestureType::LongPress:
+		StartQTE();
+		break;
+
+	case ECCRGestureType::Tap:
+		// Single tap immediately succeeds
+		EndQTE(true);
+		break;
+
+	case ECCRGestureType::Swipe:
+		// Record start position; direction evaluated on TouchEnd
+		bSwipeTracking = true;
+		RequiredSwipe  = CurrentNode.RequiredSwipeDir;
+		TouchStartPos  = FVector2D(Location.X, Location.Y);
+		// Show QTE widget immediately so player sees the prompt
+		if (ACCRGameHUD* HUD = Cast<ACCRGameHUD>(GetHUD()))
+		{
+			HUD->SetQTEVisible(true);
+			if (HUD->QTEWidget)
+			{
+				HUD->QTEWidget->OnQTEStarted(TimeWindowSec);
+			}
+		}
+		break;
+	}
 }
+
+// ---------------------------------------------------------------------------
+// HandleTouchEnd
+// ---------------------------------------------------------------------------
 
 void ACCRTouchController::HandleTouchEnd(ETouchIndex::Type FingerIndex, FVector Location)
 {
+	if (bSwipeTracking)
+	{
+		bSwipeTracking = false;
+		const FVector2D EndPos(Location.X, Location.Y);
+		const bool bSuccess = EvaluateSwipe(TouchStartPos, EndPos);
+		EndQTE(bSuccess);
+		return;
+	}
+
 	if (!bQTEActive) return;
 
-	// Released before time window elapsed = failure
+	// LongPress: released before time window elapsed = failure
 	if (QTEHeldTime < TimeWindowSec)
 	{
 		EndQTE(false);
 	}
 }
+
+// ---------------------------------------------------------------------------
+// StartQTE (LongPress only)
+// ---------------------------------------------------------------------------
 
 void ACCRTouchController::StartQTE()
 {
@@ -72,10 +130,15 @@ void ACCRTouchController::StartQTE()
 	}
 }
 
+// ---------------------------------------------------------------------------
+// EndQTE
+// ---------------------------------------------------------------------------
+
 void ACCRTouchController::EndQTE(bool bSuccess)
 {
-	bQTEActive  = false;
-	QTEHeldTime = 0.f;
+	bQTEActive     = false;
+	bSwipeTracking = false;
+	QTEHeldTime    = 0.f;
 
 	UpdateQTEWidget(bSuccess ? 1.f : 0.f, /*bVisible=*/false);
 
@@ -87,6 +150,46 @@ void ACCRTouchController::EndQTE(bool bSuccess)
 		NRS->ResolveQTE(bSuccess);
 	}
 }
+
+// ---------------------------------------------------------------------------
+// EvaluateSwipe
+// ---------------------------------------------------------------------------
+
+bool ACCRTouchController::EvaluateSwipe(FVector2D Start, FVector2D End) const
+{
+	const FVector2D Delta = End - Start;
+	const float Dist = Delta.Size();
+
+	if (Dist < SwipeMinDistancePx)
+	{
+		// Too short to be a meaningful swipe
+		return false;
+	}
+
+	if (RequiredSwipe == ECCRSwipeDirection::Any)
+	{
+		return true;
+	}
+
+	// Determine dominant axis and direction.
+	// Ties (exactly 45°) are treated as horizontal; document this edge case
+	// so designers know diagonal swipes at exactly 45° resolve as Left/Right.
+	const bool bHorizontal = FMath::Abs(Delta.X) >= FMath::Abs(Delta.Y);
+
+	switch (RequiredSwipe)
+	{
+	case ECCRSwipeDirection::Right: return  bHorizontal && Delta.X > 0.f;
+	case ECCRSwipeDirection::Left:  return  bHorizontal && Delta.X < 0.f;
+	// Y increases downward in screen space
+	case ECCRSwipeDirection::Down:  return !bHorizontal && Delta.Y > 0.f;
+	case ECCRSwipeDirection::Up:    return !bHorizontal && Delta.Y < 0.f;
+	default:                        return true;
+	}
+}
+
+// ---------------------------------------------------------------------------
+// UpdateQTEWidget
+// ---------------------------------------------------------------------------
 
 void ACCRTouchController::UpdateQTEWidget(float Progress, bool bVisible)
 {
@@ -109,10 +212,18 @@ void ACCRTouchController::UpdateQTEWidget(float Progress, bool bVisible)
 	}
 }
 
+// ---------------------------------------------------------------------------
+// Tick
+// ---------------------------------------------------------------------------
+
 void ACCRTouchController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	// ---- Swipe timeout ----
+	// (No explicit timer needed: the NRS node stays active until resolved.)
+
+	// ---- LongPress tick ----
 	if (!bQTEActive) return;
 
 	QTEHeldTime         += DeltaTime;
@@ -146,3 +257,4 @@ void ACCRTouchController::Tick(float DeltaTime)
 		EndQTE(true);
 	}
 }
+

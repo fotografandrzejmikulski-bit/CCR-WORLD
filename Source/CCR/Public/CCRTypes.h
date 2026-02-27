@@ -41,6 +41,16 @@ enum class ECCRGestureType : uint8
 };
 
 UENUM(BlueprintType)
+enum class ECCRSwipeDirection : uint8
+{
+	Any   UMETA(DisplayName = "Any"),
+	Up    UMETA(DisplayName = "Up"),
+	Down  UMETA(DisplayName = "Down"),
+	Left  UMETA(DisplayName = "Left"),
+	Right UMETA(DisplayName = "Right"),
+};
+
+UENUM(BlueprintType)
 enum class ECCRStateValueType : uint8
 {
 	Flag  UMETA(DisplayName = "Flag"),
@@ -169,6 +179,10 @@ struct FCCRNode
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	float TimeWindowSec = 2.f;
+
+	/** Required swipe direction (only relevant when GestureType == Swipe) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRSwipeDirection RequiredSwipeDir = ECCRSwipeDirection::Any;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName QTESuccessNodeId;
