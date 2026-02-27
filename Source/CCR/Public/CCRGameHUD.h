@@ -15,6 +15,7 @@ class UCCRChapterTransitionWidget;
 class UCCRCreditsWidget;
 class UCCRCutsceneSkipWidget;
 class UCCRObjectiveWidget;
+class UCCRInventoryWidget;
 class UCCRStoryChunk;
 
 /**
@@ -84,6 +85,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
 	TSoftClassPtr<UCCRObjectiveWidget> ObjectiveWidgetClass;
 
+	/** Blueprint subclass of UCCRInventoryWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRInventoryWidget> InventoryWidgetClass;
+
 	// ---- Live widget instances ----
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
@@ -119,6 +124,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
 	UCCRObjectiveWidget* ObjectiveWidget = nullptr;
 
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRInventoryWidget* InventoryWidget = nullptr;
+
 	/** Show or hide the dialogue panel */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetDialogueVisible(bool bVisible);
@@ -146,6 +154,18 @@ public:
 	/** Show or hide the credits overlay */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetCreditsVisible(bool bVisible);
+
+	/** Toggle the inventory panel (creates it on first use) */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void ToggleInventory();
+
+	/** Show or hide the inventory panel */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void SetInventoryVisible(bool bVisible);
+
+	/** Returns true when the inventory widget is currently visible */
+	UFUNCTION(BlueprintPure, Category = "CCR|HUD")
+	bool IsInventoryOpen() const;
 
 	/** Toggle the pause menu (creates it on first use) */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")

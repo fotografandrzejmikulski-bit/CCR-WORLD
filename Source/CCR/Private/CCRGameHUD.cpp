@@ -11,6 +11,7 @@
 #include "CCRCreditsWidget.h"
 #include "CCRCutsceneSkipWidget.h"
 #include "CCRObjectiveWidget.h"
+#include "CCRInventoryWidget.h"
 #include "CCRGameState.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRStoryChunk.h"
@@ -209,6 +210,27 @@ void ACCRGameHUD::BeginPlay()
 		}
 	}
 
+	// ---- Inventory widget ----
+	TSubclassOf<UCCRInventoryWidget> InventoryClass = InventoryWidgetClass.IsValid()
+		? InventoryWidgetClass.Get()
+		: nullptr;
+
+	if (!InventoryClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: InventoryWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRInventoryWidget in the HUD defaults."));
+	}
+	else
+	{
+		InventoryWidget = CreateWidget<UCCRInventoryWidget>(PC, InventoryClass);
+		if (InventoryWidget)
+		{
+			InventoryWidget->AddToViewport(CCRZOrder::Inventory);
+			InventoryWidget->SetVisibility(ESlateVisibility::Collapsed);
+		}
+	}
+
 	// ---- Subscribe to game phase changes ----
 	// Also apply the current phase immediately so widgets start in the correct
 	// visibility state (e.g. dialogue hidden while phase is Loading or Cinematic).
@@ -302,6 +324,28 @@ void ACCRGameHUD::SetCreditsVisible(bool bVisible)
 		CreditsWidget->SetVisibility(
 			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	}
+}
+
+void ACCRGameHUD::ToggleInventory()
+{
+	if (!InventoryWidget) return;
+	const bool bCurrentlyOpen = IsInventoryOpen();
+	SetInventoryVisible(!bCurrentlyOpen);
+}
+
+void ACCRGameHUD::SetInventoryVisible(bool bVisible)
+{
+	if (InventoryWidget)
+	{
+		InventoryWidget->SetVisibility(
+			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	}
+}
+
+bool ACCRGameHUD::IsInventoryOpen() const
+{
+	return InventoryWidget &&
+		   InventoryWidget->GetVisibility() == ESlateVisibility::Visible;
 }
 
 void ACCRGameHUD::TogglePause()
@@ -407,6 +451,12 @@ void ACCRGameHUD::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
 	if (NewPhase != ECCRGamePhase::QTE)
 	{
 		SetQTEVisible(false);
+	}
+
+	// Inventory: force-close during Loading and Cinematic phases.
+	if (NewPhase == ECCRGamePhase::Loading || NewPhase == ECCRGamePhase::Cinematic)
+	{
+		SetInventoryVisible(false);
 	}
 
 	// Credits: visible during any end-game state. Visibility is driven by

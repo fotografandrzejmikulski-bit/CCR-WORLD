@@ -124,6 +124,7 @@ CCR-WORLD/
 | `UCCRCreditsWidget` | `WBP_CCRCredits` | `ACCRGameHUD.CreditsWidgetClass` |
 | `UCCRCutsceneSkipWidget` | `WBP_CCRCutsceneSkip` | `ACCRGameHUD.CutsceneSkipWidgetClass` |
 | `UCCRObjectiveWidget` | `WBP_CCRObjective` | `ACCRGameHUD.ObjectiveWidgetClass` |
+| `UCCRInventoryWidget` | `WBP_CCRInventory` | `ACCRGameHUD.InventoryWidgetClass` |
 | `UCCRGameInstance` | `BP_CCRGameInstance` | Project Settings → Game Instance Class |
 
 ### Content Folder Structure
