@@ -9,6 +9,7 @@ class UCCRQTEWidget;
 class UCCRPauseWidget;
 class UCCRLoadingWidget;
 class UCCRMainMenuWidget;
+class UCCRSettingsWidget;
 
 /**
  * ACCRGameHUD
@@ -53,6 +54,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
 	TSoftClassPtr<UCCRMainMenuWidget> MainMenuWidgetClass;
 
+	/** Blueprint subclass of UCCRSettingsWidget (used by the pause menu). */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRSettingsWidget> SettingsWidgetClass;
+
 	// ---- Live widget instances ----
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
@@ -70,6 +75,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
 	UCCRMainMenuWidget* MainMenuWidget = nullptr;
 
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRSettingsWidget* SettingsWidget = nullptr;
+
 	/** Show or hide the dialogue panel */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetDialogueVisible(bool bVisible);
@@ -85,6 +93,14 @@ public:
 	/** Show or hide the main menu */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetMainMenuVisible(bool bVisible);
+
+	/**
+	 * Show or hide the standalone settings widget owned by the HUD.
+	 * Note: the pause menu also owns its own settings widget instance;
+	 * this function controls only the HUD-level one (if any).
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void SetSettingsVisible(bool bVisible);
 
 	/** Toggle the pause menu (creates it on first use) */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")

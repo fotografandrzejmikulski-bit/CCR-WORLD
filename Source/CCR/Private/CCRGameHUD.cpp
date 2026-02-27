@@ -1,21 +1,14 @@
 #include "CCRGameHUD.h"
+#include "CCR.h"
 #include "CCRDialogueWidget.h"
 #include "CCRQTEWidget.h"
 #include "CCRPauseWidget.h"
 #include "CCRLoadingWidget.h"
 #include "CCRMainMenuWidget.h"
+#include "CCRSettingsWidget.h"
 #include "CCRGameState.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
-
-namespace CCRZOrder
-{
-	constexpr int32 Dialogue = 0;
-	constexpr int32 QTE      = 1;
-	constexpr int32 MainMenu = 5;
-	constexpr int32 Pause    = 10;
-	constexpr int32 Loading  = 20;
-}
 
 void ACCRGameHUD::BeginPlay()
 {
@@ -167,6 +160,15 @@ void ACCRGameHUD::SetMainMenuVisible(bool bVisible)
 	}
 }
 
+void ACCRGameHUD::SetSettingsVisible(bool bVisible)
+{
+	if (SettingsWidget)
+	{
+		SettingsWidget->SetVisibility(
+			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	}
+}
+
 void ACCRGameHUD::TogglePause()
 {
 	APlayerController* PC = GetOwningPlayerController();
@@ -216,6 +218,12 @@ void ACCRGameHUD::TogglePause()
 			else
 			{
 				PauseWidget = CreateWidget<UCCRPauseWidget>(PC, PauseClass);
+				if (PauseWidget && SettingsWidgetClass.IsValid())
+				{
+					// Forward the settings widget class so the pause menu can
+					// open it without needing its own UPROPERTY to be set.
+					PauseWidget->SettingsWidgetClass = SettingsWidgetClass;
+				}
 			}
 		}
 

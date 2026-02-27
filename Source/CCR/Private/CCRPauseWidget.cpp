@@ -1,4 +1,6 @@
 #include "CCRPauseWidget.h"
+#include "CCR.h"
+#include "CCRSettingsWidget.h"
 #include "CCRGameState.h"
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
@@ -48,4 +50,46 @@ void UCCRPauseWidget::QuitGame()
 	{
 		UKismetSystemLibrary::QuitGame(GetWorld(), PC, EQuitPreference::Quit, /*bIgnorePlatformRestrictions=*/false);
 	}
+}
+
+void UCCRPauseWidget::OpenSettings()
+{
+	// Lazily create the settings widget on first use.
+	if (!SettingsWidget)
+	{
+		TSubclassOf<UCCRSettingsWidget> SettingsClass = SettingsWidgetClass.IsValid()
+			? SettingsWidgetClass.Get()
+			: nullptr;
+
+		if (!SettingsClass)
+		{
+			UE_LOG(LogTemp, Warning,
+				TEXT("UCCRPauseWidget: SettingsWidgetClass is not set. "
+					 "Assign a Blueprint subclass of UCCRSettingsWidget in the pause widget defaults."));
+			return;
+		}
+
+		APlayerController* PC = GetOwningPlayer();
+		if (!PC) return;
+
+		SettingsWidget = CreateWidget<UCCRSettingsWidget>(PC, SettingsClass);
+		if (!SettingsWidget) return;
+
+		// Subscribe so we can restore the pause menu when settings close.
+		SettingsWidget->OnClosed.AddDynamic(this, &UCCRPauseWidget::HandleSettingsClosed);
+		SettingsWidget->AddToViewport(CCRZOrder::Settings);
+	}
+	else
+	{
+		SettingsWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+
+	// Notify Blueprint to hide the pause menu body.
+	OnSettingsOpened();
+}
+
+void UCCRPauseWidget::HandleSettingsClosed()
+{
+	// Settings widget hides itself; restore the pause menu body.
+	OnSettingsClosed();
 }

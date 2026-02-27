@@ -4,15 +4,21 @@
 #include "Blueprint/UserWidget.h"
 #include "CCRPauseWidget.generated.h"
 
+class UCCRSettingsWidget;
+
 /**
  * UCCRPauseWidget
  *
  * C++ base class for the UMG pause menu widget.
  * Blueprint WBP_CCRPause should derive from this class.
  *
- * Provides Resume, ReturnToMainMenu, and QuitGame actions with Blueprint-
- * implementable handlers so that UI animation and sound can be
- * driven from Blueprint while the C++ base handles the actual logic.
+ * Provides Resume, ReturnToMainMenu, QuitGame, and OpenSettings actions
+ * with Blueprint-implementable handlers so that UI animation and sound
+ * can be driven from Blueprint while the C++ base handles the actual logic.
+ *
+ * OpenSettings() lazily creates the settings widget (using SettingsWidgetClass),
+ * hides the pause menu body, and subscribes to UCCRSettingsWidget::OnClosed
+ * so the pause body is restored when settings are dismissed.
  */
 UCLASS(Abstract, BlueprintType, Blueprintable)
 class CCR_API UCCRPauseWidget : public UUserWidget
@@ -36,6 +42,14 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Pause")
 	void QuitGame();
 
+	/**
+	 * Open the settings screen.
+	 * Creates the settings widget on first use (requires SettingsWidgetClass to be set).
+	 * Fires OnSettingsOpened() so Blueprint can hide the pause menu body.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Pause")
+	void OpenSettings();
+
 	// ---- Blueprint-implementable notifications ----
 
 	/** Called when this widget is shown (game paused). */
@@ -46,7 +60,37 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
 	void OnResumed();
 
+	/**
+	 * Called when the settings screen is about to open.
+	 * Override in Blueprint to hide the pause menu body / play a transition.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	void OnSettingsOpened();
+
+	/**
+	 * Called when the settings screen is dismissed and the pause menu is restored.
+	 * Override in Blueprint to re-show the pause menu body / play a transition.
+	 */
+	UFUNCTION(BlueprintImplementableEvent, Category = "CCR|Pause")
+	void OnSettingsClosed();
+
 	/** Main menu level name (set in Blueprint or defaults) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Pause")
 	FName MainMenuLevelName = TEXT("MainMenu");
+
+	/**
+	 * Blueprint subclass of UCCRSettingsWidget to spawn when OpenSettings() is called.
+	 * Can be assigned in the Blueprint defaults or propagated at runtime by ACCRGameHUD.
+	 * The HUD's value takes precedence if both are set.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|Pause")
+	TSoftClassPtr<UCCRSettingsWidget> SettingsWidgetClass;
+
+	/** Read-only reference to the live settings widget (null until first OpenSettings()). */
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|Pause")
+	UCCRSettingsWidget* SettingsWidget = nullptr;
+
+private:
+	UFUNCTION()
+	void HandleSettingsClosed();
 };
