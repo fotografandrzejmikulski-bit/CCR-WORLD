@@ -7,6 +7,7 @@
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
 #include "CCRSpawnSubsystem.h"
 #include "CCRPlayTimeSubsystem.h"
+#include "CCRObjectiveSubsystem.h"
 #include "CCRGameState.h"
 #include "Engine/AssetManager.h"
 #include "Engine/StreamableManager.h"
@@ -41,6 +42,14 @@ bool UCCRResumeSubsystem::ResumeFromDefaultSlot()
 	if (UCCRPlayTimeSubsystem* PT = GetGameInstance()->GetSubsystem<UCCRPlayTimeSubsystem>())
 	{
 		PT->SetPlayTimeSec(Save->PlayTimeSec);
+	}
+
+	// 3. Re-sync objectives from world state (flags set by world state may have
+	//    changed since the objectives were registered; e.g. the completion flag
+	//    was set before the objective registered at the next session start).
+	if (UCCRObjectiveSubsystem* Obj = GetGameInstance()->GetSubsystem<UCCRObjectiveSubsystem>())
+	{
+		Obj->Sync();
 	}
 
 	PendingChunkId = Save->CurrentChunkId;
