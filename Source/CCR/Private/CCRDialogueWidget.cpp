@@ -1,5 +1,6 @@
 #include "CCRDialogueWidget.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
+#include "CCRSettingsSubsystem.h"
 #include "CCRStoryChunk.h"
 
 void UCCRDialogueWidget::NativeConstruct()
@@ -81,4 +82,16 @@ void UCCRDialogueWidget::AdvanceDialogue()
 	{
 		NRS->AdvanceDialogue();
 	}
+}
+
+bool UCCRDialogueWidget::ShouldShowSubtitles() const
+{
+	UGameInstance* GI = GetGameInstance();
+	if (!GI) return true;
+
+	if (UCCRSettingsSubsystem* Settings = GI->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		return Settings->GetSubtitlesAlwaysOn();
+	}
+	return true;
 }

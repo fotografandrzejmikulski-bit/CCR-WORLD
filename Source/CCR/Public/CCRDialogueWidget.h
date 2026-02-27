@@ -45,6 +45,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|UI")
 	void AdvanceDialogue();
 
+	/**
+	 * Returns true when subtitles should always be shown regardless of whether
+	 * VO is playing. Reads UCCRSettingsSubsystem::GetSubtitlesAlwaysOn().
+	 * Blueprint implementations of OnDialogueNode should call this to decide
+	 * whether to display the dialogue text alongside VO audio.
+	 */
+	UFUNCTION(BlueprintPure, Category = "CCR|UI")
+	bool ShouldShowSubtitles() const;
+
 private:
 	UFUNCTION()
 	void HandleNodeChanged(FName NodeId);

@@ -182,17 +182,20 @@ void UCCRAudioSubsystem::PlayVO(FName CueKey)
 
 void UCCRAudioSubsystem::StopVO()
 {
-	if (VOComponent)
+	// Use IsValid() because VOComponent uses bAutoDestroy=true: the component
+	// can be PendingKill before a GC pass nulls the UPROPERTY pointer.
+	// Always null the pointer afterwards so future IsValid() checks are correct.
+	if (IsValid(VOComponent))
 	{
 		VOComponent->Stop();
-		VOComponent = nullptr;
 	}
+	VOComponent = nullptr;
 }
 
 void UCCRAudioSubsystem::SetVOVolume(float Volume)
 {
 	VOVolume = FMath::Clamp(Volume, 0.f, 1.f);
-	if (VOComponent)
+	if (IsValid(VOComponent))
 	{
 		VOComponent->SetVolumeMultiplier(VOVolume);
 	}
