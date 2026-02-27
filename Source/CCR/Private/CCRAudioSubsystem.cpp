@@ -176,6 +176,11 @@ void UCCRAudioSubsystem::StopMusic(float FadeTimeSec)
 	CurrentMusicKey = NAME_None;
 }
 
+FName UCCRAudioSubsystem::GetCurrentMusicId() const
+{
+	return CurrentMusicKey;
+}
+
 void UCCRAudioSubsystem::SetMusicVolume(float Volume)
 {
 	MusicVolume = FMath::Clamp(Volume, 0.f, 1.f);

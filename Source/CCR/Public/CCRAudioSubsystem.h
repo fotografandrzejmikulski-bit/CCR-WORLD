@@ -60,6 +60,13 @@ public:
 	void StopMusic(float FadeTimeSec = 1.5f);
 
 	/**
+	 * Returns the cue key of the currently playing music track.
+	 * Returns NAME_None when no music is playing.
+	 */
+	UFUNCTION(BlueprintPure, Category = "CCR|Audio")
+	FName GetCurrentMusicId() const;
+
+	/**
 	 * Register a music cue so it can be referenced by key at runtime.
 	 * Call during Game Instance or Subsystem init.
 	 */
