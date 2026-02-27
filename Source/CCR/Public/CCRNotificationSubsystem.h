@@ -16,6 +16,7 @@ enum class ECCRNotificationType : uint8
 	Warning     UMETA(DisplayName = "Warning"),
 	Checkpoint  UMETA(DisplayName = "Checkpoint"),
 	Chapter     UMETA(DisplayName = "Chapter"),
+	Achievement UMETA(DisplayName = "Achievement"),
 };
 
 /**

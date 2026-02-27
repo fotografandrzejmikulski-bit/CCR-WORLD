@@ -5,6 +5,8 @@
 #include "Blueprint/UserWidget.h"
 #include "CCRDialogueWidget.generated.h"
 
+class UCCRTypewriterHelper;
+
 /**
  * UCCRDialogueWidget
  *
@@ -62,6 +64,15 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, Category = "CCR|UI")
 	bool ResolveSpeakerData(FName SpeakerTag, FCCRSpeakerData& OutData) const;
+
+	/**
+	 * A ready-to-use UCCRTypewriterHelper instance owned by this widget.
+	 * Created on NativeConstruct.  Blueprint implementations of OnDialogueNode
+	 * can call TypewriterHelper->Start(Node.DialogueText, CharsPerSecond) to
+	 * drive a character-by-character text reveal without allocating their own helper.
+	 */
+	UPROPERTY(BlueprintReadOnly, Transient, Category = "CCR|UI")
+	UCCRTypewriterHelper* TypewriterHelper = nullptr;
 
 private:
 	UFUNCTION()

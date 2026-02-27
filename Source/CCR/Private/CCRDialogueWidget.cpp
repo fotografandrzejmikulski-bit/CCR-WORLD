@@ -2,6 +2,7 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRSettingsSubsystem.h"
 #include "CCRSpeakerRegistrySubsystem.h"
+#include "CCRTypewriterHelper.h"
 #include "CCRStoryChunk.h"
 
 void UCCRDialogueWidget::NativeConstruct()
@@ -10,6 +11,10 @@ void UCCRDialogueWidget::NativeConstruct()
 
 	UGameInstance* GI = GetGameInstance();
 	if (!GI) return;
+
+	// Create the typewriter helper so Blueprint implementations of
+	// OnDialogueNode can call TypewriterHelper->Start() without additional setup.
+	TypewriterHelper = NewObject<UCCRTypewriterHelper>(this);
 
 	UCCRNarrativeRuntimeSubsystem* NRS = GI->GetSubsystem<UCCRNarrativeRuntimeSubsystem>();
 	if (!NRS) return;
@@ -35,6 +40,12 @@ void UCCRDialogueWidget::NativeDestruct()
 
 void UCCRDialogueWidget::HandleNodeChanged(FName NodeId)
 {
+	// Stop any running typewriter reveal so the previous line doesn't keep ticking.
+	if (TypewriterHelper)
+	{
+		TypewriterHelper->Stop();
+	}
+
 	UGameInstance* GI = GetGameInstance();
 	if (!GI) return;
 
