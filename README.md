@@ -152,20 +152,56 @@ Content/
 
 ### Complete Story Flow
 
+**Główna oś narracyjna (MAIN ARC):**
 ```
-PROLOGUE_01 -> PROLOGUE_02 -> CH1_01 -> CH1_02 -> CH2_01 -> CH2_02 -> CH3_01 -> CH3_02 -> End
+PROLOGUE_01 -> ... -> PROLOGUE_02
+  -> CH1_01 -> CH1_02
+  -> CH2_01 -> CH2_02
+  -> CH3_01 -> CH3_02
+  -> CH4_01 -> CH4_02
+  -> CH5_01 -> CH5_02
+  -> CH6_01 -> CH6_02
+  -> CH7_01 -> CH7_02
+  -> CH8_01 -> CH8_02
+  -> CH9_01 -> CH9_02
+  -> CH10_01 -> CH10_02
+  -> CH11_01 -> CH11_02
+  -> CH12_01 -> CH12_02 -> End
 ```
 
-| Chunk | Chapter | Characters |
+**Oś Wspomnień (FLASHBACK) – osobna oś czasu:**
+```
+FB1_01 -> End    (Wspomnienie 1: ANDRZEJ + KAFKA)
+FB2_01 -> End    (Wspomnienie 2: KAFKA + DAVID)
+FB3_01 -> End    (Wspomnienie 3: ZUZIA + ANDRZEJ)
+```
+
+**Oś Równoległa (PARALLEL) – alternatywne perspektywy:**
+```
+PAR1_01 -> End   (Perspektywa: CIEŃ)
+PAR2_01 -> End   (Perspektywa: EVA)
+```
+
+| Chunk | Akt | Postacie |
 |---|---|---|
-| `PROLOGUE_01` | Prolog | ANDRZEJ, ZUZIA |
-| `PROLOGUE_02` | Prolog | ANDRZEJ, ZUZIA |
-| `CH1_01` | Rozdział 1 | ANDRZEJ, EVA |
-| `CH1_02` | Rozdział 1 | ANDRZEJ, CIEN |
-| `CH2_01` | Rozdział 2 | ANDRZEJ, EIMSTAIN |
-| `CH2_02` | Rozdział 2 | ANDRZEJ, BATISTA, WERONIKA |
-| `CH3_01` | Rozdział 3 | ANDRZEJ, DAVID, KAFKA |
-| `CH3_02` | Rozdział 3 | ANDRZEJ (finale + End -> Credits) |
+| `PROLOGUE_01-02` | Prolog | ANDRZEJ, ZUZIA |
+| `CH1_01-02` | Akt I (Rozdział 1) | ANDRZEJ, EVA, CIEŃ |
+| `CH2_01-02` | Akt I (Rozdział 2) | ANDRZEJ, EIMSTAIN, BATISTA, WERONIKA |
+| `CH3_01-02` | Akt I (Rozdział 3) | ANDRZEJ, DAVID, KAFKA |
+| `CH4_01-02` | Akt I (Rozdział 4) | ANDRZEJ, ZUZIA, CIEŃ |
+| `CH5_01-02` | Akt I (Rozdział 5) | ANDRZEJ, EVA, ZUZIA, KAFKA |
+| `CH6_01-02` | Akt I (Rozdział 6) | ANDRZEJ, EIMSTAIN, EVA |
+| `CH7_01-02` | Akt II (Rozdział 7) | ANDRZEJ, BATISTA, WERONIKA, CIEŃ |
+| `CH8_01-02` | Akt II (Rozdział 8) | ANDRZEJ, DAVID, BATISTA |
+| `CH9_01-02` | Akt II (Rozdział 9) | ANDRZEJ, KAFKA, DAVID, ZUZIA |
+| `CH10_01-02` | Akt III (Rozdział 10) | ANDRZEJ, WERONIKA, KAFKA |
+| `CH11_01-02` | Akt III (Rozdział 11) | ANDRZEJ, CIEŃ, EIMSTAIN, WERONIKA |
+| `CH12_01-02` | Akt III (Rozdział 12 – Finale) | ANDRZEJ, EVA, CIEŃ |
+| `FB1_01` | Wspomnienie 1 | ANDRZEJ, KAFKA |
+| `FB2_01` | Wspomnienie 2 | KAFKA, DAVID |
+| `FB3_01` | Wspomnienie 3 | ZUZIA, ANDRZEJ |
+| `PAR1_01` | Perspektywa: Cień | CIEŃ, EIMSTAIN |
+| `PAR2_01` | Perspektywa: Eva | EVA, WERONIKA |
 
 ### Authoring Story Content
 

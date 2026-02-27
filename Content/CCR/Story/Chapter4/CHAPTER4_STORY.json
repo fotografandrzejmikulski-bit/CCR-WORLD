@@ -1,0 +1,218 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 4. Axis: ACT1. Location: TODO: lokacja rozdziału 4.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH4_01",
+      "path": "Content/CCR/Story/Chapter4/",
+      "ChunkId": "CH4_01",
+      "AxisId": "ACT1",
+      "EntryNodeId": "CH4_01_010",
+      "ChapterTitle": "Rozdział 4",
+      "ChapterSubtitle": "TODO: podtytuł rozdziału 4",
+      "Nodes": [
+        {
+          "NodeId": "CH4_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: pierwsza kwestia rozdziału 4. Lokacja: TODO: lokacja rozdziału 4.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH4_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH4_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: kwestia postaci ZUZIA.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH4_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH4_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_ZUZIA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH4_01_040"
+        },
+        {
+          "NodeId": "CH4_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH4_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH4_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH4_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH4_01_055",
+          "QTEFailNodeId": "CH4_01_052"
+        },
+        {
+          "NodeId": "CH4_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH4_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH4_01_055",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia po udanym QTE.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH4_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH4_01_060",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH4_02",
+          "EntryNodeInTarget": "CH4_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH4_02",
+      "path": "Content/CCR/Story/Chapter4/",
+      "ChunkId": "CH4_02",
+      "AxisId": "ACT1",
+      "EntryNodeId": "CH4_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH4_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "TODO: kwestia postaci CIEN w drugiej części rozdziału 4.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH4_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH4_02_020",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_CIEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH4_02_030"
+        },
+        {
+          "NodeId": "CH4_02_030",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH4_02_040",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH4_02_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH4_02_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH4_CHOICE_A",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH4_02_060"
+        },
+        {
+          "NodeId": "CH4_02_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH4_CHOICE_B",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH4_02_060"
+        },
+        {
+          "NodeId": "CH4_02_060",
+          "NodeType": "Condition",
+          "Conditions": [
+            {
+              "Key": "CH4_CHOICE_A",
+              "ValueType": "Flag",
+              "CompareOp": "Equals",
+              "CompareValue": 1
+            }
+          ],
+          "ConditionTrueNodeId": "CH4_02_070",
+          "ConditionFalseNodeId": "CH4_02_080"
+        },
+        {
+          "NodeId": "CH4_02_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "TODO: kwestia CIEN – ścieżka A.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH4_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH4_02_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "TODO: kwestia CIEN – ścieżka B.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH4_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH4_02_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie rozdziału.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH4_02_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH4_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH5_01",
+          "EntryNodeInTarget": "CH5_01_010"
+        }
+      ]
+    }
+  ]
+}

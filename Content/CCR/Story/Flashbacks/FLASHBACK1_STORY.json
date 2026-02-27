@@ -1,0 +1,75 @@
+{
+  "_doc": "UCCRStoryChunk manifest – Flashback axis. Osobna oś czasu: przeszłość Andrzeja. Create DA_Story_FB1_01.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_FB1_01",
+      "path": "Content/CCR/Story/Flashbacks/",
+      "ChunkId": "FB1_01",
+      "AxisId": "FLASHBACK",
+      "EntryNodeId": "FB1_01_010",
+      "ChapterTitle": "Wspomnienie 1",
+      "ChapterSubtitle": "TODO: podtytuł wspomnienia 1",
+      "Nodes": [
+        {
+          "NodeId": "FB1_01_010",
+          "NodeType": "Cinematic",
+          "CinematicSequence": "/Game/CCR/Cinematics/Flashbacks/LS_FB1_Intro",
+          "NextAfterCinematic": "FB1_01_020",
+          "bSkippable": true,
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "FB1_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja we wspomnieniu 1. Lokacja: TODO.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "FB1_01_030",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "FB1_01_030",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: kwestia Kafki we wspomnieniu 1.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "FB1_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "FB1_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "FB1_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "FB1_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "FB1_01_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "FB1_SEEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "FB1_01_END"
+        },
+        {
+          "NodeId": "FB1_01_END",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

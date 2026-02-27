@@ -1,0 +1,75 @@
+{
+  "_doc": "UCCRStoryChunk manifest – Flashback axis. Osobna oś czasu: pierwsze spotkanie. Create DA_Story_FB3_01.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_FB3_01",
+      "path": "Content/CCR/Story/Flashbacks/",
+      "ChunkId": "FB3_01",
+      "AxisId": "FLASHBACK",
+      "EntryNodeId": "FB3_01_010",
+      "ChapterTitle": "Wspomnienie 3",
+      "ChapterSubtitle": "TODO: podtytuł wspomnienia 3",
+      "Nodes": [
+        {
+          "NodeId": "FB3_01_010",
+          "NodeType": "Cinematic",
+          "CinematicSequence": "/Game/CCR/Cinematics/Flashbacks/LS_FB3_Intro",
+          "NextAfterCinematic": "FB3_01_020",
+          "bSkippable": true,
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "FB3_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: kwestia Zuzi we wspomnieniu 3. Lokacja: TODO.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "FB3_01_030",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "FB3_01_030",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: odpowiedź Andrzeja.",
+          "ExpressionTag": "Surprised",
+          "NextAfterDialogue": "FB3_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "FB3_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "FB3_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "FB3_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "FB3_01_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "FB3_SEEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "FB3_01_END"
+        },
+        {
+          "NodeId": "FB3_01_END",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

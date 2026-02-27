@@ -1,0 +1,218 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 8. Axis: ACT2. Location: TODO: lokacja rozdziału 8.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH8_01",
+      "path": "Content/CCR/Story/Chapter8/",
+      "ChunkId": "CH8_01",
+      "AxisId": "ACT2",
+      "EntryNodeId": "CH8_01_010",
+      "ChapterTitle": "Rozdział 8",
+      "ChapterSubtitle": "TODO: podtytuł rozdziału 8",
+      "Nodes": [
+        {
+          "NodeId": "CH8_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: pierwsza kwestia rozdziału 8. Lokacja: TODO: lokacja rozdziału 8.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH8_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH8_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: kwestia postaci DAVID.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH8_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH8_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH8_01_040"
+        },
+        {
+          "NodeId": "CH8_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH8_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH8_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH8_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH8_01_055",
+          "QTEFailNodeId": "CH8_01_052"
+        },
+        {
+          "NodeId": "CH8_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH8_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH8_01_055",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia po udanym QTE.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH8_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH8_01_060",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH8_02",
+          "EntryNodeInTarget": "CH8_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH8_02",
+      "path": "Content/CCR/Story/Chapter8/",
+      "ChunkId": "CH8_02",
+      "AxisId": "ACT2",
+      "EntryNodeId": "CH8_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH8_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "TODO: kwestia postaci BATISTA w drugiej części rozdziału 8.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH8_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH8_02_020",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH8_02_030"
+        },
+        {
+          "NodeId": "CH8_02_030",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH8_02_040",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH8_02_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH8_02_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH8_CHOICE_A",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH8_02_060"
+        },
+        {
+          "NodeId": "CH8_02_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH8_CHOICE_B",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH8_02_060"
+        },
+        {
+          "NodeId": "CH8_02_060",
+          "NodeType": "Condition",
+          "Conditions": [
+            {
+              "Key": "CH8_CHOICE_A",
+              "ValueType": "Flag",
+              "CompareOp": "Equals",
+              "CompareValue": 1
+            }
+          ],
+          "ConditionTrueNodeId": "CH8_02_070",
+          "ConditionFalseNodeId": "CH8_02_080"
+        },
+        {
+          "NodeId": "CH8_02_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "TODO: kwestia BATISTA – ścieżka A.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH8_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH8_02_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "TODO: kwestia BATISTA – ścieżka B.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH8_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH8_02_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie rozdziału.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH8_02_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH8_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH9_01",
+          "EntryNodeInTarget": "CH9_01_010"
+        }
+      ]
+    }
+  ]
+}

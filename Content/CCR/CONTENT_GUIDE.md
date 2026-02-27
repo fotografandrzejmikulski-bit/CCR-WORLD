@@ -9,34 +9,21 @@ what UE5 assets belong in each folder, with naming conventions and creation step
 
 ```
 Content/CCR/
-+-- Maps/                          <- Level maps (.umap)
++-- Maps/                          <- Level maps (.umap) - one per location
 +-- Story/                         <- UCCRStoryChunk data assets
 |   +-- Prologue/
-|   +-- Chapter1/
-|   +-- Chapter2/
-|   +-- Chapter3/
+|   +-- Chapter1/  ... Chapter12/  <- Main story arc (Akt I-IV)
+|   +-- Flashbacks/                <- Osobna os czasu: wspomnienia
+|   +-- Parallel/                  <- Alternatywna os: inne perspektywy
 +-- Characters/                    <- UCCRCharacterDefinition data assets
 +-- Items/                         <- UCCRInventoryItemDefinition data assets
 +-- Blueprints/
 |   +-- Widgets/                   <- UMG Widget Blueprints (WBP_*)
 |   +-- GameFramework/             <- BP_CCRGameInstance, BP_CCRGameMode, etc.
 +-- Audio/
-|   +-- Music/                     <- USoundWave / USoundCue for background music
+|   +-- Music/                     <- USoundWave / USoundCue
 |   +-- VO/
-|   |   +-- ANDRZEJ/               <- Voice-over lines for Andrzej
-|   |   +-- ZUZIA/                 <- Voice-over lines for Zuzia
-|   |   +-- EVA/                   <- Voice-over lines for Ewy
-|   |   +-- CIEN/                  <- Voice-over lines for Cieńa
-|   |   +-- EIMSTAIN/              <- Voice-over lines for Eimstaina
-|   |   +-- BATISTA/               <- Voice-over lines for Batisty
-|   |   +-- WERONIKA/              <- Voice-over lines for Weroniki
-|   |   +-- DAVID/                 <- Voice-over lines for Davida
-|   |   +-- KAFKA/                 <- Voice-over lines for Kafki
-|   +-- SFX/                       <- Sound effects
-|   +-- Ambient/                   <- Ambient sound loops
-+-- Textures/
-|   +-- Portraits/
-|   |   +-- ANDRZEJ/               <- T_ANDRZEJ_Neutral.png, T_ANDRZEJ_Sad.png, ...
+|   |   +-- ANDRZEJ/
 |   |   +-- ZUZIA/
 |   |   +-- EVA/
 |   |   +-- CIEN/
@@ -45,155 +32,165 @@ Content/CCR/
 |   |   +-- WERONIKA/
 |   |   +-- DAVID/
 |   |   +-- KAFKA/
-|   +-- UI/                        <- UI icons, backgrounds, buttons
-|   +-- Items/                     <- Item icon textures (T_Item_<ItemId>.png)
+|   +-- SFX/
+|   +-- Ambient/
++-- Textures/
+|   +-- Portraits/
+|   |   +-- ANDRZEJ/
+|   |   +-- ZUZIA/
+|   |   +-- EVA/
+|   |   +-- CIEN/
+|   |   +-- EIMSTAIN/
+|   |   +-- BATISTA/
+|   |   +-- WERONIKA/
+|   |   +-- DAVID/
+|   |   +-- KAFKA/
+|   +-- UI/
+|   +-- Items/
 +-- Cinematics/
-    +-- Prologue/                  <- Level Sequences for prologue cutscenes
-    +-- Chapter3/                  <- Level Sequences for finale cutscenes
+    +-- Prologue/
+    +-- Flashbacks/
+    +-- Chapter12/                 <- Finalne sekwencje filmowe
 ```
 
 ---
 
-## Maps
+## Maps / Lokacje
 
-| Asset Name | Path | Description |
-|---|---|---|
-| `MainMenu` | `Maps/MainMenu.umap` | Main menu level |
-| `Prologue` | `Maps/Prologue.umap` | Prologue chapter environment |
-| `Chapter1` | `Maps/Chapter1.umap` | Chapter 1 playable level |
-| `Chapter2` | `Maps/Chapter2.umap` | Chapter 2 playable level |
-| `Chapter3` | `Maps/Chapter3.umap` | Chapter 3 finale level |
-| `Loading`  | `Maps/Loading.umap`  | Empty transition level shown during async loads |
+Create one `.umap` Level asset per location.
 
-**Setup for each level map:**
-1. Add `BP_CCRGameMode` to WorldSettings -> GameMode Override.
-2. Add `ACCRSpawnPoint` actors with unique `SpawnTag` names.
-3. Add `ACCREventTriggerActor` actors at narrative trigger zones.
-4. Add `ACCRAmbientSoundZoneActor` actors with ambient sounds.
-5. Set `GameDefaultMap` in `DefaultEngine.ini` to `MainMenu`.
+| Asset Name | Path | Powiazany rozdzial | Opis lokacji |
+|---|---|---|---|
+| `MainMenu` | `Maps/MainMenu.umap` | -- | Glowne menu |
+| `Loading` | `Maps/Loading.umap` | -- | Poziom przejsciowy |
+| `Prologue` | `Maps/Prologue.umap` | PROLOGUE | TODO: opis |
+| `Chapter1` | `Maps/Chapter1.umap` | CH1 | TODO: opis |
+| `Chapter2` | `Maps/Chapter2.umap` | CH2 | TODO: opis |
+| `Chapter3` | `Maps/Chapter3.umap` | CH3 | TODO: opis |
+| `Chapter4` | `Maps/Chapter4.umap` | CH4 | TODO: opis |
+| `Chapter5` | `Maps/Chapter5.umap` | CH5 | TODO: opis |
+| `Chapter6` | `Maps/Chapter6.umap` | CH6 | TODO: opis |
+| `Chapter7` | `Maps/Chapter7.umap` | CH7 | TODO: opis |
+| `Chapter8` | `Maps/Chapter8.umap` | CH8 | TODO: opis |
+| `Chapter9` | `Maps/Chapter9.umap` | CH9 | TODO: opis |
+| `Chapter10` | `Maps/Chapter10.umap` | CH10 | TODO: opis |
+| `Chapter11` | `Maps/Chapter11.umap` | CH11 | TODO: opis |
+| `Chapter12` | `Maps/Chapter12.umap` | CH12 (Finale) | TODO: opis |
+| `Flashback1` | `Maps/Flashback1.umap` | FB1 | TODO: opis |
+| `Flashback2` | `Maps/Flashback2.umap` | FB2 | TODO: opis |
+| `Flashback3` | `Maps/Flashback3.umap` | FB3 | TODO: opis |
+| `Parallel1` | `Maps/Parallel1.umap` | PAR1 (Cien) | TODO: opis |
+| `Parallel2` | `Maps/Parallel2.umap` | PAR2 (Eva) | TODO: opis |
+
+**Setup dla kazdego poziomu:**
+1. Dodaj `BP_CCRGameMode` do WorldSettings -> GameMode Override.
+2. Dodaj `ACCRSpawnPoint` z unikalnymi `SpawnTag`.
+3. Dodaj `ACCREventTriggerActor` w strefach narracyjnych.
+4. Dodaj `ACCRAmbientSoundZoneActor` z dźwiękiem otoczenia.
+5. Ustaw `GameDefaultMap` w `DefaultEngine.ini` na `MainMenu`.
 
 ---
 
 ## Story Assets (UCCRStoryChunk)
 
-Create one `UCCRStoryChunk` data asset per narrative chunk.
+### Os glowna (MAIN ARC)
 
-**To create in UE5 Editor:**
-1. Right-click in the target `Content/CCR/Story/<Chapter>/` folder.
+Przepływ: PROLOGUE_01 -> PROLOGUE_02 -> CH1_01 -> CH1_02 -> ... -> CH12_02 -> End
+
+| Chunk | AxisId | Rozdzial | Postacie | Plik manifestu |
+|---|---|---|---|---|
+| PROLOGUE_01, PROLOGUE_02 | PROLOGUE | Prolog | ANDRZEJ, ZUZIA | `Prologue/PROLOGUE_STORY.json` |
+| CH1_01, CH1_02 | ACT1 | Rozdzial 1 | ANDRZEJ, EVA, CIEN | `Chapter1/CHAPTER1_STORY.json` |
+| CH2_01, CH2_02 | ACT1 | Rozdzial 2 | ANDRZEJ, EIMSTAIN, BATISTA, WERONIKA | `Chapter2/CHAPTER2_STORY.json` |
+| CH3_01, CH3_02 | ACT1 | Rozdzial 3 | ANDRZEJ, DAVID, KAFKA | `Chapter3/CHAPTER3_STORY.json` |
+| CH4_01, CH4_02 | ACT1 | Rozdzial 4 | ANDRZEJ, ZUZIA, CIEN | `Chapter4/CHAPTER4_STORY.json` |
+| CH5_01, CH5_02 | ACT1 | Rozdzial 5 | ANDRZEJ, EVA, ZUZIA, KAFKA | `Chapter5/CHAPTER5_STORY.json` |
+| CH6_01, CH6_02 | ACT1 | Rozdzial 6 | ANDRZEJ, EIMSTAIN, EVA | `Chapter6/CHAPTER6_STORY.json` |
+| CH7_01, CH7_02 | ACT2 | Rozdzial 7 | ANDRZEJ, BATISTA, WERONIKA, CIEN | `Chapter7/CHAPTER7_STORY.json` |
+| CH8_01, CH8_02 | ACT2 | Rozdzial 8 | ANDRZEJ, DAVID, BATISTA | `Chapter8/CHAPTER8_STORY.json` |
+| CH9_01, CH9_02 | ACT2 | Rozdzial 9 | ANDRZEJ, KAFKA, DAVID, ZUZIA | `Chapter9/CHAPTER9_STORY.json` |
+| CH10_01, CH10_02 | ACT3 | Rozdzial 10 | ANDRZEJ, WERONIKA, KAFKA | `Chapter10/CHAPTER10_STORY.json` |
+| CH11_01, CH11_02 | ACT3 | Rozdzial 11 | ANDRZEJ, CIEN, EIMSTAIN, WERONIKA | `Chapter11/CHAPTER11_STORY.json` |
+| CH12_01, CH12_02 | ACT3 | Rozdzial 12 (Finale) | ANDRZEJ, EVA, CIEN | `Chapter12/CHAPTER12_STORY.json` |
+
+### Os Wspomnien (FLASHBACK axis)
+
+Osobna os czasu — uruchamiana ze scen glownych. Nie wchodzi w glowny lancuch Jump.
+
+| Chunk | AxisId | Tytul | Postacie | Plik manifestu |
+|---|---|---|---|---|
+| FB1_01 | FLASHBACK | Wspomnienie 1 | ANDRZEJ, KAFKA | `Flashbacks/FLASHBACK1_STORY.json` |
+| FB2_01 | FLASHBACK | Wspomnienie 2 | KAFKA, DAVID | `Flashbacks/FLASHBACK2_STORY.json` |
+| FB3_01 | FLASHBACK | Wspomnienie 3 | ZUZIA, ANDRZEJ | `Flashbacks/FLASHBACK3_STORY.json` |
+
+### Os Rownolegla (PARALLEL axis)
+
+Alternatywne perspektywy — inne POV, te same wydarzenia.
+
+| Chunk | AxisId | Tytul | POV | Plik manifestu |
+|---|---|---|---|---|
+| PAR1_01 | PARALLEL | Perspektywa: Cien | CIEN, EIMSTAIN | `Parallel/PARALLEL1_STORY.json` |
+| PAR2_01 | PARALLEL | Perspektywa: Eva | EVA, WERONIKA | `Parallel/PARALLEL2_STORY.json` |
+
+### Tworzenie Story Chunk w UE5 Editor
+
+1. PPM w `Content/CCR/Story/<Rozdzial>/`.
 2. **Miscellaneous -> Data Asset -> CCRStoryChunk**.
-3. Name it `DA_Story_<ChunkId>` (e.g. `DA_Story_PROLOGUE_01`).
-4. Fill in `ChunkId`, `AxisId`, `EntryNodeId`, `ChapterTitle`, `ChapterSubtitle`.
-5. Add `FCCRNode` entries to the `Nodes` array.
+3. Nazwa: `DA_Story_<ChunkId>` (np. `DA_Story_CH4_01`).
+4. Wypelnij `ChunkId`, `AxisId`, `EntryNodeId`, `ChapterTitle`, `ChapterSubtitle`.
+5. Dodaj `FCCRNode` do tablicy `Nodes`.
 
-See `Story/Prologue/PROLOGUE_STORY.json` for the Prologue manifest.
-See `Story/Chapter1/CHAPTER1_STORY.json` for Chapter 1 manifest.
-See `Story/Chapter2/CHAPTER2_STORY.json` for Chapter 2 manifest.
-See `Story/Chapter3/CHAPTER3_STORY.json` for Chapter 3 (Finale) manifest.
-
-### Complete story flow
+### Konwencja nazewnictwa Node ID
 
 ```
-PROLOGUE_01 -> PROLOGUE_02 -> CH1_01 -> CH1_02 -> CH2_01 -> CH2_02 -> CH3_01 -> CH3_02 -> End
-```
-
-| Chunk | AxisId | Characters appearing |
-|---|---|---|
-| `PROLOGUE_01` | `PROLOGUE` | ANDRZEJ, ZUZIA |
-| `PROLOGUE_02` | `PROLOGUE` | ANDRZEJ, ZUZIA |
-| `CH1_01` | `CHAPTER1` | ANDRZEJ, EVA |
-| `CH1_02` | `CHAPTER1` | ANDRZEJ, CIEN |
-| `CH2_01` | `CHAPTER2` | ANDRZEJ, EIMSTAIN |
-| `CH2_02` | `CHAPTER2` | ANDRZEJ, BATISTA, WERONIKA |
-| `CH3_01` | `CHAPTER3` | ANDRZEJ, DAVID, KAFKA |
-| `CH3_02` | `CHAPTER3` | ANDRZEJ (finale cinematic + End) |
-
-### Node ID naming convention
-
-```
-<Axis>_<Chunk>_<Sequence>
-e.g.:  PRO_01_010   (Prologue, chunk 01, node 010)
-       CH1_02_030   (Chapter 1, chunk 02, node 030)
+<Skrot>_<Chunk>_<Sekwencja>
+np.:  PRO_01_010    (Prologue, chunk 01, wezel 010)
+      CH4_01_030    (Chapter 4, chunk 01, wezel 030)
+      FB1_01_020    (Flashback 1, chunk 01, wezel 020)
+      PAR2_01_010   (Parallel 2, chunk 01, wezel 010)
 ```
 
 ---
 
 ## Character Assets (UCCRCharacterDefinition)
 
-Create one `UCCRCharacterDefinition` per named character.
+| CharacterId | Wyswietlana nazwa | MetFlag | Pierwszy rozdzial |
+|---|---|---|---|
+| `ANDRZEJ` | Andrzej | -- | Protagonista – wszystkie |
+| `ZUZIA` | Zuzia | `MET_ZUZIA` | Prolog |
+| `EVA` | Eva | `MET_EVA` | Rozdzial 1 |
+| `CIEN` | Cien | `MET_CIEN` | Rozdzial 1 |
+| `EIMSTAIN` | Eimstain | `MET_EIMSTAIN` | Rozdzial 2 |
+| `BATISTA` | Batista | `MET_BATISTA` | Rozdzial 2 |
+| `WERONIKA` | Weronika | `MET_WERONIKA` | Rozdzial 2 |
+| `DAVID` | David | `MET_DAVID` | Rozdzial 3 |
+| `KAFKA` | Kafka | `MET_KAFKA` | Rozdzial 3 |
 
-**To create in UE5 Editor:**
-1. Right-click in `Content/CCR/Characters/`.
-2. **Miscellaneous -> Data Asset -> CCRCharacterDefinition**.
-3. Name it `DA_Char_<CharacterId>` (e.g. `DA_Char_ANDRZEJ`).
-4. Set `CharacterId` to match the filename suffix (e.g. `ANDRZEJ`).
-5. Fill `DisplayName`, `ShortName`, `VOKeyPrefix`, `SpeakerTag`, `MetFlag`.
-6. Toggle `bIsKeyCharacter` for story-critical characters.
-7. Add portrait entries to `Portraits[]` -- one `FCCRPortraitEntry` per expression state.
+Pelna definicja: `Characters/CHARACTERS_MANIFEST.json`
 
-See `Characters/CHARACTERS_MANIFEST.json` for all character definitions.
-
-**Characters:**
-
-| CharacterId | Display Name | MetFlag |
-|---|---|---|
-| `ANDRZEJ`  | Andrzej  | -- (protagonist) |
-| `ZUZIA`    | Zuzia    | `MET_ZUZIA` |
-| `EVA`      | Eva      | `MET_EVA` |
-| `CIEN`     | Cien     | `MET_CIEN` |
-| `EIMSTAIN` | Eimstain | `MET_EIMSTAIN` |
-| `BATISTA`  | Batista  | `MET_BATISTA` |
-| `WERONIKA` | Weronika | `MET_WERONIKA` |
-| `DAVID`    | David    | `MET_DAVID` |
-| `KAFKA`    | Kafka    | `MET_KAFKA` |
-
-### Portrait naming convention
+### Konwencja nazewnictwa portretow
 
 ```
 T_<CharacterId>_<StateName>
-e.g.: T_ANDRZEJ_Neutral.png
-      T_ANDRZEJ_Happy.png
-      T_ZUZIA_Sad.png
-      T_CIEN_Fear.png
+np.: T_ANDRZEJ_Neutral.png
+     T_CIEN_Fear.png
 ```
 
-Import portrait textures to `Content/CCR/Textures/Portraits/<CharacterId>/`.
-
-`UCCRCharacterDefinition::GetPortraitForExpression(ExpressionTag)` resolves
-the correct portrait at runtime, falling back to "Neutral" when the tag is
-not found.
+Importuj do `Content/CCR/Textures/Portraits/<CharacterId>/`.
 
 ---
 
 ## Item Assets (UCCRInventoryItemDefinition)
 
-Create one `UCCRInventoryItemDefinition` per collectible item.
+Pelna definicja: `Items/ITEMS_MANIFEST.json`
 
-**To create in UE5 Editor:**
-1. Right-click in `Content/CCR/Items/`.
-2. **Miscellaneous -> Data Asset -> CCRInventoryItemDefinition**.
-3. Name it `DA_Item_<ItemId>` (e.g. `DA_Item_KEY_01`).
-4. Set `ItemId` to match the FName used in `UCCRInventorySubsystem::AddItem()`.
-5. Fill `DisplayName`, `Description`, assign `Icon`.
-6. Set `bCanUse`, `bConsumedOnUse`, `UseWorldStateFlag` if applicable.
-
-See `Items/ITEMS_MANIFEST.json` for all item definitions.
-
-### Item icon naming convention
-
-```
-T_Item_<ItemId>
-e.g.: T_Item_KEY_01.png
-```
-
-Import icons to `Content/CCR/Textures/Items/`.
+Konwencja ikon: `T_Item_<ItemId>` -> `Content/CCR/Textures/Items/`
 
 ---
 
 ## Blueprint Widgets
 
-Create one Blueprint Widget subclass per C++ base class.
-
-| Blueprint Name | C++ Base | Folder |
+| Blueprint | Baza C++ | Folder |
 |---|---|---|
 | `WBP_CCRDialogue` | `UCCRDialogueWidget` | `Blueprints/Widgets/` |
 | `WBP_CCRQTE` | `UCCRQTEWidget` | `Blueprints/Widgets/` |
@@ -209,78 +206,66 @@ Create one Blueprint Widget subclass per C++ base class.
 | `WBP_CCRInventory` | `UCCRInventoryWidget` | `Blueprints/Widgets/` |
 | `WBP_CCRChapterSelect` | `UCCRChapterSelectWidget` | `Blueprints/Widgets/` |
 
-**Assign all widget class references in `ACCRGameHUD` (Blueprint Defaults).**
-
 ---
 
 ## Game Framework Blueprints
 
-| Blueprint Name | C++ Base | Notes |
-|---|---|---|
-| `BP_CCRGameInstance` | `UCCRGameInstance` | Register speakers in `Event Init`; assign widget classes to `ACCRGameHUD` |
-| `BP_CCRGameMode` | `ACCRGameMode` | Set `PlayerControllerClass = BP_CCRTouchController` |
-| `BP_CCRGameHUD` | `ACCRGameHUD` | Assign all `WBP_*` widget class properties |
-| `BP_CCRTouchController` | `ACCRTouchController` | Mobile touch controller |
+| Blueprint | Baza C++ |
+|---|---|
+| `BP_CCRGameInstance` | `UCCRGameInstance` |
+| `BP_CCRGameMode` | `ACCRGameMode` |
+| `BP_CCRGameHUD` | `ACCRGameHUD` |
+| `BP_CCRTouchController` | `ACCRTouchController` |
 
 ---
 
 ## Audio
 
-### Music cues
+### Muzyka
 
-Place music `USoundWave` assets in `Content/CCR/Audio/Music/`.
-Register cues at startup via `UCCRAudioSubsystem::RegisterMusicCue(Key, Cue)`.
-
-| Key | File | Description |
+| Klucz | Plik | Opis |
 |---|---|---|
-| `MENU` | `MUS_MainMenu.wav` | Main menu ambient theme |
-| `PROLOGUE` | `MUS_Prologue.wav` | Prologue background music |
-| `CHAPTER1` | `MUS_Chapter1.wav` | Chapter 1 theme |
-| `CHAPTER2` | `MUS_Chapter2.wav` | Chapter 2 theme |
-| `CHAPTER3` | `MUS_Chapter3.wav` | Chapter 3 finale theme |
-| `TENSION` | `MUS_Tension.wav` | Tension / QTE music |
-
-### Voice-over cues
-
-File naming: `VO_<CharacterId>_<NodeId>.wav`
-Place in `Content/CCR/Audio/VO/<CharacterId>/`.
+| `MENU` | `MUS_MainMenu.wav` | Temat menu glownego |
+| `PROLOGUE` | `MUS_Prologue.wav` | Muzyka prologu |
+| `ACT1` | `MUS_Act1.wav` | Temat Aktu I |
+| `ACT2` | `MUS_Act2.wav` | Temat Aktu II |
+| `ACT3` | `MUS_Act3.wav` | Temat Aktu III |
+| `FLASHBACK` | `MUS_Flashback.wav` | Temat wspomnien |
+| `PARALLEL` | `MUS_Parallel.wav` | Temat osi rownoleglejnej |
+| `TENSION` | `MUS_Tension.wav` | Muzyka QTE / napiecia |
+| `FINALE` | `MUS_Finale.wav` | Finale – Rozdzial 12 |
 
 ### SFX
 
-Place in `Content/CCR/Audio/SFX/`.
-
-| Asset Name | Description |
+| Asset | Opis |
 |---|---|
-| `SFX_QTE_Success` | QTE success feedback |
-| `SFX_QTE_Fail` | QTE failure feedback |
-| `SFX_CheckpointSaved` | Auto-save confirmation |
-| `SFX_ItemPickup` | Item acquired notification |
-| `SFX_UIConfirm` | UI confirm button |
-| `SFX_UIBack` | UI back button |
+| `SFX_QTE_Success` | Sukces QTE |
+| `SFX_QTE_Fail` | Porazka QTE |
+| `SFX_CheckpointSaved` | Zapis checkpointu |
+| `SFX_ItemPickup` | Pobranie przedmiotu |
+| `SFX_UIConfirm` | Potwierdzenie UI |
+| `SFX_UIBack` | Cofniecie UI |
 
 ---
 
 ## Cinematics (Level Sequences)
 
-Create `ULevelSequence` assets in `Content/CCR/Cinematics/<Chapter>/`.
-Assign them to `FCCRNode.CinematicSequence` (soft object ptr) on Cinematic nodes.
-
-| Asset Name | Chunk | Node | Description |
+| Asset | Rozdzial | Wezel | Opis |
 |---|---|---|---|
-| `LS_Prologue_Intro` | `PROLOGUE_01` | `PRO_01_CIN_001` | Opening cutscene |
-| `LS_Prologue_Outro` | `PROLOGUE_02` | `PRO_02_CIN_001` | Prologue ending cutscene |
-| `LS_Chapter3_Finale` | `CH3_02` | `CH3_02_010` | Finale cutscene |
-| `LS_Chapter3_Epilogue` | `CH3_02` | `CH3_02_050` | Epilogue montage (skippable) |
+| `LS_Prologue_Intro` | PROLOGUE_01 | PRO_01_CIN_001 | Intro prologu |
+| `LS_Prologue_Outro` | PROLOGUE_02 | PRO_02_CIN_001 | Outro prologu |
+| `LS_FB1_Intro` | FB1_01 | FB1_01_010 | Wspomnienie 1 - wejscie |
+| `LS_FB3_Intro` | FB3_01 | FB3_01_010 | Wspomnienie 3 - wejscie |
+| `LS_Chapter12_Finale` | CH12_02 | CH12_02_010 | Finale |
+| `LS_Chapter12_Epilogue` | CH12_02 | CH12_02_050 | Epilog (mozliwy do pominiecia) |
 
 ---
 
-## `.gitignore` for Content
+## .gitignore dla Content
 
-Binary `.uasset` and `.umap` files should **not** be tracked in Git (use Perforce or Git LFS).
+Binarne pliki `.uasset` i `.umap` nie powinny byc sledzone przez Git (uzywaj Perforce lub Git LFS).
 
-The folder structure (tracked via `.gitkeep` files) provides the scaffold for the team.
-
-If you use Git LFS, add to `.gitattributes`:
+Git LFS – dodaj do `.gitattributes`:
 ```
 Content/**/*.uasset filter=lfs diff=lfs merge=lfs -text
 Content/**/*.umap    filter=lfs diff=lfs merge=lfs -text

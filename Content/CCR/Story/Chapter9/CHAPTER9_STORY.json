@@ -1,0 +1,240 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 9. Axis: ACT2. Location: TODO: lokacja rozdziału 9.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH9_01",
+      "path": "Content/CCR/Story/Chapter9/",
+      "ChunkId": "CH9_01",
+      "AxisId": "ACT2",
+      "EntryNodeId": "CH9_01_010",
+      "ChapterTitle": "Rozdział 9",
+      "ChapterSubtitle": "TODO: podtytuł rozdziału 9",
+      "Nodes": [
+        {
+          "NodeId": "CH9_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: pierwsza kwestia rozdziału 9. Lokacja: TODO: lokacja rozdziału 9.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH9_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH9_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: kwestia postaci KAFKA.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH9_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH9_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH9_01_040"
+        },
+        {
+          "NodeId": "CH9_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH9_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH9_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH9_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH9_01_055",
+          "QTEFailNodeId": "CH9_01_052"
+        },
+        {
+          "NodeId": "CH9_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH9_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH9_01_055",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia po udanym QTE.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH9_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH9_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: kwestia postaci ZUZIA w rozdziale 9.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH9_01_070",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH9_01_070",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_ZUZIA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH9_01_080"
+        },
+        {
+          "NodeId": "CH9_01_080",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH9_02",
+          "EntryNodeInTarget": "CH9_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH9_02",
+      "path": "Content/CCR/Story/Chapter9/",
+      "ChunkId": "CH9_02",
+      "AxisId": "ACT2",
+      "EntryNodeId": "CH9_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH9_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: kwestia postaci DAVID w drugiej części rozdziału 9.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH9_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH9_02_020",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH9_02_030"
+        },
+        {
+          "NodeId": "CH9_02_030",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH9_02_040",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH9_02_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH9_02_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH9_CHOICE_A",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH9_02_060"
+        },
+        {
+          "NodeId": "CH9_02_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH9_CHOICE_B",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH9_02_060"
+        },
+        {
+          "NodeId": "CH9_02_060",
+          "NodeType": "Condition",
+          "Conditions": [
+            {
+              "Key": "CH9_CHOICE_A",
+              "ValueType": "Flag",
+              "CompareOp": "Equals",
+              "CompareValue": 1
+            }
+          ],
+          "ConditionTrueNodeId": "CH9_02_070",
+          "ConditionFalseNodeId": "CH9_02_080"
+        },
+        {
+          "NodeId": "CH9_02_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: kwestia DAVID – ścieżka A.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH9_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH9_02_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: kwestia DAVID – ścieżka B.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH9_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH9_02_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie rozdziału.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH9_02_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH9_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH10_01",
+          "EntryNodeInTarget": "CH10_01_010"
+        }
+      ]
+    }
+  ]
+}

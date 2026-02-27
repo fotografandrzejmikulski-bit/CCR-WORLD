@@ -1,0 +1,218 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 10. Axis: ACT3. Location: TODO: lokacja rozdziału 10.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH10_01",
+      "path": "Content/CCR/Story/Chapter10/",
+      "ChunkId": "CH10_01",
+      "AxisId": "ACT3",
+      "EntryNodeId": "CH10_01_010",
+      "ChapterTitle": "Rozdział 10",
+      "ChapterSubtitle": "TODO: podtytuł rozdziału 10",
+      "Nodes": [
+        {
+          "NodeId": "CH10_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: pierwsza kwestia rozdziału 10. Lokacja: TODO: lokacja rozdziału 10.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH10_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH10_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "TODO: kwestia postaci WERONIKA.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH10_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH10_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH10_01_040"
+        },
+        {
+          "NodeId": "CH10_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH10_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH10_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH10_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH10_01_055",
+          "QTEFailNodeId": "CH10_01_052"
+        },
+        {
+          "NodeId": "CH10_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH10_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH10_01_055",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia po udanym QTE.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH10_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH10_01_060",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH10_02",
+          "EntryNodeInTarget": "CH10_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH10_02",
+      "path": "Content/CCR/Story/Chapter10/",
+      "ChunkId": "CH10_02",
+      "AxisId": "ACT3",
+      "EntryNodeId": "CH10_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH10_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: kwestia postaci KAFKA w drugiej części rozdziału 10.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH10_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH10_02_020",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH10_02_030"
+        },
+        {
+          "NodeId": "CH10_02_030",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH10_02_040",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH10_02_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH10_02_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH10_CHOICE_A",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH10_02_060"
+        },
+        {
+          "NodeId": "CH10_02_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH10_CHOICE_B",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH10_02_060"
+        },
+        {
+          "NodeId": "CH10_02_060",
+          "NodeType": "Condition",
+          "Conditions": [
+            {
+              "Key": "CH10_CHOICE_A",
+              "ValueType": "Flag",
+              "CompareOp": "Equals",
+              "CompareValue": 1
+            }
+          ],
+          "ConditionTrueNodeId": "CH10_02_070",
+          "ConditionFalseNodeId": "CH10_02_080"
+        },
+        {
+          "NodeId": "CH10_02_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: kwestia KAFKA – ścieżka A.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH10_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH10_02_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: kwestia KAFKA – ścieżka B.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH10_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH10_02_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie rozdziału.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH10_02_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH10_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH11_01",
+          "EntryNodeInTarget": "CH11_01_010"
+        }
+      ]
+    }
+  ]
+}

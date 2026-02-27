@@ -1,0 +1,68 @@
+{
+  "_doc": "UCCRStoryChunk manifest – Flashback axis. Osobna oś czasu: przeszłość Kafki. Create DA_Story_FB2_01.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_FB2_01",
+      "path": "Content/CCR/Story/Flashbacks/",
+      "ChunkId": "FB2_01",
+      "AxisId": "FLASHBACK",
+      "EntryNodeId": "FB2_01_010",
+      "ChapterTitle": "Wspomnienie 2",
+      "ChapterSubtitle": "TODO: podtytuł wspomnienia 2",
+      "Nodes": [
+        {
+          "NodeId": "FB2_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: pierwsza kwestia Kafki we wspomnieniu 2. Lokacja: TODO.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "FB2_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "FB2_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: kwestia Davida we wspomnieniu 2.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "FB2_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "FB2_01_030",
+          "NodeType": "QTE",
+          "GestureType": "Tap",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "FB2_01_040",
+          "QTEFailNodeId": "FB2_01_035"
+        },
+        {
+          "NodeId": "FB2_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: reakcja Kafki na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "FB2_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "FB2_01_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "FB2_SEEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "FB2_01_END"
+        },
+        {
+          "NodeId": "FB2_01_END",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

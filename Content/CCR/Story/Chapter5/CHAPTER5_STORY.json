@@ -1,0 +1,240 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 5. Axis: ACT1. Location: TODO: lokacja rozdziału 5.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH5_01",
+      "path": "Content/CCR/Story/Chapter5/",
+      "ChunkId": "CH5_01",
+      "AxisId": "ACT1",
+      "EntryNodeId": "CH5_01_010",
+      "ChapterTitle": "Rozdział 5",
+      "ChapterSubtitle": "TODO: podtytuł rozdziału 5",
+      "Nodes": [
+        {
+          "NodeId": "CH5_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: pierwsza kwestia rozdziału 5. Lokacja: TODO: lokacja rozdziału 5.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH5_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH5_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "TODO: kwestia postaci EVA.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH5_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH5_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH5_01_040"
+        },
+        {
+          "NodeId": "CH5_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH5_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH5_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH5_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH5_01_055",
+          "QTEFailNodeId": "CH5_01_052"
+        },
+        {
+          "NodeId": "CH5_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH5_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH5_01_055",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia po udanym QTE.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH5_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH5_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: kwestia postaci KAFKA w rozdziale 5.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH5_01_070",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH5_01_070",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH5_01_080"
+        },
+        {
+          "NodeId": "CH5_01_080",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH5_02",
+          "EntryNodeInTarget": "CH5_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH5_02",
+      "path": "Content/CCR/Story/Chapter5/",
+      "ChunkId": "CH5_02",
+      "AxisId": "ACT1",
+      "EntryNodeId": "CH5_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH5_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: kwestia postaci ZUZIA w drugiej części rozdziału 5.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH5_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH5_02_020",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_ZUZIA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH5_02_030"
+        },
+        {
+          "NodeId": "CH5_02_030",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "CH5_02_040",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "CH5_02_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH5_02_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH5_CHOICE_A",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH5_02_060"
+        },
+        {
+          "NodeId": "CH5_02_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "CH5_CHOICE_B",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "CH5_02_060"
+        },
+        {
+          "NodeId": "CH5_02_060",
+          "NodeType": "Condition",
+          "Conditions": [
+            {
+              "Key": "CH5_CHOICE_A",
+              "ValueType": "Flag",
+              "CompareOp": "Equals",
+              "CompareValue": 1
+            }
+          ],
+          "ConditionTrueNodeId": "CH5_02_070",
+          "ConditionFalseNodeId": "CH5_02_080"
+        },
+        {
+          "NodeId": "CH5_02_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: kwestia ZUZIA – ścieżka A.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH5_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH5_02_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: kwestia ZUZIA – ścieżka B.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH5_02_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH5_02_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie rozdziału.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH5_02_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH5_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH6_01",
+          "EntryNodeInTarget": "CH6_01_010"
+        }
+      ]
+    }
+  ]
+}
