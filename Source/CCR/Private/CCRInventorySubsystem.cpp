@@ -92,7 +92,7 @@ void UCCRInventorySubsystem::ClearAll()
 	//   (a) Override this method in a subclass that maintains a registered item
 	//       list and calls UCCRWorldStateSubsystemV2::SetInt("INV_<Id>", 0) for each.
 	//   (b) Use UCCRWorldStateSubsystemV2::ImportState() to reset the entire world state.
-	UE_LOG(LogTemp, Warning,
+	UE_LOG(LogTemp, Error,
 		TEXT("UCCRInventorySubsystem::ClearAll() has no base-class implementation. "
 			 "Override in a subclass or use UCCRWorldStateSubsystemV2::ImportState() "
 			 "to reset the world state."));

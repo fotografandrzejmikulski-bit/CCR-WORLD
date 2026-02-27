@@ -131,10 +131,9 @@ void UCCRSceneDirectorSubsystem::ApplyPlayerPosition(UWorld* World, const FCCRLe
 	APawn* Pawn = PC->GetPawn();
 	if (!Pawn) return;
 
-	// bHasTransform is determined after SpawnTag resolution so it only becomes
-	// true when we have a valid transform to apply.
+	// Priority: SpawnTag resolution > explicit PlayerSpawnTransform > do nothing
 	bool bHasTransform = false;
-	FTransform FinalTransform = Req.PlayerSpawnTransform;
+	FTransform FinalTransform;
 
 	if (!Req.SpawnTag.IsNone())
 	{
@@ -144,15 +143,16 @@ void UCCRSceneDirectorSubsystem::ApplyPlayerPosition(UWorld* World, const FCCRLe
 			if (SpawnSys->GetSpawnTransform(Req.SpawnTag, SpawnTransform))
 			{
 				FinalTransform = SpawnTransform;
-				bHasTransform = true;
+				bHasTransform  = true;
 			}
 		}
 	}
 
-	// Fall back to the explicit spawn transform if no SpawnTag was resolved
+	// Fall back to explicit spawn transform if SpawnTag didn't resolve
 	if (!bHasTransform && !Req.PlayerSpawnTransform.Equals(FTransform::Identity))
 	{
-		bHasTransform = true;
+		FinalTransform = Req.PlayerSpawnTransform;
+		bHasTransform  = true;
 	}
 
 	if (bHasTransform)

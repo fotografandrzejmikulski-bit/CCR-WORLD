@@ -2,6 +2,7 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRCinematicSubsystem.h"
 #include "CCRGameHUD.h"
+#include "CCRHapticLibrarySubsystem.h"
 #include "CCRQTEWidget.h"
 #include "CCRTypes.h"
 #include "Components/InputComponent.h"
@@ -164,6 +165,14 @@ void ACCRTouchController::EndQTE(bool bSuccess)
 
 	UGameInstance* GI = GetGameInstance();
 	if (!GI) return;
+
+	// Play the named haptic pattern for QTE outcome
+	if (UCCRHapticLibrarySubsystem* Haptic = GI->GetSubsystem<UCCRHapticLibrarySubsystem>())
+	{
+		Haptic->PlayPatternOnController(
+			bSuccess ? FName(TEXT("QTE_Success")) : FName(TEXT("QTE_Failure")),
+			this);
+	}
 
 	if (UCCRNarrativeRuntimeSubsystem* NRS = GI->GetSubsystem<UCCRNarrativeRuntimeSubsystem>())
 	{

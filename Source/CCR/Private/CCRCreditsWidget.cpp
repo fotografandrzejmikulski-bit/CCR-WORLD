@@ -38,9 +38,10 @@ void UCCRCreditsWidget::HandleNarrativeEnded()
 
 void UCCRCreditsWidget::ReturnToMainMenu()
 {
-	// Ensure the game is unpaused before returning (it may have been paused if
-	// the player paused then reached the end node without unpausing).
+	// Ensure the game is unpaused before returning
 	UGameplayStatics::SetGamePaused(this, false);
-	UGameplayStatics::OpenLevel(this, MainMenuLevelName);
+	// Remove from parent BEFORE OpenLevel so we're not trying to update a widget
+	// inside an in-flight level transition.
 	RemoveFromParent();
+	UGameplayStatics::OpenLevel(this, MainMenuLevelName);
 }
