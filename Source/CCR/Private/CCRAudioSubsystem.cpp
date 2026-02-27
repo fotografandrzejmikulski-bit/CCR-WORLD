@@ -106,7 +106,12 @@ void UCCRAudioSubsystem::PlayMusic(FName CueKey, float FadeTimeSec)
 
 	if (MusicComponent)
 	{
-		MusicComponent->FadeIn(FadeTimeSec, MusicVolume);
+		// Respect the current duck state so a newly-started track does not
+		// blast at full volume while a cinematic is playing.
+		const float EffectiveVolume = bMusicDucked
+			? MusicVolume * FMath::Clamp(CinematicDuckVolume, 0.f, 1.f)
+			: MusicVolume;
+		MusicComponent->FadeIn(FadeTimeSec, EffectiveVolume);
 	}
 
 	CurrentMusicKey = CueKey;

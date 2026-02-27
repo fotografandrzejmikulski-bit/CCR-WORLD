@@ -17,6 +17,9 @@ enum class ECCRPerformanceTier : uint8
  *
  * Detects device performance tier from the GPU adapter name
  * and exposes limits used by other subsystems (e.g. max predicted chunks).
+ * Also applies Unreal scalability CVars to match the detected tier and
+ * re-applies them whenever the player changes the performance override
+ * in UCCRSettingsSubsystem.
  */
 UCLASS()
 class CCR_API UCCRPerformanceGovernorSubsystem : public UGameInstanceSubsystem
@@ -25,6 +28,7 @@ class CCR_API UCCRPerformanceGovernorSubsystem : public UGameInstanceSubsystem
 
 public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
 
 	UFUNCTION(BlueprintPure, Category = "CCR|Performance")
 	ECCRPerformanceTier GetPerformanceTier() const { return Tier; }
@@ -36,8 +40,18 @@ public:
 	UFUNCTION(BlueprintPure, Category = "CCR|Performance")
 	int32 GetMaxPredictedChunks() const;
 
+	/**
+	 * Push scalability CVar values to the engine to match the current tier.
+	 * Called automatically on Initialize and whenever settings change.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Performance")
+	void ApplyQualitySettings();
+
 private:
 	ECCRPerformanceTier Tier = ECCRPerformanceTier::Mid;
 
 	void DetectTier();
+
+	UFUNCTION()
+	void OnSettingsChanged();
 };
