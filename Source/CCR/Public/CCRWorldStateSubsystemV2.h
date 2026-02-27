@@ -48,6 +48,17 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|WorldState")
 	void SetFlag(FName Key, bool bValue);
 
+	// ---- Condition evaluation ----
+
+	/**
+	 * Evaluates a list of FCCRCondition against the current world state.
+	 * Returns true when ALL conditions pass (AND-semantics).
+	 * An empty condition list always returns true.
+	 * Use this instead of duplicating the switch logic in each consumer class.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|WorldState")
+	bool EvaluateConditions(const TArray<FCCRCondition>& Conditions) const;
+
 	// ---- Float API ----
 	UFUNCTION(BlueprintCallable, Category = "CCR|WorldState")
 	float GetFloat(FName Key, float DefaultValue = 0.f) const;

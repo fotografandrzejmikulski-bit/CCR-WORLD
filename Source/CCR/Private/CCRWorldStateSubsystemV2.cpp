@@ -97,6 +97,33 @@ void UCCRWorldStateSubsystemV2::SetFlag(FName Key, bool bValue)
 		FlagBits[WordIdx] &= ~(1ULL << BitIdx);
 }
 
+bool UCCRWorldStateSubsystemV2::EvaluateConditions(const TArray<FCCRCondition>& Conditions) const
+{
+	for (const FCCRCondition& Cond : Conditions)
+	{
+		float ActualValue = 0.f;
+		switch (Cond.ValueType)
+		{
+		case ECCRStateValueType::Flag:  ActualValue = GetFlag(Cond.Key) ? 1.f : 0.f; break;
+		case ECCRStateValueType::Float: ActualValue = GetFloat(Cond.Key); break;
+		case ECCRStateValueType::Int:   ActualValue = static_cast<float>(GetInt(Cond.Key)); break;
+		}
+
+		bool bPass = false;
+		switch (Cond.CompareOp)
+		{
+		case ECCRCompareOp::Equals:         bPass = FMath::IsNearlyEqual(ActualValue, Cond.CompareValue); break;
+		case ECCRCompareOp::NotEquals:      bPass = !FMath::IsNearlyEqual(ActualValue, Cond.CompareValue); break;
+		case ECCRCompareOp::Less:           bPass = ActualValue <  Cond.CompareValue; break;
+		case ECCRCompareOp::LessOrEqual:    bPass = ActualValue <= Cond.CompareValue; break;
+		case ECCRCompareOp::Greater:        bPass = ActualValue >  Cond.CompareValue; break;
+		case ECCRCompareOp::GreaterOrEqual: bPass = ActualValue >= Cond.CompareValue; break;
+		}
+		if (!bPass) return false;
+	}
+	return true;
+}
+
 // ---------------------------------------------------------------------------
 // Float
 // ---------------------------------------------------------------------------

@@ -124,31 +124,7 @@ bool ACCREventTriggerActor::EvaluateConditions() const
 
 	UGameInstance* GI = UGameplayStatics::GetGameInstance(this);
 	UCCRWorldStateSubsystemV2* WSM = GI ? GI->GetSubsystem<UCCRWorldStateSubsystemV2>() : nullptr;
-	if (!WSM) return true;
-
-	for (const FCCRCondition& Cond : Conditions)
-	{
-		float ActualValue = 0.f;
-		switch (Cond.ValueType)
-		{
-		case ECCRStateValueType::Flag:  ActualValue = WSM->GetFlag(Cond.Key) ? 1.f : 0.f; break;
-		case ECCRStateValueType::Float: ActualValue = WSM->GetFloat(Cond.Key); break;
-		case ECCRStateValueType::Int:   ActualValue = static_cast<float>(WSM->GetInt(Cond.Key)); break;
-		}
-
-		bool bPass = false;
-		switch (Cond.CompareOp)
-		{
-		case ECCRCompareOp::Equals:         bPass = FMath::IsNearlyEqual(ActualValue, Cond.CompareValue); break;
-		case ECCRCompareOp::NotEquals:      bPass = !FMath::IsNearlyEqual(ActualValue, Cond.CompareValue); break;
-		case ECCRCompareOp::Less:           bPass = ActualValue <  Cond.CompareValue; break;
-		case ECCRCompareOp::LessOrEqual:    bPass = ActualValue <= Cond.CompareValue; break;
-		case ECCRCompareOp::Greater:        bPass = ActualValue >  Cond.CompareValue; break;
-		case ECCRCompareOp::GreaterOrEqual: bPass = ActualValue >= Cond.CompareValue; break;
-		}
-		if (!bPass) return false;
-	}
-	return true;
+	return WSM ? WSM->EvaluateConditions(Conditions) : true;
 }
 
 void ACCREventTriggerActor::ApplySetOps()
