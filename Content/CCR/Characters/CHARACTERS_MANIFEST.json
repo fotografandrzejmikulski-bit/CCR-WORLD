@@ -1,5 +1,6 @@
 {
-  "_doc": "CCR WORLD – Character manifest. KLUCZOWE ZASADY NARRACYJNE: (1) ANDRZEJ = ojciec ZUZI, szuka jej przez WSZYSTKIE 19 osi czasu – TOM 3. (2) ZUZIA i ANDRZEJ NIE spotykają się fizycznie w Tomie 3. W T19 Andrzej wysyła wiadomość przez Kosmiczny Rezonator Świadomości. (3) TOM 4: ZUZIA idzie śladami ojca jako protagonistka. (4) WERONIKA trzyma TYLKO z DAVIDEM – nigdy nie spotkała EVY. (5) CIEŃ = alternatywna wersja ANDRZEJA który poddał się (odkrycie: oś T17). (6) Gra zaczyna się szeptem dziecka: 'Czas nie płynie… czas oddycha.'",
+  "_doc": "CCR WORLD – CHARACTERS_MANIFEST | Kompletne profile wizualne, narracyjne i techniczne każdej postaci. ZASADY: (1) ANDRZEJ = protagonista, ojciec Zuzi, podróżuje przez 19 osi. (2) WERONIKA = była żona Andrzeja, kochanica Davida — czarny charakter, nigdy nie pomaga. (3) DAVID = kochanek Weroniki, czarny charakter. (4) CIEŃ = dosłowny cień Andrzeja (alternatywna wersja Andrzeja który się poddał). (5) ZUZIA = 8-letnia córka Andrzeja.",
+  "schemaVersion": "2.0",
   "characters": [
     {
       "assetName": "DA_Char_ANDRZEJ",
@@ -10,7 +11,75 @@
       "VOKeyPrefix": "ANDRZEJ",
       "MetFlag": "",
       "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
+      "bIsProtagonist": true,
+      "Role": "PROTAGONISTA — ojciec szukający córki przez 19 osi czasu",
+      "VisualDesign": {
+        "Age": 35,
+        "Gender": "Mężczyzna",
+        "Build": "Szczupły, atletyczny, wyprostowany",
+        "Height_cm": 182,
+        "Hair": "Modna fryzura — przycięte boki, dłuższe na górze, lekko rozczochrane. Ciemny brąz.",
+        "Eyes": "Ciemnozielone, bystra obserwacja",
+        "Glasses": "Eleganckie rogowe okulary w stylu vintage — czarna oprawka, owalne szkła",
+        "FacialHair": "Lekki zarost dwudniowy",
+        "Skin": "Opalona, ze śladami podróży",
+        "Tattoos": {
+          "Description": "ROZLEGŁE tatuaże czarno-szare pokrywające całą szyję, oba ramiona od barku do dłoni, włącznie z wewnętrzną stroną dłoni i palcami",
+          "Style": "Fine-line i dotwork — kwiaty, linie geometryczne, elementy fotograficzne (klatki filmowe, obiektywy)",
+          "Neck": "Cała szyja pokryta tatuażami — botaniczne motywy splecione z klatkami filmowymi",
+          "Arms": "Od barku do nadgarstka — ciągły rękaw tatuaży na obu rękach",
+          "Hands": "Grzbiet dłoni i palce z tatuażami — litery, symbole, kwiaty",
+          "Chest": "Brak",
+          "Visible_When": "Zawsze widoczne przy krótkich rękawach lub gdy rękawy zawinięte"
+        },
+        "Outfit": {
+          "BaseOutfit": "Elegancko-casual — kontrast tatuaży z ubraniem",
+          "Shirt": "Beżowa koszula z lnem, długi rękaw zawinięty do łokcia (eksponuje tatuaże), dwa guziki rozpięte przy kołnierzyku",
+          "Pants": "Spodnie w kratę brązowo-kremową, dobrze skrojone, zwężane w dole",
+          "Belt": "Brązowy skórzany pasek — gruba skóra, prosta klamra prostokątna",
+          "Shoes": "Brązowe derby w stylu oxford, lekko znoszone (wiele kilometrów za sobą)",
+          "Accessories": "Aparat fotograficzny — zawsze na pasku przez ramię lub szyję (główny gadżet gry)",
+          "OutfitVariants": {
+            "T01_1679": "Narzucona na koszulę historyczna peleryna/kamizelka (kamufluje nowoczesność), aparat ukryty pod peleryną",
+            "T02_1983": "Identyczny strój z dodanym szalikiem i zimową marynarką — pasuje do PRL-u jako 'zachodni inteligent'",
+            "T05_Novaky": "Robocze kamizelka z kieszeniami narzucona na koszulę, kask robotnika",
+            "T18_DevilMind": "Koszula podarta i zakurzona po walce z Devil Mind AI",
+            "T19_Finał": "Koszula coraz bardziej świetlista — Andrzej zaczyna rozjaśniać się jak Rezonator"
+          }
+        },
+        "Camera": {
+          "Model": "Analogowy aparat medium-format — stylizowany, vintage-futurystyczny (istnieje przez wszystkie epoki)",
+          "Strap": "Skórzany pasek z wytartymi brzegami",
+          "GameMechanic": "KLUCZOWY PRZEDMIOT GRY — aparat pozwala fotografować środowisko, postacie i obiekty. Zdjęcia ujawniają ukryte wskazówki, emocje postaci, ślady Zuzi.",
+          "SpecialAbility": "Fotografując Cień aparatem — gracz widzi na chwilę prawdziwą twarz (twarz Andrzeja). Ujawnia to tożsamość Cienia stopniowo przez 17 osi.",
+          "PhotoUI": "Po zrobieniu zdjęcia: efekt migawki (flash), zdjęcie pojawia się w 'Albumie wspomnień' w menu",
+          "AlbumName": "ALBUM ANDRZEJA — galeria wspomnień zbieranych przez 19 osi czasu"
+        },
+        "Expressions": [
+          "Neutral",
+          "Happy",
+          "Sad",
+          "Angry",
+          "Surprised",
+          "Fear",
+          "Determined",
+          "Melancholic",
+          "Emotional",
+          "Resolved",
+          "Awed",
+          "Hopeful",
+          "Relief",
+          "Peaceful"
+        ],
+        "PortraitNotes": "Zawsze widoczne tatuaże na szyi i rękach w portrecie. Okulary zawsze obecne. Aparat widoczny na pasku przez ramię w scenach środowiskowych."
+      },
+      "NarrativeRole": "Ojciec który przez 19 osi czasu szuka córki Zuzi. Fotograf z pasji. W T19 wysyła wiadomość przez Kosmiczny Rezonator i rozpływa się w wieczności.",
+      "BackgroundStory": "Był mężem Weroniki. Weronika odeszła do Davida i razem zabrali opiekę nad Zuzią przez system prawny. Andrzej — fotograf z zawodu — zamiast zrezygnować, rusza przez wszystkie osie czasu, żeby córka wiedziała, że jej ojciec nigdy się nie poddał.",
+      "FundamentalTrait": "Nigdy się nie poddaje. Aparat to jego broń i pamięć.",
+      "AssociatedItemIds": [
+        "ITEM_CAMERA_ANDRZEJ",
+        "ITEM_ALBUM_WSPOMNIEN"
+      ],
       "Portraits": [
         {
           "StateName": "Neutral",
@@ -35,9 +104,40 @@
         {
           "StateName": "Fear",
           "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Fear"
+        },
+        {
+          "StateName": "Determined",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Determined"
+        },
+        {
+          "StateName": "Melancholic",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Melancholic"
+        },
+        {
+          "StateName": "Emotional",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Emotional"
+        },
+        {
+          "StateName": "Resolved",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Resolved"
+        },
+        {
+          "StateName": "Awed",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Awed"
+        },
+        {
+          "StateName": "Hopeful",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Hopeful"
+        },
+        {
+          "StateName": "Relief",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Relief"
+        },
+        {
+          "StateName": "Peaceful",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Peaceful"
         }
-      ],
-      "_notes": "PROTAGONISTA TOMU 3. Ojciec Zuzi. Podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę. NIE SPOTYKA SIĘ Z ZUZIĄ fizycznie. W ostatniej osi T19 (∞) dociera do Kosmicznego Rezonatora Świadomości i wysyła Zuzi ostatnią wiadomość – po czym rozpływa się w wieczności. Cień = alternatywna wersja Andrzeja który poddał się szukaniu (odkrycie: oś T17)."
+      ]
     },
     {
       "assetName": "DA_Char_ZUZIA",
@@ -48,7 +148,42 @@
       "VOKeyPrefix": "ZUZIA",
       "MetFlag": "MET_ZUZIA",
       "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
+      "Role": "Córka Andrzeja — izolowana przez Weronikę i Davida. Tom 4: protagonistka.",
+      "VisualDesign": {
+        "Age": 8,
+        "Gender": "Dziewczynka",
+        "Build": "Drobna, szczupła, dziecięca",
+        "Height_cm": 128,
+        "Hair": "Jasnobrązowe, długie do ramion, często w dwóch warkoczach lub kucykach. Delikatne, proste.",
+        "Eyes": "Duże brązowe oczy — takie same jak ojciec",
+        "Face": "Okrągła twarz dziecka, dołeczki gdy się śmieje, pełne usta",
+        "Skin": "Jasna, delikatna",
+        "Outfit": {
+          "BaseOutfit": "Strojona jak na 8 lat — kolorowa, żywa",
+          "Typical": "Niebieski sweter (kolor jej sygnatury), dżinsy, czerwone trampki",
+          "Accessories": "Często trzyma zieloną kredkę lub rysunek — zostawia je jako ślady dla ojca w różnych osiach",
+          "Distinctive": "Mały plecaczek z patchworkiem — wszy w nim rysunki dla taty",
+          "OutfitVariants": {
+            "T09_EchoFotonu": "Niebieski sweter dokładnie — to co Andrzej zapamiętuje jako foton pamięci",
+            "T19_GlosZDaleka": "Nie widać — tylko głos. Brak portretu w T19."
+          }
+        },
+        "SpecialVisual": "W scenach gdzie pojawia się jako echo/wspomnienie/foton pamięci: delikatny złoty zarys wokół sylwetki, lekko transparentna",
+        "Expressions": [
+          "Neutral",
+          "Happy",
+          "Sad",
+          "Surprised",
+          "Fear",
+          "Hopeful",
+          "Ethereal"
+        ]
+      },
+      "NarrativeRole": "Córka Andrzeja. Nigdy nie spotyka ojca fizycznie w Tomie 3. Sama szuka ojca równolegle — 347 listów do niego w Archiwum Ciszy. W T19 odbiera jego transmisję. Tom 4: idzie śladami ojca.",
+      "AssociatedItemIds": [
+        "ITEM_RYSUNEK_ZUZI",
+        "ITEM_ZIELONA_KREDKA"
+      ],
       "Portraits": [
         {
           "StateName": "Neutral",
@@ -63,163 +198,22 @@
           "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Sad"
         },
         {
-          "StateName": "Angry",
-          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Angry"
-        },
-        {
           "StateName": "Surprised",
           "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Surprised"
         },
         {
           "StateName": "Fear",
           "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Fear"
+        },
+        {
+          "StateName": "Hopeful",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Hopeful"
+        },
+        {
+          "StateName": "Ethereal",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Ethereal"
         }
-      ],
-      "_notes": "Córka Andrzeja. Jest izolowana od ojca przez cały Tom 3 gry. David i Weronika pilnują jej izolacji. ZUZIA NIE SPOTYKA SIĘ Z ANDRZEJEM fizycznie w żadnej osi czasu Tomu 3. W finałowej osi T19 (∞) Andrzej wysyła do niej ostatnią wiadomość przez Kosmiczny Rezonator Świadomości. TOM 4: ZUZIA jest protagonistką – idzie śladami ojca przez wszystkie 19 osi czasu."
-    },
-    {
-      "assetName": "DA_Char_EVA",
-      "CharacterId": "EVA",
-      "DisplayName": "Eva",
-      "ShortName": "Eva",
-      "SpeakerTag": "EVA",
-      "VOKeyPrefix": "EVA",
-      "MetFlag": "MET_EVA",
-      "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
-      "Portraits": [
-        {
-          "StateName": "Neutral",
-          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Neutral"
-        },
-        {
-          "StateName": "Happy",
-          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Happy"
-        },
-        {
-          "StateName": "Sad",
-          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Sad"
-        },
-        {
-          "StateName": "Angry",
-          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Angry"
-        },
-        {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Surprised"
-        },
-        {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Fear"
-        }
-      ],
-      "_notes": "Niezależna postać. Pomaga Andrzejowi w kilku osiach czasu. WAŻNE: EVA nigdy NIE spotkała Weroniki i nigdy NIE pojawia się w tej samej scenie co Weronika."
-    },
-    {
-      "assetName": "DA_Char_CIEN",
-      "CharacterId": "CIEN",
-      "DisplayName": "Cień",
-      "ShortName": "Cień",
-      "SpeakerTag": "CIEN",
-      "VOKeyPrefix": "CIEN",
-      "MetFlag": "MET_CIEN",
-      "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
-      "Portraits": [
-        {
-          "StateName": "Neutral",
-          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Neutral"
-        },
-        {
-          "StateName": "Angry",
-          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Angry"
-        },
-        {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Fear"
-        },
-        {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Surprised"
-        }
-      ],
-      "_notes": "Antagonista – wydaje się wrogiem, ale CIEŃ to alternatywna wersja Andrzeja który poddał się szukaniu Zuzi (odkrycie w osi T17). Blokuje Andrzejowi drogę przez wszystkie osie czasu."
-    },
-    {
-      "assetName": "DA_Char_EIMSTAIN",
-      "CharacterId": "EIMSTAIN",
-      "DisplayName": "Eimstain",
-      "ShortName": "Eimstain",
-      "SpeakerTag": "EIMSTAIN",
-      "VOKeyPrefix": "EIMSTAIN",
-      "MetFlag": "MET_EIMSTAIN",
-      "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
-      "Portraits": [
-        {
-          "StateName": "Neutral",
-          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Neutral"
-        },
-        {
-          "StateName": "Happy",
-          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Happy"
-        },
-        {
-          "StateName": "Sad",
-          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Sad"
-        },
-        {
-          "StateName": "Angry",
-          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Angry"
-        },
-        {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Surprised"
-        },
-        {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Fear"
-        }
-      ],
-      "_notes": "Naukowiec / znawca osi czasu. Pomaga Andrzejowi zrozumieć mechanizm podróży między osiami. Nie jest ani za Andrzejem ani przeciw – szuka prawdy naukowej."
-    },
-    {
-      "assetName": "DA_Char_BATISTA",
-      "CharacterId": "BATISTA",
-      "DisplayName": "Batista",
-      "ShortName": "Batista",
-      "SpeakerTag": "BATISTA",
-      "VOKeyPrefix": "BATISTA",
-      "MetFlag": "MET_BATISTA",
-      "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
-      "Portraits": [
-        {
-          "StateName": "Neutral",
-          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Neutral"
-        },
-        {
-          "StateName": "Happy",
-          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Happy"
-        },
-        {
-          "StateName": "Sad",
-          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Sad"
-        },
-        {
-          "StateName": "Angry",
-          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Angry"
-        },
-        {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Surprised"
-        },
-        {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Fear"
-        }
-      ],
-      "_notes": "Obserwator. Na początku neutralny, stopniowo przechodzi na stronę Andrzeja. W osi T18 (Devil Mind) staje definitywnie po stronie Andrzeja."
+      ]
     },
     {
       "assetName": "DA_Char_WERONIKA",
@@ -230,34 +224,78 @@
       "VOKeyPrefix": "WERONIKA",
       "MetFlag": "MET_WERONIKA",
       "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
+      "bIsAntagonist": true,
+      "Role": "ANTAGONISTKA — była żona Andrzeja, kochanica Davida. NIGDY nie pomaga Andrzejowi.",
+      "VisualDesign": {
+        "Age": 34,
+        "Gender": "Kobieta",
+        "Build": "Szczupła, wyzywająca sylwetka",
+        "Height_cm": 170,
+        "Hair": "Blond z intensywnie różowymi pasemkami — wyraźna, wyzywająca kolorystyka. Długie, proste lub w mocnym upięciu.",
+        "Eyes": "Szare, zimne, obliczające",
+        "Face": "Mocny makijaż — ciemne usta, wyraźny eyeliner, konturowany",
+        "Skin": "Jasna z mocnym makijażem",
+        "Style": "ZDZIROWATY/WYZYWAJĄCY — świadomy wybór stylu jako element charakteru",
+        "Outfit": {
+          "Description": "Wyzywające ubrania — krótkie, obcisłe, drogie ale wulgarne",
+          "Typical": "Krótka sukienka lub spódnica, głęboki dekolt, wysokie obcasy. Nawet w 2100 w stacji orbitalnej — obcasy.",
+          "T03_2010": "Obcisła bluzka z dekoltem, dżinsy z rozdarciami, szpilki. W bloku PRL-owskim wygląda jak z innego świata.",
+          "T07_2025": "Krótka sukienka na moście o świcie — demonstracyjna bezczelność.",
+          "T11_2100": "Obcisły kombinezon stacji orbitalnej, ale z makijażem i obcasami.",
+          "T16_2378": "Eleganckie ale wyzywające — archiwum kryształowe.",
+          "Accessories": "Zawsze długie paznokcie (różowe lub czerwone), dużo biżuterii",
+          "Signature": "Różowa torebka lub pasek — echo różowych pasemek we włosach"
+        },
+        "RelationshipToAndrzej": "BYŁA ŻONA. Odeszła do Davida i razem z nim przejęła opiekę nad Zuzią. Nie żałuje. Używa systemu prawnego jako broni przeciwko Andrzejowi.",
+        "Personality": "Zimna, obliczająca, bezwzględna. Używa wyglądu jako broni społecznej. Kpi z Andrzeja przy każdej okazji.",
+        "Expressions": [
+          "Neutral",
+          "Contemptuous",
+          "Angry",
+          "Furious",
+          "Cold",
+          "Irritated",
+          "Triumphant",
+          "Shocked"
+        ],
+        "ImportantRule": "NIGDY nie pomaga Andrzejowi. NIGDY nie spotkała Evy. ZAWSZE z Davidem."
+      },
+      "NarrativeRole": "Była żona Andrzeja. Odeszła do Davida. Razem z Davidem odcięła Andrzejowi dostęp do Zuzi przez system prawny. Czarny charakter przez cały Tom 3.",
+      "BackgroundStory": "Była żoną Andrzeja kiedy Zuzia miała 2 lata. Związała się z Davidem. Rozwód, batalia sądowa — David i Weronika wygrali opiekę nad Zuzią. Od tego czasu systematycznie blokuje wszelki kontakt Andrzeja z córką.",
       "Portraits": [
         {
           "StateName": "Neutral",
           "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Neutral"
         },
         {
-          "StateName": "Happy",
-          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Happy"
-        },
-        {
-          "StateName": "Sad",
-          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Sad"
+          "StateName": "Contemptuous",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Contemptuous"
         },
         {
           "StateName": "Angry",
           "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Angry"
         },
         {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Surprised"
+          "StateName": "Furious",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Furious"
         },
         {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Fear"
+          "StateName": "Cold",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Cold"
+        },
+        {
+          "StateName": "Irritated",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Irritated"
+        },
+        {
+          "StateName": "Triumphant",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Triumphant"
+        },
+        {
+          "StateName": "Shocked",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Shocked"
         }
-      ],
-      "_notes": "WAŻNE: Weronika TRZYMA TYLKO Z DAVIDEM. Nigdy nie widziała Evy i nigdy NIE pojawia się w tej samej scenie co Eva. Weronika i David izolują Zuzię od Andrzeja – z nakazu systemu. W osi T16 (Kod Pamięci) Weronika zaczyna wątpić w rozkazy Davida – przełomowy moment."
+      ]
     },
     {
       "assetName": "DA_Char_DAVID",
@@ -268,34 +306,199 @@
       "VOKeyPrefix": "DAVID",
       "MetFlag": "MET_DAVID",
       "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
+      "bIsAntagonist": true,
+      "Role": "ANTAGONISTA — kochanek Weroniki, prostak i cham. NIGDY nie pomaga Andrzejowi.",
+      "VisualDesign": {
+        "Age": 42,
+        "Gender": "Mężczyzna",
+        "Build": "Masywny, nalany, zaniedbany",
+        "Height_cm": 186,
+        "Hair": "Krótko strzyżone, przetłuszczone, przyprószone siwizną",
+        "Eyes": "Małe, podejrzliwe, brązowe",
+        "Face": "Gruby kark, zarost niedbały (nie stylowy — zaniedbany), czerwona cera",
+        "Body": "Wyraźna nadwaga — duży brzuch, szerokie ramiona",
+        "Style": "PROSTAK, CHAM — celowo antyestetyczny kontrast do Andrzeja",
+        "Outfit": {
+          "Description": "Ubrany tanio i niedbale mimo że posiada środki finansowe — wybór stylu, nie konieczność",
+          "Typical": "Koszulka polo lub flanelowa koszula, dżinsy podciągnięte za wysoko, buty sportowe tanie",
+          "T03_2010": "Flanelowa koszula w kratkę (brązy i granat), obszernych rozmiarów. Kapcie w bloku.",
+          "T07_2025": "Kurtka sportowa, dresowe spodnie. Kawa w ręce. Na moście o świcie.",
+          "T11_2100": "Mundur technika stacji orbitalnej — źle dopasowany, za duży",
+          "T16_2378": "Garnitur — jedyny raz gdy nosi garnitur, ale jest za ciasny i pomięty",
+          "Accessories": "Telefon komórkowy zawsze w ręce — dzwoni na policję/prawników przy każdej okazji"
+        },
+        "RelationshipToWeronika": "Kochanek Weroniki. Razem wzięli opiekę prawną nad Zuzią. Wykonuje brudną robotę (blokowanie Andrzeja fizycznie, wzywanie służb).",
+        "Personality": "Agresywny, prymitywny, używa siły fizycznej i systemu prawnego. Gardzi Andrzejem. Nie rozumie jego poszukiwania — 'głupie romantyczne gówno' w jego słowniku.",
+        "Expressions": [
+          "Neutral",
+          "Angry",
+          "Irritated",
+          "Shocked",
+          "Cold",
+          "Aggressive",
+          "Dismissive"
+        ],
+        "ImportantRule": "NIGDY nie pomaga Andrzejowi. ZAWSZE z Weroniką."
+      },
+      "NarrativeRole": "Kochanek Weroniki, prawny opiekun Zuzi. Blokuje Andrzeja fizycznie. Reprezentuje system który niszczy rodzinę.",
       "Portraits": [
         {
           "StateName": "Neutral",
           "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Neutral"
         },
         {
-          "StateName": "Happy",
-          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Happy"
-        },
-        {
-          "StateName": "Sad",
-          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Sad"
-        },
-        {
           "StateName": "Angry",
           "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Angry"
         },
         {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Surprised"
+          "StateName": "Irritated",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Irritated"
         },
         {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Fear"
+          "StateName": "Shocked",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Shocked"
+        },
+        {
+          "StateName": "Cold",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Cold"
+        },
+        {
+          "StateName": "Aggressive",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Aggressive"
+        },
+        {
+          "StateName": "Dismissive",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Dismissive"
         }
-      ],
-      "_notes": "Zawsze jest z Weroniką. David i Weronika to para – działają razem jako strażnicy izolacji Zuzi. David wykonuje rozkazy systemu bezwzględnie, Weronika zaczyna wątpić (T16)."
+      ]
+    },
+    {
+      "assetName": "DA_Char_CIEN",
+      "CharacterId": "CIEN",
+      "DisplayName": "Cień",
+      "ShortName": "Cień",
+      "SpeakerTag": "CIEN",
+      "VOKeyPrefix": "CIEN",
+      "MetFlag": "MET_CIEN",
+      "bIsKeyCharacter": true,
+      "Role": "ANTAGONISTA (pozorny) — jest dosłownym cieniem Andrzeja.",
+      "VisualDesign": {
+        "Concept": "CIEŃ JEST DOSŁOWNYM CIENIEM ANDRZEJA — ta sama sylwetka co Andrzej, ale całkowicie czarna, bez żadnej tekstury",
+        "Appearance": "Czarna sylwetka identyczna z sylwetką Andrzeja (te same proporcje, fryzura, okulary jako zarys, aparat fotograficzny jako zarys). ZERO koloru. ZERO tekstury. Czysta czerń.",
+        "Movement": "Porusza się jak cień — miga, teleportuje się, pojawia się w miejscach gdzie Andrzej rzuca cień",
+        "Eyes": "Dwie białe kropki — jedyne jasne elementy sylwetki",
+        "Voice": "Głos Andrzeja ale filtrowany — niższy, pusty, echa",
+        "SpecialVisual": {
+          "CameraReveal": "Gdy Andrzej fotografuje Cień aparatem — na ułamek sekundy widać prawdziwą twarz (twarz Andrzeja). Efekt gradualny przez 17 osi.",
+          "T17_Reveal": "W T17 (Sala Lustrzana) — Cień staje się odzwierciedleniem Andrzeja w lustrze. Dwie twarze — ta sama.",
+          "Shadow_on_Surface": "Cień zawsze rzuca cień sam z siebie — paradoks wizualny",
+          "LightEffect": "W jego obecności wszystkie cienie wydłużają się nieproporcjonalnie"
+        },
+        "PortraitNotes": "Portret Cienia = czarna sylwetka Andrzeja z białymi oczami. W T17 portret zmienia się na tę samą twarz co Andrzej.",
+        "IdentityNote": "CIEŃ = Andrzej który się zatrzymał po T07 (Cieszyn) i przestał szukać Zuzi. To dosłownie jego własny cień który żyje jako odrębna istota.",
+        "Expressions": [
+          "Neutral",
+          "Revelation",
+          "Broken",
+          "Resignation",
+          "Shadows",
+          "Knowing"
+        ]
+      },
+      "NarrativeRole": "Blokuje Andrzejowi drogę przez 17 osi. W T17 ujawnia swoją tożsamość. W T18 prosi Andrzeja o wybaczenie.",
+      "Portraits": [
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Neutral"
+        },
+        {
+          "StateName": "Revelation",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Revelation"
+        },
+        {
+          "StateName": "Broken",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Broken"
+        },
+        {
+          "StateName": "Resignation",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Resignation"
+        },
+        {
+          "StateName": "Shadows",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Shadows"
+        },
+        {
+          "StateName": "Knowing",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Knowing"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Char_EIMSTAIN",
+      "CharacterId": "EIMSTAIN",
+      "DisplayName": "Eimstain",
+      "ShortName": "Eimstain",
+      "SpeakerTag": "EIMSTAIN",
+      "VOKeyPrefix": "EIMSTAIN",
+      "MetFlag": "MET_EIMSTAIN",
+      "bIsKeyCharacter": true,
+      "Role": "Strażnik czasu — świadek wszystkich 19 osi. Zawsze pomaga Andrzejowi zrozumieć.",
+      "VisualDesign": {
+        "Age": "Wygląda na 65-70 lat — ale nie starzeje się między osiami",
+        "Build": "Szczupły, skrzywiony wiekiem, ale żywe oczy",
+        "Hair": "Siwe, długie, nieuczesane — jak uczony który zapomniał o fryzjerze",
+        "Eyes": "Przeszywające zielone oczy — jakby widziały wiele epok naraz",
+        "Face": "Głęboko poorana twarz z wyrazem spokojnej wiedzy. Długa siwa broda.",
+        "Style": "Intelektualista-podróżnik czasu",
+        "Outfit": {
+          "BaseOutfit": "Zawsze inaczej ubrany zależnie od osi czasu — ale zawsze ma przy sobie zegarek kieszonkowy z wieloma tarczami (mierzy wszystkie osie jednocześnie)",
+          "T01_1679": "Historyczny strój uczonego — czarny płaszcz, peruka, binokle",
+          "T02_1983": "Garnitur PRL-owski z teczką",
+          "T09_2045": "Biały laboratoryjny fartuch",
+          "T19_Finał": "Rozświetlona sylwetka — jako echo przez Rezonator"
+        },
+        "Signature": "ZEGAREK KIESZONKOWY z 19 tarczami — jedna na każdą oś czasu. Widoczny w każdej scenie.",
+        "Expressions": [
+          "Neutral",
+          "Wise",
+          "Knowing",
+          "Solemn",
+          "Careful",
+          "Ethereal",
+          "Sad"
+        ]
+      },
+      "NarrativeRole": "Obserwuje Andrzeja przez wszystkie 19 osi. W T09 ujawnia mechanizm fotonów pamięci. W T14 tłumaczy fizykę próżni. W T19 jest echem przez Rezonator.",
+      "Portraits": [
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Neutral"
+        },
+        {
+          "StateName": "Wise",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Wise"
+        },
+        {
+          "StateName": "Knowing",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Knowing"
+        },
+        {
+          "StateName": "Solemn",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Solemn"
+        },
+        {
+          "StateName": "Careful",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Careful"
+        },
+        {
+          "StateName": "Ethereal",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Ethereal"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Sad"
+        }
+      ]
     },
     {
       "assetName": "DA_Char_KAFKA",
@@ -306,34 +509,206 @@
       "VOKeyPrefix": "KAFKA",
       "MetFlag": "MET_KAFKA",
       "bIsKeyCharacter": true,
-      "AssociatedItemIds": [],
+      "Role": "Kronikarz i obserwator — zapisuje podróż Andrzeja. Pomaga w kilku osiach.",
+      "VisualDesign": {
+        "Age": 45,
+        "Gender": "Mężczyzna",
+        "Build": "Szczupły, nerwowy, ciągły ruch",
+        "Hair": "Czarne, przerzedzone, zawsze rozczochrane od ciągłego myślenia",
+        "Eyes": "Ciemnoniebieskie za grubymi okularami — inne niż Andrzeja, grube szkła",
+        "Style": "Intelektualista-buntownik",
+        "Outfit": {
+          "BaseOutfit": "Zawsze nosi notes i ołówek. Ubrany skromnie ale z detalami.",
+          "T02_1983": "PRL-owski inteligent — garnitur z lat 70., zawiązany niechlujnie krawat, aktówka z dokumentami",
+          "T06_2024": "Techniczna kurtka, plecak z laptopem, identyfikator CSM",
+          "T10_2077": "Futurystyczne okrycie z kieszeniami na tablety i nośniki danych",
+          "T15_2345": "Neo-intelektualista — jedwabna marynarka z holograficznym detalem"
+        },
+        "Signature": "Zawsze ma notes — stare papierowe lub holograficzne, ale zawsze notuje. 'Kronikarz podróży Andrzeja.'",
+        "Expressions": [
+          "Neutral",
+          "Surprised",
+          "Knowing",
+          "Worried",
+          "Excited",
+          "Sad",
+          "Secretive"
+        ]
+      },
+      "NarrativeRole": "Dokumentuje podróż Andrzeja. Pomaga z informacjami i dostępem. W T15 daje Andrzejowi ostatnie słowo poetyckie przed finałem.",
       "Portraits": [
         {
           "StateName": "Neutral",
           "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Neutral"
         },
         {
-          "StateName": "Happy",
-          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Happy"
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Surprised"
+        },
+        {
+          "StateName": "Knowing",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Knowing"
+        },
+        {
+          "StateName": "Worried",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Worried"
+        },
+        {
+          "StateName": "Excited",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Excited"
         },
         {
           "StateName": "Sad",
           "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Sad"
         },
         {
-          "StateName": "Angry",
-          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Angry"
-        },
-        {
-          "StateName": "Surprised",
-          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Surprised"
-        },
-        {
-          "StateName": "Fear",
-          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Fear"
+          "StateName": "Secretive",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Secretive"
         }
-      ],
-      "_notes": "Pośrednik informacji. Zna podziemia każdej osi czasu. Pomaga Andrzejowi zdobyć informacje o Zuzi. Czasem ma swój interes, ale ostatecznie jest po stronie Andrzeja."
+      ]
+    },
+    {
+      "assetName": "DA_Char_BATISTA",
+      "CharacterId": "BATISTA",
+      "DisplayName": "Batista",
+      "ShortName": "Batista",
+      "SpeakerTag": "BATISTA",
+      "VOKeyPrefix": "BATISTA",
+      "MetFlag": "MET_BATISTA",
+      "bIsKeyCharacter": true,
+      "Role": "Wierny towarzysz — od T02 do T18 staje definitywnie po stronie Andrzeja.",
+      "VisualDesign": {
+        "Age": 38,
+        "Gender": "Mężczyzna",
+        "Ethnicity": "Latynoamerykański — brazylijski akcent",
+        "Build": "Atletyczny, silny, żywiołowy",
+        "Height_cm": 185,
+        "Hair": "Gęste czarne kręcone włosy, krótko przycięte",
+        "Eyes": "Ciemnobrązowe, zawsze pełne emocji",
+        "Face": "Szeroka szczęka, biały uśmiech, żywa mimika",
+        "Skin": "Ciemna karnacja",
+        "Style": "Praktyczny, sportowy, ciepły",
+        "Outfit": {
+          "T02_1983": "Student z wymiany — dżinsy Levi's (znak rozpoznawczy w PRL), sportowa kurtka, trampki",
+          "T05_Novaky": "Roboczy kombinezon pracownika elektrowni, kask przy pasie",
+          "T12_Chicago": "Urban explorer — wodoodporna kurtka, buty trekkingowe do chodzenia po zalanych ulicach",
+          "T18_DevilMind": "Taktyczny kombinezon — walka z AI Devil Mind. Zadrapania i poparzenia."
+        },
+        "Signature": "Zawsze głośny śmiech i 'hermano' lub 'vamos'. Ciepły kontrapunkt do smutku Andrzeja.",
+        "Expressions": [
+          "Neutral",
+          "Happy",
+          "Worried",
+          "Serious",
+          "Proud",
+          "Sad",
+          "Energetic",
+          "Determined"
+        ]
+      },
+      "NarrativeRole": "Pojawia się po raz pierwszy w T02 jako student z wymiany. Przez kolejne osie stopniowo staje się coraz bardziej zaangażowany. W T18 walczy ramię w ramię z Andrzejem.",
+      "Portraits": [
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Happy"
+        },
+        {
+          "StateName": "Worried",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Worried"
+        },
+        {
+          "StateName": "Serious",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Serious"
+        },
+        {
+          "StateName": "Proud",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Proud"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Sad"
+        },
+        {
+          "StateName": "Energetic",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Energetic"
+        },
+        {
+          "StateName": "Determined",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Determined"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Char_EVA",
+      "CharacterId": "EVA",
+      "DisplayName": "Eva",
+      "ShortName": "Eva",
+      "SpeakerTag": "EVA",
+      "VOKeyPrefix": "EVA",
+      "MetFlag": "MET_EVA",
+      "bIsKeyCharacter": true,
+      "Role": "Niezależna sojuszniczka — zawsze po stronie prawdy. NIGDY z Weroniką.",
+      "VisualDesign": {
+        "Age": 32,
+        "Gender": "Kobieta",
+        "Build": "Średniej budowy, energiczna",
+        "Hair": "Rude, kręcone krótkie włosy — naturalne, bez stylizacji",
+        "Eyes": "Zielone, bytre, zmęczone ale wciąż walczące",
+        "Face": "Naturalna, bez makijażu. Piegi. Drobne zmarszczki od myślenia.",
+        "Style": "Praktyczna, antytetyczna wobec Weroniki — naturalność kontra performatywność",
+        "Outfit": {
+          "T04_Belzyce": "Letnia sukienka — naturalność, lato w Bełżycach",
+          "T08_2035": "Techniczny kombinezon inteligentnego miasta",
+          "T12_2135": "Urban survival — parka, wodoodporne buty",
+          "T15_2345": "Neo-casual Neo Paryż — elegancja bez ostentacji"
+        },
+        "Signature": "Zawsze nosi pendrive lub odpowiednik — ma na nim dane o Zuzi zbierane przez lata.",
+        "ImportantRule": "NIGDY nie pojawia się razem z Weroniką w tej samej scenie.",
+        "Expressions": [
+          "Neutral",
+          "Determined",
+          "Worried",
+          "Serious",
+          "Sad",
+          "Hopeful",
+          "Careful"
+        ]
+      },
+      "NarrativeRole": "Pojawiająca się w różnych osiach postać która ma informacje o lokalizacji Zuzi lub systemu izolacji. Zawsze mówi prawdę, zawsze pomaga.",
+      "Portraits": [
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Neutral"
+        },
+        {
+          "StateName": "Determined",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Determined"
+        },
+        {
+          "StateName": "Worried",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Worried"
+        },
+        {
+          "StateName": "Serious",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Serious"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Sad"
+        },
+        {
+          "StateName": "Hopeful",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Hopeful"
+        },
+        {
+          "StateName": "Careful",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Careful"
+        }
+      ]
     },
     {
       "assetName": "DA_Char_DZIECKO",
@@ -345,9 +720,15 @@
       "MetFlag": "",
       "bIsKeyCharacter": false,
       "bIsVoiceOnly": true,
-      "AssociatedItemIds": [],
+      "Role": "Głos na początku gry — otwierający szept",
+      "VisualDesign": {
+        "Appearance": "TYLKO GŁOS — brak portretu, brak modelu",
+        "Voice": "Ciepły szept dziecka — androgyniczny, neutralny",
+        "Identity": "Nieujawniona — może to być Zuzia, może głos z osi T19, może echo"
+      },
+      "NarrativeRole": "Otwiera grę słowami: 'Czas nie płynie… czas oddycha.' Pojawia się tylko w Prologu.",
       "Portraits": [],
-      "_notes": "Głos dziecka który otwiera grę. Ciepły szept przed pierwszą cutscenką: 'Czas nie płynie… czas oddycha.' Brak portretu – tylko głos (VA). VO asset: /Game/CCR/Audio/VO/DZIECKO/VO_DZIECKO_WstepSzepty_01"
+      "_notes": "Brak portretu. VO asset: /Game/CCR/Audio/VO/DZIECKO/VO_DZIECKO_WstepSzepty_01"
     }
   ]
 }

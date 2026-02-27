@@ -1,0 +1,150 @@
+{
+  "_doc": "LEVEL DESIGN — T05 | NOVÁKY · 2018.",
+  "LevelId": "T05",
+  "AxisId": "T05",
+  "StoryChunkRef": "T05_01",
+  "Title": "NOVÁKY",
+  "Subtitle": "Słowacka elektrownia 2018",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "Nováky, Słowacja — elektrownia cieplna, stare hale fabryczne",
+    "Era": "Współczesna Słowacja, 2018, przemysłowe otoczenie",
+    "TimeOfDay": "Wieczór — pomarańczowe niebo od dymu",
+    "Weather": "Mglisty, ciepły od elektrowni",
+    "MainScene": "Hale elektrowni: ogromne turbiny, pary z rur, betonowe korytarze. Cień ślizga się po ścianach między maszynami.",
+    "LightingMood": "Industrialne — pomarańczowe od ognia i dymu, metaliczne błękity",
+    "AmbientDescription": "Hum turbiny, para z rur, metaliczne brzęczenie, kroki na metalowym ruszcie",
+    "KeyVisualElement": "Tatuaże Andrzeja kontrastują z industrialnym środowiskiem — pracownicy go nie rozumieją"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula + kamizelka robocza z kieszeniami (przebierka). Kask przy pasie."
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień przemieszcza się między maszynami — dużo miejsc do ukrycia",
+      "InitialPosition": "hala turbinowa"
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "Technik-obserwator. Fartuch z nadrukiem. Zegarek kieszonkowy widoczny.",
+      "InitialPosition": "sterownia"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T05_P1",
+      "PhaseType": "STEALTH",
+      "Description": "Andrzej przemieszcza się przez halę fabryczną nie zwracając uwagi.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Omijaj pracowników — QTE Swipe Left gdy ktoś patrzy",
+        "Fotografuj maszyny — każde zdjęcie to +wskazówka"
+      ],
+      "CameraHint": "Sfotografuj Cień między maszynami",
+      "NPCBehaviors": [
+        "Pracownicy patrolują rytmicznie — 4s w prawo, 4s w lewo"
+      ]
+    },
+    {
+      "PhaseId": "T05_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain w sterowni — wyjaśnia mechanizm osi",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: zapytać o Zuzię/zapytać o Cień"
+      ],
+      "CameraHint": "Sfotografuj zegarek Eimstaina z 19 tarczami"
+    },
+    {
+      "PhaseId": "T05_P3",
+      "PhaseType": "QTE",
+      "Description": "Cień odcina drogę do wyjścia",
+      "EstimatedDuration_sec": 25,
+      "PlayerActions": [
+        "SWIPE LEFT — Andrzej ślizga się pod maszyną"
+      ],
+      "CameraHint": "Flash aparatu"
+    },
+    {
+      "PhaseId": "T05_P4",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi z Nováky",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T05_TURBINA",
+        "Hint": "Wielka turbina w hali",
+        "PhotoReward": "Album: 'Machina. Jak system izolacji.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T05_CIEN_MASZYNA",
+        "Hint": "Cień między maszynami",
+        "PhotoReward": "Album: sylwetka coraz wyraźniejsza",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T05_ZEGAREK",
+        "Hint": "Zegarek Eimstaina",
+        "PhotoReward": "Album: 19 tarcz — 'co on wie?'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T05_PARA_RUR",
+        "Hint": "Para z rur w hali — piękne industrialne",
+        "PhotoReward": "Album: estetyczna karta",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KLUCZ_T05",
+      "Name": "Klucz maszynowy",
+      "Location": "Sterownia",
+      "Description": "Klucz do wejścia T06"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Novaky — industrialny ambient, niska basa, metaliczny",
+    "AmbientSounds": [
+      "Hum turbiny",
+      "Para rur",
+      "Metaliczne kroki",
+      "Odległa syrena"
+    ],
+    "SFX": [
+      "SFX_Metal_Clank",
+      "SFX_Camera_Shutter",
+      "SFX_Steam"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Industrialny — metaliczne ramki, techniczna czcionka",
+    "DialogueBoxStyle": "Dymek techniczny — zielone litery na czarnym"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T05_ENTER",
+        "StoryNodeRef": "T05_01_010",
+        "Description": "Andrzej w hali"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wysiada z autobusu poza bramą Nováky.",
+  "NextLevel": "T06",
+  "LevelTransitionText": ""
+}

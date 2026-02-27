@@ -1,0 +1,160 @@
+{
+  "_doc": "LEVEL DESIGN — T09 | FOTONY PAMIĘCI · 2045.",
+  "LevelId": "T09",
+  "AxisId": "T09",
+  "StoryChunkRef": "T09_01",
+  "Title": "FOTONY PAMIĘCI",
+  "Subtitle": "2045",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Laboratorium fotonów pamięci, Polska 2045",
+    "Era": "Bliższa przyszłość, 2045",
+    "TimeOfDay": "Noc — tylko światło z ekranów i fotonowych sond",
+    "Weather": "Brak okien — podziemne laboratorium",
+    "MainScene": "Podziemne laboratorium z holograficznymi zapisami wspomnień jako fotonami. Unoszące się świetliste kule — każda to fragment czyjegoś wspomnienia.",
+    "KeyVisualElement": "ECHO ZUZI jako foton pamięci — mała dziewczynka w niebieskim sweterku, transparentna, świetlista",
+    "LightingMood": "Totalna ciemność z kolorowymi fotonami wspomnień — jak galaktyka wspomnień",
+    "AmbientDescription": "Cichy szum maszyn, delikatny dźwięk fotonów, odległy oddech"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. W lab-owym środowisku aparat reaguje na fotony — migocze.",
+      "Note": "Aparat Andrzeja reaguje na fotony pamięci — migawka sama się otwiera"
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "Biały fartuch. Zegarek. Tłumaczy mechanizm fotonów cicho.",
+      "InitialPosition": "główna sala"
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "ECHO — mała dziewczynka 8 lat, niebieski sweter, transparentna sylwetka ze złotym zarysem. To foton pamięci — nie fizyczna Zuzia.",
+      "InitialPosition": "centrum sali jako foton",
+      "bIsEcho": true,
+      "bIsPhysicallyAbsent": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T09_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej w galaktyce wspomnień. Szukanie fotonu Zuzi.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Poruszaj się między fotonami — tap na kule by zobaczyć czyje są",
+        "Szukaj niebieskiego fotonu — koloru niebieskiego sweterka Zuzi",
+        "Aparat Andrzeja migocze gdy jest blisko fotonu Zuzi"
+      ],
+      "CameraHint": "APARAT REAGUJE — gdy zbliżasz się do fotonu Zuzi, aparat migocze. Sfotografuj foton.",
+      "NPCBehaviors": [
+        "Eimstain obserwuje z boku"
+      ]
+    },
+    {
+      "PhaseId": "T09_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain wyjaśnia fotony pamięci.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: zapytać 'czy Zuzia żyje?' / 'jak dotrzeć do T19'"
+      ],
+      "CameraHint": "Sfotografuj zegarek Eimstaina — 9. oś tarcza świeci"
+    },
+    {
+      "PhaseId": "T09_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Andrzej wyciąga rękę do fotonu Zuzi.",
+      "EstimatedDuration_sec": 35,
+      "PlayerActions": [
+        "LONG PRESS — Andrzej trzyma rękę wyciągniętą przy fotonie Zuzi",
+        "Echo Zuzi 'mówi': 'Tato... wróć.'",
+        "Porażka: foton odpływa, spróbuj ponownie"
+      ],
+      "CameraHint": "KLUCZOWE ZDJĘCIE: Sfotografuj echo-obraz Zuzi z niebieskim sweterkiem — to zdjęcie pojawia się w T19"
+    },
+    {
+      "PhaseId": "T09_P4",
+      "PhaseType": "CUTSCENE",
+      "Description": "Echo Zuzi znika jak foton odpływa.",
+      "EstimatedDuration_sec": 12,
+      "PlayerActions": [
+        "Obserwuj — brak interakcji. 12 sekund."
+      ]
+    },
+    {
+      "PhaseId": "T09_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej z zapisem fotonu w aparacie.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T09_FOTON_ZUZI",
+        "Hint": "Echo Zuzi jako foton — niebieski sweter",
+        "PhotoReward": "Album: KLUCZOWE ZDJĘCIE. 'Widziałem jej echo. Niebieski sweter. Pamiętam.' Odblokuj: sekwencja T19.",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T09_GALAKTYKA",
+        "Hint": "Galaktyka wspomnień — setki fotonów",
+        "PhotoReward": "Album: 'Każde z nich to czyjeś wspomnienie. Czyjś ból. Czyjaś miłość.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T09_EIMSTAIN_FOTON",
+        "Hint": "Eimstain z fotonami wokół",
+        "PhotoReward": "Album: 'Strażnik wspomnień.'",
+        "IsRequired": false
+      }
+    ],
+    "SpecialMechanic": "W T09 aparat Andrzeja sam reaguje na fotony — migawka otwiera się automatycznie przy fotonach emocjonalnych"
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_ZAPIS_FOTONU",
+      "Name": "Zapis fotonu Zuzi",
+      "Location": "Aparat po QTE",
+      "Description": "Echo 8-letniej Zuzi w niebieskim sweterku — klucz do T19"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_FotonyPamieci — delikatny, świetlny, migocący ambient",
+    "AmbientSounds": [
+      "Fotony dźwięczą jak kryształy",
+      "Odległy oddech",
+      "Cisza przerywana echem"
+    ],
+    "SFX": [
+      "SFX_Camera_Auto_Shutter",
+      "SFX_Photon_Touch",
+      "SFX_Echo_Child_Voice"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Minimalistyczny fotonowy — delikatne świecące linie",
+    "DialogueBoxStyle": "Przezroczysty z fotonowym tłem",
+    "SpecialUI": "Aparat pulsuje złotym światłem gdy jest blisko fotonu Zuzi"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T09_LAB",
+        "StoryNodeRef": "T09_01_010",
+        "Description": "Laboratorium fotonów"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej ma zapis fotonu. Laboratorium gaśnie.",
+  "NextLevel": "T10",
+  "LevelTransitionText": "Echo dziecka w aparacie. Niosę ją ze sobą."
+}

@@ -1,0 +1,159 @@
+{
+  "_doc": "LEVEL DESIGN — T12 | CHICAGO · 2135.",
+  "LevelId": "T12",
+  "AxisId": "T12",
+  "StoryChunkRef": "T12_01",
+  "Title": "CHICAGO",
+  "Subtitle": "2135",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Chicago, 2135 — częściowo zatopione miasto. Woda na poziomie 3. piętra.",
+    "Era": "Daleka przyszłość, 2135",
+    "TimeOfDay": "Zmierzch — różowe-pomarańczowe niebo nad zatopionym miastem",
+    "Weather": "Wilgotno, para wodna, mgła nad wodą",
+    "MainScene": "Zatopione ulice Chicago — łodzie zamiast taksówek, nadbudówki drapaczy chmur wystające z wody, most-kładka na poziomie +30m",
+    "KeyVisualElement": "Andrzej z aparatem fotografuje zatopione Chicago z łodzi — najpiękniejszy poziom wizualnie",
+    "LightingMood": "Złoto-różowy zmierzch na wodzie — odbicia drapaczy chmur",
+    "AmbientDescription": "Woda plusk, mewy, silnik łodzi, odległy jazz z baru ponad wodą"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. Mokre buty — wszędzie woda.",
+      "Note": "Aparat wodoodporny — eksploatuje to w estetycznym poziomie"
+    },
+    {
+      "CharacterId": "EVA",
+      "Description": "Wodoodporna parka, ciężkie buty. Łódź przy kładce.",
+      "InitialPosition": "kładka +30m"
+    },
+    {
+      "CharacterId": "BATISTA",
+      "Description": "Urban survival — wodoodporna kurtka, trampki przemoczone. Energiczny mimo zmęczenia.",
+      "InitialPosition": "łódź Batisty"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja na powierzchni wody — tu wyjątkowo piękny.",
+      "InitialPosition": "powierzchnia wody"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T12_P1",
+      "PhaseType": "NAVIGATION",
+      "Description": "Andrzej na łodzi przez zatopione ulice Chicago.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Steruj łodzią — SWIPE kierunki żeby omijać szczątki",
+        "Fotografuj zatopione miasto",
+        "Szukaj kładki gdzie Eva czeka"
+      ],
+      "CameraHint": "FOTOGRAFUJ: Cień Andrzeja na powierzchni wody — najbardziej artystyczne zdjęcie gry"
+    },
+    {
+      "PhaseId": "T12_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Batista na łodzi — dołącza do Andrzeja.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Batista opowiada o Chicago 2135 — klimat, zalanie"
+      ],
+      "NPCBehaviors": [
+        "Batista pcha wiosło energicznie"
+      ]
+    },
+    {
+      "PhaseId": "T12_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Woda podnosi się — Andrzej musi szybko dotrzeć do kładki.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE UP — Andrzej wiośłuje szybciej",
+        "Fail: łódź zalewa woda, Andrzej traci przedmiot — zbierz ponownie"
+      ]
+    },
+    {
+      "PhaseId": "T12_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eva na kładce — koordynaty T19.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Eva: 'Koordynaty Rezonatora. T19. Idź.'"
+      ],
+      "CameraHint": "Sfotografuj Evę z koordynatami w dłoni"
+    },
+    {
+      "PhaseId": "T12_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej odpływa z koordynatami.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T12_CIEN_WODA",
+        "Hint": "Cień Andrzeja na powierzchni wody przy zatopionych budynkach",
+        "PhotoReward": "Album: ARTYSTYCZNE ZDJĘCIE GIER — cień Andrzeja rozciągnięty po wodzie między drapaczami. 'Jestem cały rozbity na wodzie.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T12_CHICAGO_ZMIERZCH",
+        "Hint": "Zatopione Chicago o zmierzchu",
+        "PhotoReward": "Album: 'Miasto pod wodą. Jak moje nadzieje przez lata. Ale nie zatonąłem.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T12_EVA_KŁADKA",
+        "Hint": "Eva z koordynatami",
+        "PhotoReward": "Album: 'Koordynaty T19. Ona wie gdzie.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KOORDYNATY_T19",
+      "Name": "Koordynaty Rezonatora T19",
+      "Location": "Od Evy",
+      "Description": "Klucz do T19 — pełny adres Kosmicznego Rezonatora Świadomości"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Chicago2135 — neo-jazz na wodzie, trąbka, deszcz",
+    "AmbientSounds": [
+      "Plusk wody",
+      "Jazz z baru powyżej",
+      "Mewa",
+      "Silnik łódki"
+    ],
+    "SFX": [
+      "SFX_Boat_Water",
+      "SFX_Camera_Shutter_Splash"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Neo-jazz poster — czarne tło, złoty neon",
+    "DialogueBoxStyle": "Rozmowy na wodzie — animowane refleksy"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T12_LODKA",
+        "StoryNodeRef": "T12_01_010",
+        "Description": "Chicago na wodzie"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej z koordynatami T19. Łódź odpływa.",
+  "NextLevel": "T13"
+}

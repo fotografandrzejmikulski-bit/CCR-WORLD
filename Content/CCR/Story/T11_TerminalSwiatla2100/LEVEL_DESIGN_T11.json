@@ -1,0 +1,171 @@
+{
+  "_doc": "LEVEL DESIGN — T11 | TERMINAL ŚWIATŁA · 2100. Stacja orbitalna. David i Weronika blokują terminal — Andrzej działa sam.",
+  "LevelId": "T11",
+  "AxisId": "T11",
+  "StoryChunkRef": "T11_01",
+  "Title": "TERMINAL ŚWIATŁA",
+  "Subtitle": "2100",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Orbitalna stacja kosmiczna, 2100",
+    "Era": "Daleka przyszłość, 2100, orbita niska",
+    "TimeOfDay": "Ciągły wschód słońca co 90 minut — stacja okrąża Ziemię",
+    "Weather": "Próżnia za oknem. Ziemia widoczna przez panoramiczne szyby.",
+    "MainScene": "Stacja orbitalna: korytarze bez grawitacji (lewitujące obiekty), terminale transmisyjne, panoramiczne okna z widokiem na Ziemię. David i Weronika przy głównym terminalu.",
+    "KeyVisualElement": "Widok Ziemi przez okno — niebieska planeta, a Andrzej tu na orbicie szukający córki",
+    "LightingMood": "Sterylna biel korytarzy + niebieskie okno ze światłem Ziemi",
+    "AmbientDescription": "Stacja orbitalna — system wentylacji, delikatny hum silników, cisza"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. W przestrzeni orbitalnej wygląda jak ziemski artysta.",
+      "Note": "Aparat w stanie nieważkości — delikatnie unosi się gdy puszcza pasek"
+    },
+    {
+      "CharacterId": "DAVID",
+      "Description": "Mundur technika stacji — za duży, pomięty. Masywny. Blokuje główne wejście do terminalu.",
+      "InitialPosition": "główne wejście terminalu"
+    },
+    {
+      "CharacterId": "WERONIKA",
+      "Description": "Obcisły kombinezon stacji — z makijażem i obcasami. Pilnuje bocznego wejścia.",
+      "InitialPosition": "boczne wejście terminalu"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień na ścianie korytarza orbitalnego — deformuje się w nieważkości.",
+      "InitialPosition": "korytarz boczny"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T11_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Stacja orbitalna — eksploracja korytarzy w nieważkości.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Poruszaj się w nieważkości — wolniejszy ruch, inne QTE",
+        "Fotografuj Ziemię przez panoramiczne okno",
+        "Szukaj trzeciego wejścia do terminalu (David + Weronika pilnują dwóch)"
+      ],
+      "CameraHint": "FOTOGRAFIA: Ziemia przez okno — najbardziej poetyckie zdjęcie w Albumie"
+    },
+    {
+      "PhaseId": "T11_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Konfrontacja z Davidem i Weroniką.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: konfrontacja z Davidem / szukać trzeciego wejścia"
+      ],
+      "NPCBehaviors": [
+        "DAVID blokuje główne",
+        "WERONIKA pilnuje boczne",
+        "Oboje razem, żadne nie ustępuje"
+      ]
+    },
+    {
+      "PhaseId": "T11_P3",
+      "PhaseType": "QTE_ZEROWG",
+      "Description": "QTE: Andrzej przemieszcza się w nieważkości przez techniczny korytarz.",
+      "EstimatedDuration_sec": 35,
+      "PlayerActions": [
+        "SWIPE LEFT — Andrzej odpycha się od ściany w lewo",
+        "W nieważkości QTE jest wolniejsze ale wymaga precyzji",
+        "Fail: odbija od ściany, David/Weronika słyszą i reagują"
+      ],
+      "CameraHint": "Flash aparatu oślepia sensor bramki terminalu"
+    },
+    {
+      "PhaseId": "T11_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Andrzej przy terminalu — 30 sekund na dostęp.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wewnętrzny monolog — 'Weronika była moją żoną. David jej kochankiem...'"
+      ],
+      "NPCBehaviors": [
+        "DAVID i WERONIKA krzyczą i biegną"
+      ]
+    },
+    {
+      "PhaseId": "T11_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi przez techniczne śluzy.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T11_ZIEMIA",
+        "Hint": "Ziemia przez panoramiczne okno stacji",
+        "PhotoReward": "Album: 'Orbita niska. Gdzieś tam na dole jest Zuzia.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T11_WERONIKA_KOMBINEZON",
+        "Hint": "Weronika w kombinezonie stacji — kontrast makijażu i techniki",
+        "PhotoReward": "Album: 'Moja była żona. Na orbicie 2100. Wciąż blokuje.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T11_TERMINAL_EKRAN",
+        "Hint": "Ekran terminalu transmisyjnego",
+        "PhotoReward": "Album: 'Tutaj. Przez to urządzenie. Kiedyś wyślę wiadomość.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T11_CIEN_NIEWAZKOSCI",
+        "Hint": "Cień Andrzeja w nieważkości — deformuje się inaczej",
+        "PhotoReward": "Album: zarys twarzy — coraz bardziej Andrzej",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KOD_TERMINALU",
+      "Name": "Kod dostępu do terminalu",
+      "Location": "Z bramki po QTE",
+      "Description": "Częściowy kod — pełny dostęp w T19"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_TerminalSwiatla — przestrzenny ambient, niska basa orbity",
+    "AmbientSounds": [
+      "System wentylacji stacji",
+      "Hum silników orbitalnych",
+      "Cicha komunikacja przez radio"
+    ],
+    "SFX": [
+      "SFX_Airlock",
+      "SFX_Zero_G_Movement",
+      "SFX_Camera_Shutter_Orbital"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Orbitalny — holograficzne ikony, orientacja nieważkości",
+    "DialogueBoxStyle": "Stacja kosmiczna — interfejs 2100"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T11_STACJA",
+        "StoryNodeRef": "T11_01_010",
+        "Description": "Stacja orbitalna"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej przez śluzę powietrzną. Stacja oddala się.",
+  "NextLevel": "T12"
+}

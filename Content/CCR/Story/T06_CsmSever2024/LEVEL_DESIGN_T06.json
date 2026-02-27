@@ -1,0 +1,149 @@
+{
+  "_doc": "LEVEL DESIGN — T06 | CSM SEVER · 2024.",
+  "LevelId": "T06",
+  "AxisId": "T06",
+  "StoryChunkRef": "T06_01",
+  "Title": "CSM SEVER",
+  "Subtitle": "Czechy 2024",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "CSM Sever, Czechy — ośrodek naukowy / centrum badań",
+    "Era": "Czechy, 2024, nowoczesne laboratorium",
+    "TimeOfDay": "Noc — niebieskie neonowe korytarze",
+    "Weather": "Chłodno, sterylnie",
+    "MainScene": "Nowoczesne laboratorium: białe ściany, holograficzne ekrany, biometryczne bramki. Eimstain ma tu biuro.",
+    "LightingMood": "Zimne niebieskie neonowe — laboratoryjne",
+    "AmbientDescription": "Ciche — tylko wentylacja i klawiatura",
+    "KeyVisualElement": "Holograficzne dane o osiach czasu — Andrzej widzi po raz pierwszy wizualizację 19 osi"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. W lab-owym środowisku wygląda jak artysta na wycieczce."
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "Biały fartuch laboratoryjny. Zegarek. Ekrany za nim.",
+      "InitialPosition": "biuro"
+    },
+    {
+      "CharacterId": "KAFKA",
+      "Description": "Identyfikator pracownika CSM. Nerwowy.",
+      "InitialPosition": "korytarz"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T06_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Eksploracja korytarzy CSM.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Tap na holograficzne ekrany by czytać dane",
+        "Fotografuj hologramy 19 osi czasu"
+      ],
+      "CameraHint": "FOTOGRAFUJ hologram 19 osi — widoczny po raz pierwszy w grze"
+    },
+    {
+      "PhaseId": "T06_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain tłumaczy mechanizm izolacji.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: skupić się na pytaniu o Zuzię / pytać o system"
+      ],
+      "CameraHint": "Zegarek Eimstaina — po raz trzeci. Nowy szczegół na tarczy."
+    },
+    {
+      "PhaseId": "T06_P3",
+      "PhaseType": "QTE",
+      "Description": "Kamera bezpieczeństwa — omijanie",
+      "EstimatedDuration_sec": 20,
+      "PlayerActions": [
+        "TAP gdy kamera patrzy w lewo — wciśnij i przejdź"
+      ]
+    },
+    {
+      "PhaseId": "T06_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Kafka w korytarzu — dokumentacja",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap dialog",
+        "Opcja: Kafka daje Andrzejowi wydruk ze śladami Zuzi"
+      ]
+    },
+    {
+      "PhaseId": "T06_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Wyjście z CSM.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T06_HOLOGRAM",
+        "Hint": "Hologram 19 osi czasu",
+        "PhotoReward": "Album: 'Pierwszy raz widzę to z zewnątrz. 19 osi.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T06_EIMSTAIN_LAB",
+        "Hint": "Eimstain przy ekranie",
+        "PhotoReward": "Album: 'Wie wszystko.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T06_KAFKA_NOTES",
+        "Hint": "Kafka notuje",
+        "PhotoReward": "Album: kronikarz",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_WYDRUK_T06",
+      "Name": "Wydruk ze śladami Zuzi",
+      "Location": "Od Kafki",
+      "Description": "Ślad Zuzi w 2024"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_CsmSever — chłodny digital, minimalizm elektroniczny",
+    "AmbientSounds": [
+      "Wentylacja",
+      "Klawiatura",
+      "Holograficzny szum"
+    ],
+    "SFX": [
+      "SFX_Biometric_Beep",
+      "SFX_Camera_Shutter_Quiet",
+      "SFX_Hologram"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Lab-owy minimalizm — białe tło, niebieskie linie",
+    "DialogueBoxStyle": "Holograficzny dymek — niebieski przezroczysty"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T06_KORYTARZ",
+        "StoryNodeRef": "T06_01_010",
+        "Description": "Andrzej w CSM"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wychodzi z CSM z wydrukiem.",
+  "NextLevel": "T07",
+  "LevelTransitionText": ""
+}

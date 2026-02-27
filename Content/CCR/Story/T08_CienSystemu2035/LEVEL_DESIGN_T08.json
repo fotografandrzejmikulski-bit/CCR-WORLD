@@ -1,0 +1,147 @@
+{
+  "_doc": "LEVEL DESIGN — T08 | CIEŃ SYSTEMU · 2035.",
+  "LevelId": "T08",
+  "AxisId": "T08",
+  "StoryChunkRef": "T08_01",
+  "Title": "CIEŃ SYSTEMU",
+  "Subtitle": "2035",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Polska 2035 — inteligentne miasto. Biometria wszędzie.",
+    "Era": "Niedaleka przyszłość, 2035, smart city",
+    "TimeOfDay": "Wieczór — niebieskie neony miasta",
+    "Weather": "Czysto, LED wszędzie",
+    "MainScene": "Inteligentne miasto 2035 — kamery biometryczne na każdym rogu. Andrzej rozpoznawany przez system.",
+    "LightingMood": "Cyberpunkowe — niebieskie neony na mokrym asfalcie",
+    "AmbientDescription": "Elektryczne brzęczenie, drony, kroki na mokrym chodniku",
+    "KeyVisualElement": "Kamery z AI rozpoznają tatuaże Andrzeja — jest w systemie jako 'zagrożenie dla opieki nad Zuzią'"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula z kapturem narzuconym — próba ukrycia tatuaży i aparatu",
+      "Note": "System 2035 rozpoznaje go przez tatuaże — kluczowa mechnika ukrywania"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja jest 'autoryzowany' przez system — Cień nie jest oznaczony jako zagrożenie. Paradoks.",
+      "InitialPosition": "sieć kamer miejskich"
+    },
+    {
+      "CharacterId": "EVA",
+      "Description": "Techniczna odzież smart city. Pendrive holograficzny.",
+      "InitialPosition": "podziemne przejście"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T08_P1",
+      "PhaseType": "STEALTH_CITY",
+      "Description": "Andrzej unika kamer biometrycznych miasta 2035.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Obserwuj rytm kamer na mini-mapie",
+        "SWIPE LEFT/RIGHT żeby skręcić w uliczkę przed skanem",
+        "Kaptur zasłania twarz — ale tatuaże na dłoniach zdradzają"
+      ],
+      "CameraHint": "Sfotografuj system kamer — dokumentuj inwigilację",
+      "NPCBehaviors": [
+        "Kamery skanują co 3s",
+        "Drony patrolują co 45s"
+      ]
+    },
+    {
+      "PhaseId": "T08_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eva w podziemnym przejściu — informacje o systemie izolacji.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: wziąć dane od Evy / zapytać jak zniszczyć system"
+      ],
+      "CameraHint": "Fotografuj holograficzny pendrive Evy"
+    },
+    {
+      "PhaseId": "T08_P3",
+      "PhaseType": "QTE",
+      "Description": "Cień 'autoryzowany' przez system — blokuje drogę do Evy.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE DOWN — Andrzej kuca pod zasięgiem kamery",
+        "Flash aparatu dezaktywuje kamerę chwilowo"
+      ]
+    },
+    {
+      "PhaseId": "T08_P4",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi z miasta z danymi.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T08_KAMERY",
+        "Hint": "System kamer biometrycznych na rogu",
+        "PhotoReward": "Album: 'Widzą mnie wszędzie. Tatuaże to mój znak.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T08_CIEN_AUTORYZOWANY",
+        "Hint": "Cień w systemie — jego sylwetka 'zielona' w kamerach",
+        "PhotoReward": "Album: 'Mój cień jest autoryzowany. Ja nie. Co to znaczy?'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T08_EVA_PODZIEMIE",
+        "Hint": "Eva w podziemnym przejściu",
+        "PhotoReward": "Album: 'Spotykamy się w ciemności bo system nie może nas tu zobaczyć.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_DANE_EVY_T08",
+      "Name": "Dane o systemie izolacji 2035",
+      "Location": "Od Evy",
+      "Description": "Klucz do T11 — terminal"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_CienSystemu — cyberpunkowy ambient, niski bas, synth",
+    "AmbientSounds": [
+      "Elektryczne brzęczenie kamer",
+      "Dron silnik",
+      "Mokry chodnik",
+      "Neony"
+    ],
+    "SFX": [
+      "SFX_Camera_Biometric_Scan",
+      "SFX_Camera_Flash_Disable",
+      "SFX_Drone"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Smart city — holograficzne ikony, niebieskie UI",
+    "DialogueBoxStyle": "Holograficzny dymek 2035"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T08_MIASTO",
+        "StoryNodeRef": "T08_01_010",
+        "Description": "Andrzej w smart city"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wychodzi przez tunel pod miastem.",
+  "NextLevel": "T09",
+  "LevelTransitionText": "System nie zapamiętuje. Ale ja tak."
+}

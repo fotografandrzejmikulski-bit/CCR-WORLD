@@ -1,0 +1,154 @@
+{
+  "_doc": "LEVEL DESIGN — T14 | ŚWIATŁO W PRÓŻNI · 2222.",
+  "LevelId": "T14",
+  "AxisId": "T14",
+  "StoryChunkRef": "T14_01",
+  "Title": "ŚWIATŁO W PRÓŻNI",
+  "Subtitle": "2222",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 4,
+  "Environment": {
+    "Location": "Stacja kosmiczna w próżni między gwiazdozbiorami, 2222",
+    "Era": "Odległa przyszłość, 2222",
+    "TimeOfDay": "Próżnia — brak czasu. Gwiazdy wszędzie.",
+    "MainScene": "Stacja w głębokiej próżni — okna panoramiczne z widokiem na gwiazdy. Andrzej jest 5 osi od Zuzi. Eimstain przez hologram.",
+    "KeyVisualElement": "Widok z okna: gwiazdy + 5 świecących punktów — to 5 osi między Andrzejem a Zuzią",
+    "LightingMood": "Kosmiczna czerń z gwiazdami — absolutny spokój i ogromność",
+    "AmbientDescription": "Absolutna próżna cisza. Tylko oddech Andrzeja."
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. Aparat powoli płynie w nieważkości.",
+      "Note": "W próżni aparat 'widzi' więcej niż ludzkie oko — fotografie z T14 mają kosmiczny format"
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "HOLOGRAM — 2222. Eimstain jako holograficzna transmisja. Zegarek z 5 tarczami do celu.",
+      "bIsHologram": true,
+      "InitialPosition": "centrum sali"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja w próżni — rozciąga się na gwiezdne tło.",
+      "InitialPosition": "ściana stacji"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T14_P1",
+      "PhaseType": "MEDITATION",
+      "Description": "Andrzej w próżni — chwila spokoju.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Wolna eksploracja stacji",
+        "Fotografuj gwiazdy i okno",
+        "Podejdź do hologramu Eimstaina"
+      ],
+      "CameraHint": "FOTOGRAFUJ: 5 świecących punktów w oknie — to 5 osi do T19"
+    },
+    {
+      "PhaseId": "T14_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain-hologram: jesteście dziećmi tego samego światła.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: zapytać 'kiedy dojdę do T19' / 'co mnie czeka w T19'"
+      ],
+      "CameraHint": "Sfotografuj hologram Eimstaina z tarczami zegarka"
+    },
+    {
+      "PhaseId": "T14_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Cień próbuje wyłączyć hologram Eimstaina.",
+      "EstimatedDuration_sec": 35,
+      "PlayerActions": [
+        "LONG PRESS — Andrzej trzyma projektor hologramu",
+        "Fail: hologram gaśnie, trzeba ponownie aktywować"
+      ],
+      "CameraHint": "Flash aparatu stabilizuje hologram"
+    },
+    {
+      "PhaseId": "T14_P4",
+      "PhaseType": "REFLECTION",
+      "Description": "Andrzej przy oknie z gwiazdami — wewnętrzny monolog.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap by czytać monolog",
+        "FOTOGRAFUJ okno: gwiazdy + zarys twarzy Andrzeja w odbiciu"
+      ],
+      "CameraHint": "Zdjęcie okna — twarz Andrzeja nałożona na gwiazdy"
+    },
+    {
+      "PhaseId": "T14_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej z nową energią rusza w T15.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T14_5_OSI",
+        "Hint": "5 świecących punktów przez okno",
+        "PhotoReward": "Album: '5 osi do Zuzi. Jesteśmy dziećmi tego samego światła.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T14_TWARZ_GWIAZDY",
+        "Hint": "Twarz Andrzeja w odbiciu okna na tle gwiazd",
+        "PhotoReward": "Album: PORTRET. 'Widzę siebie. Kim jestem po 14 osiach?'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T14_CIEN_KOSMOS",
+        "Hint": "Cień rozciągnięty na gwiezdnym tle",
+        "PhotoReward": "Album: zarys twarzy WYRAŹNY — to Andrzej",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_MAPA_GWIEZDNA",
+      "Name": "Mapa gwiezdna z trasą T14-T19",
+      "Location": "Hologram Eimstaina",
+      "Description": "Droga do T19 przez próżnię"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_SwiatloProzni — kosmiczny, ogromny, spokojny",
+    "AmbientSounds": [
+      "Absolutna cisza",
+      "Oddech Andrzeja",
+      "Delikatne pulsowanie gwiazd"
+    ],
+    "SFX": [
+      "SFX_Camera_Space",
+      "SFX_Hologram_Flicker",
+      "SFX_Breathing_Space"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Kosmiczny minimum — białe gwiazdy na czarnym, brak ozdób",
+    "DialogueBoxStyle": "Kosmiczne okno — ramka z gwiazdami"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T14_STACJA",
+        "StoryNodeRef": "T14_01_010",
+        "Description": "Stacja w próżni"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej rusza do T15. Stacja oddala się w gwiazdy.",
+  "NextLevel": "T15",
+  "LevelTransitionText": "Dzieci tego samego światła."
+}

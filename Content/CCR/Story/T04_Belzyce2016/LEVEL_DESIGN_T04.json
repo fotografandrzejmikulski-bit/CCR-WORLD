@@ -1,0 +1,164 @@
+{
+  "_doc": "LEVEL DESIGN — T04 | BEŁŻYCE 2016. Lato. Eva daje adres. Kafka filozofuje o kluczach.",
+  "LevelId": "T04",
+  "AxisId": "T04",
+  "StoryChunkRef": "T04_01",
+  "Title": "BEŁŻYCE",
+  "Subtitle": "2016",
+  "EstimatedDurationMinutes": 18,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "Bełżyce, Lubelskie — mała miejscowość, rynek z ratuszem, letni rynek",
+    "Era": "Współczesna Polska, sierpień 2016",
+    "TimeOfDay": "Południe — gorące letnie słońce",
+    "Weather": "Upał, czyste niebo, kurz na drodze",
+    "MainScene": "Rynek małego miasteczka — kamieniczki, kościół, lody pod parasolem, taras kawiarni",
+    "SubScenes": [
+      "Taras kawiarni 'Pod Lipą' — stolik w cieniu",
+      "Kiosk Ruchu z gazetami",
+      "Uliczka za ratuszem — tajne spotkanie z Kafką"
+    ],
+    "LightingMood": "Jasne, letnie, złote południe. Cienie krótkie.",
+    "KeyVisualElement": "Andrzej z aparatem — fotografuje uliczkę i spotyka Evę przy fontannie"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Beżowa koszula + luzem, rękawy zawinięte. Tatuaże w pełni widoczne w letnim słońcu. Aparat na szyi.",
+      "InitialPosition": "rynek"
+    },
+    {
+      "CharacterId": "EVA",
+      "Description": "Rude kręcone krótkie włosy, letnia sukienka, piegi. Naturalna, bez makijażu. Pendrive przy pasie.",
+      "InitialPosition": "fontanna"
+    },
+    {
+      "CharacterId": "KAFKA",
+      "Description": "Garnitur — niedbale zawiązany krawat. Notes w dłoni. Odwraca się i patrzy za siebie.",
+      "InitialPosition": "uliczka za ratuszem"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T04_P1",
+      "PhaseType": "EXPLORATION",
+      "EstimatedDuration_sec": 120,
+      "Description": "Letni rynek w Bełżycach. Andrzej eksploruje — szuka kontaktu.",
+      "PlayerActions": [
+        "Fotografuj rynek — letnia atmosfera",
+        "Znajdź fontannę gdzie Andrzej umówił się z Evą",
+        "Zbadaj kiosk — gazeta z artykułem o Zuzi?"
+      ],
+      "CameraHint": "FOTOGRAFUJ WSZYSTKO: w T04 aparat Andrzeja dokumentuje polskie lato. Zdjęcia trafiają do albumu jako 'archiwum podróży'."
+    },
+    {
+      "PhaseId": "T04_P2",
+      "PhaseType": "DIALOGUE_EVA",
+      "EstimatedDuration_sec": 90,
+      "Description": "Eva daje Andrzejowi adres i wskazówkę.",
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: zapytać Evę 'dlaczego pomaga' / od razu iść za wskazówką"
+      ],
+      "NPCBehaviors": [
+        "EVA patrzy za siebie — nie jest bezpieczna",
+        "Podaje pendrive szybko i odchodzi"
+      ]
+    },
+    {
+      "PhaseId": "T04_P3",
+      "PhaseType": "QTE",
+      "EstimatedDuration_sec": 25,
+      "Description": "QTE: Cień Andrzeja na ścianie ratusza — próbuje zabrać pendrive od Evy.",
+      "PlayerActions": [
+        "SWIPE DOWN — Andrzej przytrzymuje pendrive gdy Cień próbuje zabrać"
+      ],
+      "CameraHint": "Flash aparatu odpycha Cień od Evy — ochrona Evy"
+    },
+    {
+      "PhaseId": "T04_P4",
+      "PhaseType": "DIALOGUE_KAFKA",
+      "EstimatedDuration_sec": 60,
+      "Description": "Kafka w uliczce — klucz filozoficzny.",
+      "PlayerActions": [
+        "Tap dialog",
+        "Opcja: Fotografuj Kafkę jak notuje — portret kronikarza"
+      ]
+    },
+    {
+      "PhaseId": "T04_P5",
+      "PhaseType": "TRANSITION",
+      "EstimatedDuration_sec": 10,
+      "Description": "Andrzej wychodzi z Bełżyc z adresem i pendrivem.",
+      "PlayerActions": [
+        "Automatyczne"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T04_RYNEK_LATO",
+        "Hint": "Letni rynek z fontanną",
+        "PhotoReward": "Album: 'Polska. Lato. Gdzieś tu jest Zuzia.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T04_EVA_FONTANNA",
+        "Hint": "Eva przy fontannie — moment przekazania pendrive",
+        "PhotoReward": "Album: 'Ktoś mi pomógł. Bez powodu. Dziękuję.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T04_CIEN_RATUSZ",
+        "Hint": "Cień na ścianie ratusza",
+        "PhotoReward": "Album: coraz wyraźniejszy zarys twarzy Andrzeja w Cieniu",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T04_KAFKA_NOTES",
+        "Hint": "Kafka notujący w notatniku",
+        "PhotoReward": "Album: 'Kronikarz. Kto czyta te zapiski?'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_PENDRIVE_EVY",
+      "Name": "Pendrive Evy",
+      "Location": "Od Evy przy fontannie",
+      "Description": "Dane o systemie izolacji Zuzi — do odszyfrowania w T08"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Belzyce — letnie głosy małego miasteczka, gitara akustyczna",
+    "AmbientSounds": [
+      "Fontanna",
+      "Wróble",
+      "Dzieci w oddali",
+      "Lody sprzedawane przez megafon"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter_Outdoor",
+      "SFX_Pendrive_Click"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Letni, jasny — białe tło, żółte akcenty",
+    "DialogueBoxStyle": "Dymek rozmowy outdoor — letni styl"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T04_RYNEK",
+        "StoryNodeRef": "T04_01_010",
+        "Description": "Rynek Bełżyce"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wychodzi z Bełżyc z pendrivem.",
+  "NextLevel": "T05"
+}

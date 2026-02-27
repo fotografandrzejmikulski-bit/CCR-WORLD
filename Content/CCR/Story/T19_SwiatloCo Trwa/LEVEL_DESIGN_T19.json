@@ -1,0 +1,189 @@
+{
+  "_doc": "LEVEL DESIGN — T19 | ŚWIATŁO KTÓRE TRWA · ∞. Finał Tomu 3. Kosmiczny Rezonator Świadomości.",
+  "LevelId": "T19",
+  "AxisId": "T19",
+  "StoryChunkRef": "T19_01",
+  "Title": "ŚWIATŁO KTÓRE TRWA",
+  "Subtitle": "∞ — Poza Czasem",
+  "EstimatedDurationMinutes": 35,
+  "DifficultyRating": 3,
+  "IsFinaleLevel": true,
+  "Environment": {
+    "Location": "Kosmiczny Rezonator Świadomości — poza czasem i przestrzenią",
+    "Era": "∞ — poza wszelką epoką",
+    "TimeOfDay": "Wieczność — brak czasu",
+    "MainScene": "Ogromna kosmiczna komora — złote kryształy w próżni. Rezonator Świadomości jako centralny obiekt: wielki kryształ pulsujący złotym światłem. Andrzej jest tu sam.",
+    "KeyVisualElement": "REZONATOR — wielki złoty kryształ pulsujący. Andrzej podchodzi do niego z aparatem. Koszula zaczyna się rozświetlać.",
+    "LightingMood": "Złoto i biel — coraz jaśniej w miarę zbliżania do Rezonatora. Apotheosis.",
+    "AmbientDescription": "Absolutna cisza. Potem oddech. Potem głos Andrzeja."
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula coraz bardziej świetlista — Andrzej zaczyna rozjaśniać się jak Rezonator. Tatuaże świecą złotem. Aparat z złotym blaskiem.",
+      "Note": "FINAŁ: Aparat Andrzeja robi ostatnie zdjęcie — wszystkie 19 osi jednocześnie. Potem Andrzej rozpływa się."
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "ECHO przez Rezonator — holograficzny. Ostatnie słowa.",
+      "bIsEcho": true,
+      "bIsResonatorVoice": true
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "TYLKO GŁOS przez Rezonator — słyszy wiadomość ojca. Brak wizerunku.",
+      "bIsVoiceOnly": true,
+      "bIsResonatorReceiver": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T19_P1",
+      "PhaseType": "APPROACH",
+      "Description": "Andrzej podchodzi do Rezonatora — ostatnie kroki.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Powolny chód — tap by kontynuować",
+        "Rezonator pulsuje w rytm kroków Andrzeja",
+        "Album się otwiera automatycznie — wszystkie 19 osi widoczne jako miniatury zdjęć"
+      ],
+      "CameraHint": "APARAT PULSUJE: wszystkie zdjęcia z Albumu świecą jednocześnie"
+    },
+    {
+      "PhaseId": "T19_P2",
+      "PhaseType": "RITUAL",
+      "Description": "Andrzej aktywuje Rezonator — wkłada do niego aparat.",
+      "EstimatedDuration_sec": 180,
+      "PlayerActions": [
+        "LONG PRESS na Rezonator — 5 sekund",
+        "Aparat Andrzeja podłączony do Rezonatora",
+        "Wszystkie 19 zdjęć z Albumu są przesyłane"
+      ],
+      "CameraHint": "KLUCZOWY MOMENT: Aparat transmituje wszystkie zdjęcia — to wiadomość do Zuzi"
+    },
+    {
+      "PhaseId": "T19_P3",
+      "PhaseType": "TRANSMISSION",
+      "Description": "Andrzej mówi ostatnią wiadomość do Zuzi.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap by czytać wiadomość Andrzeja",
+        "Głos Andrzeja — VO nagranie",
+        "30 sekund ciszy po wiadomości"
+      ]
+    },
+    {
+      "PhaseId": "T19_P4",
+      "PhaseType": "ZUZIA_RESPONSE",
+      "Description": "Głos Zuzi przez Rezonator.",
+      "EstimatedDuration_sec": 20,
+      "PlayerActions": [
+        "Tylko słuchaj — 20 sekund",
+        "Zuzia: 'Tato... dostałam zdjęcia. Wszystkie. Idę twoimi śladami.'"
+      ]
+    },
+    {
+      "PhaseId": "T19_P5",
+      "PhaseType": "DISSOLUTION",
+      "Description": "Andrzej rozpływa się w Rezonatorze.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "Obserwuj — brak interakcji",
+        "Andrzej staje się złotym światłem — 30 sekund animacja",
+        "Ekran białobiały"
+      ],
+      "CameraHint": "OSTATNIE ZDJĘCIE: Andrzej robi zdjęcie samego siebie przez Rezonator — 'Ostatni kadr.'"
+    },
+    {
+      "PhaseId": "T19_P6",
+      "PhaseType": "CREDITS_TRANSITION",
+      "Description": "Przejście do Napisów Końcowych.",
+      "EstimatedDuration_sec": 5,
+      "PlayerActions": [
+        "Automatyczne"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T19_REZONATOR",
+        "Hint": "Kosmiczny Rezonator Świadomości z Andrzejem",
+        "PhotoReward": "Album: OSTATNIE ZDJĘCIE ANDRZEJA. 'Jestem tutaj. Na końcu wszystkich osi. Dla ciebie, Zuzia.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T19_WSZYSTKIE_OSIE",
+        "Hint": "Album otworzony — 19 miniatur zdjęć",
+        "PhotoReward": "Album: specjalna karta finałowa — mozaika wszystkich 19 osi",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T19_ROZPLYNIECIE",
+        "Hint": "Andrzej jako złote światło",
+        "PhotoReward": "Album: 'Ostatni kadr.'",
+        "IsRequired": true
+      }
+    ],
+    "FinaleSpecial": "W T19 aparat sam robi zdjęcia bez interakcji gracza — Andrzej i aparat działają jako jedno.",
+    "AlbumComplete": true
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_ALBUM_KOMPLETNY",
+      "Name": "Kompletny Album Wspomnień Andrzeja",
+      "Location": "Automatycznie po T19",
+      "Description": "19 osi, dziesiątki zdjęć, historia ojca. Klucz do Tomu 4."
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_T19_Finale — od ciszy do pełnej orkiestry. Motyw dziecka z Prologu powraca na fortepianie, potem pełna orkiestra. Crescendo do rozpłynięcia.",
+    "AmbientSounds": [
+      "Pulsowanie Rezonatora",
+      "Oddech Andrzeja",
+      "Cisza próżni",
+      "Głos Zuzi przez Rezonator"
+    ],
+    "VOLines": [
+      "VO_ANDRZEJ_T19_Wiadomosc_Ostatnia",
+      "VO_ZUZIA_T19_Odpowiedz"
+    ],
+    "SFX": [
+      "SFX_Resonator_Pulse",
+      "SFX_Camera_Final_Shutter",
+      "SFX_Dissolution",
+      "SFX_Light_Expansion"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "BRAK HUD — czysty ekran. Tylko Andrzej i Rezonator.",
+    "DialogueBoxStyle": "Złoty — bez ramki, tekst unosi się w przestrzeni",
+    "AlbumUI": "Album otwiera się jako galeria w pełnym ekranie — przegląd wszystkich 19 osi przed finałem",
+    "SpecialUI": "Pasek transmisji Rezonatora — 19 segmentów, każdy to jedna oś czasu"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T19_REZONATOR",
+        "StoryNodeRef": "T19_01_010",
+        "Description": "Andrzej przy Rezonatorze"
+      },
+      {
+        "CheckpointId": "CP_T19_TRANSMISJA",
+        "StoryNodeRef": "T19_01_080",
+        "Description": "Transmisja aktywna"
+      },
+      {
+        "CheckpointId": "CP_T19_CREDITS",
+        "StoryNodeRef": "T19_01_CREDITS",
+        "Description": "Przejście do Napisów Końcowych"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej rozpływa się. Ekran białobiały. Przejście do END_CREDITS.",
+  "NextLevel": "END_CREDITS",
+  "LevelTransitionText": "Trzysta czterdzieści siedem wiadomości. Żadna nie dotarła. Ale ta jedna — dotarła.",
+  "Tom4Tease": "Album Wspomnień przechodzi w ręce Zuzi. TOM 4: ZUZIA idzie śladami ojca."
+}

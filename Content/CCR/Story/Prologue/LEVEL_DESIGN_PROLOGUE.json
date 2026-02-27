@@ -1,0 +1,139 @@
+{
+  "_doc": "LEVEL DESIGN — PROLOG | CCR WORLD Tom 3. Wprowadzenie do gry. Szept dziecka, tytuł, Andrzej budzi się.",
+  "LevelId": "PROLOGUE",
+  "AxisId": "PROLOGUE",
+  "StoryChunkRef": "PROLOGUE_01",
+  "Title": "Prolog",
+  "Subtitle": "Szept na początku wszystkiego",
+  "EstimatedDurationMinutes": 5,
+  "DifficultyRating": 0,
+  "IsIntroLevel": true,
+  "Environment": {
+    "Location": "Abstrakcyjna przestrzeń — pomiędzy snami a jawą",
+    "Era": "Poza czasem",
+    "TimeOfDay": "Świt lub przebudzenie",
+    "Weather": "Brak — czyste czarne tło",
+    "MainScene": "Czarna przestrzeń. Stopniowe pojawienie się sylwetki Andrzeja śpiącego. W tle migają fragmenty 19 osi czasu jako błyski.",
+    "LightingMood": "Totalna czerń → powolne złote rozjaśnienie",
+    "AmbientDescription": "Absolutna cisza przerwana szeptem dziecka. Potem oddech.",
+    "KeyVisualElement": "Aparat Andrzeja jako pierwszy przedmiot który gracz widzi wyraźnie"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "Śpiący — sylwetka w ciemności. Stopniowo rozjaśnia się.",
+      "CameraStatus": "na ziemi obok niego"
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "TYLKO echo/wspomnienie — transparentna nakładka na chwilę",
+      "bIsEcho": true
+    },
+    {
+      "CharacterId": "DZIECKO",
+      "Description": "Wyłącznie głos — brak modelu",
+      "bIsVoiceOnly": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "PROLOG_P1",
+      "PhaseType": "AMBIENT",
+      "Description": "Czarny ekran. Szept dziecka 'Czas nie płynie… czas oddycha.' Logo CCR WORLD.",
+      "EstimatedDuration_sec": 8,
+      "PlayerActions": [
+        "Gracz czeka — brak interakcji. Dotknij ekranu żeby kontynuować."
+      ]
+    },
+    {
+      "PhaseId": "PROLOG_P2",
+      "PhaseType": "CUTSCENE",
+      "Description": "Andrzej śpi. Fragmenty wspomnień Zuzi migają.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Tap żeby przyspieszyć przejście (opcjonalne)"
+      ],
+      "CameraHint": "Aparat Andrzeja leży przy nim — PIERWSZY raz gracz widzi ten przedmiot"
+    },
+    {
+      "PhaseId": "PROLOG_P3",
+      "PhaseType": "DIALOGUE",
+      "Description": "Andrzej budzi się. Monolog wewnętrzny — wie kogo szuka.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "Tap żeby przejść kolejne linie dialogowe"
+      ]
+    },
+    {
+      "PhaseId": "PROLOG_P4",
+      "PhaseType": "TITLE_TRANSITION",
+      "Description": "Plansze tytułowe — Tom 3. 19 osi czasu.",
+      "EstimatedDuration_sec": 12,
+      "PlayerActions": [
+        "Gracz czeka — automatyczne przejście"
+      ]
+    },
+    {
+      "PhaseId": "PROLOG_P5",
+      "PhaseType": "CAMERA_TUTORIAL",
+      "Description": "TUTORIAL: Andrzej podnosi aparat. Gracz uczy się mechaniki fotografowania.",
+      "EstimatedDuration_sec": 45,
+      "PlayerActions": [
+        "Tap ikonę aparatu by go unieść",
+        "Trzymaj ekran by wykadrować",
+        "Zwolnij by zrobić zdjęcie"
+      ],
+      "CameraHint": "PIERWSZY tutorial aparatu — fotografuj złoty świt na horyzoncie"
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "TARGET_PROL_DAWN",
+        "Hint": "Złota poświata na horyzoncie — pierwsze zdjęcie w albumie",
+        "PhotoReward": "Odblokowuje 'Pierwsze Światło' w Albumie Andrzeja",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "TARGET_PROL_ZUZIA_ECHO",
+        "Hint": "Echo Zuzi w powietrzu — tylko ułamek sekundy",
+        "PhotoReward": "Specjalna karta 'Córka' w Albumie — narrator: 'Pamiętam cię.'",
+        "IsRequired": false
+      }
+    ],
+    "TutorialText": "Aparat Andrzeja to nie tylko przedmiot — to jego pamięć. Fotografuj wszystko co wydaje ci się ważne. Zdjęcia trafiają do Albumu Wspomnień.",
+    "AlbumUnlock": true
+  },
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Prologue — bardzo cichy, струны i pianino, narastający",
+    "AmbientSounds": [
+      "Oddech",
+      "Odległy wiatr",
+      "Echo kroków z innej epoki"
+    ],
+    "VOLines": [
+      "VO_DZIECKO_WstepSzepty_01 — 'Czas nie płynie… czas oddycha.'"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter — pierwsze użycie aparatu",
+      "SFX_Heartbeat_Slow"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Minimal — prawie brak HUD w Prologu",
+    "DialogueBoxStyle": "Centrowane, białe litery na czarnym tle — bez ramki portretowej",
+    "CameraUI": "Pierwsze pojawienie się ikony aparatu — pulsuje delikatnie jako hint",
+    "TutorialPopup": "Delikatny overlay wyjaśniający mechanikę aparatu"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_PROLOG_START",
+        "StoryNodeRef": "PROLOG_01_010",
+        "Description": "Start gry"
+      }
+    ]
+  },
+  "LevelEndCondition": "Gracz dotknął ekranu po ostatniej planszy tytułowej",
+  "NextLevel": "T01"
+}

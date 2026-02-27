@@ -1,0 +1,189 @@
+{
+  "_doc": "LEVEL DESIGN — T07 | CIESZYN · 2025.",
+  "LevelId": "T07",
+  "AxisId": "T07",
+  "StoryChunkRef": "T07_01",
+  "Title": "CIESZYN",
+  "Subtitle": "Most Przyjaźni 2025",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Cieszyn — most Przyjaźni nad Olzą. Polska po lewej, Czechy po prawej.",
+    "Era": "Pogranicze polsko-czeskie, 2025",
+    "TimeOfDay": "Świt — blade błękitne niebo, mgła nad rzeką",
+    "Weather": "Chłodny świt, mgła na rzece, delikatny wiatr",
+    "MainScene": "Most Przyjaźni: dwie flagi na końcach, rzeka Olza poniżej, barierki z metalowych prętów. Zuzia po czeskiej stronie jako odległa sylwetka.",
+    "LightingMood": "Blade błękitne świt + mgła. Dwie flagi. Andrzej po jednej stronie, Zuzia po drugiej.",
+    "AmbientDescription": "Rzeka, wiatr, odległe kroki na moście",
+    "KeyVisualElement": "ZUZIA — sylwetka po drugiej stronie rzeki. Andrzej widzi ją po raz pierwszy wyraźnie. Przez wodę."
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula + szalik (zimny świt). Aparat — KLUCZOWY w tej osi."
+    },
+    {
+      "CharacterId": "DAVID",
+      "Description": "Kurtka sportowa, dresowe spodnie, kawa w ręce. Blokuje wejście na most.",
+      "InitialPosition": "polska strona mostu"
+    },
+    {
+      "CharacterId": "WERONIKA",
+      "Description": "Krótka sukienka (prowokacja o świcie), różowo-blond włosy, szpilki na moście. Telefon gotowy.",
+      "InitialPosition": "za Davidem, polska strona"
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "8-letnia dziewczynka — niebieski sweter, warkocze. Sylwetka po czeskiej stronie — odwrócona plecami, potem obraca się.",
+      "InitialPosition": "czeska strona mostu",
+      "bIsDistant": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T07_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej podchodzi do mostu. Orientacja — widzi sylwetkę Zuzi.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Podejdź do mostu — tap na barierki by spojrzeć w dół",
+        "ZOOM aparatem by zobaczyć twarz Zuzi po drugiej stronie",
+        "Fotografuj most i rzekę"
+      ],
+      "CameraHint": "FOTOGRAFUJ Zuzię przez wodę — zoom aparatu. To pierwsze wyraźne zdjęcie Zuzi w Albumie.",
+      "NPCBehaviors": [
+        "Zuzia stoi przy barierce po czeskiej stronie — patrzy w rzekę"
+      ]
+    },
+    {
+      "PhaseId": "T07_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Konfrontacja z Davidem i Weroniką.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: odwołać się do Weroniki jako matki / milczeć i skupić na Zuzi"
+      ],
+      "NPCBehaviors": [
+        "DAVID blokuje wejście",
+        "WERONIKA robi zdjęcia Andrzeja telefonem (do akt sądowych)"
+      ]
+    },
+    {
+      "PhaseId": "T07_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Andrzej wyciąga rękę i pochyla się przez barierki próbując dosięgnąć wzrokiem.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE RIGHT — pochylenie przez barierki",
+        "Fail: David odpycha Andrzeja, powtórka",
+        "Success: Zuzia obraca głowę — spojrzenie przez wodę"
+      ],
+      "CameraHint": "Aparat: Sfotografuj ten moment — KLUCZOWE zdjęcie 'Most Przyjaźni' w Albumie"
+    },
+    {
+      "PhaseId": "T07_P4",
+      "PhaseType": "CUTSCENE",
+      "Description": "Chwila — oczy Andrzeja i Zuzi przez wodę.",
+      "EstimatedDuration_sec": 8,
+      "PlayerActions": [
+        "Tylko obserwuj — żadnej interakcji. 8 sekund."
+      ]
+    },
+    {
+      "PhaseId": "T07_P5",
+      "PhaseType": "DIALOGUE",
+      "Description": "Weronika kpi. David grozi..",
+      "EstimatedDuration_sec": 45,
+      "PlayerActions": [
+        "Tap dialog",
+        "Andrzej milczy i odchodzi — siła emocjonalna"
+      ],
+      "NPCBehaviors": [
+        "WERONIKA do Davida głośno: 'Jutro sędzia, definitywny zakaz.'"
+      ]
+    },
+    {
+      "PhaseId": "T07_P6",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej odchodzi od mostu.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T07_MOST_RZEKA",
+        "Hint": "Most Przyjaźni z mgłą nad Olzą",
+        "PhotoReward": "Album: 'Granica. Woda. Zuzia po tamtej stronie.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T07_ZUZIA_SYLWETKA",
+        "Hint": "Zuzia przez rzekę — zoom",
+        "PhotoReward": "Album: PIERWSZE ZDJĘCIE ZUZI. 'Widziałem ją. Naprawdę.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T07_WERONIKA_MOST",
+        "Hint": "Weronika robi zdjęcia telefonem (ironia — oboje fotografują)",
+        "PhotoReward": "Album: 'Moja była żona fotografuje mnie by mnie zniszczyć. Ja fotografuję by pamiętać.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T07_CIEN_WODA",
+        "Hint": "Cień Andrzeja na powierzchni wody rzeki",
+        "PhotoReward": "Album: wyraźna twarz — TRZECIA wskazówka tożsamości Cienia",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_FOTO_ZUZIA_T07",
+      "Name": "Zdjęcie Zuzi przez rzekę",
+      "Location": "W aparacie po QTE",
+      "Description": "Pierwsze zdjęcie Zuzi — klucz do T09 (foton pamięci)"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Cieszyn — liryczna, melancholijna, smyczki nad wodą",
+    "AmbientSounds": [
+      "Rzeka Olza",
+      "Wiatr",
+      "Odległe kroki",
+      "Flagi trzepoczące w wietrze"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter_Slow",
+      "SFX_Water_River",
+      "SFX_Door_Border_Barrier"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Pogranicze — dwie flagi, linia podziału. Polska barwa po lewej, czeska po prawej.",
+    "DialogueBoxStyle": "Dymek z pogranicza — dwie strony, dwa kolory"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T07_MOST",
+        "StoryNodeRef": "T07_01_010",
+        "Description": "Andrzej przy moście"
+      },
+      {
+        "CheckpointId": "CP_T07_SPOTKANIE",
+        "StoryNodeRef": "T07_01_060",
+        "Description": "Andrzej po spojrzeniu z Zuzią"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej odchodzi od mostu. Zuzia znika w mgle po czeskiej stronie.",
+  "NextLevel": "T08",
+  "LevelTransitionText": "Widziałem ją. Kilkanaście metrów i cała przepaść."
+}
