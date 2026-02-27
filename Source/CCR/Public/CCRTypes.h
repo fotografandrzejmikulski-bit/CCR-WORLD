@@ -232,6 +232,40 @@ struct FCCRNode
 };
 
 // ---------------------------------------------------------------------------
+// Speaker data
+// ---------------------------------------------------------------------------
+
+/**
+ * Data describing a named speaker referenced by FCCRNode::SpeakerTag.
+ * Registered at startup via UCCRSpeakerRegistrySubsystem::RegisterSpeaker().
+ */
+USTRUCT(BlueprintType)
+struct FCCRSpeakerData
+{
+	GENERATED_BODY()
+
+	/** Localised display name shown in the dialogue UI (e.g. above the speech bubble). */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText DisplayName;
+
+	/**
+	 * Optional portrait texture displayed alongside the dialogue text.
+	 * Soft-referenced so only the active speaker's portrait is in memory.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<UTexture2D> Portrait;
+
+	/**
+	 * Optional VO key prefix used by UCCRAudioSubsystem.
+	 * When set, UCCRAudioSubsystem auto-plays a cue registered under
+	 * "<VOKeyPrefix>_<NodeId>" for each dialogue node of this speaker.
+	 * Leave None to derive VO keys solely from NodeId.
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName VOKeyPrefix;
+};
+
+// ---------------------------------------------------------------------------
 // Player spatial save data
 // ---------------------------------------------------------------------------
 

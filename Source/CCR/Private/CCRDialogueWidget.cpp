@@ -1,6 +1,7 @@
 #include "CCRDialogueWidget.h"
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRSettingsSubsystem.h"
+#include "CCRSpeakerRegistrySubsystem.h"
 #include "CCRStoryChunk.h"
 
 void UCCRDialogueWidget::NativeConstruct()
@@ -94,4 +95,16 @@ bool UCCRDialogueWidget::ShouldShowSubtitles() const
 		return Settings->GetSubtitlesAlwaysOn();
 	}
 	return true;
+}
+
+bool UCCRDialogueWidget::ResolveSpeakerData(FName SpeakerTag, FCCRSpeakerData& OutData) const
+{
+	UGameInstance* GI = GetGameInstance();
+	if (!GI) return false;
+
+	if (UCCRSpeakerRegistrySubsystem* Registry = GI->GetSubsystem<UCCRSpeakerRegistrySubsystem>())
+	{
+		return Registry->GetSpeakerData(SpeakerTag, OutData);
+	}
+	return false;
 }

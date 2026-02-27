@@ -31,6 +31,19 @@ public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 	virtual void Deinitialize() override;
 
+	// ---- Delegates ----
+
+	/**
+	 * Broadcast when the current VO cue finishes playing naturally.
+	 * Not fired when VO is stopped early via StopVO().
+	 * Blueprint dialogue widgets can bind to this to auto-advance or
+	 * hide the "tap to continue" prompt when VO finishes.
+	 */
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCCRVOFinished);
+
+	UPROPERTY(BlueprintAssignable, Category = "CCR|Audio")
+	FOnCCRVOFinished OnVOFinished;
+
 	// ---- Music API ----
 
 	/**
@@ -136,6 +149,10 @@ private:
 
 	UFUNCTION()
 	void OnSettingsChanged();
+
+	/** Bound to VOComponent::OnAudioFinished; fires OnVOFinished delegate. */
+	UFUNCTION()
+	void HandleVOFinished();
 
 	// ---- Cue registries ----
 	UPROPERTY()

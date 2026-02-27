@@ -223,6 +223,22 @@ void UCCRAudioSubsystem::PlayVO(FName CueKey)
 		/*ConcurrencySettings=*/nullptr,
 		/*bPersistAcrossLevelTransitions=*/false,
 		/*bAutoDestroy=*/true);
+
+	// Bind a callback so we can fire OnVOFinished when playback ends naturally.
+	// Note: bAutoDestroy=true means the component will be GC'd after OnStop fires;
+	// we null VOComponent in HandleVOFinished to avoid a dangling UPROPERTY.
+	if (IsValid(VOComponent))
+	{
+		VOComponent->OnAudioFinished.AddDynamic(this, &UCCRAudioSubsystem::HandleVOFinished);
+	}
+}
+
+void UCCRAudioSubsystem::HandleVOFinished()
+{
+	// The audio component auto-destroys after this fires; null our pointer
+	// to prevent accessing a PendingKill object in subsequent IsValid() checks.
+	VOComponent = nullptr;
+	OnVOFinished.Broadcast();
 }
 
 void UCCRAudioSubsystem::StopVO()
@@ -232,6 +248,9 @@ void UCCRAudioSubsystem::StopVO()
 	// Always null the pointer afterwards so future IsValid() checks are correct.
 	if (IsValid(VOComponent))
 	{
+		// Unbind our finish callback before stopping so that HandleVOFinished
+		// (and therefore OnVOFinished) is NOT fired for early-stop cases.
+		VOComponent->OnAudioFinished.RemoveDynamic(this, &UCCRAudioSubsystem::HandleVOFinished);
 		VOComponent->Stop();
 	}
 	VOComponent = nullptr;

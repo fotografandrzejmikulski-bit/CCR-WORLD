@@ -54,6 +54,15 @@ public:
 	UFUNCTION(BlueprintPure, Category = "CCR|UI")
 	bool ShouldShowSubtitles() const;
 
+	/**
+	 * Look up speaker data for a given SpeakerTag via UCCRSpeakerRegistrySubsystem.
+	 * Returns true and fills OutData when the speaker is registered.
+	 * Blueprint implementations of OnDialogueNode should call this to get the
+	 * display name and portrait before updating the UI.
+	 */
+	UFUNCTION(BlueprintCallable, Category = "CCR|UI")
+	bool ResolveSpeakerData(FName SpeakerTag, FCCRSpeakerData& OutData) const;
+
 private:
 	UFUNCTION()
 	void HandleNodeChanged(FName NodeId);
