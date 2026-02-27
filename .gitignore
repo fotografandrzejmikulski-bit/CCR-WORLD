@@ -1,0 +1,42 @@
+# Unreal Engine 5 – CCR WORLD .gitignore
+
+# ---- Build output ----
+Binaries/
+Build/
+Intermediate/
+Saved/
+DerivedDataCache/
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# ---- Compiled / cooked content (binary) ----
+# Raw .umap and .uasset files are large binary blobs authored in the UE Editor.
+# They are NOT tracked in source control; use Perforce or Git LFS on a
+# dedicated asset server for binary content management.
+Content/**/*.umap
+Content/**/*.uasset
+Content/**/*.uexp
+Content/**/*.ubulk
+Content/**/*.uptnl
+
+# ---- Editor temporary / crash files ----
+*.VC.db
+*.opensdf
+*.sdf
+*.suo
+*.user
+*.userprefs
+Saved/
+# Keep DefaultEngine.ini / DefaultGame.ini / DefaultInput.ini tracked (text files)
+!Config/
+
+# ---- OS noise ----
+.DS_Store
+Thumbs.db
+
+# ---- Packaging output ----
+Packages/
+AndroidProject/

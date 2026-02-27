@@ -24,6 +24,7 @@ CCR WORLD is a story-driven, choice-based game featuring:
 
 ```
 CCR-WORLD/
+├── .gitignore                    # Excludes binary Content, build output
 ├── CCR.uproject                  # UE5 project descriptor
 ├── Config/
 │   ├── DefaultEngine.ini         # Renderer, streaming, Android/Vulkan settings
@@ -31,8 +32,8 @@ CCR-WORLD/
 │   ├── DefaultInput.ini          # Action/axis mappings (touch + gamepad fallback)
 │   └── DefaultDeviceProfiles.ini # Mobile device performance profiles
 └── Source/CCR/
-    ├── Public/                   # 58 header files
-    └── Private/                  # 58 implementation files
+    ├── Public/                   # 59 header files
+    └── Private/                  # 59 implementation files
 ```
 
 ### Key Subsystems
@@ -83,6 +84,14 @@ CCR-WORLD/
 | `ACCRAmbientSoundZoneActor` | Proximity-based ambient audio zone |
 | `UCCRConditionalActorComponent` | Shows/hides or enables/disables its owning actor based on world-state conditions |
 
+### Data Assets
+
+| Class | Asset Type | Content Path |
+|---|---|---|
+| `UCCRStoryChunk` | `CCRStoryChunk` | `Content/CCR/Story/` |
+| `UCCRCharacterDefinition` | `CCRCharacterDefinition` | `Content/CCR/Characters/` |
+| `UCCRInventoryItemDefinition` | `CCRInventoryItem` | `Content/CCR/Items/` |
+
 ---
 
 ## Getting Started
@@ -117,6 +126,23 @@ CCR-WORLD/
 | `UCCRObjectiveWidget` | `WBP_CCRObjective` | `ACCRGameHUD.ObjectiveWidgetClass` |
 | `UCCRGameInstance` | `BP_CCRGameInstance` | Project Settings → Game Instance Class |
 
+### Content Folder Structure
+
+```
+Content/
+├── CCR/
+│   ├── Maps/          # UE5 level files (.umap) — one per chapter/area
+│   ├── Blueprints/    # Blueprint widgets (WBP_*) and actor BPs (BP_*)
+│   ├── Story/         # UCCRStoryChunk data assets (.uasset)
+│   ├── Characters/    # UCCRCharacterDefinition data assets (.uasset)
+│   ├── Items/         # UCCRInventoryItemDefinition data assets (.uasset)
+│   ├── Textures/      # Portrait and UI textures
+│   └── Audio/         # VO cues, music, and SFX
+```
+
+> **Note:** Binary `.umap` and `.uasset` files are excluded from Git by `.gitignore`.
+> Use Perforce, Git LFS, or an asset server to manage binary Content files.
+
 ### Authoring Story Content
 
 1. Create a `UCCRStoryChunk` data asset in `Content/CCR/Story/`.
@@ -130,6 +156,24 @@ CCR-WORLD/
    - **Cinematic** – assign `CinematicSequence`, set `NextAfterCinematic`, toggle `bSkippable`.
    - **Jump** – set `TargetChunkId` and `EntryNodeInTarget`.
    - **End** – fires `OnNarrativeEnded` → triggers credits.
+
+### Authoring Character Data
+
+1. Create a `UCCRCharacterDefinition` data asset in `Content/CCR/Characters/`.
+2. Set `CharacterId` (must be unique; used as the `PrimaryAssetName`).
+3. Set `DisplayName` (localised text shown above the dialogue bubble).
+4. Assign a `Portrait` texture (soft reference; loaded on demand).
+5. Set `VOKeyPrefix` — `UCCRAudioSubsystem` will auto-play `<VOKeyPrefix>_<NodeId>` cues.
+6. Set `SpeakerTag` to the same `FName` used in `FCCRNode::SpeakerTag` for this character's dialogue nodes.
+7. List any `AssociatedItemIds` referencing `CCRInventoryItem` assets in `Content/CCR/Items/`.
+
+### Authoring Inventory Items
+
+1. Create a `UCCRInventoryItemDefinition` data asset in `Content/CCR/Items/`.
+2. Set `ItemId` (must match the `FName` passed to `UCCRInventorySubsystem::AddItem()`).
+3. Set `DisplayName` and `Description`.
+4. Assign an `Icon` texture (soft reference).
+5. Toggle `bCanUse` / `bConsumedOnUse` and optionally set `UseWorldStateFlag`.
 
 ---
 
