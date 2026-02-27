@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – POCZĄTEK ŚWIATŁA · Rok Pański 1679 | Axis: T01.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T01_01",
+      "path": "Content/CCR/Story/T01_PoczatekSwiatla1679/",
+      "ChunkId": "T01_01",
+      "AxisId": "T01",
+      "EntryNodeId": "T01_01_010",
+      "ChapterTitle": "POCZĄTEK ŚWIATŁA",
+      "ChapterSubtitle": "Rok Pański 1679",
+      "_narrative": "Andrzej przybywa do roku 1679. To pierwsza oś czasu, pierwsze ogniwo łańcucha wspomnień. Cień pojawia się natychmiast, blokując drogę. Eimstain – wędrowny uczony – jest jedynym świadkiem.",
+      "_gameplay": "QTE: Swipe Up – Andrzej unosi latarnię, by odsłonić twarz Cienia. Wybór gracza decyduje o tonie konfrontacji: konfrontacyjny lub spokojny. W obu przypadkach postęp jest taki sam, lecz Cień reaguje inaczej emocjonalnie.",
+      "_visual": "Polska barokowa – rok 1679. Kościelne wnętrza, świece, bruk zaśnieżony. Paleta: ciepłe złota i głęboki cień. UI: stary pergamin. Muzyka: MUS_Prologue z organami.",
+      "Nodes": [
+        {
+          "NodeId": "T01_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Rok Pański 1679. Czuję wosk świec, kamień pod stopami i coś jeszcze – obecność kogoś, kto mnie tu wyprzedził. Zuzia... gdzie jesteś? Zaczynam tutaj, na początku wszystkiego.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T01_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T01_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "Zawsze tu będę, Andrzeju. Jestem twoim cieniem, który zna koniec tej historii. Nie szukaj jej. Nigdy jej nie znajdziesz.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T01_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T01_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_CIEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T01_01_040"
+        },
+        {
+          "NodeId": "T01_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Kto jesteś? Mów prosto.",
+              "TargetNodeId": "T01_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Znam cię. Nie będę słuchał twoich kłamstw.",
+              "TargetNodeId": "T01_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T01_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T01_01_060",
+          "QTEFailNodeId": "T01_01_052"
+        },
+        {
+          "NodeId": "T01_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Cień zasłania mi oczy. Jeszcze raz – muszę zobaczyć jego twarz.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T01_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T01_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Widzę cię teraz, Cieniu. I nie boisz mnie. Szukam córki i nie ma siły, która mnie powstrzyma.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T01_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T01_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "Byłem tu kiedy Polska była inna. Widziałem wiele pokoleń przychodzących i odchodzących. Ale ciebie, Andrzeju, widzę po raz pierwszy – i po raz ostatni jednocześnie. Poszukiwanie właśnie się zaczęło.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T01_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T01_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EIMSTAIN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T01_01_090"
+        },
+        {
+          "NodeId": "T01_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T01_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T01_01_999"
+        },
+        {
+          "NodeId": "T01_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T02_01",
+          "EntryNodeInTarget": "T02_01_010"
+        }
+      ]
+    }
+  ]
+}

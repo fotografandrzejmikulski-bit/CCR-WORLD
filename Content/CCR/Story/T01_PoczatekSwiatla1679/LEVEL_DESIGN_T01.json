@@ -1,0 +1,392 @@
+{
+  "_doc": "LEVEL DESIGN — T01 | POCZĄTEK ŚWIATŁA · 1679. Polska barokowa. Andrzej w kościele, Cień blokuje wyjście, Eimstain jako świadek.",
+  "LevelId": "T01",
+  "AxisId": "T01",
+  "StoryChunkRef": "T01_01",
+  "Title": "POCZĄTEK ŚWIATŁA",
+  "Subtitle": "Rok Pański 1679",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 1,
+  "Environment": {
+    "Location": "Polska, 1679 — wnętrze barokowego kościoła i zaśnieżony bruk przed nim",
+    "Era": "Barok, XVII wiek",
+    "TimeOfDay": "Późna noc — blask świec jedynym źródłem światła",
+    "Weather": "Śnieg za oknem, mróz",
+    "MainScene": "Kościelne wnętrze: filary, ławki, świece na ołtarzu. Ogromny złocony krzyż. Cień Andrzeja na ścianie — ale Cień żyje.",
+    "SubScenes": [
+      "Zakrystia — Eimstain czeka przy biurku z pergaminami",
+      "Zaśnieżony bruk przed kościołem — Andrzej wchodzi przez wielkie drzwi",
+      "Dzwonnica — opcjonalna eksploracja, znaleźć ślad Zuzi"
+    ],
+    "LightingMood": "Ciepłe złoto świec na tle głębokiej ciemności. Cień na ścianie — przerysowany, zbyt duży.",
+    "AmbientDescription": "Skrzypienie drewnianej podłogi, kapanie wosku ze świec, odległy śpiew choralny",
+    "KeyVisualElement": "Cień Andrzeja na ścianie kościoła — zaczyna żyć własnym życiem gdy Andrzej się nie rusza"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "Mężczyzna, ~35 lat. Modna fryzura, rogowe okulary. Beżowa koszula (rękawy zawinięte), spodnie w kratę brązowo-kremową, brązowy skórzany pasek. Tatuaże pokrywające całą szyję, oba ramiona i dłonie. Aparat fotograficzny na pasku przez ramię.",
+      "CameraStatus": "equipped",
+      "PhotoReadiness": true,
+      "OutfitVariant": "Beżowa koszula + peleryna historyczna narzucona na ramiona (kamufluje nowoczesność). Aparat ukryty pod peleryną.",
+      "InitialPosition": "Wchodzi przez główne drzwi kościoła — dmu z mrozu na ręce"
+    },
+    {
+      "CharacterId": "CIEN",
+      "SceneDescription": "Dosłowny cień Andrzeja na ścianie kościoła — ta sama sylwetka ale żywa. Białe oczy. Blokuje wyjście boczne.",
+      "InitialPosition": "ściana kościoła przy bocznym wyjściu"
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "SceneDescription": "Stary uczony w historycznym stroju XVII-wiecznym — czarny płaszcz, peruka, binokle. Siedzi przy biurku w zakrystii z pergaminami.",
+      "InitialPosition": "zakrystia"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T01_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej wchodzi do kościoła. Eksploracja — gracz może fotografować wnętrze, szukać śladów Zuzi.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Chód po kościele — tap na obiekty by zbadać",
+        "Fotografuj świece, ołtarz, ławki — każde zdjęcie dodaje wskazówkę do Albumu",
+        "Znajdź rysunek Zuzi ukryty między ławkami (mały dziecięcy rysunek serca)"
+      ],
+      "CameraHint": "FOTOGRAFIA: Sfotografuj ścianę gdzie pojawi się Cień — zdjęcie ujawnia zarys twarzy Andrzeja w Cieniu",
+      "NPCBehaviors": [
+        "CIEN pojawia się jako cień na ścianie — przesuwa się gdy Andrzej chodzi"
+      ]
+    },
+    {
+      "PhaseId": "T01_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Spotkanie z Cieniem — Cień przemawia z ściany.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap żeby przejść linie dialogowe",
+        "Po dialogu: wybór odpowiedzi (Choice node)"
+      ],
+      "NPCBehaviors": [
+        "CIEN blokuje boczne wyjście — cień rozszerza się na ścianie"
+      ]
+    },
+    {
+      "PhaseId": "T01_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Andrzej unosi aparat fotograficzny (!) żeby oświetlić flashem twarz Cienia i odsłonić drogę.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE UP — Andrzej unosi aparat do góry",
+        "Flash aparatu rozświetla ciemność i odpycha Cień od wyjścia",
+        "Przy porażce: Cień zasłania wyjście, Andrzej musi próbować ponownie"
+      ],
+      "CameraHint": "MECHANIKA APARATU: Flash aparatu odpycha Cień — aparat jako broń przeciwko ciemności"
+    },
+    {
+      "PhaseId": "T01_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Andrzej po QTE — rozmowa z Eimstainem w zakrystii.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap żeby przejść linie dialogowe",
+        "Opcja: sfotografować zegarek Eimstaina z 19 tarczami — wpis do Albumu"
+      ],
+      "CameraHint": "Zegarek Eimstaina z 19 tarczami — tajemniczy obiekt do sfotografowania",
+      "NPCBehaviors": [
+        "EIMSTAIN siada spokojnie przy biurku i tłumaczy"
+      ]
+    },
+    {
+      "PhaseId": "T01_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi z kościoła na zaśnieżony bruk. Przejście do T02.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Gracz czeka na animację wyjścia"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T01_CIEN_WALL",
+        "Hint": "Sfotografuj Cień na ścianie kościoła",
+        "PhotoReward": "Ujawnia zarys twarzy (PIERWSZA wskazówka o tożsamości Cienia). Wpis: 'Mój własny cień?'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T01_RYSUNEK_ZUZI",
+        "Hint": "Rysunek Zuzi między ławkami — dziecięce serce",
+        "PhotoReward": "Karta w Albumie: 'Była tu. Czuję to.' Odblokuj: znacznik na mapie osi",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T01_ZEGAREK_EIMSTAIN",
+        "Hint": "Zegarek Eimstaina z 19 tarczami",
+        "PhotoReward": "Karta: '19 tarcz. 19 osi. On wie więcej niż mówi.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T01_OLTARZ",
+        "Hint": "Ołtarz ze złoconym krzyżem",
+        "PhotoReward": "Karta estetyczna: 'Początek wszystkiego. 1679.'",
+        "IsRequired": false
+      }
+    ],
+    "PhotoBonus": "Sfotografowanie WSZYSTKICH 4 celów odblokowuje bonus narracyjny: głos Andrzeja czyta list do Zuzi z 1679"
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_RYSUNEK_T01",
+      "Name": "Rysunek Zuzi — serce",
+      "Location": "Między ławkami kościelnymi",
+      "Description": "Mały rysunek kredką — serce z napisem 'tata'. Zuzia była tu.",
+      "UnlockNote": "Wpis w Albumie T01"
+    },
+    {
+      "ItemId": "ITEM_SWIECA_T01",
+      "Name": "Wosk ze świecy kościelnej",
+      "Location": "Przy ołtarzu",
+      "Description": "Kawałek wosku ze świecy — pamiątka roku 1679"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_PoczatekSwiatla — organy kościelne, powolne, majestatyczne",
+    "AmbientSounds": [
+      "Kapanie wosku",
+      "Śnieg za oknem",
+      "Skrzypienie podłogi",
+      "Odległy chór gregoriani"
+    ],
+    "VOLines": [
+      "VO_ANDRZEJ_T01_001 — monolog wejścia",
+      "VO_CIEN_T01_001 — pierwsza kwestia Cienia"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter_Flash — QTE",
+      "SFX_Door_Church_Heavy",
+      "SFX_Snow_Outside"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Parchment — pergaminowa ramka. Napisy stary krój pisma.",
+    "DialogueBoxStyle": "Ciemne tło z pergaminową fakturą. Portret Cienia = czarna sylwetka z białymi oczami.",
+    "QTEIndicator": "Świeca która gaśnie — swipe up żeby ją 'podnieść' (metafora unoszenia aparatu)",
+    "CameraUI": "Aparat aktywowany prawym dolnym rogiem — ikona retro aparatu",
+    "SpecialElements": [
+      "Mapa osi czasu (minimalna) — T01 świeci",
+      "Licznik zdjęć w albumie"
+    ]
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T01_ENTER",
+        "StoryNodeRef": "T01_01_010",
+        "Description": "Andrzej wchodzi do kościoła"
+      },
+      {
+        "CheckpointId": "CP_T01_QTE_PASS",
+        "StoryNodeRef": "T01_01_060",
+        "Description": "Po udanym QTE z Cieniem"
+      },
+      {
+        "CheckpointId": "CP_T01_EIMSTAIN",
+        "StoryNodeRef": "T01_01_070",
+        "Description": "Spotkanie z Eimstainem"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wychodzi przez kościelne drzwi na śnieg. Fade to black.",
+  "NextLevel": "T02",
+  "LevelTransitionText": "Rok 1679 za tobą. Czas oddycha.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T01 — Polska barokowa, 1679. Małe miasto przy kościele farnym.",
+    "LocationType": "Historyczne miasto — barok XVII w.",
+    "RealWorldRef": "Polska, 1679 — małe miasto w rejonie lubelskim. Barokowy kościół farny typowy dla miast Lubelszczyzny XVII w.",
+    "Scale": "Mały obszar gry: kościół + plac + 2 uliczki",
+    "NavigationStyle": "Liniowa z odgałęzieniami",
+    "Zones": [
+      {
+        "ZoneId": "Z01_KOSCIOL",
+        "Name": "Kościół farny",
+        "Description": "Barokowy kościół — główna scena. Grube kamienne mury, drewniane ławki, złocony ołtarz, świece.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OLTARZ",
+            "Name": "Ołtarz główny",
+            "Description": "Złocony krzyż, świece, ornaty. Centrum kościoła.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LAWKI",
+            "Name": "Ławki kościelne",
+            "Description": "Drewniane, ciasne. Rysunek Zuzi jest między ławkami row 4.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_WITRAZE",
+            "Name": "Witraże",
+            "Description": "Kolorowe witraże z roku ~1640. Rzucają tęczowe cienie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z01_ZAKRYSTIA",
+        "Name": "Zakrystia",
+        "Description": "Boczne pomieszczenie za ołtarzem. Eimstain czeka przy biurku z pergaminami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BIURKO_EIMT",
+            "Name": "Biurko Eimstaina",
+            "Description": "Stare biurko z dokumentami i zegarkiem kieszonkowym.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_PERGAMINY",
+            "Name": "Regał pergaminów",
+            "Description": "Zwoje z zapiskami dotyczącymi osi czasu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z01_PLAC",
+        "Name": "Plac przed kościołem",
+        "Description": "Zaśnieżony bruk. Latarnia olejowa. Ślady kroków w śniegu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BRAMA_KOSCIOL",
+            "Name": "Brama kościelna",
+            "Description": "Ogromne dębowe drzwi okuте żelazem. Wejście/wyjście.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_LATARNIA",
+            "Name": "Latarnia olejowa",
+            "Description": "Jedyne światło na zewnątrz. Rzuca długie cienie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z01_DZWONNICA",
+        "Name": "Dzwonnica",
+        "Description": "Opcjonalna eksploracja. Widok z góry na miasto. Ślad Zuzi na schodach.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_DZWON",
+            "Name": "Wielki dzwon",
+            "Description": "Odlany 1612. Inskrypcja: 'Czas oddechu'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_MIASTO",
+            "Name": "Widok na miasto z dzwonnicy",
+            "Description": "Nocne miasto w śniegu — widok na dachy i zaśnieżone ulice.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Opcjonalne — schody przy lewej nawie"
+      },
+      {
+        "ZoneId": "Z01_ULICZKA_BOCZNA",
+        "Name": "Boczna uliczka",
+        "Description": "Wąska, kamienna. Cień Andrzeja na murze — tu po raz pierwszy ożywa.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CIEN_MUR",
+            "Name": "Ściana z Cieniem",
+            "Description": "Mokry kamień. Cień Andrzeja deformuje się i porusza niezależnie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Przejście od kościoła do placu"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R01_WEJSCIE",
+        "Name": "Wejście na plac",
+        "From": "START",
+        "To": "Z01_PLAC",
+        "Description": "Andrzej wchodzi ze śniegu",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_PLAC_KOSCIOL",
+        "Name": "Plac → Kościół",
+        "From": "Z01_PLAC",
+        "To": "Z01_KOSCIOL",
+        "Description": "Przez główne drzwi",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_KOSCIOL_ZAKRYSTIA",
+        "Name": "Kościół → Zakrystia",
+        "From": "Z01_KOSCIOL",
+        "To": "Z01_ZAKRYSTIA",
+        "Description": "Boczne przejście za ołtarzem",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_DZWONNICA",
+        "Name": "Kościół → Dzwonnica",
+        "From": "Z01_KOSCIOL",
+        "To": "Z01_DZWONNICA",
+        "Description": "Schody przy lewej nawie",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R01_ULICZKA",
+        "Name": "Plac → Boczna uliczka",
+        "From": "Z01_PLAC",
+        "To": "Z01_ULICZKA_BOCZNA",
+        "Description": "Wąska brama przy kościele",
+        "IsWalkable": true
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Mróz — ok. -10°C",
+      "Snow": true,
+      "SnowDepth": "Świeży śnieg, 5-8 cm na bruku",
+      "WindSound": "Cichy — tylko w dzwonnicy słyszalny",
+      "LightSources": [
+        "Świece w kościele",
+        "Latarnia olejowa na placu",
+        "Witraże od księżyca"
+      ],
+      "PopulationNote": "Noc — miasto śpi. BRAK NPC poza kościołem",
+      "Era_Details": "XVII wiek — brak elektryczności, brak szkła w oknach domów (drewniane okiennice)"
+    },
+    "MiniMapConfig": {
+      "Style": "Stara mapa pergaminowa — ręcznie rysowana",
+      "Orientation": "N na górze",
+      "PlayerIcon": "Mała sylwetka w kapeluszu z aparatem",
+      "Scale": "1:200 (kościół + otoczenie)",
+      "VisibleFromStart": true,
+      "ZonesMarked": [
+        "Z01_KOSCIOL",
+        "Z01_PLAC",
+        "Z01_ZAKRYSTIA"
+      ]
+    }
+  }
+}

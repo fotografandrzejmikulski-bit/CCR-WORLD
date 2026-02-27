@@ -1,0 +1,156 @@
+{
+  "_doc": "UCCRStoryChunk – KOD PAMIĘCI · 2378 | Axis: T16. Weronika = była żona, David = kochanek. Oboje czarne charaktery, nigdy nie pomagają. Andrzej kradnie kod pamięci gdy David i Weronika kłócą się ze sobą.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T16_01",
+      "path": "Content/CCR/Story/T16_KodPamieci2378/",
+      "ChunkId": "T16_01",
+      "AxisId": "T16",
+      "EntryNodeId": "T16_01_010",
+      "ChapterTitle": "KOD PAMIĘCI",
+      "ChapterSubtitle": "2378",
+      "_narrative": "Rok 2378, Archiwum Kryształowe. David i Weronika (była żona Andrzeja i jej kochanek) przechowują kod pamięci — klucz do systemu izolacji Zuzi. Andrzej musi skraść kod bez ich wiedzy. Okazja pojawia się gdy David i Weronika zaczynają kłócić się między sobą — David oskarża Weronikę o coś niepowiązanego z Andrzejem (osobista kłótnia), oboje tracą czujność. Andrzej działa błyskawicznie.",
+      "_gameplay": "QTE: Tap (szybkie) – Andrzej błyskawicznie zabiera kryształ-kod z konsoli gdy Weronika i David zwróceni są do siebie plecami. Wybór: użyć kłótni Davida i Weroniki jako zasłony (Tap gdy oboje patrzą na siebie) lub czekać na inną okazję (wolniej, większe ryzyko). Żadne z nich nie zdradza i nie pomaga.",
+      "_visual": "Archiwum kryształowe 2378 – unoszące się kryształy z zapisanymi danymi, przejrzyste korytarze pełne wspomnień-obiektów. Paleta: zimny lodowaty błękit. UI: kryształowy interfejs z kodem binarnym. Muzyka: MUS_KodPamieci – napięty minimalizm.",
+      "Nodes": [
+        {
+          "NodeId": "T16_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Rok 2378. Archiwum Kryształowe. David i Weronika – moja była żona z kochankiem. Przez lata razem niszczyli wszystko co łączyło mnie z Zuzią. Kod pamięci jest na konsoli między nimi. Muszę go zabrać. Nikt mi nie pomoże – i nie potrzebuję niczyje pomocy.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T16_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T16_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "(do Weroniki, nie widząc Andrzeja) Weronika, gdzie byłaś przez ostatnie dwie godziny? Monitorowanie systemu wymaga ciągłej obecności. Nie możesz tak po prostu znikać kiedy mamy wartość na tej konsoli.",
+          "ExpressionTag": "Irritated",
+          "NextAfterDialogue": "T16_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "DAVID_WERONIKA_ARGUING",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T16_01_035"
+        },
+        {
+          "NodeId": "T16_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(ostro, do Davida) Nie rozliczaj mnie z każdej minuty! Byłam w sekcji B, sprawdzałam protokoły jak zawsze. Nie mów mi jak mam wykonywać moją robotę!",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "T16_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Działać teraz – wziąć kod gdy oboje krzyczą na siebie.",
+              "TargetNodeId": "T16_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Czekać aż kłótnia się zaogni – większe rozproszenie.",
+              "TargetNodeId": "T16_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T16_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Tap",
+          "RequiredSwipeDir": null,
+          "TimeWindowSec": 2.5,
+          "QTESuccessNodeId": "T16_01_060",
+          "QTEFailNodeId": "T16_01_052",
+          "_note": "Tap w moment gdy oboje patrzą na siebie — krótkie okno"
+        },
+        {
+          "NodeId": "T16_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Kłótnia ucichła za szybko. David rozejrzał się. Muszę czekać na kolejną falę.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T16_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Mam go. Kryształ-kod w dłoni. Weronika i David wciąż krzyczą na siebie przez korytarz. Nikt mi nie pomógł. Sam. Klucz do systemu izolacji Zuzi – zdobyty bez jednego gestu łaski od tych dwojga.",
+          "ExpressionTag": "Relief",
+          "NextAfterDialogue": "T16_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T16_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "(obraca się, konsola pusta) Gdzie jest kod? (patrzy na Weronikę) Co się stało z kryształem?! Weronika – czy ty...?",
+          "ExpressionTag": "Shocked",
+          "NextAfterDialogue": "T16_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            },
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            },
+            {
+              "Key": "CODE_STOLEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T16_01_090"
+        },
+        {
+          "NodeId": "T16_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T16_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T16_01_999"
+        },
+        {
+          "NodeId": "T16_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T17_01",
+          "EntryNodeInTarget": "T17_01_010"
+        }
+      ]
+    }
+  ]
+}

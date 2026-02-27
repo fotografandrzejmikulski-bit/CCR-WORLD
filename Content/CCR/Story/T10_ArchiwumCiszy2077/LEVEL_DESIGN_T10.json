@@ -1,0 +1,300 @@
+{
+  "_doc": "LEVEL DESIGN — T10 | ARCHIWUM CISZY · 2077.",
+  "LevelId": "T10",
+  "AxisId": "T10",
+  "StoryChunkRef": "T10_01",
+  "Title": "ARCHIWUM CISZY",
+  "Subtitle": "2077",
+  "EstimatedDurationMinutes": 24,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Archiwum Ciszy 2077 — podziemne archiwum wiadomości niedostarczonych",
+    "Era": "Daleka przyszłość, 2077",
+    "TimeOfDay": "Brak czasu — archiwum nie ma dnia ani nocy",
+    "MainScene": "Niekończące się korytarze z szufladkami — jak biblioteka, ale każda szuflada to niedostarczona wiadomość. 347 szuflad z imieniem Zuzi.",
+    "KeyVisualElement": "347 szuflad z napisem 'OD: ZUZIA DO: TATA' — widziany przez Andrzeja pierwszy raz",
+    "LightingMood": "Ciepłe biblioteczne — złote żarówki, mrok korytarzy",
+    "AmbientDescription": "Absolutna cisza z dalekim szeptem — to niedostarczone słowa"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "Note": "Andrzej otwiera szuflady — aparat dokumentuje każdą"
+    },
+    {
+      "CharacterId": "KAFKA",
+      "Description": "Archiwista. Zna każdą szufladę. Przybity — za dużo niedostarczonych wiadomości.",
+      "InitialPosition": "centrum archiwum"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja na ścianie archiwum — przy szufladkach z nazwiskiem Zuzi się zatrzymuje.",
+      "InitialPosition": "ściana przy szufladach"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T10_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej w korytarzach archiwum. Szukanie szuflad Zuzi.",
+      "EstimatedDuration_sec": 180,
+      "PlayerActions": [
+        "Chód po korytarzach — tap na szuflady by czytać nagłówki",
+        "Szukaj szuflad 'OD: ZUZIA DO: TATA'",
+        "Fotografuj korytarze"
+      ],
+      "CameraHint": "Sfotografuj alejkę z 347 szufladami — obowiązkowe zdjęcie"
+    },
+    {
+      "PhaseId": "T10_P2",
+      "PhaseType": "DISCOVERY",
+      "Description": "Andrzej otwiera jedną szufladę — czyta list Zuzi.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "TAP na szufladę by otworzyć",
+        "Czytaj list Zuzi — długa animacja tekstu",
+        "Możliwość wysłuchania VO Zuzi czytającej list"
+      ],
+      "CameraHint": "Sfotografuj otwarty list Zuzi — kluczowe zdjęcie Albumu"
+    },
+    {
+      "PhaseId": "T10_P3",
+      "PhaseType": "DIALOGUE",
+      "Description": "Kafka o archiwum — 347 wiadomości nigdy niedostarczonych.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Kafka płacze — pierwszy raz emocje Kafki"
+      ],
+      "NPCBehaviors": [
+        "Kafka płacze cicho nad aktami"
+      ]
+    },
+    {
+      "PhaseId": "T10_P4",
+      "PhaseType": "QTE",
+      "Description": "QTE: Cień przy szufladkach Zuzi próbuje je zapieczętować.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "DOUBLE TAP — Andrzej broni szuflady Zuzi",
+        "Flash aparatu odpycha Cień od szuflad"
+      ]
+    },
+    {
+      "PhaseId": "T10_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej odchodzi z kopią jednego listu.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T10_347_SZUFLADY",
+        "Hint": "Alejka z 347 szufladami 'OD: ZUZIA DO: TATA'",
+        "PhotoReward": "Album: '347 wiadomości. Żadna nie dotarła. Każda napisana z miłości.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T10_LIST_ZUZI",
+        "Hint": "Otwarty list Zuzi — dziecięce pismo",
+        "PhotoReward": "Album: TEKST LISTU w albumie. 'Tato, gdzie jesteś?'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T10_KAFKA_PLACZ",
+        "Hint": "Kafka płaczący nad aktami",
+        "PhotoReward": "Album: 'Kronikarz płacze. Nawet on.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T10_CIEN_SZUFLADY",
+        "Hint": "Cień przy szufladkach Zuzi — ZATRZYMUJE SIĘ",
+        "PhotoReward": "Album: 'Mój cień też wie. Też chciał.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_LIST_ZUZI",
+      "Name": "Kopia listu Zuzi nr 1",
+      "Location": "Szuflada 001/347",
+      "Description": "Pierwszy z 347 listów Zuzi do ojca — 'Tato, gdzie jesteś?'"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_ArchiwumCiszy — biblioteczny ambient, szept, kompletna cisza z przerwami",
+    "AmbientSounds": [
+      "Szept niedostarczonych słów",
+      "Skrzypienie szuflad",
+      "Odległy płacz"
+    ],
+    "SFX": [
+      "SFX_Drawer_Open",
+      "SFX_Paper_Rustle",
+      "SFX_Camera_Shutter_Quiet"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Biblioteczny — sepia, tekst odręczny",
+    "DialogueBoxStyle": "Ręczny pismo — jak list"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T10_ARCHIWUM",
+        "StoryNodeRef": "T10_01_010",
+        "Description": "Archiwum Ciszy"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej trzyma kopię listu. Korytarze ciemnieją.",
+  "NextLevel": "T11",
+  "CityMap": {
+    "_doc": "Mapa lokacji T10 — Archiwum Ciszy 2077. Podziemne archiwum niedostarczonych wiadomości.",
+    "LocationType": "Archiwum podziemne — biblioteka nieodesłanych wiadomości",
+    "RealWorldRef": "Fikcja 2077. Podziemna instytucja archiwizująca wszystkie niedostarczone wiadomości z historii świata.",
+    "Scale": "Ogromny obszar: 12 korytarzy (Sekcje A-L), poziom centralny",
+    "NavigationStyle": "Labiryntowa biblioteka — jak nieskończone regały",
+    "Zones": [
+      {
+        "ZoneId": "Z10_WEJSCIE_ARCHIWUM",
+        "Name": "Wejście Archiwum",
+        "Description": "Hol wejściowy z recepcją Kafki. Tablica: 'ARCHIWUM CISZY — 847 mln wiadomości'.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICA_ARCHIWUM",
+            "Name": "Tablica archiwum",
+            "Description": "Liczba wiadomości zmienia się w czasie rzeczywistym.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAFKA_BIURKO_A",
+            "Name": "Biurko Kafki — archiwista",
+            "Description": "Pierwsza scena z Kafką jako archiwistą 2077.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z10_SEKCJA_Z",
+        "Name": "Sekcja Z — Zuzia",
+        "Description": "Alejka szuflad z nazwiskiem Zuzia. 347 szuflad z oznaczeniem 'OD: ZUZIA DO: TATA'.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_347_SZUFLAD",
+            "Name": "347 szuflad Zuzi",
+            "Description": "Widoczne z końca alejki — cała ściana z imieniem.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SZUFLADA_001",
+            "Name": "Szuflada #001/347",
+            "Description": "Pierwsza. Andrzej otwiera ją. List Zuzi w środku.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SZUFLADA_347",
+            "Name": "Szuflada #347/347",
+            "Description": "Ostatnia. Data: tydzień przed T19.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z10_CENTRALNY_HOLL",
+        "Name": "Centralny hol",
+        "Description": "Ogromna przestrzeń z widokiem na wszystkie 12 sekcji. Cicha jak grobowiec.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WIDOK_Z_GORY",
+            "Name": "Widok z antresoli",
+            "Description": "Widok na cały Centralny Hol — metafora ogromu niedostarczonej miłości.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_CIEN_ARCHIWUM",
+            "Name": "Cień Andrzeja na regałach",
+            "Description": "Przemieszcza się po szufladach Zuzi z nabożeństwem.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z10_KONSERWATORNIA",
+        "Name": "Sala konserwatorska",
+        "Description": "Gdzie Kafka naprawia uszkodzone wiadomości. Łkanie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KAFKA_PLACZE",
+            "Name": "Kafka w konservatorni",
+            "Description": "Płacze nad aktem niemożliwym do naprawienia.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R10_WEJSCIE_HOL",
+        "Name": "Wejście → Hol centralny",
+        "From": "Z10_WEJSCIE_ARCHIWUM",
+        "To": "Z10_CENTRALNY_HOLL",
+        "Description": "Przez bramę biblioteczną"
+      },
+      {
+        "RouteId": "R10_HOL_Z",
+        "Name": "Hol → Sekcja Z",
+        "From": "Z10_CENTRALNY_HOLL",
+        "To": "Z10_SEKCJA_Z",
+        "Description": "Sekcja Z — ostatnia alejka"
+      },
+      {
+        "RouteId": "R10_HOL_KONSERW",
+        "Name": "Hol → Konservatornia",
+        "From": "Z10_CENTRALNY_HOLL",
+        "To": "Z10_KONSERWATORNIA",
+        "Description": "Lewe skrzydło"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Size": "Rozciąga się na 3 km w głąb — nie da się dotrzeć do końca",
+      "Temperature": "Chłodne 15°C — archiwum ma stałą temperaturę",
+      "LightSources": [
+        "Ciepłe żarówki Edison przy każdej szufladzie",
+        "Antresola oświetlona z góry"
+      ],
+      "Sounds": [
+        "Szept — niedostarczone słowa unoszą się w powietrzu",
+        "Szuflada się otwiera z cichym dźwiękiem",
+        "Kafka płacze gdzieś w głębi"
+      ],
+      "Smell": "Stary papier, wosk, czas"
+    },
+    "MiniMapConfig": {
+      "Style": "Schemat biblioteki — jak katalog Dewey'a",
+      "Scale": "1:2000 (ogromna przestrzeń)",
+      "Sections": "Sekcje A-L zaznaczone kolorami",
+      "SectionZ": "Podświetlona czerwono — cel gracza",
+      "InfinityNote": "Mapa nie ma końca — dalsze sekcje są zamazane 'mgłą'"
+    }
+  }
+}

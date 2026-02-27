@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – ARCHIWUM CISZY · 2077 | Axis: T10.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T10_01",
+      "path": "Content/CCR/Story/T10_ArchiwumCiszy2077/",
+      "ChunkId": "T10_01",
+      "AxisId": "T10",
+      "EntryNodeId": "T10_01_010",
+      "ChapterTitle": "ARCHIWUM CISZY",
+      "ChapterSubtitle": "2077",
+      "_narrative": "Rok 2077. Podziemne archiwum cyfrowe – wszystkie nienagrane, niedostarczone wiadomości ludzkości. Batista i Kafka odnajdują setki listów Zuzi do ojca, które nigdy nie zostały dostarczone. Andrzej po raz pierwszy słyszy głos Zuzi przez starą wiadomość audio.",
+      "_gameplay": "QTE: Swipe Up – Andrzej wchodzi na serwer boczną klatką przed zamknięciem archiwum. Wybór: otworzyć najstarszy list Zuzi (emocjonalne, mało informacji) lub najnowszy (więcej wskazówek o jej lokalizacji). Obie opcje dają różne dialogi Andrzeja.",
+      "_visual": "Ogromne cylindryczne archiwum podziemne – serwery sięgają do sufitu, miliony świecących punktów danych. Cisza absolutna przerywana piskiem serwerów. Paleta: głęboki granat i cyjanowe linie danych. UI: katalog archiwalny. Muzyka: MUS_ArchiwumCiszy – cisza z odległymi echami.",
+      "Nodes": [
+        {
+          "NodeId": "T10_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "2077. Archiwum Ciszy – wszystkie słowa, które nie dotarły do adresatów. Miliony wiadomości, miliony sekretów. Batista znalazł system przez stary kontakt. Kafka wie jak go odczytać. Gdzieś tutaj jest głos mojej córki, która pisała do mnie przez lata. I ja nigdy tego nie wiedziałem.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T10_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T10_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "Andrzej, amigo – znalazłem to. Sekcja 'ZUZIA'. Widzisz te liczby? Trzysta czterdzieści siedem wiadomości. Trzysta czterdzieści siedem razy próbowała się do ciebie odezwać. Trzysta czterdzieści siedem razy ktoś zablokował transmisję.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T10_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T10_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T10_01_040"
+        },
+        {
+          "NodeId": "T10_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Otwórzcie najstarszą wiadomość – chcę usłyszeć jak była mała.",
+              "TargetNodeId": "T10_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Otwórzcie najnowszą – muszę wiedzieć gdzie teraz jest.",
+              "TargetNodeId": "T10_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T10_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T10_01_060",
+          "QTEFailNodeId": "T10_01_052"
+        },
+        {
+          "NodeId": "T10_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Drzwi serwera zamykają się automatycznie. Muszę wskoczyć szybciej.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T10_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T10_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Jestem w środku. Katalog Zuzi przed oczami. Trzysta czterdzieści siedem listów do ojca.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T10_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T10_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "Słyszysz to, Andrzeju? To jej głos – nagranie audio z 2031 roku, kiedy miała siedemnaście lat. Mówi: 'Tato, jeśli kiedykolwiek to usłyszysz – szukam cię tak samo jak ty mnie szukasz. Wiem, że gdzieś jesteś. Nie rezygnuj.' Ona wiedziała. Przez cały czas wiedziała.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T10_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T10_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T10_01_090"
+        },
+        {
+          "NodeId": "T10_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T10_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T10_01_999"
+        },
+        {
+          "NodeId": "T10_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T11_01",
+          "EntryNodeInTarget": "T11_01_010"
+        }
+      ]
+    }
+  ]
+}

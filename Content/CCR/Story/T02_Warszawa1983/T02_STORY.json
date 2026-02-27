@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – WARSZAWA · 1983 | Axis: T02.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T02_01",
+      "path": "Content/CCR/Story/T02_Warszawa1983/",
+      "ChunkId": "T02_01",
+      "AxisId": "T02",
+      "EntryNodeId": "T02_01_010",
+      "ChapterTitle": "WARSZAWA",
+      "ChapterSubtitle": "1983",
+      "_narrative": "PRL Warszawa 1983. Wszędzie inwigilacja i milicja. Kafka działa w podziemiu, Batista jest studentem z wymiany. Andrzej szuka metryki urodzin Zuzi w aktach państwowych. Kafka i Batista pomagają, lecz z różnych powodów.",
+      "_gameplay": "QTE: Swipe Left – Andrzej odwraca się przed kamerą milicji, unikając rozpoznania. Wybór: zawierzyć Kafce (wiedza, ryzyko) lub Batiście (bezpieczeństwo, mniej informacji). Kafka daje więcej wskazówek fabularnych.",
+      "_visual": "PRL estetyka – betonowe bloki, świetlówki, plakaty propagandowe. Paleta: szarości, przytłumione niebieskie, sporadyczny czerwony. UI: maszyna do pisania, stempel urzędowy. Muzyka: MUS_Warsaw83 z ambientem radiowym.",
+      "Nodes": [
+        {
+          "NodeId": "T02_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Warszawa, rok 1983. Szare bloki, szare niebo, szare twarze. Ale gdzieś w tych aktach jest odpowiedź – czy Zuzia w tej osi czasu była tu, czy już zabrano ją dalej. Muszę znaleźć metrykalną prawdę.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T02_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T02_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "Cicho, człowieku. Milicja za rogiem. Jesteś nowy w Warszawie, widać to od razu. Ja wiem gdzie są akta. Ale każda wiedza tutaj ma cenę. Jesteś gotowy zapłacić?",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T02_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T02_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T02_01_040"
+        },
+        {
+          "NodeId": "T02_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Kafka, ufam ci. Co trzeba zrobić?",
+              "TargetNodeId": "T02_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Kafka, nie czas na targowanie. Gdzie są akta?",
+              "TargetNodeId": "T02_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T02_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Left",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T02_01_060",
+          "QTEFailNodeId": "T02_01_052"
+        },
+        {
+          "NodeId": "T02_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Kamera milicji złapała mój profil. Muszę się cofnąć i spróbować inaczej.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T02_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T02_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Minąłem kamerę. Teraz Kafka może mnie prowadzić bezpiecznie.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T02_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T02_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "Hej, amigo. Jestem tu z wymiany studenckiej. Znam kilka twarzy w urzędzie. Twoja córka – widziałem takie poszukiwania przed tobą. Rodzice zawsze szukają. Chodź, zaprowadzę cię do okienka bez kolejki.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T02_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T02_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T02_01_090"
+        },
+        {
+          "NodeId": "T02_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T02_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T02_01_999"
+        },
+        {
+          "NodeId": "T02_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T03_01",
+          "EntryNodeInTarget": "T03_01_010"
+        }
+      ]
+    }
+  ]
+}

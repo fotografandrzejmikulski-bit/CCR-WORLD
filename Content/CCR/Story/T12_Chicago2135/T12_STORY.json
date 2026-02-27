@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – CHICAGO · 2135 | Axis: T12.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T12_01",
+      "path": "Content/CCR/Story/T12_Chicago2135/",
+      "ChunkId": "T12_01",
+      "AxisId": "T12",
+      "EntryNodeId": "T12_01_010",
+      "ChapterTitle": "CHICAGO",
+      "ChapterSubtitle": "2135",
+      "_narrative": "Chicago 2135. Megamiasto z zalaną niższą dzielnicą. Eva i Batista (bez Weroniki) pomagają Andrzejowi. Eva ma dostęp do koordynatów osi T19. Batista zna trasy ewakuacyjne przez zalaną dzielnicę.",
+      "_gameplay": "QTE: Double Tap – Andrzej skacze z pomostu na unoszącą się platformę przez zalaną dzielnicę. Wybór: iść trasą Evy przez niższe poziomy (szybciej, niebezpieczniej) lub trasą Batisty przez dachy (wolniej, bezpieczniej).",
+      "_visual": "Cyberpunk Chicago – górne poziomy neonowe, dolne zalane wodą, łodzie motorowe między budynkami. Paleta: teal i amber, neon na mokrym betonie. UI: holograficzna mapa megamiasta. Muzyka: MUS_Chicago z jazzowym cyberpunkowym basem.",
+      "Nodes": [
+        {
+          "NodeId": "T12_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Chicago, 2135. Dolna dzielnica tonie od stu lat – teraz już nikt nie próbuje jej wysuszyć. Eva i Batista czekają na mnie przy pomostach. Mają to, czego potrzebuję: koordynaty osi T19, ostatniego miejsca na końcu wszystkich czasów. Jestem coraz bliżej.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T12_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T12_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "Andrzej, mam to. Koordynaty Kosmicznego Rezonatora Świadomości – oś T19, koniec czasów. Znalazłam w archiwum poprzedniej cywilizacji. Andrzej... to nie jest miejsce. To jest moment. Kiedy dotrzesz – będziesz miał jedno wezwanie, jeden puls. Nie zmarnuj go.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T12_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T12_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T12_01_040"
+        },
+        {
+          "NodeId": "T12_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Idę trasą Evy – przez niższe poziomy, najszybciej jak się da.",
+              "TargetNodeId": "T12_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Idę z Batistą przez dachy – bezpieczniej i widzę całe miasto.",
+              "TargetNodeId": "T12_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T12_01_050",
+          "NodeType": "QTE",
+          "GestureType": "DoubleTap",
+          "RequiredSwipeDir": null,
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T12_01_060",
+          "QTEFailNodeId": "T12_01_052"
+        },
+        {
+          "NodeId": "T12_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Platforma odpłynęła za szybko. Woda za głęboka. Jeszcze raz – Double Tap w odpowiednim momencie.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T12_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T12_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Skok udany. Platforma pod nogami. Eva i Batista po drugiej stronie. Koordynaty mam. T19 – idę.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T12_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T12_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "Hermano – jesteś najwytrwalszym człowiekiem jakiego znam. Przez tyle osi czasu, tyle lat szukania. Jak dotrzesz do Kosmicznego Rezonatora, mów do niego głośno. Ja będę tu, przy zalanej dzielnicy Chicago, i jakoś wyczuję że w końcu dotarłeś.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T12_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T12_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T12_01_090"
+        },
+        {
+          "NodeId": "T12_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T12_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T12_01_999"
+        },
+        {
+          "NodeId": "T12_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T13_01",
+          "EntryNodeInTarget": "T13_01_010"
+        }
+      ]
+    }
+  ]
+}

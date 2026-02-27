@@ -1,0 +1,299 @@
+{
+  "_doc": "LEVEL DESIGN — T09 | FOTONY PAMIĘCI · 2045.",
+  "LevelId": "T09",
+  "AxisId": "T09",
+  "StoryChunkRef": "T09_01",
+  "Title": "FOTONY PAMIĘCI",
+  "Subtitle": "2045",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Laboratorium fotonów pamięci, Polska 2045",
+    "Era": "Bliższa przyszłość, 2045",
+    "TimeOfDay": "Noc — tylko światło z ekranów i fotonowych sond",
+    "Weather": "Brak okien — podziemne laboratorium",
+    "MainScene": "Podziemne laboratorium z holograficznymi zapisami wspomnień jako fotonami. Unoszące się świetliste kule — każda to fragment czyjegoś wspomnienia.",
+    "KeyVisualElement": "ECHO ZUZI jako foton pamięci — mała dziewczynka w niebieskim sweterku, transparentna, świetlista",
+    "LightingMood": "Totalna ciemność z kolorowymi fotonami wspomnień — jak galaktyka wspomnień",
+    "AmbientDescription": "Cichy szum maszyn, delikatny dźwięk fotonów, odległy oddech"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. W lab-owym środowisku aparat reaguje na fotony — migocze.",
+      "Note": "Aparat Andrzeja reaguje na fotony pamięci — migawka sama się otwiera"
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "Biały fartuch. Zegarek. Tłumaczy mechanizm fotonów cicho.",
+      "InitialPosition": "główna sala"
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "ECHO — mała dziewczynka 8 lat, niebieski sweter, transparentna sylwetka ze złotym zarysem. To foton pamięci — nie fizyczna Zuzia.",
+      "InitialPosition": "centrum sali jako foton",
+      "bIsEcho": true,
+      "bIsPhysicallyAbsent": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T09_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej w galaktyce wspomnień. Szukanie fotonu Zuzi.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Poruszaj się między fotonami — tap na kule by zobaczyć czyje są",
+        "Szukaj niebieskiego fotonu — koloru niebieskiego sweterka Zuzi",
+        "Aparat Andrzeja migocze gdy jest blisko fotonu Zuzi"
+      ],
+      "CameraHint": "APARAT REAGUJE — gdy zbliżasz się do fotonu Zuzi, aparat migocze. Sfotografuj foton.",
+      "NPCBehaviors": [
+        "Eimstain obserwuje z boku"
+      ]
+    },
+    {
+      "PhaseId": "T09_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain wyjaśnia fotony pamięci.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: zapytać 'czy Zuzia żyje?' / 'jak dotrzeć do T19'"
+      ],
+      "CameraHint": "Sfotografuj zegarek Eimstaina — 9. oś tarcza świeci"
+    },
+    {
+      "PhaseId": "T09_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Andrzej wyciąga rękę do fotonu Zuzi.",
+      "EstimatedDuration_sec": 35,
+      "PlayerActions": [
+        "LONG PRESS — Andrzej trzyma rękę wyciągniętą przy fotonie Zuzi",
+        "Echo Zuzi 'mówi': 'Tato... wróć.'",
+        "Porażka: foton odpływa, spróbuj ponownie"
+      ],
+      "CameraHint": "KLUCZOWE ZDJĘCIE: Sfotografuj echo-obraz Zuzi z niebieskim sweterkiem — to zdjęcie pojawia się w T19"
+    },
+    {
+      "PhaseId": "T09_P4",
+      "PhaseType": "CUTSCENE",
+      "Description": "Echo Zuzi znika jak foton odpływa.",
+      "EstimatedDuration_sec": 12,
+      "PlayerActions": [
+        "Obserwuj — brak interakcji. 12 sekund."
+      ]
+    },
+    {
+      "PhaseId": "T09_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej z zapisem fotonu w aparacie.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T09_FOTON_ZUZI",
+        "Hint": "Echo Zuzi jako foton — niebieski sweter",
+        "PhotoReward": "Album: KLUCZOWE ZDJĘCIE. 'Widziałem jej echo. Niebieski sweter. Pamiętam.' Odblokuj: sekwencja T19.",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T09_GALAKTYKA",
+        "Hint": "Galaktyka wspomnień — setki fotonów",
+        "PhotoReward": "Album: 'Każde z nich to czyjeś wspomnienie. Czyjś ból. Czyjaś miłość.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T09_EIMSTAIN_FOTON",
+        "Hint": "Eimstain z fotonami wokół",
+        "PhotoReward": "Album: 'Strażnik wspomnień.'",
+        "IsRequired": false
+      }
+    ],
+    "SpecialMechanic": "W T09 aparat Andrzeja sam reaguje na fotony — migawka otwiera się automatycznie przy fotonach emocjonalnych"
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_ZAPIS_FOTONU",
+      "Name": "Zapis fotonu Zuzi",
+      "Location": "Aparat po QTE",
+      "Description": "Echo 8-letniej Zuzi w niebieskim sweterku — klucz do T19"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_FotonyPamieci — delikatny, świetlny, migocący ambient",
+    "AmbientSounds": [
+      "Fotony dźwięczą jak kryształy",
+      "Odległy oddech",
+      "Cisza przerywana echem"
+    ],
+    "SFX": [
+      "SFX_Camera_Auto_Shutter",
+      "SFX_Photon_Touch",
+      "SFX_Echo_Child_Voice"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Minimalistyczny fotonowy — delikatne świecące linie",
+    "DialogueBoxStyle": "Przezroczysty z fotonowym tłem",
+    "SpecialUI": "Aparat pulsuje złotym światłem gdy jest blisko fotonu Zuzi"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T09_LAB",
+        "StoryNodeRef": "T09_01_010",
+        "Description": "Laboratorium fotonów"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej ma zapis fotonu. Laboratorium gaśnie.",
+  "NextLevel": "T10",
+  "LevelTransitionText": "Echo dziecka w aparacie. Niosę ją ze sobą.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T09 — Laboratorium Fotonów Pamięci, Polska 2045. Podziemne centrum badań wspomnień.",
+    "LocationType": "Podziemne laboratorium — centrum badań fotonów pamięci",
+    "RealWorldRef": "Fikcja 2045, Polska. Podziemne centrum badawcze 200m pod ziemią — wzorowane na CERN lub NCBJ Świerk.",
+    "Scale": "Zamknięty obszar: poziom B1-B3, 3 sale",
+    "NavigationStyle": "Pionowa (windy) + liniowa między salami",
+    "Zones": [
+      {
+        "ZoneId": "Z09_WINDA_WEJSCIE",
+        "Name": "Winda zejściowa",
+        "Description": "Stalowa kapsuła windy schodzi 200m pod ziemię. Ściany z tytanu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_PANEL_WINDY",
+            "Name": "Panel windy",
+            "Description": "Poziomy: B1 (galeria), B2 (laboratorium), B3 (reaktor fotonów).",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z09_GALERIA_FOTONOW",
+        "Name": "Galeria Fotonów (B1)",
+        "Description": "Otwarta sala z unoszącymi się fotonami wspomnień — jak galaktyka.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_FOTONY_UNOSZACE",
+            "Name": "Unoszące się fotony",
+            "Description": "Setki świetlnych kulek — każda to czyjeś wspomnienie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FOTON_ZUZIA",
+            "Name": "Foton Zuzi — niebieski",
+            "Description": "Niebieska kula, kolor niebieskiego sweterka. Pulsuje nieregularnie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_STACJA_ODCZYTU",
+            "Name": "Stacja odczytu fotonów",
+            "Description": "Aparat specjalny do 'słuchania' fotonów.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z09_LABORATORIUM_B2",
+        "Name": "Laboratorium (B2)",
+        "Description": "Eimstain pracuje tu. Ekrany z analizą fotonów. Zegarek z 19 tarczami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_EIMSTAIN_LAB09",
+            "Name": "Eimstain przy ekranach",
+            "Description": "Wyjaśnia mechanizm fotonów pamięci. Zegarek na stole.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ANALIZA_FOTONOW",
+            "Name": "Analiza fotonów na ekranie",
+            "Description": "Wykres życia Zuzi jako seria fotonów — każdy rok to inny foton.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z09_REAKTOR_FOTONOW",
+        "Name": "Reaktor fotonów (B3)",
+        "Description": "Centrum gdzie fotony się tworzą. Potężne pole elektromagnetyczne.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_REAKTOR",
+            "Name": "Rdzeń reaktora fotonów",
+            "Description": "Pulsujące złote światło. TUTAJ foton Zuzi jest najsilniejszy.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Dostępne dopiero po rozmowie z Eimstainem"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R09_WINDA_B1",
+        "Name": "Winda → Galeria",
+        "From": "Z09_WINDA_WEJSCIE",
+        "To": "Z09_GALERIA_FOTONOW",
+        "Description": "Zjazd windą B1"
+      },
+      {
+        "RouteId": "R09_B1_B2",
+        "Name": "Galeria → Lab",
+        "From": "Z09_GALERIA_FOTONOW",
+        "To": "Z09_LABORATORIUM_B2",
+        "Description": "Korytarz z galerii do laboratorium"
+      },
+      {
+        "RouteId": "R09_B2_B3",
+        "Name": "Lab → Reaktor",
+        "From": "Z09_LABORATORIUM_B2",
+        "To": "Z09_REAKTOR_FOTONOW",
+        "Description": "Po rozmowie z Eimstainem"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Depth": "200 metrów pod powierzchnią ziemi",
+      "Gravity": "Normalna ale odczuwalna głębokość — ciśnienie w uszach w windzie",
+      "LightSources": [
+        "Fotony — główne źródło światła w galerii",
+        "Niebieskie LED w laboratorium",
+        "Złoty rdzeń reaktora"
+      ],
+      "Temperature": "Chłodne 16°C — stałe niezależnie od pory roku",
+      "Sounds": [
+        "Absolutna cisza — 200m pod ziemią",
+        "Fotony dźwięczą jak kryształy",
+        "Hum reaktora fotonów"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Przekrój pionowy — jak schemat miniszachtu",
+      "Scale": "1:300",
+      "Levels": [
+        "B1: Galeria",
+        "B2: Laboratorium",
+        "B3: Reaktor"
+      ],
+      "FotonDensityMap": "Niebieskie kółka — gęstość fotonów (im gęściej, tym więcej wspomnień)"
+    }
+  }
+}

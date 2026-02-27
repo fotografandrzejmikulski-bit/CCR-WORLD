@@ -1,0 +1,145 @@
+{
+  "_doc": "UCCRStoryChunk – ŚWIATŁO W PRÓŻNI · 2222 | Axis: T14.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T14_01",
+      "path": "Content/CCR/Story/T14_SwiatloProzni2222/",
+      "ChunkId": "T14_01",
+      "AxisId": "T14",
+      "EntryNodeId": "T14_01_010",
+      "ChapterTitle": "ŚWIATŁO W PRÓŻNI",
+      "ChapterSubtitle": "2222",
+      "_narrative": "Rok 2222. Stacja w próżni kosmicznej – dosłownie pomiędzy osiami czasu, w punkcie zero. Eimstain tłumaczy, że Zuzia i Andrzej są teraz oddzieleni tylko jedną osią. Jeden krok, jedna oś. Ale ta próżnia jest nieskończona.",
+      "_gameplay": "QTE: Swipe Right i Left naprzemiennie (2 razy) – balansowanie w próżni przy module transmisyjnym. Wybór: przeskoczyć próżnię (ryzykowne, skrót) lub zbudować pomost z danych (bezpieczne, dłuższe). Obydwa prowadzą do T15.",
+      "_visual": "Kosmiczna próżnia – absolutna czerń z jednym źródłem światła, brak podłogi widocznej. Andrzej i Eimstain zawieszeni jak w przestrzeni. Paleta: absolutna czerń i jedno białe źródło. UI: minimalny HUD. Muzyka: MUS_Proznia – cisza z odległym oddechem.",
+      "Nodes": [
+        {
+          "NodeId": "T14_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "2222. Próżnia między osiami. Nie ma tu nic – żadnej grawitacji, żadnego powietrza, żadnego tła. Tylko Eimstain i ja zawieszeeni w tym co Eimstain nazywa 'przestrzenią między chwilami'. I jeden punkt światła przede mną – to T15, następna oś. I gdzieś za nią, T19.",
+          "ExpressionTag": "Awed",
+          "NextAfterDialogue": "T14_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T14_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "Andrzeju. Od T01 do T14 przeszedłeś 545 lat czasu linearnego, przez pięć kontynentów i dwie ery kosmiczne. Zuzia jest w tej chwili o pięć osi czasu od ciebie – bliżej niż kiedykolwiek w tej podróży. Próżnia przed nami to jedyna bariera bez postaci, bez systemu, bez Cienia. Tylko fizyka i determinacja.",
+          "ExpressionTag": "Solemn",
+          "NextAfterDialogue": "T14_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T14_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EIMSTAIN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T14_01_040"
+        },
+        {
+          "NodeId": "T14_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Przeskoczyć próżnię bezpośrednio – ryzyko, ale szybciej",
+              "TargetNodeId": "T14_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Zbudować pomost danych z modułu – bezpieczniej, wolniej",
+              "TargetNodeId": "T14_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T14_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Right",
+          "TimeWindowSec": 2.5,
+          "QTESuccessNodeId": "T14_01_055",
+          "QTEFailNodeId": "T14_01_052",
+          "_note": "Pierwszy swipe – prawą stroną"
+        },
+        {
+          "NodeId": "T14_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Straciłem balans w próżni. Nie ma grawitacji która mnie złapie. Muszę pracować z Eimstainem – naprzemiennie.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T14_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T14_01_055",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Left",
+          "TimeWindowSec": 2.5,
+          "QTESuccessNodeId": "T14_01_060",
+          "QTEFailNodeId": "T14_01_052",
+          "_note": "Drugi swipe – lewą, naprzemiennie"
+        },
+        {
+          "NodeId": "T14_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Próżnia za mną. Punkt światła T15 coraz bliższy. Pięć osi. Eimstain, razem.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T14_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T14_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "Widzisz to światło, Andrzeju? Każdy foton który widzisz przeleciał przez wszystkie 19 osi jednocześnie. Światło nie zna granic osi czasu. Zuzia jest w tym samym świetle co ty, przez cały czas. To ty i ona jesteście dziećmi tego samego światła.",
+          "ExpressionTag": "Wise",
+          "NextAfterDialogue": "T14_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T14_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T14_LIGHT_SEEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T14_01_090"
+        },
+        {
+          "NodeId": "T14_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T14_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T14_01_999"
+        },
+        {
+          "NodeId": "T14_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T15_01",
+          "EntryNodeInTarget": "T15_01_010"
+        }
+      ]
+    }
+  ]
+}

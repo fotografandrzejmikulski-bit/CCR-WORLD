@@ -1,0 +1,338 @@
+{
+  "_doc": "LEVEL DESIGN — T08 | CIEŃ SYSTEMU · 2035.",
+  "LevelId": "T08",
+  "AxisId": "T08",
+  "StoryChunkRef": "T08_01",
+  "Title": "CIEŃ SYSTEMU",
+  "Subtitle": "2035",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Polska 2035 — inteligentne miasto. Biometria wszędzie.",
+    "Era": "Niedaleka przyszłość, 2035, smart city",
+    "TimeOfDay": "Wieczór — niebieskie neony miasta",
+    "Weather": "Czysto, LED wszędzie",
+    "MainScene": "Inteligentne miasto 2035 — kamery biometryczne na każdym rogu. Andrzej rozpoznawany przez system.",
+    "LightingMood": "Cyberpunkowe — niebieskie neony na mokrym asfalcie",
+    "AmbientDescription": "Elektryczne brzęczenie, drony, kroki na mokrym chodniku",
+    "KeyVisualElement": "Kamery z AI rozpoznają tatuaże Andrzeja — jest w systemie jako 'zagrożenie dla opieki nad Zuzią'"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula z kapturem narzuconym — próba ukrycia tatuaży i aparatu",
+      "Note": "System 2035 rozpoznaje go przez tatuaże — kluczowa mechnika ukrywania"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja jest 'autoryzowany' przez system — Cień nie jest oznaczony jako zagrożenie. Paradoks.",
+      "InitialPosition": "sieć kamer miejskich"
+    },
+    {
+      "CharacterId": "EVA",
+      "Description": "Techniczna odzież smart city. Pendrive holograficzny.",
+      "InitialPosition": "podziemne przejście"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T08_P1",
+      "PhaseType": "STEALTH_CITY",
+      "Description": "Andrzej unika kamer biometrycznych miasta 2035.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Obserwuj rytm kamer na mini-mapie",
+        "SWIPE LEFT/RIGHT żeby skręcić w uliczkę przed skanem",
+        "Kaptur zasłania twarz — ale tatuaże na dłoniach zdradzają"
+      ],
+      "CameraHint": "Sfotografuj system kamer — dokumentuj inwigilację",
+      "NPCBehaviors": [
+        "Kamery skanują co 3s",
+        "Drony patrolują co 45s"
+      ]
+    },
+    {
+      "PhaseId": "T08_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eva w podziemnym przejściu — informacje o systemie izolacji.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: wziąć dane od Evy / zapytać jak zniszczyć system"
+      ],
+      "CameraHint": "Fotografuj holograficzny pendrive Evy"
+    },
+    {
+      "PhaseId": "T08_P3",
+      "PhaseType": "QTE",
+      "Description": "Cień 'autoryzowany' przez system — blokuje drogę do Evy.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE DOWN — Andrzej kuca pod zasięgiem kamery",
+        "Flash aparatu dezaktywuje kamerę chwilowo"
+      ]
+    },
+    {
+      "PhaseId": "T08_P4",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi z miasta z danymi.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T08_KAMERY",
+        "Hint": "System kamer biometrycznych na rogu",
+        "PhotoReward": "Album: 'Widzą mnie wszędzie. Tatuaże to mój znak.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T08_CIEN_AUTORYZOWANY",
+        "Hint": "Cień w systemie — jego sylwetka 'zielona' w kamerach",
+        "PhotoReward": "Album: 'Mój cień jest autoryzowany. Ja nie. Co to znaczy?'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T08_EVA_PODZIEMIE",
+        "Hint": "Eva w podziemnym przejściu",
+        "PhotoReward": "Album: 'Spotykamy się w ciemności bo system nie może nas tu zobaczyć.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_DANE_EVY_T08",
+      "Name": "Dane o systemie izolacji 2035",
+      "Location": "Od Evy",
+      "Description": "Klucz do T11 — terminal"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_CienSystemu — cyberpunkowy ambient, niski bas, synth",
+    "AmbientSounds": [
+      "Elektryczne brzęczenie kamer",
+      "Dron silnik",
+      "Mokry chodnik",
+      "Neony"
+    ],
+    "SFX": [
+      "SFX_Camera_Biometric_Scan",
+      "SFX_Camera_Flash_Disable",
+      "SFX_Drone"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Smart city — holograficzne ikony, niebieskie UI",
+    "DialogueBoxStyle": "Holograficzny dymek 2035"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T08_MIASTO",
+        "StoryNodeRef": "T08_01_010",
+        "Description": "Andrzej w smart city"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wychodzi przez tunel pod miastem.",
+  "NextLevel": "T09",
+  "LevelTransitionText": "System nie zapamiętuje. Ale ja tak.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T08 — Polskie Smart City 2035. Inwigilacja biometryczna.",
+    "LocationType": "Futurystyczne polskie miasto 2035 — inteligentna infrastruktura",
+    "RealWorldRef": "Fikcja — Polska 2035. Bezimienna polska metropolia przyszłości z pełną inteligentną infrastrukturą. Kompletnie 'smart' — każdy element wyposażony w AI.",
+    "Scale": "Duży obszar miejski: 4 dzielnice + podziemia",
+    "NavigationStyle": "Otwarty z dynamicznymi strefami zagrożenia (kamery)",
+    "Zones": [
+      {
+        "ZoneId": "Z08_GLOWNA",
+        "Name": "Ulica Główna 2035",
+        "Description": "LED chodniki, hologramy reklam, drony dostawcze. Wszędzie kamery biometryczne.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KAMERY_BIOM",
+            "Name": "Kamery biometryczne",
+            "Description": "Co 15m. Czerwone diody sygnalizują aktywne skanowanie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_HOLOGRAMY_REKLAM",
+            "Name": "Hologramy reklamowe",
+            "Description": "Reklamy targetowane — AI czyta twarz. Andrzej widzi reklamę dla 'poszukujących rodziny'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_DRON_DOSTAWCZY",
+            "Name": "Dron dostawczy",
+            "Description": "Amazon/PGE 2035. Lata 3m nad chodnikiem. Przeszkadza ale też maskuje.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z08_DZIELNICA_MIESZK",
+        "Name": "Dzielnica mieszkaniowa 2035",
+        "Description": "Nowoczesne wieżowce z fasadami solarnymi. Zielone tarasy. Andrzej jest TU jako obcy.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WIEZOWIEC_SOLAR",
+            "Name": "Wieżowiec solarny",
+            "Description": "35 pięter, fasada z paneli. Witryny pokazują wewnętrzny stan energetyczny.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_BRAMKA_BIOM_BUDYNEK",
+            "Name": "Bramka biometryczna budynku",
+            "Description": "Każde wejście do budynku przez skan twarzy/tatuaży.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z08_PODZIEMNE",
+        "Name": "Podziemne przejście (ślepa plamka)",
+        "Description": "Stary tunel z XX w. Bez kamer — jedyne miejsce w mieście bez inwigilacji.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_EVA_PODZIEMIE",
+            "Name": "Eva w tunelu",
+            "Description": "Jedyna nieskanowana strefa. Fluorescencyjne graffiti z 2018 r.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_GRAFFITI_HISTORYCZNE",
+            "Name": "Stare graffiti",
+            "Description": "Z 2018-2025. Napisy: 'Pamiętajcie — byliśmy wolni.'",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_GENERATOR_ZASILANIA",
+            "Name": "Stary generator",
+            "Description": "Zasila tę część tunelu. Brak kamer.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Wejście przez kanał obok banku — niezaznaczone na oficjalnej mapie"
+      },
+      {
+        "ZoneId": "Z08_CENTRUM_ADMINISTR",
+        "Name": "Centrum administracyjne 2035",
+        "Description": "Szklany budynek. Bazy danych systemu izolacji Zuzi są tu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SERWERY_IZOLACJI",
+            "Name": "Serwery systemu izolacji",
+            "Description": "Wielkie serwerownie. Dane o Zuzi są tu przechowywane.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_CIEN_HOLOGRAM",
+            "Name": "Cień w hologramie miejskim",
+            "Description": "Cień Andrzeja w holograficznym reklamie — porusza się nie tak jak Andrzej.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z08_PARK_SMART",
+        "Name": "Smart Park 2035",
+        "Description": "Drzewa z sensorami, ławki z ładowaniem indukcyjnym, drony dozorujące.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_DRZEWO_SENSOR",
+            "Name": "Drzewo z sensorem",
+            "Description": "Organiczne ale z wbudowanym sensorem środowiskowym i kamerą.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Strefa o niższej gęstości kamer — dobra trasa"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R08_WEJSCIE",
+        "Name": "Dworec → Ulica Główna",
+        "From": "START",
+        "To": "Z08_GLOWNA",
+        "Description": "Andrzej przybywa z poprzedniej osi"
+      },
+      {
+        "RouteId": "R08_GLOWNA_PARK",
+        "Name": "Ulica → Park",
+        "From": "Z08_GLOWNA",
+        "To": "Z08_PARK_SMART",
+        "Description": "Niższe pokrycie kamerami"
+      },
+      {
+        "RouteId": "R08_PARK_PODZIEMNE",
+        "Name": "Park → Podziemia",
+        "From": "Z08_PARK_SMART",
+        "To": "Z08_PODZIEMNE",
+        "Description": "Stary właz kanalizacyjny"
+      },
+      {
+        "RouteId": "R08_GLOWNA_MIESZK",
+        "Name": "Ulica → Dzielnica",
+        "From": "Z08_GLOWNA",
+        "To": "Z08_DZIELNICA_MIESZK",
+        "Description": "Przez bramkę biometryczną (stealth)"
+      },
+      {
+        "RouteId": "R08_PODZIEMNE_ADM",
+        "Name": "Podziemia → Centrum adm.",
+        "From": "Z08_PODZIEMNE",
+        "To": "Z08_CENTRUM_ADMINISTR",
+        "Description": "Stary tunel techniczny"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Ciepły wieczór 2035 — 22°C",
+      "Weather": "Bezchmurnie — klimat kontrolowany przez miejski system",
+      "LightSources": [
+        "LED chodniki (niebieskie)",
+        "Hologramy reklam",
+        "Fasady solarne aktywne",
+        "Latarnie smart z czujnikami ruchu"
+      ],
+      "NPC_Density": "Wysoka — 2035, godzina szczytu 18:00",
+      "CameraNetwork": "94% pokrycie miasta. Podziemia: 0%. Smart Park: 60%.",
+      "TattooRecognitionAlert": "Tatuaże Andrzeja rozpoznawane przez AI jako 'osoba z ograniczonymi prawami'. Alert po 3 sekundy skanowania.",
+      "Sounds": [
+        "Elektryczne hum LED",
+        "Drony w powietrzu",
+        "Ciche miasto — brak spalinowych aut",
+        "Hologramy dźwięczą"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Smart city dashboard — żywa mapa z aktualizacją w czasie rzeczywistym",
+      "Scale": "1:1000",
+      "CameraHeatmap": "Czerwona nakładka pokazuje gęstość kamer — im ciemniej, tym bezpieczniej",
+      "SafeCorridors": "Zielone linie — trasy przez ślepe plamki kamer",
+      "DroneTrackingLayer": "Pomarańczowe linie — aktualne trasy dronów"
+    }
+  }
+}

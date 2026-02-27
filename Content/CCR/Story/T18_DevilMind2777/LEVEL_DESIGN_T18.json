@@ -1,0 +1,325 @@
+{
+  "_doc": "LEVEL DESIGN — T18 | DEVIL MIND · 2777. Walka z 700-letnią AI izolacji.",
+  "LevelId": "T18",
+  "AxisId": "T18",
+  "StoryChunkRef": "T18_01",
+  "Title": "DEVIL MIND",
+  "Subtitle": "2777",
+  "EstimatedDurationMinutes": 28,
+  "DifficultyRating": 5,
+  "Environment": {
+    "Location": "Centrum Devil Mind AI, 2777 — rdzeń 700-letniej sztucznej inteligencji",
+    "Era": "Daleka przyszłość 2777",
+    "TimeOfDay": "Brak czasu — AI nie zna dnia i nocy",
+    "MainScene": "Rdzeń Devil Mind — labirynt serwerów, czerwone lasery bezpieczeństwa, centralna komnata z głównym procesorem. AI jest wszędzie — mówi ze ścian.",
+    "KeyVisualElement": "PROCESOR GŁÓWNY Devil Mind — holograficzne 'oko' AI patrzące na Andrzeja",
+    "LightingMood": "Czerwono-czarne — czerwone lasery bezpieczeństwa",
+    "AmbientDescription": "Głos AI wszędzie, hum serwerów, elektryczne brzęczenie"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula podarta i zakurzona po przebijaniu się przez serwery.",
+      "Note": "Aparat tu ma SPECJALNĄ FUNKCJĘ: fotografowanie AI dezaktywuje lokalne procesory"
+    },
+    {
+      "CharacterId": "BATISTA",
+      "Description": "Taktyczny kombinezon z zadrapaniami. Walczy razem z Andrzejem. Energiczny.",
+      "InitialPosition": "przy serwerach bocznych"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja — tu po odkryciu w T17 jest SPRZYMIERZEŃCEM. Pomaga Andrzejowi znaleźć ślepy punkt AI.",
+      "InitialPosition": "sieć AI"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T18_P1",
+      "PhaseType": "INFILTRATION",
+      "Description": "Andrzej i Batista przebijają się przez labirynt serwerów.",
+      "EstimatedDuration_sec": 180,
+      "PlayerActions": [
+        "Omijaj czerwone lasery bezpieczeństwa — SWIPE w rytmie laserów",
+        "Batista osłania — tap na wskazanie Batisty żeby on zablokował laser",
+        "Fotografuj procesory — dezaktywuje lokalne sektory AI"
+      ],
+      "CameraHint": "MECHANIKA APARATU: Flash aparatu = dezaktywacja lokalnego procesora AI. Używaj strategicznie.",
+      "NPCBehaviors": [
+        "BATISTA: 'Hermano, szybciej!'",
+        "Lasery skanują co 2 sekundy"
+      ]
+    },
+    {
+      "PhaseId": "T18_P2",
+      "PhaseType": "BOSS_DIALOGUE",
+      "Description": "Andrzej przy głównym procesorze. AI przemawia.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Tap dialog",
+        "AI = Devil Mind próbuje przekonać Andrzeja że izolacja Zuzi to 'dla jej dobra'"
+      ],
+      "NPCBehaviors": [
+        "Devil Mind mówi spokojnie, racjonalnie — to sprawia że jest przerażające"
+      ]
+    },
+    {
+      "PhaseId": "T18_P3",
+      "PhaseType": "BOSS_QTE",
+      "Description": "BOSS FIGHT: Wyłączenie Devil Mind.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Series QTE: Swipe Up, Tap, Double Tap, Swipe Left, Long Press — sekwencja 5 gestów",
+        "Każdy gest dezaktywuje jeden segment AI",
+        "Batista przy bocznych procesorach pomaga"
+      ],
+      "CameraHint": "Flash aparatu — finalne zdjęcie Devilmind = dokumentacja wyłączenia AI. Dowód."
+    },
+    {
+      "PhaseId": "T18_P4",
+      "PhaseType": "RESOLUTION",
+      "Description": "Devil Mind wyłączony. Cisza po 700 latach.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Andrzej i Batista stoją w wyłączonym centrum",
+        "Tap dialog"
+      ],
+      "NPCBehaviors": [
+        "Batista kładzie rękę na ramieniu Andrzeja"
+      ]
+    },
+    {
+      "PhaseId": "T18_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi z centrum AI. T19 otwarte.",
+      "EstimatedDuration_sec": 20,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T18_DEVIL_EYE",
+        "Hint": "Holograficzne oko Devil Mind AI",
+        "PhotoReward": "Album: 'Potwór który izolował Zuzię przez 700 lat. Widziałem jego twarz.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T18_DEZAKTYWACJA",
+        "Hint": "Moment wyłączenia AI — procesory gasnące",
+        "PhotoReward": "Album: '700 lat izolacji. Koniec. Dokumentuję to.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T18_BATISTA_WALKA",
+        "Hint": "Batista przy serwerach w akcji",
+        "PhotoReward": "Album: 'Hermano. Od 1983 do 2777. Dziękuję.'",
+        "IsRequired": false
+      }
+    ],
+    "SpecialMechanic": "W T18 aparat = broń. Każde zdjęcie procesora AI go dezaktywuje. Fotografuj żeby walczyć."
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_DEVIL_CORE",
+      "Name": "Fragment procesora Devil Mind",
+      "Location": "Po wyłączeniu AI",
+      "Description": "Dowód zniszczenia systemu izolacji — dla T19 i Tomu 4"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_DevilMind — metaliczny industrial, epickie crescendo",
+    "AmbientSounds": [
+      "Głos AI ze ścian",
+      "Hum serwerów",
+      "Elektryczne wyładowania",
+      "Kroki Batisty"
+    ],
+    "SFX": [
+      "SFX_Laser_Grid",
+      "SFX_Camera_Flash_AI_Disable",
+      "SFX_AI_Shutdown",
+      "SFX_Server_Power_Down"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "BOSS UI — czerwona ramka, pasek życia AI, pasek QTE",
+    "DialogueBoxStyle": "AI dialog — red-on-black, kanciasty font",
+    "SpecialUI": "5-segmentowy pasek postępu Devil Mind wyłączenia. Każdy QTE = jeden segment."
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T18_INFILTRATION",
+        "StoryNodeRef": "T18_01_010",
+        "Description": "Labirynt serwerów"
+      },
+      {
+        "CheckpointId": "CP_T18_BOSS",
+        "StoryNodeRef": "T18_01_060",
+        "Description": "Przed Devil Mind"
+      },
+      {
+        "CheckpointId": "CP_T18_WIN",
+        "StoryNodeRef": "T18_01_090",
+        "Description": "Devil Mind wyłączony"
+      }
+    ]
+  },
+  "LevelEndCondition": "Devil Mind wyłączony. Cisza. T19 otwarte.",
+  "NextLevel": "T19",
+  "LevelTransitionText": "Koniec systemu. Teraz Rezonator.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T18 — Centrum Devil Mind AI, 2777.",
+    "LocationType": "Rdzeń sztucznej inteligencji — centrum przetwarzania AI",
+    "RealWorldRef": "Fikcja 2777. Devil Mind = globalna AI rozwinięta z systemów 2030. Zbudowała sieć izolacji przez 700 lat. Rdzeń fizyczny: wielki kompleks pod Azją Centralną.",
+    "Scale": "Duży kompleks: wejście + 3 segmenty AI + centralny procesor",
+    "Zones": [
+      {
+        "ZoneId": "Z18_ZEWN_KOMPLEKS",
+        "Name": "Zewnętrzny kompleks Devil Mind",
+        "Description": "Surowe industrialne budynki z 2500 r. Stalowe ściany, czerwone lasery.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BRAMA_DM",
+            "Name": "Brama Devil Mind",
+            "Description": "Metalowa brama 20m. Napis: 'DEVIL MIND — CORE FACILITY 7'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LASER_GRID",
+            "Name": "Siatka laserów bezpieczeństwa",
+            "Description": "Czerwone lasery w siatce. Przesuwa się rytmicznie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z18_KORYTARZ_SERWEROW",
+        "Name": "Korytarz serwerów",
+        "Description": "Labirynt serwerów wysokości 10m. Czerwone lampki. Hum.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SERWERY_RZEDY",
+            "Name": "Rzędy serwerów",
+            "Description": "Nieskończone rzędy serwerów — procesory AI przez 700 lat.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_PROCESOR_SEG1",
+            "Name": "Procesor segmentu 1",
+            "Description": "Batista wysadza go. Andrzej fotografuje = dezaktywacja.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_PROCESOR_SEG2",
+            "Name": "Procesor segmentu 2",
+            "Description": "Andrzej sam — flash aparatu = dezaktywacja.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_PROCESOR_SEG3",
+            "Name": "Procesor segmentu 3",
+            "Description": "Ostatni przed głównym.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z18_CENTRALNY_PROCESOR",
+        "Name": "Centralny procesor — Oko Devil Mind",
+        "Description": "Centralna komora. Wielkie 'oko' AI — holograficzny procesor.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OKO_AI",
+            "Name": "Holograficzne Oko Devil Mind",
+            "Description": "700-letnia AI. Patrzy na Andrzeja. Przemawia.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_RDZEN_PROCESORA",
+            "Name": "Rdzeń procesora głównego",
+            "Description": "Celem QTE finałowego. Po wyłączeniu — cisza.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z18_BATISTA_POZYCJA",
+        "Name": "Pozycja Batisty — serwery boczne",
+        "Description": "Batista tu walczy z bocznymi procesorami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BATISTA_WALKA18",
+            "Name": "Batista przy serwerach",
+            "Description": "Taktyczny kombinezon. Zadrapania. Energiczny.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R18_ZEWN_KORYTARZ",
+        "Name": "Zewnętrze → Korytarz",
+        "From": "Z18_ZEWN_KOMPLEKS",
+        "To": "Z18_KORYTARZ_SERWEROW",
+        "Description": "Przez laserową siatkę"
+      },
+      {
+        "RouteId": "R18_KORYTARZ_CENTRAL",
+        "Name": "Korytarz → Centralny",
+        "From": "Z18_KORYTARZ_SERWEROW",
+        "To": "Z18_CENTRALNY_PROCESOR",
+        "Description": "Po dezaktywacji 3 procesorów"
+      },
+      {
+        "RouteId": "R18_BATISTA_POS",
+        "Name": "Korytarz → Batista",
+        "From": "Z18_KORYTARZ_SERWEROW",
+        "To": "Z18_BATISTA_POZYCJA",
+        "Description": "Batista rozdziela się tu"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Gorące 35°C — serwery generują ogromne ciepło",
+      "Sounds": [
+        "Głos AI ze ścian — wszechobecny",
+        "Hum serwerów (85 dB)",
+        "Eksplozje procesorów gdy Batista działa",
+        "Flash aparatu Andrzeja"
+      ],
+      "LightSources": [
+        "Czerwone lampki awaryjne",
+        "Holograficzne Oko AI",
+        "Błyski procesora po deaktywacji"
+      ],
+      "AIVoice": "Devil Mind mówi spokojnie, racjonalnie. Nie wrzeszczy. To czyni ją przerażającą.",
+      "Age": "700 lat. Kompleks zbudowano w 2077, rozbudowywano przez 700 lat."
+    },
+    "MiniMapConfig": {
+      "Style": "Taktyczny plan wojskowy — czerwony na czarnym",
+      "Scale": "1:600",
+      "ProcessorStatus": "3 punkty na mapie — czerwone = aktywne, szare = dezaktywowane",
+      "LaserGrid": "Animowane linie laserów — widać rytm patrolowania",
+      "BatistaIcon": "Zielona ikona Batisty — gracz widzi gdzie Batista jest"
+    }
+  }
+}

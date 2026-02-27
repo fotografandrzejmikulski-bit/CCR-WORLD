@@ -1,0 +1,143 @@
+{
+  "_doc": "UCCRStoryChunk – ŁĘCZNA – LUBLIN · 2010–2018 | Axis: T03. Weronika = byłą żona Andrzeja, David = jej kochanek. Czarne charaktery – nigdy nie pomagają.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T03_01",
+      "path": "Content/CCR/Story/T03_LecznaLublin2010/",
+      "ChunkId": "T03_01",
+      "AxisId": "T03",
+      "EntryNodeId": "T03_01_010",
+      "ChapterTitle": "ŁĘCZNA – LUBLIN",
+      "ChapterSubtitle": "2010–2018",
+      "_narrative": "Współczesna Polska, Łęczna i Lublin. Weronika to była żona Andrzeja — porzuciła go dla Davida, swojego kochanka. Razem z Davidem wzięli pod opiekę prawną Zuzię i odcinają ją od ojca. Oboje są bezwzględni, nigdy nie pomagają Andrzejowi. David blokuje drzwi fizycznie, Weronika atakuje słowami i dokumentami. Andrzej próbuje odwiedzić Zuzię — napotyka mur obojga.",
+      "_gameplay": "QTE: Swipe Right – Andrzej wślizguje się przez korytarz zanim David zatrzaśnie drzwi klatki. Wybór: odpowiedzieć na atak słowny Weroniki (bezpośrednio, eskalacja) lub milczeć i działać (bez eskalacji, trudniej mechanicznie). Weronika jest równie blokująca co David.",
+      "_visual": "Szary blok z lat 70. w Łęcznej. Klatka schodowa z latarnią. Telewizor w tle. Paleta: zimne listopadowe barwy, brązowe tapety, żółtawe światło. UI: nowoczesny telefon z SMS-em z numerem adwokata. Muzyka: MUS_Leczna z ambientem bloku.",
+      "Nodes": [
+        {
+          "NodeId": "T03_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Łęczna, 2010. Blok przy Kościuszki. Weronika i David. Moja była żona i jej kochanek – teraz prawnymi opiekunami mojej córki. Weronika odeszła i zabrała Zuzię. Stałem pod tymi drzwiami sto razy. Za każdym razem ten sam mur.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T03_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T03_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "Andrzej. Sąd przyznał nam opiekę. Mam nakaz sądowy z adnotacją 'zakaz zbliżania'. Jeśli nie odejdziesz natychmiast, dzwonię na policję. Zuzia nie chce cię widzieć. Taka jej decyzja i taka nasza.",
+          "ExpressionTag": "Cold",
+          "NextAfterDialogue": "T03_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T03_01_035"
+        },
+        {
+          "NodeId": "T03_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(za Davidem, zimno) Andrzej, nie masz tu czego szukać. Zniszczyłeś rodzinę i masz czelność wracać? Zuzia jest pod naszą opieką i tak zostanie. Adwokat już czeka na twój ruch.",
+          "ExpressionTag": "Contemptuous",
+          "NextAfterDialogue": "T03_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Weronika, byłaś moją żoną. Zuzia to nasza córka – nie jego.",
+              "TargetNodeId": "T03_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Milczeć i szukać wejścia – słowa nic tu nie zmienią.",
+              "TargetNodeId": "T03_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T03_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Right",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T03_01_060",
+          "QTEFailNodeId": "T03_01_052"
+        },
+        {
+          "NodeId": "T03_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "David zatrzasnął drzwi. Weronika stoi za szybą z telefonem w dłoni. Muszę działać szybciej.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T03_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Wślizgnąłem się na korytarz zanim drzwi się zatrzasnęły. Weronika krzyczy za mną – ale Zuzia jest tu, w tym bloku. Czuję to.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T03_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T03_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(wrzeszczy w korytarzu) Wynoś się! Mam numer do dzielnicowego! David – zadzwoń teraz! Nie ma prawa tu być!",
+          "ExpressionTag": "Furious",
+          "NextAfterDialogue": "T03_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T03_01_090"
+        },
+        {
+          "NodeId": "T03_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T03_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T03_01_999"
+        },
+        {
+          "NodeId": "T03_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T04_01",
+          "EntryNodeInTarget": "T04_01_010"
+        }
+      ]
+    }
+  ]
+}

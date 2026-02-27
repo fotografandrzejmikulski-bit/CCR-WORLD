@@ -1,0 +1,386 @@
+{
+  "_doc": "LEVEL DESIGN — T07 | CIESZYN · 2025.",
+  "LevelId": "T07",
+  "AxisId": "T07",
+  "StoryChunkRef": "T07_01",
+  "Title": "CIESZYN",
+  "Subtitle": "Most Przyjaźni 2025",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Cieszyn — most Przyjaźni nad Olzą. Polska po lewej, Czechy po prawej.",
+    "Era": "Pogranicze polsko-czeskie, 2025",
+    "TimeOfDay": "Świt — blade błękitne niebo, mgła nad rzeką",
+    "Weather": "Chłodny świt, mgła na rzece, delikatny wiatr",
+    "MainScene": "Most Przyjaźni: dwie flagi na końcach, rzeka Olza poniżej, barierki z metalowych prętów. Zuzia po czeskiej stronie jako odległa sylwetka.",
+    "LightingMood": "Blade błękitne świt + mgła. Dwie flagi. Andrzej po jednej stronie, Zuzia po drugiej.",
+    "AmbientDescription": "Rzeka, wiatr, odległe kroki na moście",
+    "KeyVisualElement": "ZUZIA — sylwetka po drugiej stronie rzeki. Andrzej widzi ją po raz pierwszy wyraźnie. Przez wodę."
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula + szalik (zimny świt). Aparat — KLUCZOWY w tej osi."
+    },
+    {
+      "CharacterId": "DAVID",
+      "Description": "Kurtka sportowa, dresowe spodnie, kawa w ręce. Blokuje wejście na most.",
+      "InitialPosition": "polska strona mostu"
+    },
+    {
+      "CharacterId": "WERONIKA",
+      "Description": "Krótka sukienka (prowokacja o świcie), różowo-blond włosy, szpilki na moście. Telefon gotowy.",
+      "InitialPosition": "za Davidem, polska strona"
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "8-letnia dziewczynka — niebieski sweter, warkocze. Sylwetka po czeskiej stronie — odwrócona plecami, potem obraca się.",
+      "InitialPosition": "czeska strona mostu",
+      "bIsDistant": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T07_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej podchodzi do mostu. Orientacja — widzi sylwetkę Zuzi.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Podejdź do mostu — tap na barierki by spojrzeć w dół",
+        "ZOOM aparatem by zobaczyć twarz Zuzi po drugiej stronie",
+        "Fotografuj most i rzekę"
+      ],
+      "CameraHint": "FOTOGRAFUJ Zuzię przez wodę — zoom aparatu. To pierwsze wyraźne zdjęcie Zuzi w Albumie.",
+      "NPCBehaviors": [
+        "Zuzia stoi przy barierce po czeskiej stronie — patrzy w rzekę"
+      ]
+    },
+    {
+      "PhaseId": "T07_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Konfrontacja z Davidem i Weroniką.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: odwołać się do Weroniki jako matki / milczeć i skupić na Zuzi"
+      ],
+      "NPCBehaviors": [
+        "DAVID blokuje wejście",
+        "WERONIKA robi zdjęcia Andrzeja telefonem (do akt sądowych)"
+      ]
+    },
+    {
+      "PhaseId": "T07_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Andrzej wyciąga rękę i pochyla się przez barierki próbując dosięgnąć wzrokiem.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE RIGHT — pochylenie przez barierki",
+        "Fail: David odpycha Andrzeja, powtórka",
+        "Success: Zuzia obraca głowę — spojrzenie przez wodę"
+      ],
+      "CameraHint": "Aparat: Sfotografuj ten moment — KLUCZOWE zdjęcie 'Most Przyjaźni' w Albumie"
+    },
+    {
+      "PhaseId": "T07_P4",
+      "PhaseType": "CUTSCENE",
+      "Description": "Chwila — oczy Andrzeja i Zuzi przez wodę.",
+      "EstimatedDuration_sec": 8,
+      "PlayerActions": [
+        "Tylko obserwuj — żadnej interakcji. 8 sekund."
+      ]
+    },
+    {
+      "PhaseId": "T07_P5",
+      "PhaseType": "DIALOGUE",
+      "Description": "Weronika kpi. David grozi..",
+      "EstimatedDuration_sec": 45,
+      "PlayerActions": [
+        "Tap dialog",
+        "Andrzej milczy i odchodzi — siła emocjonalna"
+      ],
+      "NPCBehaviors": [
+        "WERONIKA do Davida głośno: 'Jutro sędzia, definitywny zakaz.'"
+      ]
+    },
+    {
+      "PhaseId": "T07_P6",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej odchodzi od mostu.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T07_MOST_RZEKA",
+        "Hint": "Most Przyjaźni z mgłą nad Olzą",
+        "PhotoReward": "Album: 'Granica. Woda. Zuzia po tamtej stronie.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T07_ZUZIA_SYLWETKA",
+        "Hint": "Zuzia przez rzekę — zoom",
+        "PhotoReward": "Album: PIERWSZE ZDJĘCIE ZUZI. 'Widziałem ją. Naprawdę.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T07_WERONIKA_MOST",
+        "Hint": "Weronika robi zdjęcia telefonem (ironia — oboje fotografują)",
+        "PhotoReward": "Album: 'Moja była żona fotografuje mnie by mnie zniszczyć. Ja fotografuję by pamiętać.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T07_CIEN_WODA",
+        "Hint": "Cień Andrzeja na powierzchni wody rzeki",
+        "PhotoReward": "Album: wyraźna twarz — TRZECIA wskazówka tożsamości Cienia",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_FOTO_ZUZIA_T07",
+      "Name": "Zdjęcie Zuzi przez rzekę",
+      "Location": "W aparacie po QTE",
+      "Description": "Pierwsze zdjęcie Zuzi — klucz do T09 (foton pamięci)"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Cieszyn — liryczna, melancholijna, smyczki nad wodą",
+    "AmbientSounds": [
+      "Rzeka Olza",
+      "Wiatr",
+      "Odległe kroki",
+      "Flagi trzepoczące w wietrze"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter_Slow",
+      "SFX_Water_River",
+      "SFX_Door_Border_Barrier"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Pogranicze — dwie flagi, linia podziału. Polska barwa po lewej, czeska po prawej.",
+    "DialogueBoxStyle": "Dymek z pogranicza — dwie strony, dwa kolory"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T07_MOST",
+        "StoryNodeRef": "T07_01_010",
+        "Description": "Andrzej przy moście"
+      },
+      {
+        "CheckpointId": "CP_T07_SPOTKANIE",
+        "StoryNodeRef": "T07_01_060",
+        "Description": "Andrzej po spojrzeniu z Zuzią"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej odchodzi od mostu. Zuzia znika w mgle po czeskiej stronie.",
+  "NextLevel": "T08",
+  "LevelTransitionText": "Widziałem ją. Kilkanaście metrów i cała przepaść.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T07 — Cieszyn / Český Těšín 2025. Most Przyjaźni nad Olzą.",
+    "LocationType": "Miasto pogranicza — Cieszyn (PL) + Český Těšín (CZ)",
+    "RealWorldRef": "Cieszyn, woj. śląskie. Granica Polski i Czech na moście nad rzeką Olzą. Most Przyjaźni (Most Přátelství).",
+    "Scale": "Mały obszar: most + nabrzeże + plac po obu stronach",
+    "NavigationStyle": "Liniowa przez most — Polska strona (dostępna) + Czeska (przez most)",
+    "Zones": [
+      {
+        "ZoneId": "Z07_PLAC_POLSKA",
+        "Name": "Plac po polskiej stronie",
+        "Description": "Plac Wolności w Cieszynie. Ławki, fontanna, restauracja 'Kawiarnia na Moście'.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICZKA_CIESZYN",
+            "Name": "Tabliczka 'CIESZYN'",
+            "Description": "Historyczna tabliczka przy moście. Rok założenia: 810.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAWIARNIA_MOST",
+            "Name": "Kawiarnia 'Na Moście'",
+            "Description": "Czynna od 7:00. Kawa na wynos. O świcie zamknięta.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FLAGA_PL",
+            "Name": "Flaga polska na słupie",
+            "Description": "Na końcu mostu po polskiej stronie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z07_MOST",
+        "Name": "Most Przyjaźni",
+        "Description": "Most nad rzeką Olzą. Długość ~80m. Barierki stalowe. Dwie flagi — PL i CZ. Mgiełka nad wodą o świcie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SRODEK_MOSTU",
+            "Name": "Środek mostu — granica",
+            "Description": "Tu przebiega granica PL/CZ. Metalowa tabliczka 'GRANICA' na barierze.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_BARIERKI",
+            "Name": "Barierki stalowe",
+            "Description": "Andrzej opiera się i zagląda przez barierki — Zuzia po czeskiej stronie.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_OLZA",
+            "Name": "Widok na rzekę Olzę",
+            "Description": "Rzeka 40m poniżej. Mgła o świcie. Refleksy świtu na wodzie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "David blokuje wejście — QTE potrzebne"
+      },
+      {
+        "ZoneId": "Z07_RZEKA_NABRZEZE",
+        "Name": "Nabrzeże pod mostem",
+        "Description": "Chodnik wzdłuż Olzy. Ławki. Rybacy wczesnym rankiem. Alternatywna droga.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RYBAK",
+            "Name": "Rybak o świcie",
+            "Description": "Stary mężczyzna z wędką — nic nie mówi, tylko kiwa głową.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_CIEN_WODA",
+            "Name": "Cień Andrzeja na wodzie",
+            "Description": "Na powierzchni wody Olzy — kolisty zarys twarzy WYRAŹNY.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Dostępne od razu — obejście przez nabrzeże"
+      },
+      {
+        "ZoneId": "Z07_STRONA_CZESKA",
+        "Name": "Plac po czeskiej stronie",
+        "Description": "Náměstí Míru w Českém Těšíně. Cukiernia, urząd. ZUZIA stoi przy barierce.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICZKA_CESKY",
+            "Name": "Tabliczka 'ČESKÝ TĚŠÍN'",
+            "Description": "Czeska strona. Biało-czerwona flaga czeska.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ZUZIA_BARIERKA",
+            "Name": "Zuzia przy barierze",
+            "Description": "8-latka w niebieskim sweterku, warkocze. Stoi plecami, potem odwraca głowę.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_FLAGA_CZ",
+            "Name": "Flaga czeska",
+            "Description": "Biało-czerwono-niebieska.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Andrzej może wejść na czeską stronę po QTE"
+      },
+      {
+        "ZoneId": "Z07_WERONIKA_DAVID_POZYCJA",
+        "Name": "Pozycja Weroniki i Davida",
+        "Description": "Polska strona mostu. Tu stoją i blokują.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BLOKADA_MOST",
+            "Name": "Blokada wejścia na most",
+            "Description": "David stoi z kawą. Weronika za nim z telefonem. Świt.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R07_PRZYBYCIE",
+        "Name": "Skrzyżowanie → Plac PL",
+        "From": "START",
+        "To": "Z07_PLAC_POLSKA",
+        "Description": "Andrzej podchodzi o świcie"
+      },
+      {
+        "RouteId": "R07_PLAC_NABRZEZE",
+        "Name": "Plac → Nabrzeże",
+        "From": "Z07_PLAC_POLSKA",
+        "To": "Z07_RZEKA_NABRZEZE",
+        "Description": "Schodki przy kawiarni"
+      },
+      {
+        "RouteId": "R07_MOST_GLOWNY",
+        "Name": "Plac PL → Most",
+        "From": "Z07_PLAC_POLSKA",
+        "To": "Z07_MOST",
+        "Description": "Przez Davida i Weronikę — QTE"
+      },
+      {
+        "RouteId": "R07_MOST_CZ",
+        "Name": "Most → Strona czeska",
+        "From": "Z07_MOST",
+        "To": "Z07_STRONA_CZESKA",
+        "Description": "Po QTE — Andrzej może przejść"
+      },
+      {
+        "RouteId": "R07_NABRZEZE_MOST",
+        "Name": "Nabrzeże → Pod most",
+        "From": "Z07_RZEKA_NABRZEZE",
+        "To": "Z07_MOST",
+        "Description": "Widok z dołu — Andrzej widzi Zuzię"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Chłodny świt — ok. 6°C, wiosna",
+      "Weather": "Mgła nad Olzą. Blady błękit nieba. Pierwsze promienie słońca.",
+      "LightSources": [
+        "Latarnie mostowe dopiero gasną",
+        "Blade słońce zza chmur",
+        "Odbicia na wodzie"
+      ],
+      "NPC_Density": "Niska — 6:00 rano. Rybak na nabrzeżu, piekarnia otwiera się.",
+      "Special": "DRAMATYCZNA chwila — most jako metafora bariery między ojcem a córką",
+      "Sounds": [
+        "Rzeka Olza — płynąca woda",
+        "Wiatr na moście",
+        "Flagi trzepoczą",
+        "Dalekie auto na ulicy Cieszyna"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Topograficzna mapa pogranicza — dwie flagi, rzeka przez środek",
+      "Scale": "1:600",
+      "BorderLine": "Czerwona linia na środku mostu — granica PL/CZ",
+      "RiverVisualization": "Niebieska rzeka z animowanym przepływem",
+      "ZuziaIcon": "Mała niebieska sylwetka dziewczynki po czeskiej stronie"
+    }
+  }
+}

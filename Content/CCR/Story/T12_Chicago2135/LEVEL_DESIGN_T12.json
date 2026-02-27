@@ -1,0 +1,342 @@
+{
+  "_doc": "LEVEL DESIGN — T12 | CHICAGO · 2135.",
+  "LevelId": "T12",
+  "AxisId": "T12",
+  "StoryChunkRef": "T12_01",
+  "Title": "CHICAGO",
+  "Subtitle": "2135",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Chicago, 2135 — częściowo zatopione miasto. Woda na poziomie 3. piętra.",
+    "Era": "Daleka przyszłość, 2135",
+    "TimeOfDay": "Zmierzch — różowe-pomarańczowe niebo nad zatopionym miastem",
+    "Weather": "Wilgotno, para wodna, mgła nad wodą",
+    "MainScene": "Zatopione ulice Chicago — łodzie zamiast taksówek, nadbudówki drapaczy chmur wystające z wody, most-kładka na poziomie +30m",
+    "KeyVisualElement": "Andrzej z aparatem fotografuje zatopione Chicago z łodzi — najpiękniejszy poziom wizualnie",
+    "LightingMood": "Złoto-różowy zmierzch na wodzie — odbicia drapaczy chmur",
+    "AmbientDescription": "Woda plusk, mewy, silnik łodzi, odległy jazz z baru ponad wodą"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. Mokre buty — wszędzie woda.",
+      "Note": "Aparat wodoodporny — eksploatuje to w estetycznym poziomie"
+    },
+    {
+      "CharacterId": "EVA",
+      "Description": "Wodoodporna parka, ciężkie buty. Łódź przy kładce.",
+      "InitialPosition": "kładka +30m"
+    },
+    {
+      "CharacterId": "BATISTA",
+      "Description": "Urban survival — wodoodporna kurtka, trampki przemoczone. Energiczny mimo zmęczenia.",
+      "InitialPosition": "łódź Batisty"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja na powierzchni wody — tu wyjątkowo piękny.",
+      "InitialPosition": "powierzchnia wody"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T12_P1",
+      "PhaseType": "NAVIGATION",
+      "Description": "Andrzej na łodzi przez zatopione ulice Chicago.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Steruj łodzią — SWIPE kierunki żeby omijać szczątki",
+        "Fotografuj zatopione miasto",
+        "Szukaj kładki gdzie Eva czeka"
+      ],
+      "CameraHint": "FOTOGRAFUJ: Cień Andrzeja na powierzchni wody — najbardziej artystyczne zdjęcie gry"
+    },
+    {
+      "PhaseId": "T12_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Batista na łodzi — dołącza do Andrzeja.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Batista opowiada o Chicago 2135 — klimat, zalanie"
+      ],
+      "NPCBehaviors": [
+        "Batista pcha wiosło energicznie"
+      ]
+    },
+    {
+      "PhaseId": "T12_P3",
+      "PhaseType": "QTE",
+      "Description": "QTE: Woda podnosi się — Andrzej musi szybko dotrzeć do kładki.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "SWIPE UP — Andrzej wiośłuje szybciej",
+        "Fail: łódź zalewa woda, Andrzej traci przedmiot — zbierz ponownie"
+      ]
+    },
+    {
+      "PhaseId": "T12_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eva na kładce — koordynaty T19.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Eva: 'Koordynaty Rezonatora. T19. Idź.'"
+      ],
+      "CameraHint": "Sfotografuj Evę z koordynatami w dłoni"
+    },
+    {
+      "PhaseId": "T12_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej odpływa z koordynatami.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T12_CIEN_WODA",
+        "Hint": "Cień Andrzeja na powierzchni wody przy zatopionych budynkach",
+        "PhotoReward": "Album: ARTYSTYCZNE ZDJĘCIE GIER — cień Andrzeja rozciągnięty po wodzie między drapaczami. 'Jestem cały rozbity na wodzie.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T12_CHICAGO_ZMIERZCH",
+        "Hint": "Zatopione Chicago o zmierzchu",
+        "PhotoReward": "Album: 'Miasto pod wodą. Jak moje nadzieje przez lata. Ale nie zatonąłem.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T12_EVA_KŁADKA",
+        "Hint": "Eva z koordynatami",
+        "PhotoReward": "Album: 'Koordynaty T19. Ona wie gdzie.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KOORDYNATY_T19",
+      "Name": "Koordynaty Rezonatora T19",
+      "Location": "Od Evy",
+      "Description": "Klucz do T19 — pełny adres Kosmicznego Rezonatora Świadomości"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Chicago2135 — neo-jazz na wodzie, trąbka, deszcz",
+    "AmbientSounds": [
+      "Plusk wody",
+      "Jazz z baru powyżej",
+      "Mewa",
+      "Silnik łódki"
+    ],
+    "SFX": [
+      "SFX_Boat_Water",
+      "SFX_Camera_Shutter_Splash"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Neo-jazz poster — czarne tło, złoty neon",
+    "DialogueBoxStyle": "Rozmowy na wodzie — animowane refleksy"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T12_LODKA",
+        "StoryNodeRef": "T12_01_010",
+        "Description": "Chicago na wodzie"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej z koordynatami T19. Łódź odpływa.",
+  "NextLevel": "T13",
+  "CityMap": {
+    "_doc": "Mapa lokacji T12 — Chicago 2135. Miasto częściowo zatopione przez wzrost poziomu oceanów.",
+    "LocationType": "Zatopione metropolis — Chicago po wzroście poziomu morza",
+    "RealWorldRef": "Chicago, Illinois, USA. 2135 rok — wzrost poziomu wody +8m względem 2024. Dolne ulice zalane, żyje się na wyższych piętrach.",
+    "Scale": "Duży obszar wodny: 5 kanałów między budynkami + kładka +30m",
+    "NavigationStyle": "Wodna — łódź jako pojazd, kładki jako piesze trasy",
+    "Zones": [
+      {
+        "ZoneId": "Z12_KANAL_MAIN",
+        "Name": "Kanał Michigan Avenue",
+        "Description": "Główna arteria wodna. Dawna Michigan Avenue zalana do poziomu 3. piętra.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_DRAPACZE_CHMUR_Z_WODY",
+            "Name": "Drapacze chmur w wodzie",
+            "Description": "Willis Tower i inne sterczą z wody jak wyspy.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SKLEPY_POD_WODA",
+            "Name": "Sklepy pod wodą — widoczne",
+            "Description": "Szyldy sklepów z 2024 r. widoczne przez krystalicznie czystą wodę.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SYGNALIZACJA_WODNA",
+            "Name": "Wodna sygnalizacja",
+            "Description": "Boje zamiast świateł — zielona/czerwona droga.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z12_KLADKA_30M",
+        "Name": "Kładka na poziomie +30m",
+        "Description": "Metalowa kładka łącząca drapacze chmur na poziomie dawnego 10. piętra.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KŁADKA_EVA",
+            "Name": "Kładka — Eva czeka tu",
+            "Description": "Eva stoi przy barierce kładki z koordynatami.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_Z_KLADKI",
+            "Name": "Widok z kładki",
+            "Description": "Zatopione Chicago — zmierzch, złote-różowe odbicia w wodzie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_STARA_WIEZA",
+            "Name": "Willis Tower z kładki",
+            "Description": "Wieża sterczy ponad wodą. Taras obserwacyjny nadal dostępny.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z12_BAR_POWYZEJ_WODY",
+        "Name": "Bar 'Above Water'",
+        "Description": "Bar na poziomie +25m. Neo-jazz, żywa muzyka. Azyl nad wodą.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_JAZZ_BAR",
+            "Name": "Bar z jazzem",
+            "Description": "Trębacz gra na balkonie nad wodą. Ciepłe światło.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_BATISTA_BAR",
+            "Name": "Batista przy barze",
+            "Description": "Energiczny, zamawia dwie kawy.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z12_KANAL_BOCZNY",
+        "Name": "Boczny kanał — cisza",
+        "Description": "Wąski kanał między budynkami. Ryby. Spokój. Cień Andrzeja na wodzie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CIEN_WODA_CHICAGO",
+            "Name": "Cień Andrzeja na wodzie",
+            "Description": "Na tafli wody — rozciągnięty między budynkami. NAJPIĘKNIEJSZE zdjęcie gry.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_RYBY_POD_LODZKA",
+            "Name": "Ławica ryb",
+            "Description": "Pod łódką — miasto stało się rafą koralową.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z12_DOCK_LODKOWY",
+        "Name": "Dok łódziowy",
+        "Description": "Tu zacumowana łódź Batisty. Start i powrót.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_LODKA_BATISTY",
+            "Name": "Łódź Batisty",
+            "Description": "Drewniana, mała, elektryczna. 'Hermano' wypisane z boku.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R12_START",
+        "Name": "Materializacja → Dok",
+        "From": "START",
+        "To": "Z12_DOCK_LODKOWY",
+        "Description": "Andrzej pojawia się przy łódce Batisty"
+      },
+      {
+        "RouteId": "R12_DOK_KANAL",
+        "Name": "Dok → Kanał główny",
+        "From": "Z12_DOCK_LODKOWY",
+        "To": "Z12_KANAL_MAIN",
+        "Description": "Wypłynięcie na kanał"
+      },
+      {
+        "RouteId": "R12_KANAL_BOCZNY",
+        "Name": "Kanał główny → Boczny",
+        "From": "Z12_KANAL_MAIN",
+        "To": "Z12_KANAL_BOCZNY",
+        "Description": "Skręt w prawo za Willis Tower"
+      },
+      {
+        "RouteId": "R12_KANAL_KLADKA",
+        "Name": "Kanał → Kładka",
+        "From": "Z12_KANAL_MAIN",
+        "To": "Z12_KLADKA_30M",
+        "Description": "Schody na kładkę przy dawnym hotelu"
+      },
+      {
+        "RouteId": "R12_BAR",
+        "Name": "Kanał → Bar",
+        "From": "Z12_KANAL_MAIN",
+        "To": "Z12_BAR_POWYZEJ_WODY",
+        "Description": "Po lewej od Willis Tower"
+      }
+    ],
+    "AtmosphereDetails": {
+      "WaterLevel": "+8m względem 2024 Chicago. Poziom 3. piętra dawnych budynków pod wodą.",
+      "WaterClarity": "Krystalicznie czysta — miasto stało się ogrodem podwodnym",
+      "Wildlife": "Ryby, mewy, foki (zadomowiły się 2080)",
+      "Temperature": "Ciepły wieczór — sierpień 2135, 26°C",
+      "Weather": "Różowo-pomarańczowy zmierzch. Para wodna przy krawędziach budynków.",
+      "Sounds": [
+        "Woda pluskająca o boki łódki",
+        "Jazz z baru nad wodą",
+        "Mewy",
+        "Silnik elektryczny łódki — cichy"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Mapa wodna — jak mapa kanalów Wenecji, ale dla Chicago",
+      "Scale": "1:1500",
+      "WaterRoutes": "Niebieskie kanały z numerami tras",
+      "BuildingHeights": "Zaznaczone jak wyspy — im wyższy budynek, tym większa wyspa",
+      "LevelIndicator": "'+30m' przy kładce gdzie Eva czeka"
+    }
+  }
+}

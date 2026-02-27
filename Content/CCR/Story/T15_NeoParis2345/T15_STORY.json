@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – NEO PARIS · 2345 | Axis: T15.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T15_01",
+      "path": "Content/CCR/Story/T15_NeoParis2345/",
+      "ChunkId": "T15_01",
+      "AxisId": "T15",
+      "EntryNodeId": "T15_01_010",
+      "ChapterTitle": "NEO PARIS",
+      "ChapterSubtitle": "2345",
+      "_narrative": "Neo Paryż 2345. Odbudowane miasto – wieże z kryształu nad ruinami starych. Eva i Kafka (bez Weroniki) pomagają. Eva daje Andrzejowi precyzyjne koordynaty Zuzi w osi T19. To ostatnia wskazówka fabularna przed finałem.",
+      "_gameplay": "QTE: Swipe Up – Andrzej wspina się po zniszczonej części starego Paryża by dotrzeć do Evy na wyższym poziomie. Wybór: iść przez stary Paryż (emocjonalne, odkrywa fragment historii) lub przez nowe miasto (efektywnie, bez dygresji).",
+      "_visual": "Neo Paryż 2345 – kryształowe wieże nad ruinami, Sekwana przepływa między starymi i nowymi budynkami. Wieża Eiffla przebudowana jako antena. Paleta: różowe złoto i błękit. UI: holograficzna mapa Paryża. Muzyka: MUS_NeoParis z elektronicznym valse.",
+      "Nodes": [
+        {
+          "NodeId": "T15_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Neo Paryż, 2345. Miasto zniszczone i odbudowane trzy razy – za każdym razem piękniejsze. Stara Wieża Eiffla stoi ciągle, teraz jako nadajnik. Eva czeka na mnie przy Sekwanie. Ma ostatnią wskazówkę – koordynaty T19. Jestem tak blisko, że prawie czuję jak Zuzia oddycha.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T15_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T15_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "Andrzej. Długo szukałam tych koordynatów. T19 to nie jest miejsce w żadnym konkretnym czasie – to jest poza czasem, we wnętrzu wszystkich osi jednocześnie. Kosmiczny Rezonator Świadomości. Byłam tam raz, w innej konfiguracji rzeczywistości. Mam wejście. Weź to.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T15_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T15_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T15_01_040"
+        },
+        {
+          "NodeId": "T15_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Idę przez stary Paryż – chcę zobaczyć co przetrwało z mojej epoki.",
+              "TargetNodeId": "T15_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Idę przez nowe miasto – każda minuta ważna, T19 czeka.",
+              "TargetNodeId": "T15_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T15_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T15_01_060",
+          "QTEFailNodeId": "T15_01_052"
+        },
+        {
+          "NodeId": "T15_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Kamień osuwa się pod stopami. Ruiny starego Paryża nie są stabilne. Muszę znaleźć pewniejszy uchwyt.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T15_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T15_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Na górze. Eva i Kafka czekają. Widok na całe Neo Paryż – i gdzieś za horyzontem, T19.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T15_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T15_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "Andrzej, napisałem przez całą podróż. Obserwowałem, notowałem. Teraz mam dla ciebie jedno zdanie, które zawiera wszystko: 'Ojciec który szuka córki przez 19 osi czasu i nie znajduje – nie jest porażką. Jest miłością trwającą dłużej niż czas.' To twoja historia i ona trwa. Idź.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T15_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T15_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T15_01_090"
+        },
+        {
+          "NodeId": "T15_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T15_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T15_01_999"
+        },
+        {
+          "NodeId": "T15_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T16_01",
+          "EntryNodeInTarget": "T16_01_010"
+        }
+      ]
+    }
+  ]
+}

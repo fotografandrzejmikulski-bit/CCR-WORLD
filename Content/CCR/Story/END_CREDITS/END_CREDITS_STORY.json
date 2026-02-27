@@ -1,0 +1,163 @@
+{
+  "_doc": "CCR WORLD – Tom 3 – Napisy końcowe / End Credits. Wywoływane po T19_01_CREDITS.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_EndCredits_T3",
+      "path": "Content/CCR/Story/END_CREDITS/",
+      "ChunkId": "END_CREDITS_T3",
+      "AxisId": "END_CREDITS",
+      "EntryNodeId": "CREDITS_T3_010",
+      "ChapterTitle": "NAPISY KOŃCOWE",
+      "ChapterSubtitle": "Tom 3 — Szukając Córki",
+      "_narrative": "Napisy końcowe Tomu 3. Każda postać z każdej osi czasu zostaje wymieniona. Finałowy cytat Andrzeja. Ekran KONIEC.",
+      "_gameplay": "Sekwencja nieliniowa – gracz może przewijać napisy gestem Swipe Up lub czekać. Muzyka: MUS_Finale_Credits. Możliwość powrotu do menu po napisach.",
+      "_visual": "Czarne tło. Białe litery pojawiające się i znikające wolno. W tle – bardzo subtelnie – 19 osi czasu jako migające punkty światła jak konstelacja. Paleta: czerń i biel. UI: brak. Muzyka: MUS_Finale_Credits – spokojna, finałowa.",
+      "Nodes": [
+        {
+          "NodeId": "CREDITS_T3_010",
+          "NodeType": "TitleCard",
+          "TitleText": "CCR WORLD",
+          "SubtitleText": "Tom 3 — Szukając Córki",
+          "DisplayDurationSec": 4.0,
+          "FadeInSec": 2.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_020"
+        },
+        {
+          "NodeId": "CREDITS_T3_020",
+          "NodeType": "TitleCard",
+          "TitleText": "ANDRZEJ",
+          "SubtitleText": "Protagonista — ojciec, który przez 19 osi czasu nigdy się nie poddał",
+          "DisplayDurationSec": 4.0,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_030"
+        },
+        {
+          "NodeId": "CREDITS_T3_030",
+          "NodeType": "TitleCard",
+          "TitleText": "ZUZIA",
+          "SubtitleText": "Córka — przez 19 osi czasu nieodszukana, lecz nigdy zapomniana",
+          "DisplayDurationSec": 4.0,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_040"
+        },
+        {
+          "NodeId": "CREDITS_T3_040",
+          "NodeType": "TitleCard",
+          "TitleText": "CIEŃ",
+          "SubtitleText": "Alter ego Andrzeja — ten który się zatrzymał w Cieszynie i stał się cieniem",
+          "DisplayDurationSec": 4.0,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_050"
+        },
+        {
+          "NodeId": "CREDITS_T3_050",
+          "NodeType": "TitleCard",
+          "TitleText": "EIMSTAIN",
+          "SubtitleText": "Strażnik czasu — świadek wszystkich 19 osi, obecny od 1679 do ∞",
+          "DisplayDurationSec": 4.0,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_060"
+        },
+        {
+          "NodeId": "CREDITS_T3_060",
+          "NodeType": "TitleCard",
+          "TitleText": "KAFKA",
+          "SubtitleText": "Obserwator — kronikarz podróży Andrzeja przez osie czasu",
+          "DisplayDurationSec": 3.5,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_070"
+        },
+        {
+          "NodeId": "CREDITS_T3_070",
+          "NodeType": "TitleCard",
+          "TitleText": "BATISTA",
+          "SubtitleText": "Wierny towarzysz — od Warszawy 1983 do Chicago 2135 i Devil Mind 2777",
+          "DisplayDurationSec": 3.5,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_080"
+        },
+        {
+          "NodeId": "CREDITS_T3_080",
+          "NodeType": "TitleCard",
+          "TitleText": "DAVID",
+          "SubtitleText": "Strażnik izolacji — wierzył że chroni Zuzię, lecz odciął ją od ojca",
+          "DisplayDurationSec": 3.5,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_090"
+        },
+        {
+          "NodeId": "CREDITS_T3_090",
+          "NodeType": "TitleCard",
+          "TitleText": "WERONIKA",
+          "SubtitleText": "Towarzyszka Davida — która w T16 wybrała prawdę zamiast lojalności",
+          "DisplayDurationSec": 3.5,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_100"
+        },
+        {
+          "NodeId": "CREDITS_T3_100",
+          "NodeType": "TitleCard",
+          "TitleText": "EVA",
+          "SubtitleText": "Świadek i pomocnik — nigdy po stronie izolacji, zawsze po stronie prawdy",
+          "DisplayDurationSec": 3.5,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "CREDITS_T3_110"
+        },
+        {
+          "NodeId": "CREDITS_T3_110",
+          "NodeType": "TitleCard",
+          "TitleText": "19 OSI CZASU",
+          "SubtitleText": "T01 (1679) · T02 (1983) · T03 (2010) · T04 (2016) · T05 (2018) · T06 (2024) · T07 (2025) · T08 (2035) · T09 (2045) · T10 (2077) · T11 (2100) · T12 (2135) · T13 (2150) · T14 (2222) · T15 (2345) · T16 (2378) · T17 (2378) · T18 (2777) · T19 (∞)",
+          "DisplayDurationSec": 7.0,
+          "FadeInSec": 1.5,
+          "FadeOutSec": 1.5,
+          "NextAfterDisplay": "CREDITS_T3_120"
+        },
+        {
+          "NodeId": "CREDITS_T3_120",
+          "NodeType": "TitleCard",
+          "TitleText": "\"Czas nie płynie… czas oddycha.\"",
+          "SubtitleText": "— Andrzej, oś T19 ∞",
+          "DisplayDurationSec": 6.0,
+          "FadeInSec": 2.0,
+          "FadeOutSec": 2.0,
+          "NextAfterDisplay": "CREDITS_T3_130"
+        },
+        {
+          "NodeId": "CREDITS_T3_130",
+          "NodeType": "TitleCard",
+          "TitleText": "Trzysta czterdzieści siedem wiadomości.",
+          "SubtitleText": "Żadna nie dotarła. Ale ta jedna — dotarła.",
+          "DisplayDurationSec": 5.0,
+          "FadeInSec": 1.5,
+          "FadeOutSec": 1.5,
+          "NextAfterDisplay": "CREDITS_T3_140"
+        },
+        {
+          "NodeId": "CREDITS_T3_140",
+          "NodeType": "TitleCard",
+          "TitleText": "KONIEC TOMU 3",
+          "SubtitleText": "",
+          "DisplayDurationSec": 5.0,
+          "FadeInSec": 2.0,
+          "FadeOutSec": 3.0,
+          "NextAfterDisplay": "CREDITS_T3_999"
+        },
+        {
+          "NodeId": "CREDITS_T3_999",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "_doc": "LEVEL DESIGN — T16 | KOD PAMIĘCI · 2378. Andrzej kradnie kod gdy David i Weronika się kłócą.",
+  "LevelId": "T16",
+  "AxisId": "T16",
+  "StoryChunkRef": "T16_01",
+  "Title": "KOD PAMIĘCI",
+  "Subtitle": "2378",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 4,
+  "Environment": {
+    "Location": "Archiwum Kryształowe, 2378",
+    "Era": "Odległa przyszłość, 2378",
+    "TimeOfDay": "Brak — archiwum bez okien",
+    "MainScene": "Archiwum kryształowe — unoszące się kryształy danych. Kryształ-kod na konsoli między Davidem a Weroniką.",
+    "KeyVisualElement": "Kryształ-kod na konsoli — Andrzej musi go wziąć gdy David i Weronika kłócą się",
+    "LightingMood": "Zimny lodowaty błękit — kryształy odbijają światło",
+    "AmbientDescription": "Cichy szum kryształów, kroki na kryształowej podłodze"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. Kryształy odbijają światło na tatuażach.",
+      "Note": "Aparat dokumentuje kradzież — dowód winy systemu izolacji"
+    },
+    {
+      "CharacterId": "DAVID",
+      "Description": "Garnitur za ciasny, pomięty. Przy konsoli z kodem. Podejrzliwy.",
+      "InitialPosition": "przy konsoli głównej"
+    },
+    {
+      "CharacterId": "WERONIKA",
+      "Description": "Elegancki strój 2378 — wyzywający nawet w archiwum. Kłóci się z Davidem po drugiej stronie sali.",
+      "InitialPosition": "sekcja B, 20m od konsoli"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień na kryształowych ścianach — odbicia Cienia w każdym krysztale.",
+      "InitialPosition": "kryształowe ściany"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T16_P1",
+      "PhaseType": "STEALTH",
+      "Description": "Andrzej w archiwum kryształowym — obserwuje układ kryształów i pozycje Davida i Weroniki.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Eksploruj archiwum cicho",
+        "Fotografuj kryształy-archiwa",
+        "Obserwuj rytm patrolowania Davida i Weroniki"
+      ],
+      "CameraHint": "Sfotografuj kryształ-kod na konsoli — dokumentuj cel",
+      "NPCBehaviors": [
+        "DAVID patrzy na konsolę co 5 sekund",
+        "WERONIKA przy sekcji B — 20m od kodu"
+      ]
+    },
+    {
+      "PhaseId": "T16_P2",
+      "PhaseType": "SETUP",
+      "Description": "David oskarża Weronikę o nieobecność — kłótnia się zaczyna.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Obserwuj kłótnię Davida i Weroniki — to okazja",
+        "Czekaj na moment gdy oboje patrzą na siebie"
+      ],
+      "NPCBehaviors": [
+        "DAVID do Weroniki: 'Gdzie byłaś przez dwie godziny?'",
+        "WERONIKA odpowiada ostro — oboje skupieni na sobie"
+      ]
+    },
+    {
+      "PhaseId": "T16_P3",
+      "PhaseType": "QTE_HEIST",
+      "Description": "QTE: Andrzej bierze kryształ-kod gdy oboje się kłócą.",
+      "EstimatedDuration_sec": 25,
+      "PlayerActions": [
+        "TAP szybko — okno 2.5 sekundy gdy oboje patrzą na siebie",
+        "Fail: kłótnia ucichła za szybko, David rozgląda się",
+        "Success: Andrzej chowa kryształ do kieszeni"
+      ],
+      "CameraHint": "Sfotografuj moment kradzieży — dokumentuj jako 'dowód'"
+    },
+    {
+      "PhaseId": "T16_P4",
+      "PhaseType": "ESCAPE",
+      "Description": "Andrzej wychodzi z archiwum zanim David odkryje brak kodu.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "Szybki ruch do wyjścia",
+        "David odkrywa brak kodu — Andrzej już przy drzwiach"
+      ],
+      "NPCBehaviors": [
+        "DAVID do Weroniki: 'Gdzie jest kod?!'",
+        "WERONIKA: 'Nie wiem!' — oboje nie rozumieją"
+      ]
+    },
+    {
+      "PhaseId": "T16_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej z kodem poza archiwum.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T16_KOD_KONSOLA",
+        "Hint": "Kryształ-kod na konsoli przed kradzieżą",
+        "PhotoReward": "Album: 'Kod pamięci. Klucz do izolacji Zuzi.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T16_KLOTNIA",
+        "Hint": "David i Weronika kłócą się — moment kradzieży",
+        "PhotoReward": "Album: 'Mój kod. Ich kłótnia. Sprawiedliwość historii.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T16_CIEN_KRYSZTALY",
+        "Hint": "Cień odbity w tysiącu kryształów",
+        "PhotoReward": "Album: TWARZ ANDRZEJA WYRAŹNA w tysiącu odbić — przełom",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T16_ARCHIWUM_WNĘTRZE",
+        "Hint": "Piękne wnętrze archiwum kryształowego",
+        "PhotoReward": "Album: 'Piękne. A kryje nieludzkość.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KOD_PAMIECI",
+      "Name": "Kryształ-kod pamięci",
+      "Location": "Skradziony z konsoli",
+      "Description": "Klucz do systemu izolacji Zuzi — otwarcie bramy T17"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_KodPamieci — napięty minimalizm, perkusja bez melodii",
+    "AmbientSounds": [
+      "Kryształy dźwięczą",
+      "Kroki na kryształowej podłodze",
+      "Kłótnia Davida i Weroniki w oddali"
+    ],
+    "SFX": [
+      "SFX_Crystal_Pick",
+      "SFX_Stealth_Footstep",
+      "SFX_Camera_Shutter_Silent"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Kryształowy — przezroczysty, chłodny błękit",
+    "DialogueBoxStyle": "Kryształowy interfejs z kodem binarnym"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T16_ARCHIWUM",
+        "StoryNodeRef": "T16_01_010",
+        "Description": "Archiwum Kryształowe"
+      },
+      {
+        "CheckpointId": "CP_T16_CODE_STOLEN",
+        "StoryNodeRef": "T16_01_060",
+        "Description": "Kod skradziony"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej poza archiwum z kodem. David i Weronika kłócą się o to kto zgubił.",
+  "NextLevel": "T17",
+  "LevelTransitionText": "Wziąłem co moje. Przez lata brali mi więcej.",
+  "CityMap": {
+    "_doc": "Mapa lokacji T16 — Archiwum Kryształowe 2378. Futurystyczne archiwum danych.",
+    "LocationType": "Archiwum kryształowe — dane przechowywane w kryształach kwantowych",
+    "RealWorldRef": "Fikcja 2378. Kryształy kwantowe jako nośnik danych — każdy kryształ może przechowywać 10^24 bitów.",
+    "Scale": "Zamknięta przestrzeń: 4 sekcje archiwum + konsola centralna",
+    "Zones": [
+      {
+        "ZoneId": "Z16_WEJSCIE_ARCH",
+        "Name": "Wejście archiwum",
+        "Description": "Stalowo-kryształowe drzwi. Strefa autoryzacji kwantowej.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_AUTORYZACJA_KWANT",
+            "Name": "Autoryzacja kwantowa",
+            "Description": "Skan DNA + świadomości. David i Weronika są zarejestrowani.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z16_SEKCJA_GLOWNA",
+        "Name": "Sekcja główna — kryształy danych",
+        "Description": "Ogromna sala z unoszącymi się kryształami danych. Każdy kryształ to inny rekord.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KRYSZTALY_DANYCH",
+            "Name": "Unoszące się kryształy",
+            "Description": "Tysiące kryształów — różne kolory = różne typy danych.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KONSOLA_KOD",
+            "Name": "Konsola z kodem-kryształem",
+            "Description": "Cel Andrzeja. David stoi przy niej. Kod-kryształ na konsoli.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z16_SEKCJA_B",
+        "Name": "Sekcja B — kłótnia",
+        "Description": "Strefa gdzie Weronika i David się kłócą. Dalej od konsoli głównej.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WERONIKA_KŁOTNIA",
+            "Name": "Weronika w sekcji B",
+            "Description": "Kłótnia z Davidem. Oboje skupieni na sobie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_DAVID_KLOTNIA",
+            "Name": "David przy półce B",
+            "Description": "Wskazuje na coś Weronice. Głosy unoszą się między kryształami.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z16_ODBLASK_KRYSZTALY",
+        "Name": "Sala odblasków",
+        "Description": "Boczna sala gdzie kryształy odbijają wszystko tysiąc razy — Cień Andrzeja widoczny w każdym.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CIEN_TYSIĄC_ODBIC",
+            "Name": "Cień Andrzeja w tysiącu kryształów",
+            "Description": "TWARZ ANDRZEJA wyraźna — w tysiącu odbić naraz. Przełom.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Opcjonalne — estetyczne"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R16_WEJSCIE",
+        "Name": "Materializacja → Wejście",
+        "From": "START",
+        "To": "Z16_WEJSCIE_ARCH",
+        "Description": "Andrzej pojawia się"
+      },
+      {
+        "RouteId": "R16_WEJSCIE_GLOWNA",
+        "Name": "Wejście → Sekcja główna",
+        "From": "Z16_WEJSCIE_ARCH",
+        "To": "Z16_SEKCJA_GLOWNA",
+        "Description": "Przez autoryzację (stealth)"
+      },
+      {
+        "RouteId": "R16_GLOWNA_B",
+        "Name": "Sekcja główna → B",
+        "From": "Z16_SEKCJA_GLOWNA",
+        "To": "Z16_SEKCJA_B",
+        "Description": "David i Weronika idą tu kłócić"
+      },
+      {
+        "RouteId": "R16_ODBLASK",
+        "Name": "Sekcja → Odblask",
+        "From": "Z16_SEKCJA_GLOWNA",
+        "To": "Z16_ODBLASK_KRYSZTALY",
+        "Description": "Boczna sala"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Lodowate 8°C — kryształy wymagają niskiej temperatury",
+      "LightSources": [
+        "Kryształy świecą własnym światłem",
+        "Błękitne LED na suficie",
+        "Kryształ-kod — złoty blask"
+      ],
+      "Sounds": [
+        "Kryształy dźwięczą gdy ktoś przechodzi",
+        "Kroki na kryształowej posadzce",
+        "Głosy Davida i Weroniki w tle"
+      ],
+      "Smell": "Elektryczny ozon — jak przed burzą"
+    },
+    "MiniMapConfig": {
+      "Style": "Kryształowy plan 3D — izometryczny widok jak w grze planszowej",
+      "Scale": "1:400",
+      "KodKrystalPosition": "Złoty punkt na mapie — konsola z kodem",
+      "DavidWeronikaTracks": "Animowane ścieżki kłótni — kiedy są odwróceni = okno do kradzieży"
+    }
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "_doc": "LEVEL DESIGN — T11 | TERMINAL ŚWIATŁA · 2100. Stacja orbitalna. David i Weronika blokują terminal — Andrzej działa sam.",
+  "LevelId": "T11",
+  "AxisId": "T11",
+  "StoryChunkRef": "T11_01",
+  "Title": "TERMINAL ŚWIATŁA",
+  "Subtitle": "2100",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Orbitalna stacja kosmiczna, 2100",
+    "Era": "Daleka przyszłość, 2100, orbita niska",
+    "TimeOfDay": "Ciągły wschód słońca co 90 minut — stacja okrąża Ziemię",
+    "Weather": "Próżnia za oknem. Ziemia widoczna przez panoramiczne szyby.",
+    "MainScene": "Stacja orbitalna: korytarze bez grawitacji (lewitujące obiekty), terminale transmisyjne, panoramiczne okna z widokiem na Ziemię. David i Weronika przy głównym terminalu.",
+    "KeyVisualElement": "Widok Ziemi przez okno — niebieska planeta, a Andrzej tu na orbicie szukający córki",
+    "LightingMood": "Sterylna biel korytarzy + niebieskie okno ze światłem Ziemi",
+    "AmbientDescription": "Stacja orbitalna — system wentylacji, delikatny hum silników, cisza"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. W przestrzeni orbitalnej wygląda jak ziemski artysta.",
+      "Note": "Aparat w stanie nieważkości — delikatnie unosi się gdy puszcza pasek"
+    },
+    {
+      "CharacterId": "DAVID",
+      "Description": "Mundur technika stacji — za duży, pomięty. Masywny. Blokuje główne wejście do terminalu.",
+      "InitialPosition": "główne wejście terminalu"
+    },
+    {
+      "CharacterId": "WERONIKA",
+      "Description": "Obcisły kombinezon stacji — z makijażem i obcasami. Pilnuje bocznego wejścia.",
+      "InitialPosition": "boczne wejście terminalu"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień na ścianie korytarza orbitalnego — deformuje się w nieważkości.",
+      "InitialPosition": "korytarz boczny"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T11_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Stacja orbitalna — eksploracja korytarzy w nieważkości.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Poruszaj się w nieważkości — wolniejszy ruch, inne QTE",
+        "Fotografuj Ziemię przez panoramiczne okno",
+        "Szukaj trzeciego wejścia do terminalu (David + Weronika pilnują dwóch)"
+      ],
+      "CameraHint": "FOTOGRAFIA: Ziemia przez okno — najbardziej poetyckie zdjęcie w Albumie"
+    },
+    {
+      "PhaseId": "T11_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Konfrontacja z Davidem i Weroniką.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: konfrontacja z Davidem / szukać trzeciego wejścia"
+      ],
+      "NPCBehaviors": [
+        "DAVID blokuje główne",
+        "WERONIKA pilnuje boczne",
+        "Oboje razem, żadne nie ustępuje"
+      ]
+    },
+    {
+      "PhaseId": "T11_P3",
+      "PhaseType": "QTE_ZEROWG",
+      "Description": "QTE: Andrzej przemieszcza się w nieważkości przez techniczny korytarz.",
+      "EstimatedDuration_sec": 35,
+      "PlayerActions": [
+        "SWIPE LEFT — Andrzej odpycha się od ściany w lewo",
+        "W nieważkości QTE jest wolniejsze ale wymaga precyzji",
+        "Fail: odbija od ściany, David/Weronika słyszą i reagują"
+      ],
+      "CameraHint": "Flash aparatu oślepia sensor bramki terminalu"
+    },
+    {
+      "PhaseId": "T11_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Andrzej przy terminalu — 30 sekund na dostęp.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wewnętrzny monolog — 'Weronika była moją żoną. David jej kochankiem...'"
+      ],
+      "NPCBehaviors": [
+        "DAVID i WERONIKA krzyczą i biegną"
+      ]
+    },
+    {
+      "PhaseId": "T11_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi przez techniczne śluzy.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T11_ZIEMIA",
+        "Hint": "Ziemia przez panoramiczne okno stacji",
+        "PhotoReward": "Album: 'Orbita niska. Gdzieś tam na dole jest Zuzia.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T11_WERONIKA_KOMBINEZON",
+        "Hint": "Weronika w kombinezonie stacji — kontrast makijażu i techniki",
+        "PhotoReward": "Album: 'Moja była żona. Na orbicie 2100. Wciąż blokuje.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T11_TERMINAL_EKRAN",
+        "Hint": "Ekran terminalu transmisyjnego",
+        "PhotoReward": "Album: 'Tutaj. Przez to urządzenie. Kiedyś wyślę wiadomość.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T11_CIEN_NIEWAZKOSCI",
+        "Hint": "Cień Andrzeja w nieważkości — deformuje się inaczej",
+        "PhotoReward": "Album: zarys twarzy — coraz bardziej Andrzej",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KOD_TERMINALU",
+      "Name": "Kod dostępu do terminalu",
+      "Location": "Z bramki po QTE",
+      "Description": "Częściowy kod — pełny dostęp w T19"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_TerminalSwiatla — przestrzenny ambient, niska basa orbity",
+    "AmbientSounds": [
+      "System wentylacji stacji",
+      "Hum silników orbitalnych",
+      "Cicha komunikacja przez radio"
+    ],
+    "SFX": [
+      "SFX_Airlock",
+      "SFX_Zero_G_Movement",
+      "SFX_Camera_Shutter_Orbital"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Orbitalny — holograficzne ikony, orientacja nieważkości",
+    "DialogueBoxStyle": "Stacja kosmiczna — interfejs 2100"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T11_STACJA",
+        "StoryNodeRef": "T11_01_010",
+        "Description": "Stacja orbitalna"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej przez śluzę powietrzną. Stacja oddala się.",
+  "NextLevel": "T12",
+  "CityMap": {
+    "_doc": "Mapa lokacji T11 — Orbitalna stacja kosmiczna 2100.",
+    "LocationType": "Stacja kosmiczna — orbita niska Ziemi",
+    "RealWorldRef": "Fikcja 2100. Stacja orbitalna ISS-3 generacji lub ISS-X. Orbita 400km, prędkość 7.6km/s.",
+    "Scale": "Zamknięta przestrzeń: 6 modułów + śluzy",
+    "NavigationStyle": "Mikrograwiracja — poruszanie się przez pchanie od ścian",
+    "Zones": [
+      {
+        "ZoneId": "Z11_MODUL_WEJSCIOWY",
+        "Name": "Moduł wejściowy",
+        "Description": "Śluza powietrzna i główny korytarz. Andrzej materializuje się tu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SLUZA",
+            "Name": "Śluza powietrzna",
+            "Description": "Stalowa śluza z oknem — widok na Ziemię.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KORYTARZ_GLOWNY",
+            "Name": "Główny korytarz",
+            "Description": "Andrzej odczuwa nieważkość po raz pierwszy. Przedmioty unoszą się.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_TERMINAL_TRANSMISJI",
+        "Name": "Terminal transmisji",
+        "Description": "Główna sala z terminalem. David blokuje wejście główne.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TERMINAL_GLOWNY",
+            "Name": "Terminal transmisyjny",
+            "Description": "Skomplikowany interfejs 2100. David stoi przed nim.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_DAVID_TERMINAL",
+            "Name": "David blokuje terminal",
+            "Description": "Masywny, w mundurze technika. Blokuje drogę.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WERONIKA_BOCZNE",
+            "Name": "Weronika przy bocznym wejściu",
+            "Description": "Pilnuje bocznego wejścia. Kombinezon z obcasami.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_MODUL_NAUKI",
+        "Name": "Moduł naukowy",
+        "Description": "Eksperymenty biologiczne. Rośliny w mikrograwitacji. Brak kamer.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ROSLINY_ORBITAL",
+            "Name": "Rośliny w nieważkości",
+            "Description": "Drzewko pomarańczowe unoszące się w powietrzu.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_TRZECIE_WEJSCIE",
+            "Name": "Trzecie wejście do terminalu",
+            "Description": "Ukryte za modułem naukowym. Andrzej musi tu przejść.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_OKNO_PANORAMICZNE",
+        "Name": "Moduł z widokiem na Ziemię",
+        "Description": "Ogromne okno panoramiczne. Widok na niebieską planetę.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ZIEMIA_Z_ORBITY",
+            "Name": "Ziemia z orbity 400km",
+            "Description": "Niebieskobiała planeta. Kontynenty widoczne. Najpiękniejszy widok gry.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WSCHOD_SLONCA_ORBITAL",
+            "Name": "Wschód słońca co 90 min",
+            "Description": "Słońce wschodzi co 90 minut — stacja okrąża Ziemię.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z11_TECHNICZNE_SLUZY",
+        "Name": "Śluzy techniczne",
+        "Description": "Małe śluzy dla napraw zewnętrznych. Andrzej się tu przemieszcza.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SLUZA_TECH",
+            "Name": "Techniczna śluza B",
+            "Description": "Wyjście awaryjne — Andrzej ucieka tą drogą.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Wyjście po misji"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R11_MATERIALIZACJA",
+        "Name": "Materializacja → Korytarz",
+        "From": "START",
+        "To": "Z11_MODUL_WEJSCIOWY",
+        "Description": "Andrzej pojawia się w śluzie"
+      },
+      {
+        "RouteId": "R11_KORYTARZ_TERMINAL",
+        "Name": "Korytarz → Terminal",
+        "From": "Z11_MODUL_WEJSCIOWY",
+        "To": "Z11_TERMINAL_TRANSMISJI",
+        "Description": "Główny korytarz"
+      },
+      {
+        "RouteId": "R11_OKNO",
+        "Name": "Korytarz → Okno panoramiczne",
+        "From": "Z11_MODUL_WEJSCIOWY",
+        "To": "Z11_OKNO_PANORAMICZNE",
+        "Description": "Moduł po prawej"
+      },
+      {
+        "RouteId": "R11_NAUKA_TERMINAL",
+        "Name": "Moduł nauki → Terminal (bok)",
+        "From": "Z11_MODUL_NAUKI",
+        "To": "Z11_TERMINAL_TRANSMISJI",
+        "Description": "Trzecie wejście"
+      },
+      {
+        "RouteId": "R11_UCIECZKA",
+        "Name": "Terminal → Śluzy tech.",
+        "From": "Z11_TERMINAL_TRANSMISJI",
+        "To": "Z11_TECHNICZNE_SLUZY",
+        "Description": "Ucieczka przez śluzy"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Gravity": "Mikrograwitacja — obiekty unoszą się, Andrzej pcha się od ścian",
+      "ViewFromWindow": "Ziemia 400km poniżej. Co 90 minut wschód słońca.",
+      "Temperature": "Sterylne 21°C w modułach, -270°C za ścianami",
+      "OxygenSystem": "Widoczne rury systemu życiowego — utrata jakiejkolwiek grozi asfiksją",
+      "Sounds": [
+        "System wentylacji",
+        "Cichy hum silników orbitalnych",
+        "Cisza próżni za ścianami",
+        "Metaliczne echo kroków"
+      ],
+      "NPC_Density": "Bardzo niska — załoga 6 osób, David i Weronika, 4 techników"
+    },
+    "MiniMapConfig": {
+      "Style": "Schemat stacji ISS-style — modularny, widok z góry",
+      "Scale": "1:200",
+      "ModuleColors": {
+        "Wejście": "szary",
+        "Terminal": "czerwony (zagrożenie)",
+        "Nauki": "zielony",
+        "Okno": "niebieski"
+      },
+      "GravityIndicator": "Strzałki pokazujące kierunek ruchu w nieważkości"
+    }
+  }
+}

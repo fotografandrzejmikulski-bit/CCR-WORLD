@@ -1,0 +1,143 @@
+{
+  "_doc": "UCCRStoryChunk – CIESZYN · 2025 | Axis: T07. Weronika = byłą żona, David = kochanek. Oboje blokują. Weronika kpi z Andrzeja przy moście.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T07_01",
+      "path": "Content/CCR/Story/T07_Cieszyn2025/",
+      "ChunkId": "T07_01",
+      "AxisId": "T07",
+      "EntryNodeId": "T07_01_010",
+      "ChapterTitle": "CIESZYN",
+      "ChapterSubtitle": "2025",
+      "_narrative": "Cieszyn – miasto podzielone granicą. David i Weronika (jego była żona z kochankiem) stoją po polskiej stronie mostu Przyjaźni, specjalnie blokując Andrzejowi widok na Zuzię po czeskiej stronie. Żadne z nich nie daje Andrzejowi żadnej wskazówki. Weronika kpi z bezsilności byłego męża.",
+      "_gameplay": "QTE: Swipe Right – Andrzej wyciąga rękę i wykrzywia się przez barierę mostu by zobaczyć Zuzię zanim David go odepchnie. Wybór: odwołać się do Weroniki jako byłej żony (eskalacja, okrutna odpowiedź) lub skupić się wyłącznie na Zuzi przez wodę (spokojniej).",
+      "_visual": "Rzeka Olza – most Przyjaźni, polsko-czeski Cieszyn. Błękitny świt. Zuzia po drugiej stronie jako sylwetka. Paleta: błękit rzeki, szarawy świt, obie flagi na moście. UI: mapka graniczna. Muzyka: MUS_Cieszyn – liryczna, melancholijna.",
+      "Nodes": [
+        {
+          "NodeId": "T07_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Cieszyn, 2025. Most Przyjaźni nad Olzą. I tu są – Weronika i David, razem jak zawsze, blokując mi pole widzenia. Ale widzę ją za nimi. Sylwetkę Zuzi po czeskiej stronie. Moja była żona i jej kochanek stanęli przede mną jakby to był pokój z sądu.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T07_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T07_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "Andrzej. Granica jest zamknięta dla ciebie. Mam dokumenty, pełnomocnictwo i numer straży granicznej. Zuzia jest po tamtej stronie i tam zostanie. Odejdź albo wzywam służby.",
+          "ExpressionTag": "Cold",
+          "NextAfterDialogue": "T07_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T07_01_035"
+        },
+        {
+          "NodeId": "T07_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(z lekceważeniem, patrząc na Andrzeja) Patrzeć na ciebie jak stoisz na tym moście... zdjęcia mam. Do akt sądowych. Idź do domu, Andrzej. Nie ma już dla ciebie domu przy Zuzi.",
+          "ExpressionTag": "Contemptuous",
+          "NextAfterDialogue": "T07_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Weronika – jesteś jej matką. Jak możesz tak żyć?",
+              "TargetNodeId": "T07_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Milczeć. Skupić się na Zuzi – machać przez wodę.",
+              "TargetNodeId": "T07_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T07_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Right",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T07_01_060",
+          "QTEFailNodeId": "T07_01_052"
+        },
+        {
+          "NodeId": "T07_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "David zasłonił mi widok ręką. Weronika rechocze. Muszę szybciej, zanim Zuzia odejdzie od wody.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T07_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Zuzia... odwróciła głowę. Przez ułamek sekundy – nasze oczy przez wodę. Nie wiem czy mnie poznała. Ale ja widziałem ją. Weronika i David zabrali mi wszystko – poza tym jednym spojrzeniem.",
+          "ExpressionTag": "Emotional",
+          "NextAfterDialogue": "T07_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T07_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(do Davida, głośno, żeby Andrzej słyszał) Chodźmy. Nie warto tracić czasu. Jutro mamy spotkanie z sędzią w sprawie definitywnego zakazu.",
+          "ExpressionTag": "Cold",
+          "NextAfterDialogue": "T07_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T07_01_090"
+        },
+        {
+          "NodeId": "T07_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T07_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T07_01_999"
+        },
+        {
+          "NodeId": "T07_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T08_01",
+          "EntryNodeInTarget": "T08_01_010"
+        }
+      ]
+    }
+  ]
+}

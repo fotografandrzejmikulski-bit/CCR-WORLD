@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – BEŁŻYCE · 2016 | Axis: T04.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T04_01",
+      "path": "Content/CCR/Story/T04_Belzyce2016/",
+      "ChunkId": "T04_01",
+      "AxisId": "T04",
+      "EntryNodeId": "T04_01_010",
+      "ChapterTitle": "BEŁŻYCE",
+      "ChapterSubtitle": "2016",
+      "_narrative": "Małe miasteczko Bełżyce koło Lublina, 2016. Eva jest tu sama – bez Weroniki (ta jest zawsze z Davidem). Eva zna prawdziwą lokalizację Zuzi. Kafka pojawia się jako antykwariusz z metaforycznym kluczem. Andrzej dostaje wskazówkę.",
+      "_gameplay": "QTE: Tap – Andrzej łapie karteczkę z adresem zanim wiatr ją uniesie z rynku. Wybór: zapytać Evę bezpośrednio (szybko, ryzykownie) lub przez Kafkę (pośrednio, bezpieczniej). Eva jest szczera niezależnie od ścieżki.",
+      "_visual": "Letnie małe miasteczko – rynek z kamienicami, kościół, sklep z antykami. Paleta: ciepłe letnie złoto, cień drzew lipy. UI: plakat parafialny na tablicy. Muzyka: MUS_Belzyce z ambientem targowym.",
+      "Nodes": [
+        {
+          "NodeId": "T04_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Bełżyce. Jesień 2016. Rynek z fontanną i starą lipą. Ludzie mijają mnie jakby mnie nie widzieli. Ale ja widzę – za rogiem Kafki antykwariatu – kobietę, która wie gdzie jest moja córka. Eva. Jedyna, która powie mi prawdę.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T04_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T04_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "Andrzej. Szukam cię od tygodnia. Wiedziałam, że tu przyjdziesz. Zuzia... nie jest daleko. Ale ktoś bardzo pilnuje, żebyś jej nie znalazł. Mam adres – stary, ale świeży. Tylko nie możemy rozmawiać tu długo.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T04_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T04_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T04_01_040"
+        },
+        {
+          "NodeId": "T04_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Eva, daj mi ten adres teraz. Błagam.",
+              "TargetNodeId": "T04_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Eva, czy Zuzia wie, że szukam? Powiedz mi to najpierw.",
+              "TargetNodeId": "T04_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T04_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Tap",
+          "RequiredSwipeDir": null,
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T04_01_060",
+          "QTEFailNodeId": "T04_01_052"
+        },
+        {
+          "NodeId": "T04_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Karteczka wyleciała z ręki Evy! Muszę ją złapać zanim wiatr ją uniesie na rynek.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T04_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T04_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Mam adres. Zuzia... jest gdzieś w tym systemie osi czasu. Ten kawałek papieru to moja mapa.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T04_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T04_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "Widzę, że Eva dała ci klucz. Każdy klucz otwiera drzwi i zamyka inne. To co trzymasz w ręce to nie adres – to pytanie. Właściwe pytanie zadane we właściwym czasie. Reszta już do ciebie należy, poszukiwaczu.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T04_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T04_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T04_01_090"
+        },
+        {
+          "NodeId": "T04_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T04_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T04_01_999"
+        },
+        {
+          "NodeId": "T04_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T05_01",
+          "EntryNodeInTarget": "T05_01_010"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,342 @@
+{
+  "_doc": "LEVEL DESIGN — T05 | NOVÁKY · 2018.",
+  "LevelId": "T05",
+  "AxisId": "T05",
+  "StoryChunkRef": "T05_01",
+  "Title": "NOVÁKY",
+  "Subtitle": "Słowacka elektrownia 2018",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "Nováky, Słowacja — elektrownia cieplna, stare hale fabryczne",
+    "Era": "Współczesna Słowacja, 2018, przemysłowe otoczenie",
+    "TimeOfDay": "Wieczór — pomarańczowe niebo od dymu",
+    "Weather": "Mglisty, ciepły od elektrowni",
+    "MainScene": "Hale elektrowni: ogromne turbiny, pary z rur, betonowe korytarze. Cień ślizga się po ścianach między maszynami.",
+    "LightingMood": "Industrialne — pomarańczowe od ognia i dymu, metaliczne błękity",
+    "AmbientDescription": "Hum turbiny, para z rur, metaliczne brzęczenie, kroki na metalowym ruszcie",
+    "KeyVisualElement": "Tatuaże Andrzeja kontrastują z industrialnym środowiskiem — pracownicy go nie rozumieją"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula + kamizelka robocza z kieszeniami (przebierka). Kask przy pasie."
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień przemieszcza się między maszynami — dużo miejsc do ukrycia",
+      "InitialPosition": "hala turbinowa"
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "Technik-obserwator. Fartuch z nadrukiem. Zegarek kieszonkowy widoczny.",
+      "InitialPosition": "sterownia"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T05_P1",
+      "PhaseType": "STEALTH",
+      "Description": "Andrzej przemieszcza się przez halę fabryczną nie zwracając uwagi.",
+      "EstimatedDuration_sec": 120,
+      "PlayerActions": [
+        "Omijaj pracowników — QTE Swipe Left gdy ktoś patrzy",
+        "Fotografuj maszyny — każde zdjęcie to +wskazówka"
+      ],
+      "CameraHint": "Sfotografuj Cień między maszynami",
+      "NPCBehaviors": [
+        "Pracownicy patrolują rytmicznie — 4s w prawo, 4s w lewo"
+      ]
+    },
+    {
+      "PhaseId": "T05_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain w sterowni — wyjaśnia mechanizm osi",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: zapytać o Zuzię/zapytać o Cień"
+      ],
+      "CameraHint": "Sfotografuj zegarek Eimstaina z 19 tarczami"
+    },
+    {
+      "PhaseId": "T05_P3",
+      "PhaseType": "QTE",
+      "Description": "Cień odcina drogę do wyjścia",
+      "EstimatedDuration_sec": 25,
+      "PlayerActions": [
+        "SWIPE LEFT — Andrzej ślizga się pod maszyną"
+      ],
+      "CameraHint": "Flash aparatu"
+    },
+    {
+      "PhaseId": "T05_P4",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wychodzi z Nováky",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T05_TURBINA",
+        "Hint": "Wielka turbina w hali",
+        "PhotoReward": "Album: 'Machina. Jak system izolacji.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T05_CIEN_MASZYNA",
+        "Hint": "Cień między maszynami",
+        "PhotoReward": "Album: sylwetka coraz wyraźniejsza",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T05_ZEGAREK",
+        "Hint": "Zegarek Eimstaina",
+        "PhotoReward": "Album: 19 tarcz — 'co on wie?'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T05_PARA_RUR",
+        "Hint": "Para z rur w hali — piękne industrialne",
+        "PhotoReward": "Album: estetyczna karta",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KLUCZ_T05",
+      "Name": "Klucz maszynowy",
+      "Location": "Sterownia",
+      "Description": "Klucz do wejścia T06"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Novaky — industrialny ambient, niska basa, metaliczny",
+    "AmbientSounds": [
+      "Hum turbiny",
+      "Para rur",
+      "Metaliczne kroki",
+      "Odległa syrena"
+    ],
+    "SFX": [
+      "SFX_Metal_Clank",
+      "SFX_Camera_Shutter",
+      "SFX_Steam"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Industrialny — metaliczne ramki, techniczna czcionka",
+    "DialogueBoxStyle": "Dymek techniczny — zielone litery na czarnym"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T05_ENTER",
+        "StoryNodeRef": "T05_01_010",
+        "Description": "Andrzej w hali"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wysiada z autobusu poza bramą Nováky.",
+  "NextLevel": "T06",
+  "LevelTransitionText": "",
+  "CityMap": {
+    "_doc": "Mapa lokacji T05 — Nováky, Słowacja 2018. Elektrownia cieplna.",
+    "LocationType": "Teren przemysłowy — elektrownia cieplna na Słowacji",
+    "RealWorldRef": "Elektrárne Nováky, Prievidza, Słowacja. Jedna z największych elektrowni węglowych Europy Środkowej.",
+    "Scale": "Duży obszar przemysłowy: hale + sterowanie + dziedziniec",
+    "NavigationStyle": "Labiryntowa — hale połączone korytarzami",
+    "Zones": [
+      {
+        "ZoneId": "Z05_BRAMA_WEJSCIOWA",
+        "Name": "Brama wejściowa elektrowni",
+        "Description": "Metalowa brama z szlabanem. Tablica: 'Elektrárne Nováky a.s.' Portiernia z pracownikiem.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICA_NOVAKY",
+            "Name": "Tablica electrowni",
+            "Description": "Nazwa i logo. Rok budowy: 1958.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_PORTIERNIA",
+            "Name": "Portiernia",
+            "Description": "Pracownik sprawdza przepustki. Andrzej musi ominąć.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z05_DZIEDZINIEC",
+        "Name": "Dziedziniec zakładowy",
+        "Description": "Beton, szyny kolejowe dla węgla, wielkie zbiorniki. Para z rur.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WAGON_WEGLA",
+            "Name": "Wagon z węglem",
+            "Description": "Załadowany wagon stoi na bocznicy.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KOMINY",
+            "Name": "Cztery wielkie kominy",
+            "Description": "200m wysokości. Biała i szara para. Widoczne z całej okolicy.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_SILOWNIA",
+            "Name": "Wejście do siłowni",
+            "Description": "Stalowe drzwi z ostrzeżeniem 'WYSOKIE NAPIĘCIE'.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z05_HALA_TURBINOWA",
+        "Name": "Hala turbinowa",
+        "Description": "Ogromna hala przemysłowa. Turbiny parowe 200MW. Huk, wibracje, para.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TURBINA_GLOWNA",
+            "Name": "Turbina główna 200MW",
+            "Description": "Centrum hali. Cień Andrzeja przemieszcza się między maszynami.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_RURY_PARY",
+            "Name": "Rury pary",
+            "Description": "Para wydobywa się co 20 sekund. Biały obłok maskuje widoczność.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_BALKON_TECHNICZNY",
+            "Name": "Balkon techniczny",
+            "Description": "Platforma nad turbinami. Dobry widok na całą halę.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z05_STEROWNIA",
+        "Name": "Sterownia",
+        "Description": "Wyizolowane pomieszczenie ze szklaną szybą nad halą. Eimstain tu czeka.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_PANELE_STEROWANIA",
+            "Name": "Panele sterowania",
+            "Description": "Analogowe wskaźniki, dźwignie, telefony. Lata 80. design.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_EIMSTAIN_STEROWNIA",
+            "Name": "Eimstain przy monitorze",
+            "Description": "Zegarek kieszonkowy na stole. Obserwuje Andrzeja przez szybę.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z05_KOMIN_WYJSCIE",
+        "Name": "Droga do wyjścia przy kominie",
+        "Description": "Zewnętrzna droga wzdłuż komina nr 3. Cicha, omijana przez pracowników.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KOMIN_3",
+            "Name": "Komin nr 3 z bliska",
+            "Description": "Ogromna ceglana budowla. Skrzynka elektryczna z bocznym wyjściem.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Wyjście awaryjne — Andrzej użyje po misji"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R05_WEJSCIE",
+        "Name": "Autobus → Brama",
+        "From": "START",
+        "To": "Z05_BRAMA_WEJSCIOWA",
+        "Description": "Andrzej wysiada przed bramą elektrowni"
+      },
+      {
+        "RouteId": "R05_BRAMA_DZIEDZINIEC",
+        "Name": "Brama → Dziedziniec",
+        "From": "Z05_BRAMA_WEJSCIOWA",
+        "To": "Z05_DZIEDZINIEC",
+        "Description": "Przez portiernie (stealth)"
+      },
+      {
+        "RouteId": "R05_DZIEDZINIEC_HALA",
+        "Name": "Dziedziniec → Hala",
+        "From": "Z05_DZIEDZINIEC",
+        "To": "Z05_HALA_TURBINOWA",
+        "Description": "Stalowe drzwi siłowni"
+      },
+      {
+        "RouteId": "R05_HALA_STEROWNIA",
+        "Name": "Hala → Sterownia",
+        "From": "Z05_HALA_TURBINOWA",
+        "To": "Z05_STEROWNIA",
+        "Description": "Schody z hali na poziom sterowni"
+      },
+      {
+        "RouteId": "R05_WYJSCIE",
+        "Name": "Sterownia → Wyjście",
+        "From": "Z05_STEROWNIA",
+        "To": "Z05_KOMIN_WYJSCIE",
+        "Description": "Przez bocznię komina nr 3"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Ciepło od turbiny — ok. 25°C w hali mimo zewnętrznych 12°C",
+      "Weather": "Mglisto na zewnątrz, para z kominów zlewa się z mgłą",
+      "LightSources": [
+        "Przemysłowe świetlówki sodowe w hali",
+        "Czerwone lampki awaryjne na panelach",
+        "Naturalny zmrok na dziedzińcu"
+      ],
+      "NPC_Density": "Umiarkowana — pracownicy w pomarańczowych kombinezonach",
+      "NPC_Behaviors": [
+        "Pracownicy patrolują rytmicznie hale",
+        "Technik przy sterowni nie patrzy przez 8s co 30s"
+      ],
+      "Sounds": [
+        "HUM turbiny — 80 dB w hali",
+        "Para z rur co 20s",
+        "Telefony na ścianie sterowni",
+        "Metaliczne echo kroków"
+      ],
+      "Smell": "Olej maszynowy, węgiel, metal"
+    },
+    "MiniMapConfig": {
+      "Style": "Plan techniczny — jak rzut budynku przemysłowego, czarne linie na białym",
+      "Scale": "1:800",
+      "PatrolPaths": true,
+      "SteamCloudAreas": "Oznaczone szarymi kółkami — zmniejszona widoczność",
+      "ElectricalHazards": "Oznaczone żółtymi trójkątami"
+    }
+  }
+}

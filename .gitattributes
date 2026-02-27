@@ -1,0 +1,27 @@
+# Git LFS tracking rules for Unreal Engine binary assets.
+# Binary content should be stored in Git LFS or a dedicated depot (e.g. Perforce).
+# The folder structure (.gitkeep files) is tracked normally so team members
+# know where to place assets, but the actual binary files are not committed to Git.
+
+# Unreal Engine binary asset types
+Content/**/*.uasset filter=lfs diff=lfs merge=lfs -text
+Content/**/*.umap    filter=lfs diff=lfs merge=lfs -text
+Content/**/*.uexp    filter=lfs diff=lfs merge=lfs -text
+Content/**/*.ubulk   filter=lfs diff=lfs merge=lfs -text
+Content/**/*.uptnl   filter=lfs diff=lfs merge=lfs -text
+Content/**/*.ufont   filter=lfs diff=lfs merge=lfs -text
+
+# Audio files
+Content/**/*.wav     filter=lfs diff=lfs merge=lfs -text
+Content/**/*.ogg     filter=lfs diff=lfs merge=lfs -text
+Content/**/*.mp3     filter=lfs diff=lfs merge=lfs -text
+
+# Texture / image sources
+Content/**/*.png     filter=lfs diff=lfs merge=lfs -text
+Content/**/*.tga     filter=lfs diff=lfs merge=lfs -text
+Content/**/*.psd     filter=lfs diff=lfs merge=lfs -text
+Content/**/*.jpg     filter=lfs diff=lfs merge=lfs -text
+
+# Video files
+Content/**/*.mp4     filter=lfs diff=lfs merge=lfs -text
+Content/**/*.avi     filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,140 @@
+{
+  "_doc": "UCCRStoryChunk – PROLOG | PROLOG CCR WORLD TOM 3. Szept dziecka: 'Czas nie płynie… czas oddycha.'",
+  "chunks": [
+    {
+      "assetName": "DA_Story_Prologue_01",
+      "path": "Content/CCR/Story/Prologue/",
+      "ChunkId": "PROLOGUE_01",
+      "AxisId": "PROLOGUE",
+      "EntryNodeId": "PROLOG_01_010",
+      "ChapterTitle": "Prolog",
+      "ChapterSubtitle": "Szept na początku wszystkiego",
+      "_narrative": "Intro Tomu 3. Gracz słyszy szept dziecka ('Czas nie płynie… czas oddycha.'). Widzimy Andrzeja budzącego się z niejasnymi wspomnieniami. Zuzia pojawia się jako wspomnienie. Mechanika wyjaśniona: 19 osi czasu do przebycia.",
+      "_gameplay": "Brak QTE w Prologu – czysty ambient. Gracz dotyka ekranu raz żeby kontynuować. Intro ekrany i ambient voice.",
+      "_visual": "Ciemność. Delikatny oddech. Stopniowe rozjaśnienie – Andrzej śpi w nieokreślonym miejscu. Twarz Zuzi jako wspomnienie-nakładka. Paleta: czarno-biała z powolnym złotem. Muzyka: MUS_Prologue – szept i struny.",
+      "Nodes": [
+        {
+          "NodeId": "PROLOG_01_010",
+          "NodeType": "AmbientVoice",
+          "SpeakerTag": "DZIECKO",
+          "DialogueText": "Czas nie płynie… czas oddycha.",
+          "VOAsset": "/Game/CCR/Audio/VO/Prologue/VO_DZIECKO_Szept_001",
+          "bOverlayOnly": true,
+          "bSkippable": false,
+          "NextAfterVoice": "PROLOG_01_020",
+          "bCheckpoint": true,
+          "_note": "Szept dziecka – otwierające zdanie gry. Brak portretu, tylko głos."
+        },
+        {
+          "NodeId": "PROLOG_01_020",
+          "NodeType": "TitleCard",
+          "TitleText": "CCR WORLD",
+          "SubtitleText": "Tom 3 — Szukając Córki",
+          "DisplayDurationSec": 3.0,
+          "FadeInSec": 2.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "PROLOG_01_030"
+        },
+        {
+          "NodeId": "PROLOG_01_030",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Budzę się i nie wiem gdzie jestem. Ale wiem kogo szukam. Zuzia. Córka. Gdzieś w jednej z 19 osi czasu. I przejdę przez wszystkie, żeby ją znaleźć.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "PROLOG_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PROLOG_01_040",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "(wspomnienie, głos z przeszłości) Tato... wróć. Czekam.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "PROLOG_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PROLOG_01_050",
+          "NodeType": "TitleCard",
+          "TitleText": "19 osi czasu",
+          "SubtitleText": "Od roku 1679 do nieskończoności",
+          "DisplayDurationSec": 3.5,
+          "FadeInSec": 1.5,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "PROLOG_01_060"
+        },
+        {
+          "NodeId": "PROLOG_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Pierwsza oś – rok 1679. Zaczynam tutaj, na początku wszystkiego.",
+          "ExpressionTag": "Resolved",
+          "NextAfterDialogue": "PROLOG_01_070",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PROLOG_01_070",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "PROLOGUE_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "PROLOG_01_999"
+        },
+        {
+          "NodeId": "PROLOG_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T01_01",
+          "EntryNodeInTarget": "T01_01_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_Prologue_00",
+      "path": "Content/CCR/Story/Prologue/",
+      "ChunkId": "PROLOGUE_00",
+      "AxisId": "PROLOGUE",
+      "EntryNodeId": "PROLOG_00_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": " ",
+      "_narrative": "Ekran startowy gry przed właściwym prologiem. Ostrzeżenia prawne i wejście do gry.",
+      "_gameplay": "Tap to start.",
+      "_visual": "Logo CCR WORLD na czarnym tle. Paleta: czerń i biel.",
+      "Nodes": [
+        {
+          "NodeId": "PROLOG_00_010",
+          "NodeType": "TitleCard",
+          "TitleText": "CCR WORLD",
+          "SubtitleText": "Naciśnij żeby zacząć",
+          "DisplayDurationSec": 0.0,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 0.5,
+          "NextAfterDisplay": "PROLOG_00_020"
+        },
+        {
+          "NodeId": "PROLOG_00_020",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "GAME_STARTED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "PROLOG_00_999"
+        },
+        {
+          "NodeId": "PROLOG_00_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "PROLOGUE_01",
+          "EntryNodeInTarget": "PROLOG_01_010"
+        }
+      ]
+    }
+  ]
+}

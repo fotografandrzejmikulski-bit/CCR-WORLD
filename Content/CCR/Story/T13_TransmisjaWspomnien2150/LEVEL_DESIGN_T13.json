@@ -1,0 +1,290 @@
+{
+  "_doc": "LEVEL DESIGN — T13 | TRANSMISJA WSPOMNIEŃ · 2150. Andrzej słyszy głos Zuzi przez transmisję.",
+  "LevelId": "T13",
+  "AxisId": "T13",
+  "StoryChunkRef": "T13_01",
+  "Title": "TRANSMISJA WSPOMNIEŃ",
+  "Subtitle": "2150",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Centrum transmisji wspomnień, 2150",
+    "Era": "Przyszłość 2150 — interfejsy wspomnień",
+    "TimeOfDay": "Wieczór — sala transmisji w niebieskim świetle",
+    "MainScene": "Okrągła sala z fotelem transmisji wspomnień. Interfejs neuro-połączenia. Andrzej siada w fotelu i słyszy transmisję — głos Zuzi.",
+    "KeyVisualElement": "Fotel transmisji — gdy Andrzej siada, wokół pojawiają się holograficzne wspomnienia jako obrazy",
+    "LightingMood": "Niebieskie-fioletowe — sala snu i wspomnień",
+    "AmbientDescription": "Delikatny szum transmisji, głosy ze wspomnień"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "Note": "Andrzej w fotelu transmisji — aparat leży obok, ale transmisja jest wewnętrzna"
+    },
+    {
+      "CharacterId": "BATISTA",
+      "Description": "Przy konsoli obsługi. Nerwowy — odpowiada za transmisję.",
+      "InitialPosition": "konsola"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "W transmisji — pojawia się jako wspomnienie w wizji Andrzeja.",
+      "InitialPosition": "wizja transmisji"
+    },
+    {
+      "CharacterId": "ZUZIA",
+      "Description": "GŁOS PRZEZ TRANSMISJĘ — Andrzej słyszy głos Zuzi. Tylko głos, bez wizerunku.",
+      "bIsVoiceOnly": true,
+      "bIsTransmission": true
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T13_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Centrum transmisji — eksploracja przed sesją.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Zbadaj fotel transmisji",
+        "Fotografuj technologię 2150",
+        "Rozmawiaj z Batistą"
+      ],
+      "CameraHint": "Sfotografuj interfejs transmisji wspomnień"
+    },
+    {
+      "PhaseId": "T13_P2",
+      "PhaseType": "TRANSMISSION_SESSION",
+      "Description": "Andrzej siada w fotelu transmisji.",
+      "EstimatedDuration_sec": 180,
+      "PlayerActions": [
+        "TAP by zatwierdzić połączenie",
+        "Obserwuj wspomnienia Andrzeja materializujące się wokół",
+        "Słuchaj głosu Zuzi przez transmisję"
+      ],
+      "CameraHint": "W wizji: sfotografuj wspomnienie Zuzi — niebieski sweter z T09",
+      "NPCBehaviors": [
+        "Batista monitoruje dane transmisji"
+      ]
+    },
+    {
+      "PhaseId": "T13_P3",
+      "PhaseType": "QTE",
+      "Description": "Cień w transmisji próbuje przerwać połączenie.",
+      "EstimatedDuration_sec": 30,
+      "PlayerActions": [
+        "TAP rytmicznie — Andrzej 'trzyma' połączenie",
+        "Fail: transmisja się urywa — Andrzej przebudza się i próbuje ponownie"
+      ]
+    },
+    {
+      "PhaseId": "T13_P4",
+      "PhaseType": "CUTSCENE",
+      "Description": "Głos Zuzi przez transmisję: 'Tato... idę śladami twoich zdjęć.'",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Tylko słuchaj — 15 sekund."
+      ]
+    },
+    {
+      "PhaseId": "T13_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej wysiada z fotela.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T13_ZUZIA_GLOS",
+        "Hint": "Sfotografuj moment gdy słyszysz głos Zuzi — tylko audio, ale aparatem nagrywasz 'falę dźwiękową'",
+        "PhotoReward": "Album: PIERWSZY RAZ GŁOS ZUZI. Zapis fali dźwiękowej jako zdjęcie. 'Słyszałem ją.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T13_WSPOMNIENIA",
+        "Hint": "Holograficzne wspomnienia wokół fotela",
+        "PhotoReward": "Album: mozaika wspomnień — Andrzej, Zuzia, most w Cieszynie",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T13_BATISTA_KONSOLA",
+        "Hint": "Batista przy konsoli — skupiony",
+        "PhotoReward": "Album: 'Wierny. Od 1983.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_ZAPIS_GLOSU",
+      "Name": "Zapis głosu Zuzi z transmisji",
+      "Location": "W aparacie po sesji transmisji",
+      "Description": "'Tato... idę śladami twoich zdjęć.'"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_TransmisjaWspomnien — oniryczny, gęsty, fale",
+    "AmbientSounds": [
+      "Szum transmisji",
+      "Echolalie wspomnień",
+      "Odległe głosy"
+    ],
+    "SFX": [
+      "SFX_Transmission_Start",
+      "SFX_Voice_Child_Transmission",
+      "SFX_Camera_Record"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Neuro-interfejs — miękki, zaokrąglony, purpurowy",
+    "DialogueBoxStyle": "Wspomnienie — rozmazane krawędzie"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T13_SALA",
+        "StoryNodeRef": "T13_01_010",
+        "Description": "Centrum transmisji"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej z zapisem głosu Zuzi.",
+  "NextLevel": "T14",
+  "CityMap": {
+    "_doc": "Mapa lokacji T13 — Centrum Transmisji Wspomnień, 2150.",
+    "LocationType": "Centrum medyczne / neurotechnologiczne — transmisje neuro",
+    "RealWorldRef": "Fikcja 2150. Centrum Neuro-Transmisji Wspomnień — jak szpital ale dla wspomnień.",
+    "Scale": "Budynek miejski: lobby + sale zabiegowe + konsola techniczna",
+    "Zones": [
+      {
+        "ZoneId": "Z13_LOBBY_2150",
+        "Name": "Lobby centrum 2150",
+        "Description": "Futurystyczne, spokojne jak spa. Hologramy wspomnień klientów na ścianach.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RECEPCJA_2150",
+            "Name": "Recepcja 2150",
+            "Description": "Asystent-AI. 'Zapraszamy. Twoje wspomnienia są bezpieczne.'",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_HOLOGRAMY_KLIEN",
+            "Name": "Hologramy wspomnień klientów",
+            "Description": "Na ścianach — jak zdjęcia w ramkach, ale ruchome.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z13_SALA_TRANSMISJI",
+        "Name": "Sala transmisji",
+        "Description": "Okrągła sala z fotelami transmisji. Miękkie fioletowe światło.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_FOTEL_TRANSMISJI",
+            "Name": "Fotel transmisji",
+            "Description": "Jak fotel dentystyczny z koroną neuronalną. Andrzej siada.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KORONA_NEURALNA",
+            "Name": "Korona neuralna",
+            "Description": "Delikatna metalowa siatka na głowie — łączy z siecią wspomnień.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_HOLOGRAM_WSPOMNIEN",
+            "Name": "Hologram wspomnień wokół fotela",
+            "Description": "Po połączeniu — wspomnienia materializują się wokół.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z13_KONSOLA_BATISTY",
+        "Name": "Konsola operatora (Batista)",
+        "Description": "Batista przy konsoli. Ekrany z parametrami transmisji.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KONSOLA_TRANSMISJI",
+            "Name": "Konsola transmisji",
+            "Description": "Batista monitoruje dane — tętno, fale mózgowe, siłę połączenia.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z13_KORYTARZ_PAMIEC",
+        "Name": "Korytarz wspomnień",
+        "Description": "Korytarz z półprzezroczystymi drzwiami — za każdymi cudze wspomnienie.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_OKNO_CUDZEJ_PAMIECI",
+            "Name": "Okno cudzej pamięci",
+            "Description": "Przez szybę widać czyjąś pamięć — jak film.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Eksploracja opcjonalna"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R13_LOBBY_SALA",
+        "Name": "Lobby → Sala transmisji",
+        "From": "Z13_LOBBY_2150",
+        "To": "Z13_SALA_TRANSMISJI",
+        "Description": "Po zapisaniu się"
+      },
+      {
+        "RouteId": "R13_SALA_KONSOLA",
+        "Name": "Sala → Konsola",
+        "From": "Z13_SALA_TRANSMISJI",
+        "To": "Z13_KONSOLA_BATISTY",
+        "Description": "Batista obok"
+      },
+      {
+        "RouteId": "R13_KORYTARZ_OPC",
+        "Name": "Sala → Korytarz",
+        "From": "Z13_SALA_TRANSMISJI",
+        "To": "Z13_KORYTARZ_PAMIEC",
+        "Description": "Opcjonalne"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Style": "Spa + szpital + galeria sztuki",
+      "Temperature": "Ciepłe 22°C — komfortowe dla transmisji",
+      "Sounds": [
+        "Delikatna muzyka neuro-uspokajająca",
+        "Szum transmisji podczas sesji",
+        "Głosy ze wspomnień"
+      ],
+      "LightSources": [
+        "Fioletowe LED",
+        "Hologramy wspomnień",
+        "Słabe naturalne przez okna"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Plan spa/medyczny — okrągłe sale, miękkie kolory",
+      "Scale": "1:300",
+      "ActiveZone": "Sala transmisji podświetlona gdy Andrzej w sesji"
+    }
+  }
+}

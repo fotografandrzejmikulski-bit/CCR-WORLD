@@ -1,0 +1,377 @@
+{
+  "_doc": "LEVEL DESIGN — T03 | ŁĘCZNA–LUBLIN 2010. Weronika = była żona, David = kochanek. Oboje blokują. Andrzej na klatce schodowej bloku.",
+  "LevelId": "T03",
+  "AxisId": "T03",
+  "StoryChunkRef": "T03_01",
+  "Title": "ŁĘCZNA – LUBLIN",
+  "Subtitle": "2010–2018",
+  "EstimatedDurationMinutes": 18,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "Łęczna, blok mieszkalny przy ul. Kościuszki",
+    "Era": "Współczesna Polska, 2010",
+    "TimeOfDay": "Późne popołudnie — szare listopadowe niebo",
+    "Weather": "Zimno, wilgoć, liście na mokrym betonie",
+    "MainScene": "Wejście do bloku z lat 70. — klatka schodowa z metalowymi skrzynkami pocztowymi, latarnia przed wejściem, gazetka osiedlowa na ścianie",
+    "SubScenes": [
+      "Klatka schodowa — ciasna, linoleum, numer piętra na ścianie",
+      "Przed drzwiami mieszkania — David i Weronika za progiem",
+      "Osiedlowy parking z autami z epoki"
+    ],
+    "LightingMood": "Żółte świetlówki klatki. Zimne popołudniowe światło przez okno klatki.",
+    "KeyVisualElement": "Weronika (różowo-blond włosy) i David (masywny, flanelowa koszula) za drzwiami — już w sylwetkach kontrast"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. Tatuaże szokują sąsiadów na klatce.",
+      "InitialPosition": "przed blokiem"
+    },
+    {
+      "CharacterId": "WERONIKA",
+      "Description": "Blondynka z różowymi pasemkami, wyzywający strój — obcisła bluzka z dekoltem, szpilki W bloku z lat 70. Zimna. Stoi za Davidem.",
+      "InitialPosition": "za Davidem w drzwiach"
+    },
+    {
+      "CharacterId": "DAVID",
+      "Description": "Masywny, flanelowa koszula w kratę, zaniedbany zarost, kapcie. Telefon gotowy do zadzwonienia na policję.",
+      "InitialPosition": "blokuje drzwi"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T03_P1",
+      "PhaseType": "EXPLORATION",
+      "EstimatedDuration_sec": 90,
+      "Description": "Andrzej szuka numeru mieszkania. Eksploracja klatki — skrzynki pocztowe, gazetki.",
+      "PlayerActions": [
+        "Tap na skrzynkę pocztową by sprawdzić imiona",
+        "Fotografuj atmosferę bloku",
+        "Znajdź listę lokatorów przy wejściu"
+      ],
+      "CameraHint": "Sfotografuj tabliczkę z numerem mieszkania — wpis: 'Tu mieszka Zuzia.'"
+    },
+    {
+      "PhaseId": "T03_P2",
+      "PhaseType": "DIALOGUE",
+      "EstimatedDuration_sec": 120,
+      "Description": "Konfrontacja przy drzwiach. David blokuje. Weronika atakuje słowami.",
+      "PlayerActions": [
+        "Tap by przejść linie dialogowe",
+        "Wybór: odwołać się do Weroniki jako matki / milczeć i szukać innej drogi"
+      ],
+      "NPCBehaviors": [
+        "DAVID trzyma uchylone drzwi jedną ręką, drugą sięga po telefon",
+        "WERONIKA krzyczy przez szczelinę"
+      ]
+    },
+    {
+      "PhaseId": "T03_P3",
+      "PhaseType": "QTE",
+      "EstimatedDuration_sec": 25,
+      "Description": "QTE: Andrzej wślizguje się na klatkę zanim David zatrzaśnie drzwi.",
+      "PlayerActions": [
+        "SWIPE RIGHT — szybkie wślizgnięcie",
+        "Fail: drzwi zatrzaskują się, Andrzej odskakuje, QTE powtórka"
+      ],
+      "CameraHint": "Po udanym QTE: sfotografuj numer drzwi — ślad dla Albumu"
+    },
+    {
+      "PhaseId": "T03_P4",
+      "PhaseType": "DIALOGUE_HOSTILE",
+      "EstimatedDuration_sec": 60,
+      "Description": "Weronika wrzeszczy w korytarzu. David dzwoni na policję.",
+      "PlayerActions": [
+        "Tap by przejść linie",
+        "Andrzej słyszy za drzwiami dźwięk Zuzi — opcja: press-and-hold drzwi by nasłuchiwać"
+      ],
+      "CameraHint": "Sfotografuj drzwi z wizytówką — 'Tu jest Zuzia. Za tymi drzwiami.'"
+    },
+    {
+      "PhaseId": "T03_P5",
+      "PhaseType": "TRANSITION",
+      "EstimatedDuration_sec": 15,
+      "Description": "Sygnał policji w oddali. Andrzej musi wyjść.",
+      "PlayerActions": [
+        "Tap żeby wyjść"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T03_TABLICZKA",
+        "Hint": "Tabliczka z numerem mieszkania Weroniki i Davida",
+        "PhotoReward": "Album: 'Tutaj. Zuzia jest za tymi drzwiami.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T03_WERONIKA_PORTRET",
+        "Hint": "Weronika przez uchylone drzwi",
+        "PhotoReward": "Album: 'Moja była żona. Nie poznaję jej już.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T03_CIEN_KLATKA",
+        "Hint": "Cień Andrzeja na ścianie klatki — deformuje się od zimna",
+        "PhotoReward": "Album: zarys Cienia — bardziej wyraźny",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T03_SKRZYNKA_POCZTOWA",
+        "Hint": "Skrzynka z napisem 'M. Kowalski / D. Nowak / Zuzia'",
+        "PhotoReward": "Album: 'Jej imię. Na skrzynce. Rzeczywiste.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KARTECZKA_T03",
+      "Name": "Karteczka od Zuzi",
+      "Location": "Wypadła ze skrzynki pocztowej",
+      "Description": "Mały rysunek słońca narysowany przez Zuzię — adres po drugiej stronie"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Leczna — ambient bloku, dalekie telewizory przez ściany",
+    "AmbientSounds": [
+      "TV z sąsiedniego mieszkania",
+      "Winda z brzękiem",
+      "Kapanie z kranu",
+      "Policyjne radio w oddali"
+    ],
+    "SFX": [
+      "SFX_Door_Slam",
+      "SFX_Phone_Dialing",
+      "SFX_Camera_Shutter"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Współczesny, minimalny — jak interfejs smartfona",
+    "DialogueBoxStyle": "Nowoczesny dymek SMS — portret Weroniki (różowe włosy) i Davida",
+    "QTEIndicator": "Drzwi z animowanym zamkiem — swipe prawda (strzałka) zanim zaskoczy"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T03_BLOK",
+        "StoryNodeRef": "T03_01_010",
+        "Description": "Andrzej przed blokiem"
+      },
+      {
+        "CheckpointId": "CP_T03_QTE",
+        "StoryNodeRef": "T03_01_060",
+        "Description": "Andrzej na klatce"
+      }
+    ]
+  },
+  "LevelEndCondition": "Sygnał policyjny. Andrzej wychodzi przez tylne wyjście.",
+  "NextLevel": "T04",
+  "CityMap": {
+    "_doc": "Mapa lokacji T03 — Łęczna, 2010. Osiedle bloków z lat 70.",
+    "LocationType": "Polskie miasteczko — osiedle mieszkaniowe z wielkiej płyty",
+    "RealWorldRef": "Łęczna, woj. lubelskie. Ul. Kościuszki i okolice. Bloki z lat 70.",
+    "Scale": "Mały obszar: jeden blok + otoczenie",
+    "NavigationStyle": "Liniowa — od wejścia na osiedle do klatki schodowej bloku",
+    "Zones": [
+      {
+        "ZoneId": "Z03_OSIEDLE_WEJSCIE",
+        "Name": "Wejście na osiedle",
+        "Description": "Chodnik z lipami (jesień, liście na ziemi). Parkometr zepsuty. Ławka z napisami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_TABLICA_OSIEDLE",
+            "Name": "Tablica 'Osiedle Kościuszki'",
+            "Description": "Metalowa, rdzewiejąca. Numer bloku: 12A.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_LAWKA_GRAFFITI",
+            "Name": "Ławka z graffiti",
+            "Description": "'Zuzia + ?' — świeże, kredowe. Może ona tu była?",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z03_PARKING",
+        "Name": "Osiedlowy parking",
+        "Description": "Stare auta: Maluch, Polonez, Syrena. Błoto i popękany asfalt.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_MALUCH",
+            "Name": "Stary Maluch",
+            "Description": "Rdzewiejący Fiat 126p — rozbite lusterko. Coś pod wycieraczką.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_GARAZ",
+            "Name": "Blaszane garaże",
+            "Description": "Rzęd garaży. W jednym słychać radio.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z03_WEJSCIE_BLOKU",
+        "Name": "Wejście do bloku 12A",
+        "Description": "Domofon zepsuty (zawsze otwarte). Skrzynki pocztowe z nazwiskami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SKRZYNKI",
+            "Name": "Skrzynki pocztowe",
+            "Description": "Imiona: 'KOWALSKI', 'D. NOWAK / W. NOWAK / ZUZIA'. Zuzia na skrzynce!",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_DOMOFON_ZEPSUTY",
+            "Name": "Domofon zepsuty",
+            "Description": "Drut przy domofonie — otwiera bez kodu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_GAZETKA_OSIEDLOWA",
+            "Name": "Gazetka osiedlowa",
+            "Description": "'Zebranie wspólnoty 15 XI'. Karteczka: 'Sprzedam wózek'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z03_KLATKA_SCHODOWA",
+        "Name": "Klatka schodowa",
+        "Description": "Linoleum, żółte ściany, latarnia na każdym podejściu. Zapach: proszek do prania + obiad.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_DRZWI_MIESZKANIA",
+            "Name": "Drzwi mieszkania 4B",
+            "Description": "Beżowe drzwi. David stoi za nimi. Weronika widoczna przez szybkę.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_NUMER_PIETRA",
+            "Name": "Numer '4. PIĘTRO'",
+            "Description": "Naklejona cyfra 4 na linoleum.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_OKNO_KLATKI",
+            "Name": "Okno na klatce",
+            "Description": "Widok na parking i lipy. Szare listopadowe niebo.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z03_PODWORKO",
+        "Name": "Podwórko za blokiem",
+        "Description": "Piaskownica (pusta w listopadzie), stary plac zabaw. Tylne wyjście z bloku.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_PIASKOWNICA",
+            "Name": "Pusta piaskownica",
+            "Description": "Łopata i foremki dziecięce zostały. Czy to Zuzi?",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_TYLNE_WYJSCIE",
+            "Name": "Tylne drzwi bloku",
+            "Description": "Metalowe, z dźwignią. Używane jako ucieczka.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Do tylnego wyjścia, gdy policja przyjedzie"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R03_START",
+        "Name": "Przystanek → Osiedle",
+        "From": "START",
+        "To": "Z03_OSIEDLE_WEJSCIE",
+        "Description": "Andrzej wysiada z autobusu",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R03_OSIEDLE_PARKING",
+        "Name": "Osiedle → Parking",
+        "From": "Z03_OSIEDLE_WEJSCIE",
+        "To": "Z03_PARKING",
+        "Description": "Chodnik między blokami",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R03_PARKING_WEJSCIE",
+        "Name": "Parking → Wejście bloku",
+        "From": "Z03_PARKING",
+        "To": "Z03_WEJSCIE_BLOKU",
+        "Description": "Boczny chodnik",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R03_WEJSCIE_KLATKA",
+        "Name": "Wejście → Klatka schodowa",
+        "From": "Z03_WEJSCIE_BLOKU",
+        "To": "Z03_KLATKA_SCHODOWA",
+        "Description": "Przez domofon (zepsuty)",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R03_UCIECZKA",
+        "Name": "Klatka → Podwórko",
+        "From": "Z03_KLATKA_SCHODOWA",
+        "To": "Z03_PODWORKO",
+        "Description": "Przez tylne drzwi — ucieczka przed policją",
+        "IsWalkable": true
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Chłodny listopad — ok. 4°C",
+      "Weather": "Sucho ale szaro. Liście na chodnikach.",
+      "LightSources": [
+        "Żółte świetlówki na klatce",
+        "Latarnie osiedlowe",
+        "Telewizor przez okna mieszkań"
+      ],
+      "NPC_Density": "Niska — 2-3 sąsiadki wracają z zakupów",
+      "NPC_Behaviors": [
+        "Starsze kobiety z siatkami z zakupów",
+        "Patrzą podejrzliwie na Andrzeja (tatuaże)",
+        "David dzwoni na policję"
+      ],
+      "Sounds": [
+        "TV z mieszkań (Wiadomości TVP)",
+        "Ktoś gotuje (pachnie kapustą)",
+        "Dziecko krzyczy 2 piętra wyżej",
+        "Syrena policji w oddali"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Nowoczesna minimalistyczna — jak Google Maps dla małego osiedla",
+      "Scale": "1:300",
+      "PlayerIcon": "Zielona kropka z kółkiem aparatu",
+      "AlarmZone": "Czerwone kółko przy klatce B — strefa alarmu gdy David dzwoni na policję",
+      "EscapeRoute": "Przerywana linia od klatki do podwórka — widoczna gdy gracz wchodzi na klatkę"
+    }
+  }
+}

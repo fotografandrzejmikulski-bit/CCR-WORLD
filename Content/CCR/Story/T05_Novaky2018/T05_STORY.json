@@ -1,0 +1,134 @@
+{
+  "_doc": "UCCRStoryChunk – NOVAKY · Słowacja · 2018–2023 | Axis: T05.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T05_01",
+      "path": "Content/CCR/Story/T05_Novaky2018/",
+      "ChunkId": "T05_01",
+      "AxisId": "T05",
+      "EntryNodeId": "T05_01_010",
+      "ChapterTitle": "NOVAKY",
+      "ChapterSubtitle": "Słowacja · 2018–2023",
+      "_narrative": "Nováky, Słowacja – przemysłowe miasto z elektrownią węglową. Batista jest robotnikiem-emigrantem. Cień próbuje odciąć Andrzejowi drogę wyjścia z tej osi czasu, uwięzić go tu na zawsze.",
+      "_gameplay": "QTE: Swipe Down – Andrzej kuca za kontenerem gdy Cień przeszukuje magazyn. Wybór: uciekać z Batistą (szybciej, ryzyko) lub czekać na zmianę warty (bezpieczniej, wolniej). Obie ścieżki prowadzą do wyjścia z osi.",
+      "_visual": "Słowackie miasto przemysłowe – chłodnie, komin elektrowni, bloki dla pracowników. Paleta: popielate brązy i industrialne szarości, dym nad miastem. UI: słowackie znaki drogowe. Muzyka: MUS_Novaky z przemysłowym basem.",
+      "Nodes": [
+        {
+          "NodeId": "T05_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Nováky. Słowacja 2018. Dym z komina zasłania niebo. Jestem tu jako robotnik – nikt nie pyta o dokumenty jeśli dźwigasz ciężko i nie pytasz za dużo. Ale Cień mnie znalazł i tym razem chce mnie tu zatrzymać na zawsze.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T05_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T05_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "Pomyśl, Andrzeju. Ile już osi przeszedłeś? Ile czasu straciłeś? Ja zostałem w jednym miejscu i mam spokój. Zostań tu ze mną. Robotnicy nie pytają, elektrownia pali przez całą dobę. Można o wszystkim zapomnieć.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T05_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T05_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_CIEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T05_01_040"
+        },
+        {
+          "NodeId": "T05_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Nie zatrzymasz mnie, Cieniu. Zuzia jest ważniejsza niż spokój.",
+              "TargetNodeId": "T05_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Może masz rację. Ale ja nie potrafię zapomnieć. To moja córka.",
+              "TargetNodeId": "T05_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T05_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Down",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T05_01_060",
+          "QTEFailNodeId": "T05_01_052"
+        },
+        {
+          "NodeId": "T05_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Cień usłyszał moje kroki na żwirze. Muszę być ciszej – kucnąć niżej.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T05_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T05_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Za kontenerem. Cień przeszedł obok mnie o metr. Batista czeka przy wyjściu – czas działać.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T05_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T05_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "Vamos! Mam drogę do granicy, ciężarówka odjeżdża za godzinę. Nie wiem kto jest tym twoim cieniem, ale widziałem jego oczy – to oczy człowieka który już się poddał. Ty jeszcze nie. Chodź.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T05_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T05_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T05_01_090"
+        },
+        {
+          "NodeId": "T05_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T05_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T05_01_999"
+        },
+        {
+          "NodeId": "T05_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T06_01",
+          "EntryNodeInTarget": "T06_01_010"
+        }
+      ]
+    }
+  ]
+}

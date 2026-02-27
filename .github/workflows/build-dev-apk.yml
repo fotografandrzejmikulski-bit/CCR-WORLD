@@ -1,0 +1,116 @@
+# .github/workflows/build-dev-apk.yml
+#
+# Builds the CCR WORLD developer APK and uploads it as a downloadable
+# GitHub Actions artifact.  No adb or USB debugging needed — just
+# download the artifact from the Actions tab and tap to install.
+#
+# ┌─────────────────────────────────────────────────────────────────┐
+# │  REQUIREMENTS                                                   │
+# │  This workflow runs on a SELF-HOSTED runner that must have:     │
+# │  • Unreal Engine 5.3 installed (set UE5_ROOT below)             │
+# │  • Android SDK / NDK (set ANDROID_HOME / ANDROID_NDK_HOME)      │
+# │  • Java 11+                                                     │
+# │  Register a runner: Settings → Actions → Runners → New runner   │
+# └─────────────────────────────────────────────────────────────────┘
+#
+# Triggers:
+#   • Manual run (workflow_dispatch) — always available
+#   • Push to main or dev/* branches
+#   • Tag push v*.*.* — also creates a GitHub Release with the APK
+
+name: Build Dev APK
+
+# Restrict the default GITHUB_TOKEN permissions.
+# The release job overrides this with contents: write where needed.
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev/**'
+      - 'copilot/**'
+    tags:
+      - 'v*.*.*'
+
+env:
+  # ── Adjust these paths to match your self-hosted runner ───────────
+  UE5_ROOT: "C:/Program Files/Epic Games/UE_5.3"   # Windows runner
+  # UE5_ROOT: "/home/runner/UnrealEngine"           # Linux runner
+
+jobs:
+  build-dev-apk:
+    name: Build Developer APK (no-adb)
+    runs-on: [self-hosted, Windows, UE5]   # must match your runner labels
+    permissions:
+      contents: write   # needed only for the GitHub Release step on tag push
+
+    steps:
+      # ── 1. Checkout ────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      # ── 2. Build the self-contained developer APK ──────────────────
+      - name: Cook & package CCRDev (Development / Android)
+        shell: cmd
+        run: |
+          "%UE5_ROOT%\Engine\Build\BatchFiles\RunUAT.bat" BuildCookRun ^
+            -project="%GITHUB_WORKSPACE%\CCR.uproject" ^
+            -targetplatform=Android ^
+            -target=CCRDev ^
+            -configuration=Development ^
+            -cook -build -stage -package ^
+            -archive ^
+            -archivedirectory="%GITHUB_WORKSPACE%\Builds\DevAPK" ^
+            -nodebuginfo ^
+            -utf8output
+
+      # ── 3. Locate the APK ──────────────────────────────────────────
+      # UE5 places the APK in the archive directory under Android_Development/
+      - name: Find APK path
+        id: find_apk
+        shell: pwsh
+        run: |
+          $apk = Get-ChildItem -Recurse `
+            -Path "$env:GITHUB_WORKSPACE\Builds\DevAPK" `
+            -Filter "*.apk" |
+            Select-Object -First 1
+          if (-not $apk) { Write-Error "APK not found!"; exit 1 }
+          Write-Output "APK found: $($apk.FullName)"
+          "apk_path=$($apk.FullName)" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "apk_name=$($apk.Name)"     | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      # ── 4. Upload as workflow artifact ─────────────────────────────
+      # Download from: Actions tab → this run → Artifacts → CCR-dev-apk
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CCR-dev-apk
+          path: ${{ steps.find_apk.outputs.apk_path }}
+          retention-days: 30
+          if-no-files-found: error
+
+      # ── 5. On tag push: create a GitHub Release with the APK ───────
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "CCR WORLD dev ${{ github.ref_name }}"
+          body: |
+            ## Developer build — tap-to-install APK
+
+            Download **${{ steps.find_apk.outputs.apk_name }}** and install it directly on your Android device:
+
+            1. Download the `.apk` file attached below.
+            2. Open it from your file manager or Google Drive.
+            3. If prompted, allow "Install unknown apps" for the app you used to open the file.
+            4. Tap **Install**.
+
+            No adb or USB debugging required.
+          files: ${{ steps.find_apk.outputs.apk_path }}
+          draft: false
+          prerelease: true

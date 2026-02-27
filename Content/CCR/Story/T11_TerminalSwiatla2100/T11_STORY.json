@@ -1,0 +1,143 @@
+{
+  "_doc": "UCCRStoryChunk – TERMINAL ŚWIATŁA · 2100 | Axis: T11. David i Weronika (żona Andrzeja i kochanek) blokują terminal. Weronika NIE pomaga — oboje wrogowie. Andrzej działa bez żadnej pomocy z ich strony.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T11_01",
+      "path": "Content/CCR/Story/T11_TerminalSwiatla2100/",
+      "ChunkId": "T11_01",
+      "AxisId": "T11",
+      "EntryNodeId": "T11_01_010",
+      "ChapterTitle": "TERMINAL ŚWIATŁA",
+      "ChapterSubtitle": "2100",
+      "_narrative": "Rok 2100. Orbitalny terminal kosmiczny. David i Weronika – była żona Andrzeja i jej kochanek – wspólnie zarządzają blokadą terminalu transmisyjnego. Żadne z nich nie wykazuje żadnej empatii ani chęci pomocy. Andrzej musi ominąć ich blokadę siłą i sprytem. Cień sabotuje system. Evy tu nie ma.",
+      "_gameplay": "QTE: Swipe Left – Andrzej omija blokadę Davida przy bramce dostępu. Wybór: konfrontacja z Davidem (głośno, David i Weronika razem kontrują) lub cicha droga boczna (wolniej, bez bezpośredniej konfrontacji). Weronika pozostaje wroga – pilnuje drugiego wejścia.",
+      "_visual": "Stacja orbitalna 2100 – widok Ziemi przez panoramiczne szyby, terminale transmisyjne, brak grawitacji w korytarzach bocznych. Paleta: sterylna biel z błękitem orbity, holograficzne mapy. UI: interfejs kosmiczny. Muzyka: MUS_TerminalSwiatla – przestrzenny ambient.",
+      "Nodes": [
+        {
+          "NodeId": "T11_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Terminal Światła, 2100. Orbita niska. David i Weronika – moja była żona z kochankiem – stoją przy terminalu jak dwa zamki na drzwiach. Ale Terminal T11 to klucz do T19. Muszę przejść. Nikt mi tu nie pomoże.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T11_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T11_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "Andrzej, terminal jest zablokowany przez Radę Czasu. Mam certyfikat nadrzędny. Nie ma wyjątku – ani dla ciebie, ani dla nikogo bez autoryzacji. I to jest finalne.",
+          "ExpressionTag": "Cold",
+          "NextAfterDialogue": "T11_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T11_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T11_01_035"
+        },
+        {
+          "NodeId": "T11_01_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(przy bocznym wejściu, z pogardą) Nawet nie myśl o bocznym korytarzu, Andrzej. Pilnuję go od roku. Nie przejdziesz tędy ani dziś ani nigdy.",
+          "ExpressionTag": "Contemptuous",
+          "NextAfterDialogue": "T11_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T11_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "David – mam koordynaty T19. Terminal jest jedyną drogą. Posłuchaj.",
+              "TargetNodeId": "T11_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Milczeć i szukać trzeciego wejścia – z tyłu stacji.",
+              "TargetNodeId": "T11_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T11_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Left",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T11_01_060",
+          "QTEFailNodeId": "T11_01_052"
+        },
+        {
+          "NodeId": "T11_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Bramka mnie odrzuciła. David i Weronika razem. Muszę szybciej – bez rozmawiania z nimi.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T11_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T11_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "Jestem przy terminalu. David wrzeszczy, Weronika biegnie w moją stronę. Mam trzydzieści sekund zanim tu dotrze. Terminal jest aktywny. Nikt mi nie pomógł – i nie potrzebowałem.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T11_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T11_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "(wewnętrzny monolog przy terminalu) Weronika – byłaś moją żoną. David był twoim kochankiem. Razem przez lata odcinaliście mnie od Zuzi. Teraz stoję przy Terminalu T11 i nie potrzebuję ani sekundy więcej waszej łaski. Nigdy jej nie daliście.",
+          "ExpressionTag": "Resolved",
+          "NextAfterDialogue": "T11_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T11_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T11_01_090"
+        },
+        {
+          "NodeId": "T11_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T11_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T11_01_999"
+        },
+        {
+          "NodeId": "T11_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T12_01",
+          "EntryNodeInTarget": "T12_01_010"
+        }
+      ]
+    }
+  ]
+}

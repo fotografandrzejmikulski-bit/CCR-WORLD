@@ -1,0 +1,413 @@
+{
+  "_doc": "LEVEL DESIGN — T02 | WARSZAWA · 1983. PRL. Kafka w podziemiu, Batista student z wymiany.",
+  "LevelId": "T02",
+  "AxisId": "T02",
+  "StoryChunkRef": "T02_01",
+  "Title": "WARSZAWA",
+  "Subtitle": "1983",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "Warszawa, 1983 — szare bloki mieszkalne, urząd stanu cywilnego, piwnica Kafki",
+    "Era": "PRL — Polska Rzeczpospolita Ludowa, stan wojenny właśnie minął",
+    "TimeOfDay": "Popołudnie — szare niebo, mglisty dzień",
+    "Weather": "Zimno, lekka mżawka",
+    "MainScene": "Ulica z szarymi blokami, kolejka do okienka urzędowego, piwnica gdzie działa Kafka",
+    "SubScenes": [
+      "Urząd Stanu Cywilnego — kolejka z numerkami",
+      "Piwnica Kafki — podziemna drukarnia/archiwum",
+      "Sklep mięsny z pustymi półkami (estetyka PRL)",
+      "Blok mieszkalny gdzie Batista ma pokój studencki"
+    ],
+    "LightingMood": "Przytłumione, zimne, świetlówkowe wnętrza kontra ciemnoszara ulica",
+    "AmbientDescription": "Tramwaj w oddali, dźwięk kolejki w biurze, radiowy głos lektor MSZ",
+    "KeyVisualElement": "Tatuaże Andrzeja — w PRL-u absolutnie anomalia. Ludzie patrzą."
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "Mężczyzna, ~35 lat. Modna fryzura, rogowe okulary. Beżowa koszula (rękawy zawinięte), spodnie w kratę brązowo-kremową, brązowy skórzany pasek. Tatuaże pokrywające całą szyję, oba ramiona i dłonie. Aparat fotograficzny na pasku przez ramię.",
+      "CameraStatus": "equipped",
+      "PhotoReadiness": true,
+      "OutfitVariant": "Identyczny strój + zimowa marynarka i szalik. Aparat przez ramię — też ewenement w 1983.",
+      "InitialPosition": "Na chodniku przy blokach",
+      "Note": "Tatuaże Andrzeja są WIDOCZNE i anachroniczne — ludzie na ulicy patrzą z niepokojem"
+    },
+    {
+      "CharacterId": "KAFKA",
+      "SceneDescription": "PRL-owski inteligent — garnitur z lat 70., niedbale zawiązany krawat. Nerwowy, ciągle odwraca się.",
+      "InitialPosition": "piwnica — drugi poziom"
+    },
+    {
+      "CharacterId": "BATISTA",
+      "SceneDescription": "Student z wymiany — Levi's i kurtka. Wyróżnia się w szarym tłumie. Szeroki uśmiech.",
+      "InitialPosition": "kolejka w urzędzie"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T02_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Andrzej na ulicy Warszawy 1983. Orientacja w terenie. Obserwacja PRL-u.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Spacer po ulicy — tap na obiekty: plakaty propagandowe, kolejki, defilada przez radio",
+        "Fotografuj ulicę — bonusy artystyczne",
+        "Znajdź ukryte drzwi do piwnicy Kafki"
+      ],
+      "CameraHint": "FOTOGRAFIA: Plakaty propagandowe — fotografując je Andrzej nagrywa 'nielegalne archiwum PRL-u' (bonus)",
+      "NPCBehaviors": [
+        "Przechodnie patrzą na tatuaże Andrzeja z niepokojem",
+        "Milicjant obserwuje z odległości"
+      ]
+    },
+    {
+      "PhaseId": "T02_P2",
+      "PhaseType": "STEALTH_LIGHT",
+      "Description": "Andrzej musi ominąć kamerę milicji przy urzędzie bez dokumentów.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Obserwuj rytm patrolowania kamery (pauza 3s)",
+        "QTE SWIPE LEFT — Andrzej odwraca się od kamery gdy patrzy",
+        "Przy porażce: kamera rejestruje — Andrzej wraca i próbuje ponownie"
+      ],
+      "CameraHint": "Możesz fotografować kamerę milicji by zobaczyć jej kąt patrolowania",
+      "NPCBehaviors": [
+        "Milicjant przy urzędzie patrzy w prawo i lewo"
+      ]
+    },
+    {
+      "PhaseId": "T02_P3",
+      "PhaseType": "DIALOGUE",
+      "Description": "Spotkanie z Kafką w piwnicy.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap żeby przejść linie dialogowe",
+        "Wybór: zaufać Kafce pełni (daje więcej wskazówek) lub zachowywać ostrożność",
+        "Opcja fotografowania dokumentów w piwnicy Kafki"
+      ],
+      "CameraHint": "Dokumenty Kafki z sygnaturą blokady — sfotografuj by dodać dowód do Albumu"
+    },
+    {
+      "PhaseId": "T02_P4",
+      "PhaseType": "DIALOGUE_BATISTA",
+      "Description": "Batista w urzędzie — pomaga znaleźć metrykalną informację o Zuzi.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap żeby przejść linie dialogowe",
+        "Fotografuj okienko urzędowe — estetyka PRL w Albumie"
+      ]
+    },
+    {
+      "PhaseId": "T02_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Wyjście z Warszawy. Andrzej z karteczką metrykalną.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Automatyczna animacja wyjścia"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T02_PLAKATY",
+        "Hint": "Plakaty propagandowe na ulicy",
+        "PhotoReward": "Album: 'Propaganda. Kłamstwo na każdym kroku. Jak znaleźć prawdę?'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T02_CIEN_WALL",
+        "Hint": "Cień Andrzeja na mokrym asfalcie — pada deszcz",
+        "PhotoReward": "Album: zarys twarzy w Cieniu — coraz bardziej wyraźny niż T01",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T02_DOKUMENTY_KAFKA",
+        "Hint": "Dokumenty Kafki z sygnaturą blokady",
+        "PhotoReward": "Album: 'Dowód nr 1. Ktoś zdecydował.' — wpis kryminalny",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T02_BATISTA_KOLEJKA",
+        "Hint": "Batista w kolejce — uśmiech w szarej kolejce",
+        "PhotoReward": "Album: 'Człowiek który się nie poddaje szarości.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_METRYKA_T02",
+      "Name": "Metrykalna kopia z 1983",
+      "Location": "Okienko urzędowe z pomocą Batisty",
+      "Description": "Dokument z podpisem urzędnika — ślad Zuzi w 1983"
+    },
+    {
+      "ItemId": "ITEM_GAZETA_T02",
+      "Name": "Trybuna Ludu z datą",
+      "Location": "Na ławce przed urzędem",
+      "Description": "Gazeta PRL-owska — data i kontekst osi T02"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_Warsaw83 — zimny ambient radiowy, dalekie tramwaje, syntezator",
+    "AmbientSounds": [
+      "Tramwaj",
+      "Radio MSZ w tle",
+      "Tupanie w kolejce",
+      "Deszcz na szybie"
+    ],
+    "VOLines": [
+      "VO_ANDRZEJ_T02_001",
+      "VO_KAFKA_T02_001",
+      "VO_BATISTA_T02_001"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter — przy fotografowaniu plakatów",
+      "SFX_Door_Heavy_Metal",
+      "SFX_Crowd_Murmur_PRL"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Maszyna do pisania — krój monospace. Ramki jak stare dokumenty.",
+    "DialogueBoxStyle": "Stara maszyna do pisania + stempel urzędowy",
+    "QTEIndicator": "Kamera milicji — pokazuje kąt patrolowania, pasek czasu",
+    "SpecialElements": [
+      "Znacznik kamery milicji na mini-mapie",
+      "Licznik dokumentów znalezionych"
+    ]
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T02_ULICA",
+        "StoryNodeRef": "T02_01_010",
+        "Description": "Andrzej na ulicy Warszawy"
+      },
+      {
+        "CheckpointId": "CP_T02_KAMERA_PASS",
+        "StoryNodeRef": "T02_01_060",
+        "Description": "Ominął kamerę milicji"
+      },
+      {
+        "CheckpointId": "CP_T02_KAFKA",
+        "StoryNodeRef": "T02_01_070",
+        "Description": "Spotkanie z Batistą"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej trzyma metrykalną kopię. Warszawa znika za nim.",
+  "NextLevel": "T03",
+  "CityMap": {
+    "_doc": "Mapa lokacji T02 — Warszawa 1983. PRL. Praga-Południe lub Muranów.",
+    "LocationType": "Polskie miasto PRL — szare blokowisko + centrum administracyjne",
+    "RealWorldRef": "Warszawa — dzielnica Praga lub Śródmieście. Bloki lat 60.-70.",
+    "Scale": "Średni obszar: 3 bloki + urząd + piwnica Kafki",
+    "NavigationStyle": "Otwarty (mała mapa miejska) z blokadami kameralem milicji",
+    "Zones": [
+      {
+        "ZoneId": "Z02_ULICA",
+        "Name": "Ulica Główna",
+        "Description": "Szara ulica PRL — kostkowy bruk, bloki, autobus, kiosk Ruchu.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KIOSK_RUCHU",
+            "Name": "Kiosk Ruchu",
+            "Description": "Gazety: Trybuna Ludu, Przekrój. Kasety za witryną.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_PLAKATY",
+            "Name": "Plakaty propagandowe",
+            "Description": "'Socjalizm budujemy razem.' Na każdej ścianie bloku.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_AUTOBUS",
+            "Name": "Przystanek autobusowy",
+            "Description": "Ogon tramwaju w oddali. Ludzie w szarych płaszczach. kolejka.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z02_BLOK",
+        "Name": "Blok mieszkalny",
+        "Description": "Typowy blok z wielkiej płyty, 11 pięter. Batista ma pokój na 4. piętrze.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_DOMOFON",
+            "Name": "Domofon zepsuty",
+            "Description": "Skrzynki pocztowe z odręcznymi napisami.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_KLATKA_SCHODOWA",
+            "Name": "Klatka schodowa",
+            "Description": "Linoleum, zapach gotowanej kapusty, radio z mieszkania.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z02_URZAD",
+        "Name": "Urząd Stanu Cywilnego",
+        "Description": "Budynek z cegły, neon 'USC'. Kolejka z numerkami. Okienka.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KOLEJKA",
+            "Name": "Kolejka z numerkami",
+            "Description": "20 osób czeka. Batista jest numerem 47.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_OKIENKO",
+            "Name": "Okienko urzędowe",
+            "Description": "Matowe szkło, urzędniczka w niebieskiej bluzce.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAMERA_MILICJI",
+            "Name": "Kamera milicji przy USC",
+            "Description": "Stara kamera przemysłowa. Obraca się co 6 sekund.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z02_PIWNICA_KAFKI",
+        "Name": "Piwnica Kafki",
+        "Description": "Podziemne przejście pod blokiem B. Stare drzwi z kłódką. Maszyna do pisania, dokumenty.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_MASZYNA_DO_PISANIA",
+            "Name": "Maszyna do pisania",
+            "Description": "Eriksson 1967. Papier z adnotacjami Kafki.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_DOKUMENTY_KAFKI",
+            "Name": "Stosy dokumentów",
+            "Description": "Sygnatury blokad systemu. Czarno-białe zdjęcia.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_ROZETKI_SOLIDARNOSC",
+            "Name": "Ukryte rozetki 'S'",
+            "Description": "Małe rozetki Solidarności ukryte za regałem.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Ukryte wejście — od strony parkingu"
+      },
+      {
+        "ZoneId": "Z02_SKLEP_MIESNY",
+        "Name": "Sklep mięsny",
+        "Description": "Puste półki. Kolejka. 'Dziś mamy: zupa i kartofle'. Mapa atmosfery PRL.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_PUSTE_POLKI",
+            "Name": "Puste półki",
+            "Description": "Symbol epoki — tylko ocet i musztarda.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Opcjonalne — po lewej od USC"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R02_START",
+        "Name": "Start → Ulica",
+        "From": "START",
+        "To": "Z02_ULICA",
+        "Description": "Andrzej wychodzi z nieznajomego miejsca na ulicę PRL",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R02_ULICA_USC",
+        "Name": "Ulica → USC",
+        "From": "Z02_ULICA",
+        "To": "Z02_URZAD",
+        "Description": "Prosto przez ulicę, ominąć kamerę milicji",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R02_ULICA_BLOK",
+        "Name": "Ulica → Blok",
+        "From": "Z02_ULICA",
+        "To": "Z02_BLOK",
+        "Description": "Boczna ścieżka — podwórko między blokami",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R02_BLOK_PIWNICA",
+        "Name": "Blok → Piwnica Kafki",
+        "From": "Z02_BLOK",
+        "To": "Z02_PIWNICA_KAFKI",
+        "Description": "Parking, tylne wejście, stare drzwi",
+        "IsWalkable": true
+      },
+      {
+        "RouteId": "R02_SKLEP",
+        "Name": "Ulica → Sklep mięsny",
+        "From": "Z02_ULICA",
+        "To": "Z02_SKLEP_MIESNY",
+        "Description": "Na rogu — między kioskiem a USC",
+        "IsWalkable": true
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Chłodne popołudnie — ok. 5°C",
+      "Weather": "Lekka mżawka, mokry bruk",
+      "LightSources": [
+        "Świetlówki w USC",
+        "Latarnie uliczne — zapalone o 15:30 zimą",
+        "Neon USC"
+      ],
+      "NPC_Density": "Wysoka na ulicy i w kolejce USC. Niska w piwnicy (tylko Kafka).",
+      "NPC_Behaviors": [
+        "Wszyscy w szarych płaszczach",
+        "Patrzą na tatuaże Andrzeja z niepokojem",
+        "Milicjant obserwuje z odległości 15m"
+      ],
+      "Era_Details": "Stan wojenny właśnie minął. Atmosfera nieufności. Niedobory towarów. Radio MSZ w każdym mieszkaniu.",
+      "Sounds_Outdoor": [
+        "Tramwaj co 8 minut",
+        "Radio z okien",
+        "Kroki na mokrym bruku",
+        "Milicyjny samochód w oddali"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Mapa PRL-owska — jak plan miasta z Atlasu Warszawy 1982",
+      "Orientation": "N na górze",
+      "PlayerIcon": "Sylwetka z aparatem i charakterystycznymi tatuażami",
+      "Scale": "1:500 (3 bloki + USC + kiosk)",
+      "BlindSpots": [
+        "Piwnica Kafki (niezaznaczona na mapie — odkrywasz sam)"
+      ],
+      "CameraZones": [
+        "Strefa kamer milicji przy USC — zaznaczona czerwonym sektorem"
+      ]
+    }
+  }
+}

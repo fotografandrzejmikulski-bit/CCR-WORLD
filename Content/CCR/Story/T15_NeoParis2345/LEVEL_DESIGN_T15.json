@@ -1,0 +1,344 @@
+{
+  "_doc": "LEVEL DESIGN — T15 | NEO PARIS · 2345.",
+  "LevelId": "T15",
+  "AxisId": "T15",
+  "StoryChunkRef": "T15_01",
+  "Title": "NEO PARIS",
+  "Subtitle": "2345",
+  "EstimatedDurationMinutes": 22,
+  "DifficultyRating": 3,
+  "Environment": {
+    "Location": "Neo Paris, 2345 — futurystyczny Paryż z zachowaną historyczną architekturą",
+    "Era": "Odległa przyszłość, 2345",
+    "TimeOfDay": "Wieczór — niebiesko-złota godzina. Eiffel Tower z holograficzną powłoką.",
+    "Weather": "Delikatny deszcz — romantycznie",
+    "MainScene": "Neo Paryż — historyczna Wieża Eiffla z holograficzną powłoką danych, latające taxi nad Sekwaną, kawiarnia przy Sekwanie gdzie czeka Eva.",
+    "KeyVisualElement": "Andrzej z aparatem na tle Wieży Eiffla 2345 — jedyne miejsce w grze z takim krajobrazem",
+    "LightingMood": "Złoto-niebieskie — piękny wieczór",
+    "AmbientDescription": "Deszcz, paryska muzyka, latające taksówki"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula, spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Koszula mokra od deszczu. Aparat pod kurtką — chroni przed deszczem. Tatuaże mokre."
+    },
+    {
+      "CharacterId": "EVA",
+      "Description": "Naturalna — rude kręcone włosy mokre od deszczu. Pendrive holograficzny. Ekscytacja na twarzy.",
+      "InitialPosition": "kawiarnia przy Sekwanie"
+    },
+    {
+      "CharacterId": "KAFKA",
+      "Description": "Jedwabna marynarka, notes holograficzny. Ostatni wpis.",
+      "InitialPosition": "wieczorna aleja"
+    },
+    {
+      "CharacterId": "CIEN",
+      "Description": "Cień Andrzeja na mokrym bruku Paryża — reflekcja w kałużach.",
+      "InitialPosition": "chodnik"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T15_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Neo Paryż — eksploracja pięknego futurystycznego miasta.",
+      "EstimatedDuration_sec": 180,
+      "PlayerActions": [
+        "Spacer przez ulice Neo Paryża",
+        "Fotografuj Wieżę Eiffla z hologramem — estetyczny bonus",
+        "Szukaj kawiarni Evy przy Sekwanie"
+      ],
+      "CameraHint": "FOTOGRAFUJ: Wieża Eiffla 2345 z holograficzną powłoką — najpiękniejszy kadr gry",
+      "NPCBehaviors": [
+        "Latające taksówki nad Sekwaną"
+      ]
+    },
+    {
+      "PhaseId": "T15_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eva przy kawiarni — precyzyjne koordynaty Rezonatora.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Eva: 'To ostatnie dane które ci mogę dać. T18, T19. Idź.'"
+      ],
+      "CameraHint": "Sfotografuj Evę z mokrymi rudymi włosami — portret"
+    },
+    {
+      "PhaseId": "T15_P3",
+      "PhaseType": "DIALOGUE",
+      "Description": "Kafka w alei — ostatni poetycki wpis.",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap dialog",
+        "Kafka: 'Kronikuję od T02. Tom 4 zaczyna się od ciebie.'"
+      ],
+      "CameraHint": "Sfotografuj Kafkę z notesem — ostatni portret kronikarza"
+    },
+    {
+      "PhaseId": "T15_P4",
+      "PhaseType": "QTE",
+      "Description": "QTE: Cień Andrzeja w kałuży — reflekcja która nie chce odpuścić.",
+      "EstimatedDuration_sec": 25,
+      "PlayerActions": [
+        "DOUBLE TAP — Andrzej wdepnuje w kałużę i rozbija Cień",
+        "Symboliczne — wdeptanie własnego cienia"
+      ],
+      "CameraHint": "Flash w kałuży — Cień rozchodzi się w koncentrycznych kółkach"
+    },
+    {
+      "PhaseId": "T15_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Andrzej z finalnymi koordynatami. Paryż zostaje za nim.",
+      "EstimatedDuration_sec": 15,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T15_EIFFEL_2345",
+        "Hint": "Wieża Eiffla z holograficzną powłoką o zmierzchu w deszczu",
+        "PhotoReward": "Album: IKONA GRY. 'Piękno świata. Nawet tu szukam córki.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T15_EVA_DESZCZ",
+        "Hint": "Eva przy kawiarni — mokre rude włosy",
+        "PhotoReward": "Album: 'Ktoś wierzył we mnie przez wszystkie osie.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T15_CIEN_KALUZA",
+        "Hint": "Cień Andrzeja w kałuży Paryża",
+        "PhotoReward": "Album: PENULTIMATE — prawie wyraźna twarz. 'Wiem już kim jesteś.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T15_KAFKA_ALEJA",
+        "Hint": "Kafka z notesem holograficznym",
+        "PhotoReward": "Album: 'Ostatni wpis kronikarza.'",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_KOORDYNATY_FINAL",
+      "Name": "Finalne koordynaty T18 i T19",
+      "Location": "Od Evy",
+      "Description": "Ostatnie dane — droga do finału"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_NeoParis — neo-jazz paryski, akordeon+elektronika",
+    "AmbientSounds": [
+      "Deszcz na bruku",
+      "Latające taksówki",
+      "Paryska muzyka z kawiarni"
+    ],
+    "SFX": [
+      "SFX_Camera_Shutter_Rain",
+      "SFX_Puddle_Step"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Art deco futurystyczny — złoto i granát",
+    "DialogueBoxStyle": "Paryski elegancki — art deco"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T15_PARIS",
+        "StoryNodeRef": "T15_01_010",
+        "Description": "Neo Paryż"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej odchodzi z Neo Paryża w deszczu z finalnymi koordynatami.",
+  "NextLevel": "T16",
+  "CityMap": {
+    "_doc": "Mapa lokacji T15 — Neo Paris 2345. Futurystyczny Paryż z zachowaną historyczną architekturą.",
+    "LocationType": "Futurystyczne metropolis — Neo Paryż 2345",
+    "RealWorldRef": "Paryż, Francja. 2345 rok. Zachowano historyczną architekturę jako dziedzictwo UNESCO, ale z holograficzną warstwą futurystyczną.",
+    "Scale": "Duże miasto: 4 dzielnice + Wieża Eiffla + Sekwana",
+    "Zones": [
+      {
+        "ZoneId": "Z15_SEKWANA_NABRZEZE",
+        "Name": "Nabrzeże Sekwany",
+        "Description": "Woda czystej Sekwany — pluskają ryby (rzeka przywrócona do natury). Latające taxi nad wodą.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_LATAJACE_TAXI",
+            "Name": "Latające taxi Uber-Air",
+            "Description": "Pojazdy 2345 przesuwają się nad Sekwaną.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAWIARNIA_SEKWANA",
+            "Name": "Kawiarnia przy Sekwanie",
+            "Description": "Eva czeka tu. Mokra od deszczu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_WIDOK_EIFFEL_WODA",
+            "Name": "Wieża Eiffla w odbiciu Sekwany",
+            "Description": "W mokrym bruku i wodzie Sekwany — z holograficzną powłoką.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_WIEŻA_EIFFLA_2345",
+        "Name": "Wieża Eiffla 2345",
+        "Description": "Oryginalna wieża z 1889 z holograficzną powłoką danych. Cokolwiek się dzieje na świecie jest wyświetlane.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_WIEŻA_HOLOGRAFICZNA",
+            "Name": "Wieża Eiffla z hologramem",
+            "Description": "Oryginalna stalowa wieża + holograficzna powłoka 300m nad nią.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_HOLOGRAM_WIESCI",
+            "Name": "Dane świata na wieży",
+            "Description": "Aktualne dane planetarne wyświetlane na hologramie wieży.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_ALEJE_HISTORYCZNE",
+        "Name": "Aleje historyczne",
+        "Description": "Zachowane chodniki Paryża. Kamienny bruk. Mokry od deszczu. Kafka w alei.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_KAFKA_ALEJA",
+            "Name": "Kafka w alei",
+            "Description": "Ostatni wpis kronikarza. Jedwabna marynarka, notes.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KOT_PARYSKI",
+            "Name": "Rdzawy kot pod parasolem",
+            "Description": "Kot siedzi pod parasolem kawiarni — symbol Paryża we wszystkich epokach.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KALUZA_CIEN",
+            "Name": "Kałuża z Cieniem Andrzeja",
+            "Description": "Cień na mokrym bruku — prawie twarz. Andrzej nadepnie.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_DZIELNICA_FUTUR",
+        "Name": "Dzielnica futurystyczna",
+        "Description": "Nowe budynki 2345 z organiczną architekturą — żywe, oddychające ściany.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_ZYWABUD",
+            "Name": "Żywa fasada budynku",
+            "Description": "Ściana pokryta roślinami + solarami + LED. Oddycha.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z15_METRO_HISTORYCZNE",
+        "Name": "Metro historyczne — zachowane",
+        "Description": "Zachowane wejście do metra z 1900 r. Nadal działa — trasa turystyczna.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_METRO_ART_NOUVEAU",
+            "Name": "Wejście metra Art Nouveau",
+            "Description": "Metalowe drzwi z 1900 roku. Neon 'MÉTROPOLITAIN' nadal działa.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Opcjonalne — droga ucieczki"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R15_PRZYBYCIE",
+        "Name": "Teleport → Nabrzeże",
+        "From": "START",
+        "To": "Z15_SEKWANA_NABRZEZE",
+        "Description": "Andrzej pojawia się w deszczu"
+      },
+      {
+        "RouteId": "R15_NABRZEZE_WIEŻA",
+        "Name": "Nabrzeże → Wieża",
+        "From": "Z15_SEKWANA_NABRZEZE",
+        "To": "Z15_WIEŻA_EIFFLA_2345",
+        "Description": "Wzdłuż Sekwany"
+      },
+      {
+        "RouteId": "R15_WIEŻA_ALEJE",
+        "Name": "Wieża → Aleje",
+        "From": "Z15_WIEŻA_EIFFLA_2345",
+        "To": "Z15_ALEJE_HISTORYCZNE",
+        "Description": "Na wschód od Wieży"
+      },
+      {
+        "RouteId": "R15_ALEJE_FUTUR",
+        "Name": "Aleje → Futurystyczna",
+        "From": "Z15_ALEJE_HISTORYCZNE",
+        "To": "Z15_DZIELNICA_FUTUR",
+        "Description": "Za rogiem"
+      },
+      {
+        "RouteId": "R15_METRO",
+        "Name": "Aleje → Metro",
+        "From": "Z15_ALEJE_HISTORYCZNE",
+        "To": "Z15_METRO_HISTORYCZNE",
+        "Description": "Wyjście z alei"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Weather": "Delikatny deszcz. Mokry bruk. Zapach mokrego kamienia i kawy.",
+      "Temperature": "14°C — chłodny wieczór wiosenny",
+      "LightSources": [
+        "Hologram Wieży Eiffla — oświetla całą okolicę",
+        "LED kawiarni",
+        "Latające taxi z reflektorami",
+        "Mokry bruk odbija wszystko"
+      ],
+      "Sounds": [
+        "Deszcz na bruku",
+        "Latające taxi — elektryczny szum",
+        "Paryska muzyka z kawiarni",
+        "Kafka mruczy pod nosem notując"
+      ],
+      "Smell": "Deszcz + kawa + mokre liście + hologram (ozonu)"
+    },
+    "MiniMapConfig": {
+      "Style": "Art deco z futurystycznym overlayem — mapa stylizowana na plakat z 1925 z holograficznymi poprawkami",
+      "Scale": "1:2000",
+      "Landmarks": "Wieża Eiffla jako centralny punkt orientacyjny",
+      "WeatherLayer": "Animowane krople deszczu na mapie"
+    }
+  }
+}

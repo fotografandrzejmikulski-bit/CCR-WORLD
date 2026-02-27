@@ -1,0 +1,38 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "5.3",
+	"Category": "",
+	"Description": "CCR WORLD – AAA narrative game (Android/Vulkan)",
+	"Modules": [
+		{
+			"Name": "CCR",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "AndroidPermission",
+			"Enabled": true
+		},
+		{
+			"Name": "LevelSequence",
+			"Enabled": true
+		},
+		{
+			"Name": "MovieScene",
+			"Enabled": true
+		},
+		{
+			"Name": "UMG",
+			"Enabled": true
+		},
+		{
+			"Name": "SlateCore",
+			"Enabled": true
+		}
+	],
+	"TargetPlatforms": [
+		"Android"
+	]
+}

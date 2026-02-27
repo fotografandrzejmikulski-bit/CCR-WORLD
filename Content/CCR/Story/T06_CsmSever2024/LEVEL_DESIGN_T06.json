@@ -1,0 +1,328 @@
+{
+  "_doc": "LEVEL DESIGN — T06 | CSM SEVER · 2024.",
+  "LevelId": "T06",
+  "AxisId": "T06",
+  "StoryChunkRef": "T06_01",
+  "Title": "CSM SEVER",
+  "Subtitle": "Czechy 2024",
+  "EstimatedDurationMinutes": 20,
+  "DifficultyRating": 2,
+  "Environment": {
+    "Location": "CSM Sever, Czechy — ośrodek naukowy / centrum badań",
+    "Era": "Czechy, 2024, nowoczesne laboratorium",
+    "TimeOfDay": "Noc — niebieskie neonowe korytarze",
+    "Weather": "Chłodno, sterylnie",
+    "MainScene": "Nowoczesne laboratorium: białe ściany, holograficzne ekrany, biometryczne bramki. Eimstain ma tu biuro.",
+    "LightingMood": "Zimne niebieskie neonowe — laboratoryjne",
+    "AmbientDescription": "Ciche — tylko wentylacja i klawiatura",
+    "KeyVisualElement": "Holograficzne dane o osiach czasu — Andrzej widzi po raz pierwszy wizualizację 19 osi"
+  },
+  "CharactersPresent": [
+    {
+      "CharacterId": "ANDRZEJ",
+      "Description": "~35 lat, modna fryzura, rogowe okulary, beżowa koszula (rękawy zawinięte), spodnie w kratę, brązowy pasek, tatuaże na szyi/rękach/dłoniach, aparat na pasku.",
+      "CameraStatus": "equipped",
+      "OutfitVariant": "Identyczny strój. W lab-owym środowisku wygląda jak artysta na wycieczce."
+    },
+    {
+      "CharacterId": "EIMSTAIN",
+      "Description": "Biały fartuch laboratoryjny. Zegarek. Ekrany za nim.",
+      "InitialPosition": "biuro"
+    },
+    {
+      "CharacterId": "KAFKA",
+      "Description": "Identyfikator pracownika CSM. Nerwowy.",
+      "InitialPosition": "korytarz"
+    }
+  ],
+  "GameplayPhases": [
+    {
+      "PhaseId": "T06_P1",
+      "PhaseType": "EXPLORATION",
+      "Description": "Eksploracja korytarzy CSM.",
+      "EstimatedDuration_sec": 150,
+      "PlayerActions": [
+        "Tap na holograficzne ekrany by czytać dane",
+        "Fotografuj hologramy 19 osi czasu"
+      ],
+      "CameraHint": "FOTOGRAFUJ hologram 19 osi — widoczny po raz pierwszy w grze"
+    },
+    {
+      "PhaseId": "T06_P2",
+      "PhaseType": "DIALOGUE",
+      "Description": "Eimstain tłumaczy mechanizm izolacji.",
+      "EstimatedDuration_sec": 90,
+      "PlayerActions": [
+        "Tap dialog",
+        "Wybór: skupić się na pytaniu o Zuzię / pytać o system"
+      ],
+      "CameraHint": "Zegarek Eimstaina — po raz trzeci. Nowy szczegół na tarczy."
+    },
+    {
+      "PhaseId": "T06_P3",
+      "PhaseType": "QTE",
+      "Description": "Kamera bezpieczeństwa — omijanie",
+      "EstimatedDuration_sec": 20,
+      "PlayerActions": [
+        "TAP gdy kamera patrzy w lewo — wciśnij i przejdź"
+      ]
+    },
+    {
+      "PhaseId": "T06_P4",
+      "PhaseType": "DIALOGUE",
+      "Description": "Kafka w korytarzu — dokumentacja",
+      "EstimatedDuration_sec": 60,
+      "PlayerActions": [
+        "Tap dialog",
+        "Opcja: Kafka daje Andrzejowi wydruk ze śladami Zuzi"
+      ]
+    },
+    {
+      "PhaseId": "T06_P5",
+      "PhaseType": "TRANSITION",
+      "Description": "Wyjście z CSM.",
+      "EstimatedDuration_sec": 10,
+      "PlayerActions": [
+        "Auto"
+      ]
+    }
+  ],
+  "PhotoMechanic": {
+    "AvailableTargets": [
+      {
+        "TargetId": "T06_HOLOGRAM",
+        "Hint": "Hologram 19 osi czasu",
+        "PhotoReward": "Album: 'Pierwszy raz widzę to z zewnątrz. 19 osi.'",
+        "IsRequired": true
+      },
+      {
+        "TargetId": "T06_EIMSTAIN_LAB",
+        "Hint": "Eimstain przy ekranie",
+        "PhotoReward": "Album: 'Wie wszystko.'",
+        "IsRequired": false
+      },
+      {
+        "TargetId": "T06_KAFKA_NOTES",
+        "Hint": "Kafka notuje",
+        "PhotoReward": "Album: kronikarz",
+        "IsRequired": false
+      }
+    ]
+  },
+  "CollectibleItems": [
+    {
+      "ItemId": "ITEM_WYDRUK_T06",
+      "Name": "Wydruk ze śladami Zuzi",
+      "Location": "Od Kafki",
+      "Description": "Ślad Zuzi w 2024"
+    }
+  ],
+  "AudioDesign": {
+    "BackgroundMusic": "MUS_CsmSever — chłodny digital, minimalizm elektroniczny",
+    "AmbientSounds": [
+      "Wentylacja",
+      "Klawiatura",
+      "Holograficzny szum"
+    ],
+    "SFX": [
+      "SFX_Biometric_Beep",
+      "SFX_Camera_Shutter_Quiet",
+      "SFX_Hologram"
+    ]
+  },
+  "UIDesign": {
+    "HUDStyle": "Lab-owy minimalizm — białe tło, niebieskie linie",
+    "DialogueBoxStyle": "Holograficzny dymek — niebieski przezroczysty"
+  },
+  "CheckpointSystem": {
+    "Checkpoints": [
+      {
+        "CheckpointId": "CP_T06_KORYTARZ",
+        "StoryNodeRef": "T06_01_010",
+        "Description": "Andrzej w CSM"
+      }
+    ]
+  },
+  "LevelEndCondition": "Andrzej wychodzi z CSM z wydrukiem.",
+  "NextLevel": "T07",
+  "LevelTransitionText": "",
+  "CityMap": {
+    "_doc": "Mapa lokacji T06 — CSM Sever, Czechy 2024. Centrum badań naukowych.",
+    "LocationType": "Centrum naukowe — nowoczesny kampus badawczy",
+    "RealWorldRef": "Czechy, 2024. Fikcyjne CSM Sever — inspirowane centrami badań typu CERN lub CESNET. Lokalizacja: okolice Pragi lub Ostravy.",
+    "Scale": "Średni obszar: 2 budynki + korytarze + parking",
+    "NavigationStyle": "Liniowa z bezpieczeństwem biometrycznym",
+    "Zones": [
+      {
+        "ZoneId": "Z06_LOBBY",
+        "Name": "Hol główny CSM",
+        "Description": "Nowoczesne szkło i stal. Recepcja, hologramy instytucji, plakaty badań.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_RECEPCJA",
+            "Name": "Recepcja CSM",
+            "Description": "Identyfikatory dla gości. Andrzej jest tu bez dokumentów.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          },
+          {
+            "LandmarkId": "L_HOLOGRAM_LOGO",
+            "Name": "Hologram logo CSM",
+            "Description": "Obracające się logo z napisem 'Centrum Studií Mnohovrstevnatosti'.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_KORYTARZ_A",
+        "Name": "Korytarz A — badań podstawowych",
+        "Description": "Biały, sterylny. Holograficzne ekrany z danymi. Kamery co 8m.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_EKRANY_HOLOGRAF",
+            "Name": "Holograficzne ekrany danych",
+            "Description": "Pierwsze hologramy 19 osi czasu widoczne jako wizualizacja naukowa!",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAMERA_BEZP",
+            "Name": "Kamery bezpieczeństwa",
+            "Description": "Co 8m. Obrót 180° co 4 sekundy.",
+            "IsInteractive": true,
+            "IsPhotoTarget": false
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_BIURO_EIMSTAIN",
+        "Name": "Biuro Eimstaina",
+        "Description": "Duże biuro z panoramicznym widokiem na korytarz. Ekrany z danymi 19 osi.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_BIURKO_EIMST_CSM",
+            "Name": "Biurko badacza",
+            "Description": "Zegarek z 19 tarczami na biurku. Wydruk osi czasu.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_EKRAN_19_OSI",
+            "Name": "Ekran z 19 osiami czasu",
+            "Description": "Pierwsza pełna wizualizacja. Andrzej widzi wszystkie 19 osi jako sieć.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_OKNO_PANORAMICZNE",
+            "Name": "Okno panoramiczne",
+            "Description": "Widok na parking i las nocą.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_LAB_CENTRALNY",
+        "Name": "Laboratorium centralne",
+        "Description": "Największa sala. Sprzęt badawczy. Kafka pracuje tu nocami.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_CENTRUM_BADAN",
+            "Name": "Centrum badań",
+            "Description": "Hologramy cząsteczek i osi czasu. Przyrządy pomiarowe.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          },
+          {
+            "LandmarkId": "L_KAFKA_LAB",
+            "Name": "Kafka przy analizatorze",
+            "Description": "Nerwowy, odwraca się. Trzyma wydruk dla Andrzeja.",
+            "IsInteractive": true,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true
+      },
+      {
+        "ZoneId": "Z06_PARKING",
+        "Name": "Parking zewnętrzny",
+        "Description": "Noc. Kilka samochodów. Droga ucieczki.",
+        "Landmarks": [
+          {
+            "LandmarkId": "L_SAMOCHOD_EIMSTAIN",
+            "Name": "Stary samochód Eimstaina",
+            "Description": "Tesla 2019 — zaskakująco stare auto dla naukowca.",
+            "IsInteractive": false,
+            "IsPhotoTarget": true
+          }
+        ],
+        "IsAccessible": true,
+        "NavigationNote": "Wyjście z budynku"
+      }
+    ],
+    "NavigationRoutes": [
+      {
+        "RouteId": "R06_WEJSCIE",
+        "Name": "Parking → Lobby",
+        "From": "START",
+        "To": "Z06_LOBBY",
+        "Description": "Andrzej przychodzi nocą"
+      },
+      {
+        "RouteId": "R06_LOBBY_KORYTARZ",
+        "Name": "Lobby → Korytarz A",
+        "From": "Z06_LOBBY",
+        "To": "Z06_KORYTARZ_A",
+        "Description": "Po prawej od recepcji — stealth obok kamery"
+      },
+      {
+        "RouteId": "R06_KORYTARZ_BIURO",
+        "Name": "Korytarz → Biuro Eimstaina",
+        "From": "Z06_KORYTARZ_A",
+        "To": "Z06_BIURO_EIMSTAIN",
+        "Description": "Drzwi z kodem 4-cyfrowym"
+      },
+      {
+        "RouteId": "R06_BIURO_LAB",
+        "Name": "Biuro → Lab",
+        "From": "Z06_BIURO_EIMSTAIN",
+        "To": "Z06_LAB_CENTRALNY",
+        "Description": "Przejście przez sterowną bramkę"
+      },
+      {
+        "RouteId": "R06_WYJSCIE",
+        "Name": "Lab → Parking",
+        "From": "Z06_LAB_CENTRALNY",
+        "To": "Z06_PARKING",
+        "Description": "Wyjście ewakuacyjne"
+      }
+    ],
+    "AtmosphereDetails": {
+      "Temperature": "Sterylne 20°C — klimatyzacja",
+      "Weather": "Noc, czysta, zimna (Czechy, październik 2024)",
+      "LightSources": [
+        "LED strip na suficie korytarzy",
+        "Niebieskie hologramy",
+        "Monitor w biurze Eimstaina"
+      ],
+      "NPC_Density": "Niska — nocna zmiana, 3-4 osoby",
+      "SecurityLevel": "Biometryczne bramki, kamery co 8m, ochroniarz przy wejściu",
+      "Sounds": [
+        "Wentylacja — cichy szum",
+        "Klawiatura Kafki",
+        "Hologramy dźwięczą delikatnie"
+      ]
+    },
+    "MiniMapConfig": {
+      "Style": "Plan budynku CAD — nowoczesny, niebieskie linie",
+      "Scale": "1:400",
+      "SecurityZones": "Czerwone strefy przy kamerach — niebezpieczne",
+      "CameraFOV": "Szare sektory na mapie — pole widzenia kamer"
+    }
+  }
+}

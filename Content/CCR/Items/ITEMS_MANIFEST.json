@@ -1,0 +1,19 @@
+{
+  "_doc": "CCR WORLD - Inventory item manifest. Create one DA_Item_<ItemId> UCCRInventoryItemDefinition in Content/CCR/Items/ for each entry.",
+
+  "_howto": "Add one entry per collectible item. Set ItemId to match the FName passed to UCCRInventorySubsystem::AddItem(). Icon path: /Game/CCR/Textures/Items/T_Item_<ItemId>.",
+
+  "items": [
+    {
+      "_comment": "TODO: dodac przedmioty gry. Przyklad ponizej - usunac przed produkcja.",
+      "assetName": "DA_Item_EXAMPLE",
+      "ItemId": "EXAMPLE_ITEM",
+      "DisplayName": "TODO: nazwa przedmiotu",
+      "Description": "TODO: opis przedmiotu.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_EXAMPLE_ITEM",
+      "bCanUse": false,
+      "bConsumedOnUse": false,
+      "UseWorldStateFlag": ""
+    }
+  ]
+}
