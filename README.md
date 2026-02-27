@@ -153,18 +153,19 @@ Content/
 ### Complete Story Flow
 
 ```
-PROLOGUE_01 → PROLOGUE_02 → CH1_01 → CH1_02 → CH2_01 → CH2_02 → CH3_01 → End
+PROLOGUE_01 -> PROLOGUE_02 -> CH1_01 -> CH1_02 -> CH2_01 -> CH2_02 -> CH3_01 -> CH3_02 -> End
 ```
 
-| Chunk | Chapter | Description |
+| Chunk | Chapter | Characters |
 |---|---|---|
-| `PROLOGUE_01` | Prolog | Aleksy wakes up, first dialogue choices, QTE escape, meets Marta |
-| `PROLOGUE_02` | Prolog | Marta reveals the truth; outro cinematic; leads to Chapter 1 |
-| `CH1_01` | Rozdział 1 | East Gate; CCR Beacon found; optional father's badge |
-| `CH1_02` | Rozdział 1 | Beacon is encrypted; Kozłowski introduced |
-| `CH2_01` | Rozdział 2 | Old Port; meet Kozłowski; Zofia and cipher key revealed |
-| `CH2_02` | Rozdział 2 | Western Tower; meet Zofia; obtain cipher key; QTE escape |
-| `CH3_01` | Finał | Return to Kozłowski; activate beacon; broadcast the signal; credits |
+| `PROLOGUE_01` | Prolog | ANDRZEJ, ZUZIA |
+| `PROLOGUE_02` | Prolog | ANDRZEJ, ZUZIA |
+| `CH1_01` | Rozdział 1 | ANDRZEJ, EVA |
+| `CH1_02` | Rozdział 1 | ANDRZEJ, CIEN |
+| `CH2_01` | Rozdział 2 | ANDRZEJ, EIMSTAIN |
+| `CH2_02` | Rozdział 2 | ANDRZEJ, BATISTA, WERONIKA |
+| `CH3_01` | Rozdział 3 | ANDRZEJ, DAVID, KAFKA |
+| `CH3_02` | Rozdział 3 | ANDRZEJ (finale + End -> Credits) |
 
 ### Authoring Story Content
 
@@ -187,7 +188,7 @@ PROLOGUE_01 → PROLOGUE_02 → CH1_01 → CH1_02 → CH2_01 → CH2_02 → CH3_
 3. Set `DisplayName` (localised text shown above the dialogue bubble) and `ShortName`.
 4. Set `SpeakerTag` to match `FCCRNode::SpeakerTag` in all dialogue nodes for this character.
 5. Set `VOKeyPrefix` — `UCCRAudioSubsystem` will auto-play `<VOKeyPrefix>_<NodeId>` cues.
-6. Set `MetFlag` (e.g. `MET_MARTA`) — the world-state flag written when the player first meets this character.
+6. Set `MetFlag` (e.g. `MET_ZUZIA`) — the world-state flag written when the player first meets this character.
 7. Add `FCCRPortraitEntry` items to `Portraits[]` — one per expression state (Neutral, Happy, Sad, Angry, Surprised, Fear).
    - `StateName` must match values used in `FCCRNode::ExpressionTag` in the story nodes.
    - `UCCRCharacterDefinition::GetPortraitForExpression(ExpressionTag)` resolves the correct portrait, falling back to "Neutral".

@@ -1,96 +1,184 @@
 {
-  "_doc": "CCR WORLD – Character manifest. Create one DA_Char_<CharacterId> UCCRCharacterDefinition in Content/CCR/Characters/ for each entry.",
+  "_doc": "CCR WORLD - Character manifest. Create one DA_Char_<CharacterId> UCCRCharacterDefinition in Content/CCR/Characters/ for each entry.",
 
   "characters": [
     {
-      "assetName": "DA_Char_ALEKSY",
-      "CharacterId": "ALEKSY",
-      "DisplayName": "Aleksy",
-      "ShortName": "Aleksy",
-      "SpeakerTag": "ALEKSY",
-      "VOKeyPrefix": "ALEKSY",
+      "assetName": "DA_Char_ANDRZEJ",
+      "CharacterId": "ANDRZEJ",
+      "DisplayName": "Andrzej",
+      "ShortName": "Andrzej",
+      "SpeakerTag": "ANDRZEJ",
+      "VOKeyPrefix": "ANDRZEJ",
       "MetFlag": "",
-      "bIsKeyCharacter": true,
-      "AssociatedItemIds": ["FATHERS_BADGE"],
-      "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Fear" }
-      ],
-      "_notes": "Playable protagonist. 20s, former CCR technician. Woke up with no memory of the past year."
-    },
-    {
-      "assetName": "DA_Char_MARTA",
-      "CharacterId": "MARTA",
-      "DisplayName": "Marta",
-      "ShortName": "Marta",
-      "SpeakerTag": "MARTA",
-      "VOKeyPrefix": "MARTA",
-      "MetFlag": "MET_MARTA",
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Angry" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Fear" }
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Fear" }
       ],
-      "_notes": "Aleksy's childhood friend. Resourceful street courier. First NPC the player meets after the prologue."
+      "_notes": "Glowny bohater (main protagonist)."
     },
     {
-      "assetName": "DA_Char_KOZLOWSKI",
-      "CharacterId": "KOZLOWSKI",
-      "DisplayName": "Inżynier Kozłowski",
-      "ShortName": "Kozłowski",
-      "SpeakerTag": "KOZLOWSKI",
-      "VOKeyPrefix": "KOZLOWSKI",
-      "MetFlag": "MET_KOZLOWSKI",
+      "assetName": "DA_Char_ZUZIA",
+      "CharacterId": "ZUZIA",
+      "DisplayName": "Zuzia",
+      "ShortName": "Zuzia",
+      "SpeakerTag": "ZUZIA",
+      "VOKeyPrefix": "ZUZIA",
+      "MetFlag": "MET_ZUZIA",
       "bIsKeyCharacter": true,
-      "AssociatedItemIds": ["CCR_BEACON"],
-      "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Neutral" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Angry" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Fear" }
-      ],
-      "_notes": "Retired CCR engineer, now living in hiding at the old port. Knows the city's secrets."
-    },
-    {
-      "assetName": "DA_Char_ZOFIA",
-      "CharacterId": "ZOFIA",
-      "DisplayName": "Zofia",
-      "ShortName": "Zofia",
-      "SpeakerTag": "ZOFIA",
-      "VOKeyPrefix": "ZOFIA",
-      "MetFlag": "MET_ZOFIA",
-      "bIsKeyCharacter": true,
-      "AssociatedItemIds": ["CIPHER_KEY"],
-      "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Angry" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Fear" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ZOFIA/T_ZOFIA_Surprised" }
-      ],
-      "_notes": "Young hacker operating from a hidden relay station in the Western Tower. Possesses the CCR cipher key needed to activate the beacon."
-    },
-    {
-      "assetName": "DA_Char_NARRATOR",
-      "CharacterId": "NARRATOR",
-      "DisplayName": "Narrator",
-      "ShortName": "",
-      "SpeakerTag": "NARRATOR",
-      "VOKeyPrefix": "NARRATOR",
-      "MetFlag": "",
-      "bIsKeyCharacter": false,
       "AssociatedItemIds": [],
-      "Portraits": [],
-      "_notes": "Off-screen omniscient narrator. No portrait displayed. VO-only."
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_EVA",
+      "CharacterId": "EVA",
+      "DisplayName": "Eva",
+      "ShortName": "Eva",
+      "SpeakerTag": "EVA",
+      "VOKeyPrefix": "EVA",
+      "MetFlag": "MET_EVA",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_CIEN",
+      "CharacterId": "CIEN",
+      "DisplayName": "Cień",
+      "ShortName": "Cień",
+      "SpeakerTag": "CIEN",
+      "VOKeyPrefix": "CIEN",
+      "MetFlag": "MET_CIEN",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Neutral" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Angry" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Fear" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Surprised" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_EIMSTAIN",
+      "CharacterId": "EIMSTAIN",
+      "DisplayName": "Eimstain",
+      "ShortName": "Eimstain",
+      "SpeakerTag": "EIMSTAIN",
+      "VOKeyPrefix": "EIMSTAIN",
+      "MetFlag": "MET_EIMSTAIN",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_BATISTA",
+      "CharacterId": "BATISTA",
+      "DisplayName": "Batista",
+      "ShortName": "Batista",
+      "SpeakerTag": "BATISTA",
+      "VOKeyPrefix": "BATISTA",
+      "MetFlag": "MET_BATISTA",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_WERONIKA",
+      "CharacterId": "WERONIKA",
+      "DisplayName": "Weronika",
+      "ShortName": "Weronika",
+      "SpeakerTag": "WERONIKA",
+      "VOKeyPrefix": "WERONIKA",
+      "MetFlag": "MET_WERONIKA",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_DAVID",
+      "CharacterId": "DAVID",
+      "DisplayName": "David",
+      "ShortName": "David",
+      "SpeakerTag": "DAVID",
+      "VOKeyPrefix": "DAVID",
+      "MetFlag": "MET_DAVID",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
+    },
+    {
+      "assetName": "DA_Char_KAFKA",
+      "CharacterId": "KAFKA",
+      "DisplayName": "Kafka",
+      "ShortName": "Kafka",
+      "SpeakerTag": "KAFKA",
+      "VOKeyPrefix": "KAFKA",
+      "MetFlag": "MET_KAFKA",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Fear" }
+      ],
+      "_notes": "TODO: uzupelnic opis postaci."
     }
   ]
 }
