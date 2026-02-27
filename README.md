@@ -164,6 +164,8 @@ Content/
 
 ### Complete Story Flow
 
+📋 **Pełny przegląd wszystkich 19 osi czasu:** [`Content/CCR/Story/AXES_OVERVIEW.md`](Content/CCR/Story/AXES_OVERVIEW.md)
+
 **Przepływ główny — 19 osi czasu:**
 
 ```

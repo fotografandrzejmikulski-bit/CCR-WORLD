@@ -85,7 +85,7 @@ Content/CCR/
 | 16 | `T16` | KOD PAMIECI | 2378 | ANDRZEJ, DAVID, WERONIKA *(EVA NIE; Weronika zaczyna watpic)* | `T16_STORY.json` |
 | 17 | `T17` | POWROTY DO CIENIA | 2378 | ANDRZEJ, CIEN, EIMSTAIN *(odkrycie: Cien = alter Andrzeja)* | `T17_STORY.json` |
 | 18 | `T18` | DEVIL MIND | 2777 | ANDRZEJ, CIEN (finalna konfrontacja), BATISTA | `T18_STORY.json` |
-| 19 | `T19` | SWIATLO KTORE TRWA | ∞ | ANDRZEJ + ZUZIA (FINALNE SPOTKANIE) | `T19_STORY.json` |
+| 19 | `T19` | SWIATLO KTORE TRWA | ∞ | ANDRZEJ, EIMSTAIN (echo), FX_REZONATOR – **BRAK fizycznego spotkania**. Andrzej wysyła wiadomość przez Kosmiczny Rezonator Świadomości. Andrzej rozpływa się w wieczności. Prolog Tomu 4. | `T19_STORY.json` |
 
 ### Przepływ narracyjny
 
@@ -182,7 +182,7 @@ np.:  T01_01_010    (os T01, chunk 01, wezel 010)
 | CharacterId | Rola | Relacje |
 |---|---|---|
 | `ANDRZEJ` | Protagonist, ojciec Zuzi | Szuka Zuzi przez WSZYSTKIE 19 osi czasu |
-| `ZUZIA` | Corka Andrzeja | Izolowana przez Davida i Weronikę. Pojawia sie bezposrednio tylko w T19 |
+| `ZUZIA` | Córka Andrzeja | Izolowana przez Davida i Weronikę przez cały Tom 3. NIE spotyka się z Andrzejem fizycznie. W T19 słyszy wiadomość ojca przez Rezonator (tylko głos). TOM 4: protagonistka idąca śladami ojca. |
 | `DZIECKO` | Glos otwarcia | Szept: "Czas nie plynie... czas oddycha." – tylko VO, brak portretu |
 | `EVA` | Niezalezna sojuszniczka | NIGDY z Weronika w tej samej scenie |
 | `CIEN` | Antagonista / alter ego | Odkrycie T17: to wersja Andrzeja ktory sie poddal |
@@ -207,7 +207,7 @@ np.:  T01_01_010    (os T01, chunk 01, wezel 010)
 | `MUS_DeepFuture` | `Audio/Music/MUS_DeepFuture.wav` | T12–T15 (2135–2345) |
 | `MUS_Eternal` | `Audio/Music/MUS_Eternal.wav` | T16–T19 (2378–∞) |
 | `MUS_Tension` | `Audio/Music/MUS_Tension.wav` | Sceny z CIEN / QTE |
-| `MUS_Finale` | `Audio/Music/MUS_Finale.wav` | T19 – finalne spotkanie |
+| `MUS_Finale` | `Audio/Music/MUS_Finale.wav` | T19 – finał Tomu 3 (Rezonator, rozpadnięcie się Andrzeja w wieczności) |
 
 ### VO Szept dziecka
 
@@ -227,7 +227,7 @@ Styl: ciepły, delikatny szept dziecka, bez muzyki w tle, cisza otoczenia.
 | `LS_Prologue_Intro` | PROLOGUE_01 | PRO_01_CIN_001 | Pierwsza cutscenka po szepcie |
 | `LS_Prologue_Outro` | PROLOGUE_02 | PRO_02_CIN_001 | Przejscie do T01 |
 | `LS_T18_FinalBattle` | T18_01 | T18_01_CIN (TODO) | Konfrontacja z Cieniem |
-| `LS_T19_Reunion` | T19_01 | T19_01_CIN (TODO) | Finalne spotkanie Andrzeja i Zuzi |
+| `LS_T19_Epilog_Rezonator` | T19_01 | T19_01_CIN_EPILOG | Andrzej aktywuje Rezonator, wysyła wiadomość, rozpływa się w wieczności |
 
 ---
 
