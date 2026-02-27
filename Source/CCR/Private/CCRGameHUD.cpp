@@ -56,11 +56,14 @@ void ACCRGameHUD::BeginPlay()
 	// Note: PauseWidget is created on demand in TogglePause().
 
 	// ---- Subscribe to game phase changes ----
+	// Also apply the current phase immediately so widgets start in the correct
+	// visibility state (e.g. dialogue hidden while phase is Loading or Cinematic).
 	if (UWorld* World = GetWorld())
 	{
 		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
 		{
 			GS->OnGamePhaseChanged.AddDynamic(this, &ACCRGameHUD::HandleGamePhaseChanged);
+			HandleGamePhaseChanged(GS->GetGamePhase());
 		}
 	}
 }
