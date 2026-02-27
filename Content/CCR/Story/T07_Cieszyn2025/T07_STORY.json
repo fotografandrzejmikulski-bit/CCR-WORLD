@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – CIESZYN | CIESZYN · 2025. Axis: T07. WERONIKA jest z DAVIDEM. Zuzia jest po drugiej stronie granicy – widzą się ale nie mogą dotrzeć. EVA tu NIE ma.",
+  "_doc": "UCCRStoryChunk – CIESZYN · 2025 | Axis: T07.",
   "chunks": [
     {
       "assetName": "DA_Story_T07_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T07_01_010",
       "ChapterTitle": "CIESZYN",
       "ChapterSubtitle": "2025",
-      "_narrative": "WERONIKA jest z DAVIDEM. Zuzia jest po drugiej stronie granicy – widzą się ale nie mogą dotrzeć. EVA tu NIE ma.",
+      "_narrative": "Cieszyn – miasto podzielone granicą między Polską a Czechami. David i Weronika są po polskiej stronie, Zuzia jest po czeskiej. Andrzej widzi sylwetkę Zuzi przez rzekę Olzę, lecz nie może przekroczyć granicy. Eva tu nie ma.",
+      "_gameplay": "QTE: Swipe Right – Andrzej wyciąga rękę próbując dosięgnąć przez wodę. Wybór: krzyknąć do Zuzi (ryzyko, David usłyszy) lub cicho machać w nadziei, że sama zauważy (bezpieczniej, może nie zobaczyć).",
+      "_visual": "Rzeka Olza – most Przyjaźni, polsko-czeski Cieszyn. Błękitny świt. Zuzia po drugiej stronie jako sylwetka. Paleta: błękit rzeki, szarawy świt, obie flagi na moście. UI: mapka graniczna. Muzyka: MUS_Cieszyn – liryczna, melancholijna.",
       "Nodes": [
         {
           "NodeId": "T07_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Cieszyn – miasto na granicy. Andrzej jest po jednej stronie, Zuzia po drugiej. Nie mogą się spotkać.",
-          "ExpressionTag": "Sad",
+          "DialogueText": "Cieszyn, 2025. Most Przyjaźni nad Olzą. Polska po tej stronie, Czechy po tamtej. I właśnie tam – widzę ją. Sylwetkę, którą znam lepiej niż własną twarz. Zuzia jest kilkanaście metrów ode mnie. Kilkanaście metrów i cała przepaść osi czasu.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T07_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T07_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "DAVID",
-          "DialogueText": "TODO: David strzeże granicy między nimi. Ma rozkaz trzymać Zuzię od ojca.",
-          "ExpressionTag": "Cold",
+          "DialogueText": "Andrzej. Wiedziałem, że tu przyjdziesz. Granica jest zamknięta dla ciebie. Mam dokumenty Weroniki i moje – Zuzia jest pod opieką prawną. Nie masz tu prawa wstępu. Odejdź zanim wezwę straż graniczną.",
+          "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T07_01_030",
           "bCheckpoint": false
         },
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Krzyknąć do Zuzi imiennie – niech wie, że tu jestem.",
               "TargetNodeId": "T07_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Machać cicho i czekać, aż sama mnie zauważy przez rzekę.",
               "TargetNodeId": "T07_01_050",
               "ShowConditions": []
             }
@@ -62,7 +64,7 @@
           "NodeId": "T07_01_050",
           "NodeType": "QTE",
           "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
+          "RequiredSwipeDir": "Right",
           "TimeWindowSec": 3.0,
           "QTESuccessNodeId": "T07_01_060",
           "QTEFailNodeId": "T07_01_052"
@@ -71,7 +73,7 @@
           "NodeId": "T07_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "Woda jest za głęboka, nie dosięgam. David patrzy. Muszę spróbować inaczej – spokojniej.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T07_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T07_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... CIESZYN · 2025.",
+          "DialogueText": "Zuzia... odwróciła głowę. Przez ułamek sekundy nasze oczy się spotkały ponad wodą. Wie, że tu jestem. To musi wystarczyć na tę oś czasu.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T07_01_070",
           "bCheckpoint": true
@@ -89,7 +91,7 @@
           "NodeId": "T07_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "WERONIKA",
-          "DialogueText": "TODO: Weronika mówi Andrzejowi żeby odpuścił. Ale to nieprawda – ona go tylko zatrzymuje.",
+          "DialogueText": "Andrzej... (szeptem, żeby David nie słyszał) ...ona cię widziała. Widziałam jak zamarła. Nie mów Davidowi, że ci to mówię. Ale... ona wie. Pamiętaj to.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T07_01_080",
           "bCheckpoint": false

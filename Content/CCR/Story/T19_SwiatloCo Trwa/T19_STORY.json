@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – ŚWIATŁO KTÓRE TRWA · ∞. Axis: T19. KONIEC TOMU 3 – Andrzej NIE spotyka się z Zuzią fizycznie. Dociera do Kosmicznego Rezonatora Świadomości i wysyła Zuzi ostatnią wiadomość przez wszystkie osie czasu. Po transmisji rozpływa się w wieczności. PROLOG TOMU 4: Zuzia odbiera wiadomość ojca i idzie jego śladami.",
+  "_doc": "UCCRStoryChunk – ŚWIATŁO KTÓRE TRWA · ∞ | Axis: T19. FINAŁ TOMU 3. Andrzej NIE spotyka się z Zuzią fizycznie. Dociera do Kosmicznego Rezonatora Świadomości i wysyła ostatnią wiadomość przez wszystkie 19 osi czasu.",
   "chunks": [
     {
       "assetName": "DA_Story_T19_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T19_01_010",
       "ChapterTitle": "ŚWIATŁO KTÓRE TRWA",
       "ChapterSubtitle": "∞",
-      "_narrative": "FINAŁ TOMU 3. Andrzej NIE spotyka się z Zuzią – nie dochodzi do fizycznego spotkania. Andrzej dociera do Kosmicznego Rezonatora Świadomości. Aktywuje go i nagrywa ostatnią wiadomość dla Zuzi – transmisja przez wszystkie 19 osi czasu. Po wysłaniu Andrzej rozpływa się w wieczności. EPILOG ustawia Tom 4: Zuzia odbiera wiadomość i idzie śladami ojca.",
+      "_narrative": "FINAŁ TOMU 3. Andrzej dociera do Kosmicznego Rezonatora Świadomości – ostatniego miejsca za wszystkimi osiami czasu. Zuzia tu nie jest. Andrzej aktywuje Rezonator i nagrywa ostatnią wiadomość dla córki – transmisja przez wszystkie 19 osi jednocześnie. Po wysłaniu Andrzej rozpływa się w wieczności. EPILOG: Zuzia (głos, brak portretu) odbiera wiadomość. Tom 4 zapowiedziany.",
+      "_gameplay": "QTE: LongPress 5s – aktywacja Kosmicznego Rezonatora. Brak wyborów – jedność narracyjna. Po aktywacji: sekwencja Dialogue prowadząca do Cinematic, TitleCard finałowy, głos Zuzi (AmbientVoice), TitleCard Tom 4, TitleCard Napisy. Finał jest liniowy i emocjonalny.",
+      "_visual": "Biała pustka poza czasem – Kosmiczny Rezonator jako spirala czystego światła unosząca się bez grawitacji. Żadna tekstura tła – tylko światło. Andrzej jako ciemna sylwetka stopniowo rozjaśniająca się. Paleta: czysta biel. UI: brak – czysta narracja. Muzyka: MUS_Finale – narastające do ciszy.",
       "Nodes": [
         {
           "NodeId": "T19_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Andrzej dotarł do kresu wszystkich osi czasu. Przed nim stoi Kosmiczny Rezonator Świadomości – urządzenie zdolne przesłać wiadomość przez każdą oś czasu jednocześnie. Zuzi tu nie ma. I nie będzie.",
-          "ExpressionTag": "Melancholic",
+          "DialogueText": "Koniec wszystkich osi czasu. Biała pustka bez podłogi, bez nieba, bez powietrza. Tylko Rezonator – spirala czystego światła przede mną. Szedłem tu od roku 1679. Przez osiemnaście osi czasu, przez setki lat, przez tysiące momentów gdzie prawie ją miałem. Zuzia tu nie jest. I nie będzie. Ale Rezonator jest. I jeden puls – jedna wiadomość – przez wszystkie 19 osi jednocześnie.",
+          "ExpressionTag": "Solemn",
           "NextAfterDialogue": "T19_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T19_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: 'Nie zdążyłem. Ale Rezonator prześle jej wszystko co przeżyłem. Niech sama zdecyduje czy pójdzie moimi śladami.'",
-          "ExpressionTag": "Determined",
+          "DialogueText": "Nie zdążyłem. Tyle razy byłem blisko – Cieszyn, transmisja wspomnień 2150, próżnia między osiami. Ale ona zawsze była o krok dalej. I teraz rozumiem: to nie było do przebycia. To była do napisania. Wiadomość. Dla niej.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T19_01_030",
           "bCheckpoint": false
         },
@@ -33,8 +35,8 @@
           "NodeId": "T19_01_030",
           "NodeType": "Dialogue",
           "SpeakerTag": "EIMSTAIN",
-          "DialogueText": "TODO: Eimstain przez Rezonator (jako echo): 'Andrzeju. Masz 30 sekund rzeczywistego czasu wieczności. Jeden puls. Jedna wiadomość. Zuzia ją usłyszy.'",
-          "ExpressionTag": "Serious",
+          "DialogueText": "(echo przez Rezonator) Andrzeju. Jestem przy tobie – przez wszystkie 19 osi jednocześnie. Byłem świadkiem twojej podróży od 1679. Masz 30 sekund wieczności. Rezonator czeka. Jeden puls. Jedna wiadomość. Zuzia ją usłyszy.",
+          "ExpressionTag": "Ethereal",
           "NextAfterDialogue": "T19_01_040",
           "bCheckpoint": false
         },
@@ -59,13 +61,13 @@
           "TimeWindowSec": 5.0,
           "QTESuccessNodeId": "T19_01_060",
           "QTEFailNodeId": "T19_01_052",
-          "_note": "Gracz przytrzymuje ekran – aktywacja Kosmicznego Rezonatora Świadomości"
+          "_note": "Gracz przytrzymuje ekran 5 sekund – aktywacja Kosmicznego Rezonatora Świadomości"
         },
         {
           "NodeId": "T19_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: 'Rezonator nie reaguje. Jeszcze raz. Muszę ją dosięgnąć.'",
+          "DialogueText": "Rezonator nie reaguje. Eimstain – jeszcze raz. Muszę ją dosięgnąć. Jeszcze raz.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T19_01_050",
           "bCheckpoint": false
@@ -74,7 +76,7 @@
           "NodeId": "T19_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Andrzej mówi do Rezonatora – wiadomość dla Zuzi: 'Córeczko. Szukałem cię przez wszystkie czasy i wszystkie miejsca. Nie zdążyłem do ciebie dotrzeć. Ale zostawiam ci ślad w każdej osi czasu. Jeśli to usłyszysz – idź moimi śladami. Ja byłem tu przed tobą.'",
+          "DialogueText": "Córeczko. Mam dla ciebie 30 sekund wieczności. Szukałem cię przez rok 1679, przez Warszawę '83, przez Łęczną i Lublin, przez Cieszyn przy rzece gdzie widziałem twój cień przez wodę. Przez Chicago i Neo Paryż i kosmiczną próżnię. Przez 18 osi czasu. Nie zdążyłem do ciebie dotrzeć. Ale Rezonator prześle ci wszystko – każdą oś, każde wspomnienie, każdy krok który zrobiłem szukając ciebie. Jeśli to usłyszysz – idź moimi śladami. Ja byłem tu przed tobą. I zostawiłem dla ciebie światło w każdej osi czasu.",
           "ExpressionTag": "Emotional",
           "NextAfterDialogue": "T19_01_070",
           "bCheckpoint": true
@@ -83,19 +85,18 @@
           "NodeId": "T19_01_070",
           "NodeType": "AmbientVoice",
           "SpeakerTag": "FX_REZONATOR",
-          "DialogueText": "TODO: Brzmienie Rezonatora – cichy puls rozchodzi się przez wszystkie 19 osi czasu. Wiadomość Andrzeja jest wysyłana.",
+          "DialogueText": "(Brzmienie Rezonatora – cichy puls rozchodzi się przez wszystkie 19 osi czasu jednocześnie. Wiadomość Andrzeja jest wysyłana. Wszystkie osie świecą przez ułamek sekundy tym samym światłem.)",
           "VOAsset": "/Game/CCR/Audio/VO/FX/VO_RezonatorPulse_T19",
           "bOverlayOnly": false,
           "bSkippable": false,
           "NextAfterVoice": "T19_01_080",
-          "bCheckpoint": false,
-          "_note": "Ambient effect: Rezonator pulse – nie jest postacią, to dźwięk urządzenia"
+          "bCheckpoint": false
         },
         {
           "NodeId": "T19_01_080",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Ostatnie słowa Andrzeja przed zniknięciem w wieczności: 'Czas nie płynie... czas oddycha. Zuzia – teraz twoja kolej.'",
+          "DialogueText": "Czas nie płynie... czas oddycha. (Andrzej patrzy na swoje ręce – zaczynają się rozjaśniać, stawać się światłem) Zuzia... teraz twoja kolej. Jestem wszędzie w twoim czasie. W każdej osi. W każdym fotonie. Tato cię kocha.",
           "ExpressionTag": "Peaceful",
           "NextAfterDialogue": "T19_01_090",
           "bCheckpoint": true
@@ -132,7 +133,7 @@
           "NextAfterCinematic": "T19_01_EPILOG_CARD",
           "bSkippable": false,
           "bCheckpoint": true,
-          "_note": "Cutscenka: Andrzej rozpływa się w świetle Rezonatora. Sygnał rozchodzi się przez 19 osi."
+          "_note": "Cutscenka: Andrzej powoli rozpływa się w świetle Rezonatora. Sygnał rozchodzi się jako 19 promieni przez różne epoki. Muzyka: MUS_Finale narastające."
         },
         {
           "NodeId": "T19_01_EPILOG_CARD",
@@ -149,14 +150,14 @@
           "NodeId": "T19_01_TOM4_PROLOG",
           "NodeType": "AmbientVoice",
           "SpeakerTag": "ZUZIA",
-          "DialogueText": "TODO: Zuzia (głos z oddali, odbiór transmisji Rezonatora): 'Tato... słyszę cię. Idę.'",
+          "DialogueText": "Tato... słyszę cię. Przez każdą oś, przez każdy rok. Słyszę cię. Idę.",
           "VOAsset": "/Game/CCR/Audio/VO/ZUZIA/VO_ZUZIA_OdbiorRezonator_T4_001",
           "ExpressionTag": "Ethereal",
           "bOverlayOnly": true,
           "bSkippable": false,
           "NextAfterVoice": "T19_01_TOM4_CARD",
           "bCheckpoint": false,
-          "_note": "ZUZIA słyszy wiadomość ojca – prolog Tomu 4. Brak portretu – tylko głos."
+          "_note": "ZUZIA – głos bez portretu. Odbiór wiadomości ojca. Prolog Tomu 4."
         },
         {
           "NodeId": "T19_01_TOM4_CARD",
@@ -166,13 +167,16 @@
           "DisplayDurationSec": 5.0,
           "FadeInSec": 2.0,
           "FadeOutSec": 2.0,
-          "NextAfterDisplay": "T19_01_999",
+          "NextAfterDisplay": "T19_01_CREDITS",
           "bCheckpoint": false,
-          "_note": "Zapowiedź Tomu 4 – Zuzia jako protagonistka idzie śladami Andrzeja przez 19 osi czasu."
+          "_note": "Zapowiedź Tomu 4 – Zuzia idzie śladami ojca przez wszystkie 19 osi czasu."
         },
         {
-          "NodeId": "T19_01_999",
-          "NodeType": "End"
+          "NodeId": "T19_01_CREDITS",
+          "NodeType": "Jump",
+          "TargetChunkId": "END_CREDITS_T3",
+          "EntryNodeInTarget": "CREDITS_T3_010",
+          "_note": "Przejście do napisów końcowych Tomu 3"
         }
       ]
     }

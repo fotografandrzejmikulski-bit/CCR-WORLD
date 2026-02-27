@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – CIEŃ SYSTEMU | CIEŃ SYSTEMU · 2035. Axis: T08. CIEŃ manipuluje. EVA (bez Weroniki) dostarcza prawdy. Weronika NIE jest z EVą.",
+  "_doc": "UCCRStoryChunk – CIEŃ SYSTEMU · 2035 | Axis: T08.",
   "chunks": [
     {
       "assetName": "DA_Story_T08_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T08_01_010",
       "ChapterTitle": "CIEŃ SYSTEMU",
       "ChapterSubtitle": "2035",
-      "_narrative": "CIEŃ manipuluje. EVA (bez Weroniki) dostarcza prawdy. Weronika NIE jest z EVą.",
+      "_narrative": "Rok 2035, przyszłość. Cyfrowy system kontrolny. Cień ma dostęp do Systemu i manipuluje danymi Zuzi. Eva – tym razem bez Weroniki – mówi Andrzejowi prawdę o tym kto naprawdę steruje izolacją. Weroniki tu nie ma.",
+      "_gameplay": "QTE: Swipe Down – Andrzej wylogowuje się z terminalu zanim Cień go zablokuje. Wybór: wierzyć Cień-Systemowi (fałszywe dane, skrót) lub Evie (prawda, trudniejsza droga). Eva zawsze ma rację.",
+      "_visual": "Dystopia bliska – inteligentne miasto 2035. Holograficzne overlaye na ulicach, twarze identyfikowane przez kamery. Paleta: neonowy cyan na ciemnym tle, czerwone alarmy. UI: interfejs systemowy z glitchami. Muzyka: MUS_CienSystemu z elektronicznym basem.",
       "Nodes": [
         {
           "NodeId": "T08_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Rok 2035. System kontroluje wszystko. Cień jest teraz tożsamy z systemem.",
-          "ExpressionTag": "Angry",
+          "DialogueText": "Rok 2035. Każdy krok zostawia cyfrowy ślad w Systemie, każda twarz rozpoznana przez kamery. Ale ja nauczyłem się jak się poruszać przez siatki danych. Zuzia jest gdzieś w tym systemie – i ktoś bardzo stara się, żebym jej tu nie znalazł.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T08_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T08_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "CIEN",
-          "DialogueText": "TODO: Cień mówi: 'Andrzej – Zuzia nie chce być znaleziona.' To kłamstwo systemu.",
-          "ExpressionTag": "Manipulative",
+          "DialogueText": "System jest ze mną, Andrzeju. Wszystkie dane, wszystkie rekordy – ja je kontroluję. Widzę Zuzię w systemie: jest bezpieczna, szczęśliwa i nie ma twojego profilu na liście kontaktów. Tak ustawiłem. Dla jej dobra.",
+          "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T08_01_030",
           "bCheckpoint": false
         },
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Cieniu, daj mi dostęp do jej profilu. Proszę.",
               "TargetNodeId": "T08_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Cieniu, kłamiesz. Nie robisz tego dla jej dobra.",
               "TargetNodeId": "T08_01_050",
               "ShowConditions": []
             }
@@ -62,7 +64,7 @@
           "NodeId": "T08_01_050",
           "NodeType": "QTE",
           "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
+          "RequiredSwipeDir": "Down",
           "TimeWindowSec": 3.0,
           "QTESuccessNodeId": "T08_01_060",
           "QTEFailNodeId": "T08_01_052"
@@ -71,7 +73,7 @@
           "NodeId": "T08_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "System mnie blokuje. Cień zablokował moje poświadczenia. Muszę się szybciej wylogować.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T08_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T08_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... CIEŃ SYSTEMU · 2035.",
+          "DialogueText": "Wylogowany. Cień nie może mnie teraz śledzić. Eva czeka w bocznym korytarzu.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T08_01_070",
           "bCheckpoint": true
@@ -89,7 +91,7 @@
           "NodeId": "T08_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "EVA",
-          "DialogueText": "TODO: Eva pojawia się potajemnie. Przekazuje Andrzejowi dowód, że Zuzia go szuka.",
+          "DialogueText": "Andrzej, słuchaj. Cień kłamie – dane Zuzi nie są zablokowane przez system. Są zablokowane ręcznie, przez konkretną osobę z konkretnym kodem. Ten kod zmienia się co oś czasu. Ale znam wzór. Następna oś – szukaj w archiwum. Będę tam.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T08_01_080",
           "bCheckpoint": false

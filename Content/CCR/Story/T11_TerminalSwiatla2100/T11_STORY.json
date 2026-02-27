@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – TERMINAL ŚWIATŁA | TERMINAL ŚWIATŁA · 2100. Axis: T11. DAVID i WERONIKA (zawsze razem) blokują terminal. EVA tu NIE ma.",
+  "_doc": "UCCRStoryChunk – TERMINAL ŚWIATŁA · 2100 | Axis: T11.",
   "chunks": [
     {
       "assetName": "DA_Story_T11_01",
@@ -9,23 +9,25 @@
       "EntryNodeId": "T11_01_010",
       "ChapterTitle": "TERMINAL ŚWIATŁA",
       "ChapterSubtitle": "2100",
-      "_narrative": "DAVID i WERONIKA (zawsze razem) blokują terminal. EVA tu NIE ma.",
+      "_narrative": "Rok 2100. Orbitalny terminal kosmiczny. David i Weronika pilnują dostępu do terminalu transmisyjnego – jedynego w tej osi miejsca, przez które można wysłać wiadomość przez bariery czasu. Cień sabotuje system. Evy tu nie ma.",
+      "_gameplay": "QTE: Swipe Left – Andrzej omija blokadę Davida przy bramce dostępu. Wybór: konfrontacja z Davidem przy terminalu (głośno, skutecznie) lub przez Weronikę która zaczyna wątpić (ciszej, ale wolniej). Terminal jest kluczem do T19.",
+      "_visual": "Stacja orbitalna 2100 – widok Ziemi przez panoramiczne szyby, terminale transmisyjne, brak grawitacji w korytarzach bocznych. Paleta: sterylna biel z błękitem orbity, holograficzne mapy. UI: interfejs kosmiczny. Muzyka: MUS_TerminalSwiatla – przestrzenny ambient.",
       "Nodes": [
         {
           "NodeId": "T11_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Terminal Światła – węzeł przesiadkowy osi czasu. Andrzej jest coraz bliżej.",
-          "ExpressionTag": "Hopeful",
+          "DialogueText": "Terminal Światła, 2100. Orbita niska. Przez okno widać Ziemię – ciągle piękną, choć inną. I piękny jest też ten terminal, przez który można wysłać wiadomość przez wszystkie osie czasu. David i Weronika pilnują go jak dwa głazy na drodze. Ale przez kamienie też można przejść, jeśli wiesz jak.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T11_01_020",
           "bCheckpoint": true
         },
         {
           "NodeId": "T11_01_020",
           "NodeType": "Dialogue",
-          "SpeakerTag": "CIEN",
-          "DialogueText": "TODO: Cień próbuje ostatecznie odciąć Andrzejowi dostęp do kolejnych osi czasu.",
-          "ExpressionTag": "Threatening",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "Andrzej, za późno. Terminal jest zablokowany dla nieautoryzowanych użytkowników. Mam certyfikat nadrzędny – decyzja wydana przez Radę Czasu. Nie ma wyjątku. Terminal nie jest dla ciebie.",
+          "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T11_01_030",
           "bCheckpoint": false
         },
@@ -34,7 +36,7 @@
           "NodeType": "SetValues",
           "SetOps": [
             {
-              "Key": "MET_CIEN",
+              "Key": "MET_DAVID",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "David, co musisz, żebym mógł użyć terminalu? Czego chcesz?",
               "TargetNodeId": "T11_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Weronika, widzę że coś chcesz powiedzieć. Co wiesz o tej blokadzie?",
               "TargetNodeId": "T11_01_050",
               "ShowConditions": []
             }
@@ -62,7 +64,7 @@
           "NodeId": "T11_01_050",
           "NodeType": "QTE",
           "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
+          "RequiredSwipeDir": "Left",
           "TimeWindowSec": 3.0,
           "QTESuccessNodeId": "T11_01_060",
           "QTEFailNodeId": "T11_01_052"
@@ -71,7 +73,7 @@
           "NodeId": "T11_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "Bramka zablokowała mój profil. David jest szybszy niż myślałem. Muszę inną ścieżką.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T11_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T11_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... TERMINAL ŚWIATŁA · 2100.",
+          "DialogueText": "Jestem przy terminalu. David krzyczy, Weronika milczy. Terminal jest aktywny – mam 30 sekund.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T11_01_070",
           "bCheckpoint": true
@@ -88,8 +90,8 @@
         {
           "NodeId": "T11_01_070",
           "NodeType": "Dialogue",
-          "SpeakerTag": "DAVID",
-          "DialogueText": "TODO: David i Weronika blokują terminal. Weronika tylko wykonuje rozkazy Davida. EVA tu NIE ma.",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "Andrzej, wiem co myślisz o mnie. Wiem, że byłam po stronie Davida. Ale słyszałam nagranie Zuzi – Kafka mi je przesłał. Trzysta czterdzieści siedem wiadomości. I nie dostarczone żadna. Pomogę ci z terminalem. David się nie dowie. Ale terminal T100 to dopiero próba – prawdziwy jest w T19.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T11_01_080",
           "bCheckpoint": false
@@ -99,7 +101,7 @@
           "NodeType": "SetValues",
           "SetOps": [
             {
-              "Key": "MET_DAVID",
+              "Key": "MET_WERONIKA",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1

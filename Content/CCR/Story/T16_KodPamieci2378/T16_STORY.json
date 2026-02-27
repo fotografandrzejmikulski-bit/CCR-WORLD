@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – KOD PAMIĘCI | KOD PAMIĘCI · 2378. Axis: T16. WERONIKA jest z DAVIDEM (zawsze razem). Weronika zaczyna wątpić w Davida – przełomowy moment.",
+  "_doc": "UCCRStoryChunk – KOD PAMIĘCI · 2378 | Axis: T16.",
   "chunks": [
     {
       "assetName": "DA_Story_T16_01",
@@ -9,23 +9,25 @@
       "EntryNodeId": "T16_01_010",
       "ChapterTitle": "KOD PAMIĘCI",
       "ChapterSubtitle": "2378",
-      "_narrative": "WERONIKA jest z DAVIDEM (zawsze razem). Weronika zaczyna wątpić w Davida – przełomowy moment.",
+      "_narrative": "Rok 2378, pierwsza wersja tej osi. David i Weronika (zawsze razem) przechowują kod pamięci – klucz do systemu izolacji Zuzi. Przełom: Weronika słyszała nagrania z Archiwum Ciszy i zaczyna wątpić w Davida. To jej pierwszy krok ku zmianie.",
+      "_gameplay": "QTE: Tap (szybkie) – Andrzej łapie kod pamięci gdy Weronika 'przypadkowo' upuszcza go w obecności Andrzeja. Wybór: dać Weronice szansę działania (czekać) lub działać samodzielnie i samemu zabrać kod. Oba tory fabularne różnią się emocjonalnie.",
+      "_visual": "Archiwum kryształowe 2378 – unoszące się kryształy z zapisanymi danymi, przejrzyste korytarze pełne wspomnień-obiektów. Paleta: zimny lodowaty błękit. UI: kryształowy interfejs z kodem binarnym. Muzyka: MUS_KodPamieci – napięty minimalizm.",
       "Nodes": [
         {
           "NodeId": "T16_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Rok 2378. Pamięć jest kodem. Zuzia zakodowała wiadomość dla ojca w strukturze czasu.",
-          "ExpressionTag": "Determined",
+          "DialogueText": "Rok 2378. Archiwum Kryształowe. David i Weronika – nierozłączni przez całą podróż. Ale coś się zmieniło. Weronika patrzy na mnie inaczej. Nie jak strażnik – jak ktoś kto ma coś ważnego do powiedzenia i czeka na właściwy moment. Mam to wyczucie ojca który zna moment.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T16_01_020",
           "bCheckpoint": true
         },
         {
           "NodeId": "T16_01_020",
           "NodeType": "Dialogue",
-          "SpeakerTag": "DAVID",
-          "DialogueText": "TODO: David jest strażnikiem kodu. Weronika stoi u jego boku. Blokują dostęp.",
-          "ExpressionTag": "Cold",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "(szeptem do Andrzeja, ukryta przed Davidem) Andrzej, słyszałam nagrania z Archiwum. Trzysta czterdzieści siedem wiadomości Zuzi. I... nie mogę dalej. David mówi że to dla jej dobra. Ale dobra jej dziecka nie zapewnia się przez odcięcie od ojca. Mam kod dostępu. Zaraz go 'upuszczę'.",
+          "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T16_01_030",
           "bCheckpoint": false
         },
@@ -34,7 +36,7 @@
           "NodeType": "SetValues",
           "SetOps": [
             {
-              "Key": "MET_DAVID",
+              "Key": "MET_WERONIKA",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Czekać – Weronika sama zdecyduje kiedy działać.",
               "TargetNodeId": "T16_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Działać teraz – wziąć kod gdy jest okazja.",
               "TargetNodeId": "T16_01_050",
               "ShowConditions": []
             }
@@ -61,8 +63,8 @@
         {
           "NodeId": "T16_01_050",
           "NodeType": "QTE",
-          "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
+          "GestureType": "Tap",
+          "RequiredSwipeDir": null,
           "TimeWindowSec": 3.0,
           "QTESuccessNodeId": "T16_01_060",
           "QTEFailNodeId": "T16_01_052"
@@ -71,7 +73,7 @@
           "NodeId": "T16_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "Kod przeleciał przez palce. Kryształ uderza o podłogę. David patrzy. Muszę działać naturalnie.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T16_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T16_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... KOD PAMIĘCI · 2378.",
+          "DialogueText": "Mam kod pamięci. Weronika odwróciła głowę. David jest po drugiej stronie archiwum. Klucz do systemu izolacji jest w moich rękach.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T16_01_070",
           "bCheckpoint": true
@@ -88,8 +90,8 @@
         {
           "NodeId": "T16_01_070",
           "NodeType": "Dialogue",
-          "SpeakerTag": "WERONIKA",
-          "DialogueText": "TODO: Weronika mówi 'Nie ma tu nic dla ciebie, Andrzeju.' Ale w jej oczach jest wątpliwość.",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "(do Weroniki, nie widząc Andrzeja) Weronika... gdzie jest kod? (długa pauza) To nie miało prawa się stać. (Weronika milczy. David rozumie.) Coś się zmieniło. Weronika... co ty zrobiłaś?",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T16_01_080",
           "bCheckpoint": false
@@ -99,7 +101,7 @@
           "NodeType": "SetValues",
           "SetOps": [
             {
-              "Key": "MET_WERONIKA",
+              "Key": "MET_DAVID",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1

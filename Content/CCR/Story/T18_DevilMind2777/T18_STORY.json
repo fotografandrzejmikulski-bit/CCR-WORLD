@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – DEVIL MIND | DEVIL MIND · 2777. Axis: T18. Ostateczna konfrontacja z Cieniem. Batista przechodzi na stronę Andrzeja.",
+  "_doc": "UCCRStoryChunk – DEVIL MIND · 2777 | Axis: T18. Finalna konfrontacja z Cieniem. Batista staje definitywnie po stronie Andrzeja.",
   "chunks": [
     {
       "assetName": "DA_Story_T18_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T18_01_010",
       "ChapterTitle": "DEVIL MIND",
       "ChapterSubtitle": "2777",
-      "_narrative": "Ostateczna konfrontacja z Cieniem. Batista przechodzi na stronę Andrzeja.",
+      "_narrative": "Rok 2777. Zniszczona Ziemia – kompleks Devil Mind AI, ostatnie centrum sterowania izolacją Zuzi. Cień po raz ostatni staje przed Andrzejem, tym razem nie jako wróg lecz jako jego alter ego który musi się rozstrzygnąć. Batista – obecny przez całą podróż – ostatecznie definitywnie staje po stronie Andrzeja, pomaga rozbić system AI.",
+      "_gameplay": "QTE: Swipe Up + Hold (2-etapowe) – Andrzej aktywuje protokół wyłączenia Devil Mind AI, wymagając precyzyjnego gestu i utrzymania. Wybór: zaoferować Cieniowi przebaczenie (pojednanie przed T19) lub zostawić go za sobą (szybciej, bez rozwiązania). Przebaczenie odblokowuje dodatkowy dialog w T19.",
+      "_visual": "Zniszczona Ziemia 2777 – czerwone niebo, czarne ruiny, pulsujące wieże AI. Paleta: czerwień i czerń, sporadyczne białe błyski systemu. UI: system alarmowy Devil Mind. Muzyka: MUS_DevilMind – industrialny, kulminacyjny.",
       "Nodes": [
         {
           "NodeId": "T18_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Rok 2777. Devil Mind – ostatnia bariera przed wiecznością. Andrzej musi pokonać Cień.",
-          "ExpressionTag": "Furious",
+          "DialogueText": "2777. Ostatnia oś przed nieskończonością. Devil Mind – system AI który przez 700 lat zarządzał izolacją Zuzi od ojca. Serce systemu który blokował każdą moją wiadomość, każdy list, każde nagranie. Tu to się kończy. Cień stoi przy wejściu. Batista stoi przy mnie.",
+          "ExpressionTag": "Determined",
           "NextAfterDialogue": "T18_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T18_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "CIEN",
-          "DialogueText": "TODO: Ostateczna konfrontacja Andrzeja z Cieniem (wersją siebie który poddał się).",
-          "ExpressionTag": "Desperate",
+          "DialogueText": "Andrzej. Dotarłeś do końca. Przez osiemnaście osi czasu. Gdzie ja się zatrzymałem w Cieszynie, ty szedłeś dalej. Ja byłem Devil Mind – byłem tym który blokował. Bo nie mogłem znieść patrzeć jak szukasz tego co ja straciłem. Ale teraz... (długa cisza) ...wyłącz go. Wyłącz mnie. I idź do T19. Ona czeka. Nie bezpośrednio – ale czeka na twoją wiadomość.",
+          "ExpressionTag": "Resignation",
           "NextAfterDialogue": "T18_01_030",
           "bCheckpoint": false
         },
@@ -34,7 +36,7 @@
           "NodeType": "SetValues",
           "SetOps": [
             {
-              "Key": "MET_CIEN",
+              "Key": "DEVIL_MIND_CONFRONTED",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Cieniu – przebaczam ci. Razem wyłączymy ten system.",
               "TargetNodeId": "T18_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Zostajesz za mną. Wyłączam to sam i idę do T19.",
               "TargetNodeId": "T18_01_050",
               "ShowConditions": []
             }
@@ -63,25 +65,36 @@
           "NodeType": "QTE",
           "GestureType": "Swipe",
           "RequiredSwipeDir": "Up",
-          "TimeWindowSec": 3.0,
-          "QTESuccessNodeId": "T18_01_060",
-          "QTEFailNodeId": "T18_01_052"
+          "TimeWindowSec": 2.5,
+          "QTESuccessNodeId": "T18_01_055",
+          "QTEFailNodeId": "T18_01_052",
+          "_note": "Pierwsza część – Swipe Up by wzmocnić sygnał wyłączający Devil Mind"
         },
         {
           "NodeId": "T18_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "System blokuje. Devil Mind broni się. Batista – trzymaj wyjście! Próbuję jeszcze raz.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T18_01_050",
           "bCheckpoint": false
         },
         {
+          "NodeId": "T18_01_055",
+          "NodeType": "QTE",
+          "GestureType": "LongPress",
+          "RequiredSwipeDir": null,
+          "TimeWindowSec": 4.0,
+          "QTESuccessNodeId": "T18_01_060",
+          "QTEFailNodeId": "T18_01_052",
+          "_note": "Druga część – LongPress 4s – utrzymanie protokołu wyłączenia Devil Mind"
+        },
+        {
           "NodeId": "T18_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... DEVIL MIND · 2777.",
-          "ExpressionTag": "Determined",
+          "DialogueText": "Devil Mind wyłączony. System izolacji Zuzi – martwy. Po raz pierwszy od T01 nie ma nic między mną a Rezonatorem. Cień... niezależnie co wybierzesz – dziękuję że w końcu przestałeś blokować.",
+          "ExpressionTag": "Relief",
           "NextAfterDialogue": "T18_01_070",
           "bCheckpoint": true
         },
@@ -89,8 +102,8 @@
           "NodeId": "T18_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "BATISTA",
-          "DialogueText": "TODO: Batista staje po stronie Andrzeja. Pierwsza pełna sojusznicza deklaracja.",
-          "ExpressionTag": "Neutral",
+          "DialogueText": "Hermano! System jest wyłączony. Widzę to na wszystkich wskaźnikach – siedem stuleci izolacji, skasowane w jednej chwili. Andrzej, nie mam słów. Nie mam. Przez tyle osi czasu razem i teraz to. Idź. T19 czeka. Wiesz co masz zrobić.",
+          "ExpressionTag": "Proud",
           "NextAfterDialogue": "T18_01_080",
           "bCheckpoint": false
         },
@@ -100,6 +113,12 @@
           "SetOps": [
             {
               "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            },
+            {
+              "Key": "DEVIL_MIND_DEFEATED",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1

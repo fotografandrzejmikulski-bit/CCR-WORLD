@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – CSM SEVER | CSM SEVER · CZECHY · 2024. Axis: T06. EIMSTAIN i KAFKA pomagają zrozumieć mechanizm izolacji Zuzi.",
+  "_doc": "UCCRStoryChunk – CSM SEVER · Czechy · 2024 | Axis: T06.",
   "chunks": [
     {
       "assetName": "DA_Story_T06_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T06_01_010",
       "ChapterTitle": "CSM SEVER",
       "ChapterSubtitle": "Czechy · 2024",
-      "_narrative": "EIMSTAIN i KAFKA pomagają zrozumieć mechanizm izolacji Zuzi.",
+      "_narrative": "CSM Sever – czeskie centrum zarządzania migracją przy granicy. Eimstain wyjaśnia mechanizm izolacji Zuzi. Kafka przynosi dokumenty. Andrzej po raz pierwszy rozumie strukturę problemu.",
+      "_gameplay": "QTE: LongPress 3s – Andrzej przytrzymuje drzwi archiwum otwarte podczas gdy Kafka skanuje dokumenty. Wybór: zaufać oficjalnym dokumentom Eimstaina (pewnie, wolno) lub nieoficjalnym źródłom Kafki (szybko, ryzykownie).",
+      "_visual": "Nowoczesne centrum administracyjne przy granicy – szkło i stal, monotonne białe korytarze, kolejki z numerkami. Paleta: zimne biało-szarości, czeskie flagi. UI: formularz urzędowy. Muzyka: MUS_CsmSever z biurowym ambientem.",
       "Nodes": [
         {
           "NodeId": "T06_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Obóz CSM Sever w Czechach. Andrzej szuka kolejnego śladu po Zuzi.",
-          "ExpressionTag": "Determined",
+          "DialogueText": "Czechy, 2024. CSM Sever – centrum obsługi migrantów. Szklane drzwi, numerki w kolejce, zapach drukarki. Ale za tymi urzędowymi szufladami jest odpowiedź na pytanie: kto zdecydował, że Zuzia ma być ode mnie odcięta i w jaki sposób to zrobił.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T06_01_020",
           "bCheckpoint": true
         },
@@ -24,7 +26,7 @@
           "NodeId": "T06_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "EIMSTAIN",
-          "DialogueText": "TODO: Eimstain prowadzi badania w CSM Sever. Zna mechanizm osi czasu.",
+          "DialogueText": "Andrzeju, posłuchaj uważnie. Izolacja Zuzi nie jest przypadkowa. Ktoś systematycznie blokował każdą ścieżkę komunikacji między wami przez każdą oś czasu. To wymagało planowania – i zasobów, których normalny człowiek nie ma. Ale mam dokumenty.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T06_01_030",
           "bCheckpoint": false
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Eimstain, pokaż mi te dokumenty. Chcę nazwiska.",
               "TargetNodeId": "T06_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Eimstain, jak to zatrzymać? Musi być sposób.",
               "TargetNodeId": "T06_01_050",
               "ShowConditions": []
             }
@@ -61,8 +63,8 @@
         {
           "NodeId": "T06_01_050",
           "NodeType": "QTE",
-          "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
+          "GestureType": "LongPress",
+          "RequiredSwipeDir": null,
           "TimeWindowSec": 3.0,
           "QTESuccessNodeId": "T06_01_060",
           "QTEFailNodeId": "T06_01_052"
@@ -71,7 +73,7 @@
           "NodeId": "T06_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "Drzwi archiwum zatrzasnęły się! Kafka nie zdążył. Muszę przytrzymać mocniej.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T06_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T06_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... CSM SEVER · CZECHY · 2024.",
+          "DialogueText": "Kafka ma skany. Eimstain ma analizę. Teraz rozumiem z czym walczę.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T06_01_070",
           "bCheckpoint": true
@@ -89,7 +91,7 @@
           "NodeId": "T06_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "KAFKA",
-          "DialogueText": "TODO: Kafka przynosi wiadomość – Zuzia była tu, ale już jej nie ma.",
+          "DialogueText": "Widzisz te wzory w dokumentach? Każda blokada, każda bariera miała ten sam podpis – sygnaturę decyzji. Ktoś pisał rozkazy przez wszystkie czasy jednocześnie. To nie jest człowiek. To jest system. I systemy mają szczeliny.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T06_01_080",
           "bCheckpoint": false

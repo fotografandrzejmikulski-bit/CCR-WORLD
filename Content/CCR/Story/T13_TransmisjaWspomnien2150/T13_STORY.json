@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – TRANSMISJA WSPOMNIEŃ | TRANSMISJA WSPOMNIEŃ · 2150. Axis: T13. Przełom – Andrzej słyszy Zuzię przez transmisję wspomnień po raz pierwszy od lat.",
+  "_doc": "UCCRStoryChunk – TRANSMISJA WSPOMNIEŃ · 2150 | Axis: T13.",
   "chunks": [
     {
       "assetName": "DA_Story_T13_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T13_01_010",
       "ChapterTitle": "TRANSMISJA WSPOMNIEŃ",
       "ChapterSubtitle": "2150",
-      "_narrative": "Przełom – Andrzej słyszy Zuzię przez transmisję wspomnień po raz pierwszy od lat.",
+      "_narrative": "Rok 2150. Przełom – Andrzej po raz pierwszy od lat słyszy głos Zuzi przez transmisję wspomnień. Kafka pomoaga z technologią. Cień próbuje zakłócić transmisję, lecz tym razem mu się to nie udaje.",
+      "_gameplay": "QTE: Swipe Up – Andrzej wzmacnia sygnał transmisji, wyciągając rękę w górę jak antenę. Wybór: utrzymać połączenie za wszelką cenę (może być zakłócone przez Cień) lub odciąć Cień kosztem krótszej transmisji. Obie dają kluczowy moment fabularny.",
+      "_visual": "Centrum transmisji wspomnień – wielka kopuła z interfejsem mózgowym. Fale mózgowe jako świecące linie. Paleta: fiolet i biel, pulsujące światło. UI: oscyloskop wspomnień. Muzyka: MUS_Transmisja – narastająca, emocjonalna.",
       "Nodes": [
         {
           "NodeId": "T13_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Rok 2150. Technologia transmisji wspomnień. Andrzej odbiera sygnał – to Zuzia.",
-          "ExpressionTag": "Emotional",
+          "DialogueText": "2150. Centrum Transmisji Wspomnień. Kafka mówi, że można tu wysłać wspomnienie jak pakunek przez sieć neuronową osi czasu. Cień blokował wszystko od T01. Ale Kafka zna szczelinę w systemie – i właśnie tą szczeliną dotrę do Zuzi. Przynajmniej na chwilę.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T13_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T13_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "KAFKA",
-          "DialogueText": "TODO: Kafka jest operatorem transmisji. Pomaga Andrzejowi odebrać sygnał od córki.",
-          "ExpressionTag": "Focused",
+          "DialogueText": "Andrzej, mamy pięć minut zanim Cień wykryje nasz sygnał. Transmisja wspomnień działa przez podświadomość – twoje wspomnienia dotrą do Zuzi jako sen. Ona nie będzie wiedziała że to ty, ale poczuje. Przygotuj się. To pierwszy raz kiedy będziecie w tym samym miejscu.",
+          "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T13_01_030",
           "bCheckpoint": false
         },
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Utrzymać połączenie do końca – nieważne co zrobi Cień.",
               "TargetNodeId": "T13_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Odciąć Cień kosztem krótszego połączenia – bezpieczniej.",
               "TargetNodeId": "T13_01_050",
               "ShowConditions": []
             }
@@ -71,7 +73,7 @@
           "NodeId": "T13_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "Sygnał słabnie. Cień zakłóca. Wyciągam rękę wyżej – wzmocnić antenę.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T13_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T13_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... TRANSMISJA WSPOMNIEŃ · 2150.",
+          "DialogueText": "Połączenie. Słyszę ją. Słyszę Zuzię – jej głos, ciepły i żywy. Mówi: 'Tato... czuję że jesteś blisko.' Ona mnie czuje. Ona wie.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T13_01_070",
           "bCheckpoint": true
@@ -89,7 +91,7 @@
           "NodeId": "T13_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "CIEN",
-          "DialogueText": "TODO: Cień zakłóca transmisję. Chce zniszczyć połączenie między ojcem a córką.",
+          "DialogueText": "Przerywam wam. Połączenie zerwane. (chwila ciszy) ...nie. Tym razem nie. Tym razem Andrzej jest silniejszy. (Cień odchodzi w ciemność) Idź, Andrzeju. Zasługujesz na tę chwilę.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T13_01_080",
           "bCheckpoint": false

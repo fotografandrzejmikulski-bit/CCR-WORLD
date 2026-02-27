@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – ŁĘCZNA – LUBLIN | ŁĘCZNA – LUBLIN · 2010–2018. Axis: T03. WERONIKA jest z DAVIDEM – izolują Zuzię od Andrzeja. EVA NIE ma w tej scenie.",
+  "_doc": "UCCRStoryChunk – ŁĘCZNA – LUBLIN · 2010–2018 | Axis: T03.",
   "chunks": [
     {
       "assetName": "DA_Story_T03_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T03_01_010",
       "ChapterTitle": "ŁĘCZNA – LUBLIN",
       "ChapterSubtitle": "2010–2018",
-      "_narrative": "WERONIKA jest z DAVIDEM – izolują Zuzię od Andrzeja. EVA NIE ma w tej scenie.",
+      "_narrative": "Współczesna Polska, Łęczna i Lublin. David jest opiekunem/ojczymem Zuzi i izoluje ją od Andrzeja. Weronika jest z Davidem (zawsze razem) i jest jego podporządkowaną partnerką. Evy tu nie ma. Andrzej próbuje odwiedzić Zuzię, David odmawia.",
+      "_gameplay": "QTE: Swipe Right – Andrzej prześlizguje się przez zamknięte drzwi zanim David je zarygluje. Wybór: próbować rozmawiać z Davidem (bezpośrednio) lub przez Weronikę (pośrednio, wolniejsza ale mniej konfrontacyjna ścieżka).",
+      "_visual": "Szary blok z lat 70. w Łęcznej. Klatka schodowa z latarnią. Telewizor w tle. Paleta: zimne listopadowe barwy, brązowe tapety, żółtawe światło. UI: nowoczesny telefon z SMS. Muzyka: MUS_Leczna z ambientem bloku.",
       "Nodes": [
         {
           "NodeId": "T03_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Andrzej wraca do Łęcznej. Pamięta Zuzię tu, jako małe dziecko. Ale jej nie ma.",
-          "ExpressionTag": "Sad",
+          "DialogueText": "Łęczna, 2010. Blok przy ulicy Kościuszki. Wiem, że Zuzia tu była. David otworzył drzwi i powiedział jedno zdanie – i to zdanie zatrzasnęło mi świat przed nosem. Nie odejdę stąd bez odpowiedzi.",
+          "ExpressionTag": "Melancholic",
           "NextAfterDialogue": "T03_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T03_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "DAVID",
-          "DialogueText": "TODO: David jest tu z Weroniką. Pilnuje, żeby Andrzej nie dotarł do Zuzi.",
-          "ExpressionTag": "Protective",
+          "DialogueText": "Andrzej. Nie ma tu nic dla ciebie. Zuzia jest bezpieczna, zdrowa i nie chce z tobą kontaktu. Taka jej decyzja. Szanuję ją i ty też powinieneś.",
+          "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T03_01_030",
           "bCheckpoint": false
         },
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "David, daj mi choć minutę z Zuzią. Jeden telefon.",
               "TargetNodeId": "T03_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Weronika, wiem że jesteś za tymi drzwiami. Powiedz mu żeby ustąpił.",
               "TargetNodeId": "T03_01_050",
               "ShowConditions": []
             }
@@ -62,7 +64,7 @@
           "NodeId": "T03_01_050",
           "NodeType": "QTE",
           "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
+          "RequiredSwipeDir": "Right",
           "TimeWindowSec": 3.0,
           "QTESuccessNodeId": "T03_01_060",
           "QTEFailNodeId": "T03_01_052"
@@ -71,7 +73,7 @@
           "NodeId": "T03_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "DialogueText": "Drzwi zamknięte na klucz. Weronika stoi za nim – widzę jej sylwetkę przez szybę. Muszę spróbować inaczej.",
           "ExpressionTag": "Fear",
           "NextAfterDialogue": "T03_01_050",
           "bCheckpoint": false
@@ -80,7 +82,7 @@
           "NodeId": "T03_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... ŁĘCZNA – LUBLIN · 2010–2018.",
+          "DialogueText": "Wślizgnąłem się na klatkę schodową. Czuję, że Zuzia jest za tymi drzwiami. Jeszcze jeden krok.",
           "ExpressionTag": "Determined",
           "NextAfterDialogue": "T03_01_070",
           "bCheckpoint": true
@@ -89,7 +91,7 @@
           "NodeId": "T03_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "WERONIKA",
-          "DialogueText": "TODO: Weronika jest TYLKO z Davidem. Nigdy nie widziała Evy. Izoluje Zuzię.",
+          "DialogueText": "Andrzej... nie powinam tego mówić przy Davidzie, ale... Zuzia pytała o ciebie ostatni tydzień. David nie wie, że ci to mówię. Ona tu jest. Ale nie możemy tego teraz... nie przy nim. Zrozum, proszę.",
           "ExpressionTag": "Neutral",
           "NextAfterDialogue": "T03_01_080",
           "bCheckpoint": false

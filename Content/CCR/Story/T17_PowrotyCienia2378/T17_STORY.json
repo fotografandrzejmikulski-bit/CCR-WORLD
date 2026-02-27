@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – POWROTY DO CIENIA | POWROTY DO CIENIA · 2378. Axis: T17. Cień = alternatywna wersja Andrzeja który poddał się szukaniu Zuzi. Kluczowe odkrycie.",
+  "_doc": "UCCRStoryChunk – POWROTY DO CIENIA · 2378 | Axis: T17. KLUCZOWE ODKRYCIE: CIEŃ = Andrzej z innej osi czasu, który poddał się szukaniu.",
   "chunks": [
     {
       "assetName": "DA_Story_T17_01",
@@ -9,13 +9,15 @@
       "EntryNodeId": "T17_01_010",
       "ChapterTitle": "POWROTY DO CIENIA",
       "ChapterSubtitle": "2378",
-      "_narrative": "Cień = alternatywna wersja Andrzeja który poddał się szukaniu Zuzi. Kluczowe odkrycie.",
+      "_narrative": "Ten sam rok 2378, inna oś. Cień powraca do swojego źródła i tu następuje kluczowe odkrycie całego Tomu 3: Cień to Andrzej z alternatywnej osi czasu, który po T07 (Cieszyn) poddał się szukaniu Zuzi. Eimstain był świadkiem i czekał na ten moment. To emocjonalny szczyt gry przed T18-T19.",
+      "_gameplay": "QTE: LongPress 4s – Andrzej stoi twarzą do Cienia i nie ucieka, patrzy w lustro własnej klęski. Wybór: przyznać że rozumiał Cień przez całą podróż (empatia) lub odrzucić Cień jako obcego (odmowa empatii). Wybór wpływa na ostatnie słowa Cienia w T18.",
+      "_visual": "Sala lustrzana – dwa Andrzeje twarzą w twarz. Jeden obecny, jeden jako Cień. Dosłowne lustro między nimi. Paleta: srebrny i czarny, odwrócone odbicia. UI: dwa nakładające się profile identyczne. Muzyka: MUS_Cien – melancholijna, zdwojona melodia.",
       "Nodes": [
         {
           "NodeId": "T17_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Ten sam rok 2378, inna oś. Cień powraca do źródła. Andrzej odkrywa prawdziwą naturę Cienia.",
+          "DialogueText": "2378, druga oś. Cień wrócił tu gdzie zaczął. I ja za nim. I w tej sali luster widzę go po raz pierwszy naprawdę – twarz. Moją twarz. Starszą, zgasłą, ale moją. Cień to ja. Ja który poddałem się szukaniu po Cieszynie. Ja który wybrał spokój zamiast córki.",
           "ExpressionTag": "Shocked",
           "NextAfterDialogue": "T17_01_020",
           "bCheckpoint": true
@@ -24,8 +26,8 @@
           "NodeId": "T17_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "CIEN",
-          "DialogueText": "TODO: Cień odkrywa swoją tożsamość – jest echem Andrzeja z innej osi czasu, który poddał się.",
-          "ExpressionTag": "Revelation",
+          "DialogueText": "Widzisz teraz? Jestem tobą, Andrzeju. Zatrzymałem się w Cieszynie 2025. Widziałem Zuzię przez rzekę, tak jak ty. Ale ja... powiedziałem sobie że to niemożliwe. Że trzeba odpuścić dla własnego zdrowia. I zostałem Cieniem zamiast ojcem. Przez dekady sabotowałem ciebie, bo nie mogłem patrzeć jak szukasz tam gdzie ja się zatrzymałem.",
+          "ExpressionTag": "Broken",
           "NextAfterDialogue": "T17_01_030",
           "bCheckpoint": false
         },
@@ -34,7 +36,7 @@
           "NodeType": "SetValues",
           "SetOps": [
             {
-              "Key": "MET_CIEN",
+              "Key": "CIEN_IDENTITY_REVEALED",
               "ValueType": "Flag",
               "Mode": "Set",
               "Value": 1
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Rozumiem cię, Cieniu. Ale ja nie mogę się zatrzymać – dla Zuzi.",
               "TargetNodeId": "T17_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Jesteś mną który się poddał. Tego nie mogę zaakceptować.",
               "TargetNodeId": "T17_01_050",
               "ShowConditions": []
             }
@@ -61,18 +63,19 @@
         {
           "NodeId": "T17_01_050",
           "NodeType": "QTE",
-          "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
-          "TimeWindowSec": 3.0,
+          "GestureType": "LongPress",
+          "RequiredSwipeDir": null,
+          "TimeWindowSec": 4.0,
           "QTESuccessNodeId": "T17_01_060",
-          "QTEFailNodeId": "T17_01_052"
+          "QTEFailNodeId": "T17_01_052",
+          "_note": "Andrzej stoi nieruchomo twarzą do Cienia – nie ucieka, akceptuje prawdę"
         },
         {
           "NodeId": "T17_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
-          "ExpressionTag": "Fear",
+          "DialogueText": "Odwracam się od tego lustra. Nie. Muszę patrzeć. Muszę zobaczyć do końca.",
+          "ExpressionTag": "Struggling",
           "NextAfterDialogue": "T17_01_050",
           "bCheckpoint": false
         },
@@ -80,8 +83,8 @@
           "NodeId": "T17_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... POWROTY DO CIENIA · 2378.",
-          "ExpressionTag": "Determined",
+          "DialogueText": "Nie jestem tobą, Cieniu. Nie jestem jeszcze tobą. I nie będę. Idę do T18. Do T19. Do Rezonatora. I wyślę Zuzi wszystko – każdą oś, każdy rok, każdy krok który zrobiłem zamiast ciebie.",
+          "ExpressionTag": "Resolved",
           "NextAfterDialogue": "T17_01_070",
           "bCheckpoint": true
         },
@@ -89,8 +92,8 @@
           "NodeId": "T17_01_070",
           "NodeType": "Dialogue",
           "SpeakerTag": "EIMSTAIN",
-          "DialogueText": "TODO: Eimstain tłumaczy: Cień to wersja Andrzeja która przestała szukać. Andrzej nie może się poddać.",
-          "ExpressionTag": "Neutral",
+          "DialogueText": "Czekałem na ten moment, Andrzeju. Przez każdą z siedemnastu osi czasu towarzyszyłem ci i czekałem aż zobaczysz Cień takim jakim jest. Teraz jesteś gotowy. T18 to ostatni sprawdzian przed Rezonatorem. Cień pójdzie z tobą – jako świadek, nie wróg.",
+          "ExpressionTag": "Knowing",
           "NextAfterDialogue": "T17_01_080",
           "bCheckpoint": false
         },

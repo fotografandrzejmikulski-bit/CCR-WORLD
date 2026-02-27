@@ -1,5 +1,5 @@
 {
-  "_doc": "UCCRStoryChunk manifest – FOTONY PAMIĘCI | FOTONY PAMIĘCI · 2045. Axis: T09. Echo Zuzi pojawia się jako foton pamięci – Andrzej widzi jej wspomnienie ale nie może się z nią porozumieć.",
+  "_doc": "UCCRStoryChunk – FOTONY PAMIĘCI · 2045 | Axis: T09.",
   "chunks": [
     {
       "assetName": "DA_Story_T09_01",
@@ -9,14 +9,16 @@
       "EntryNodeId": "T09_01_010",
       "ChapterTitle": "FOTONY PAMIĘCI",
       "ChapterSubtitle": "2045",
-      "_narrative": "Echo Zuzi pojawia się jako foton pamięci – Andrzej widzi jej wspomnienie ale nie może się z nią porozumieć.",
+      "_narrative": "Rok 2045. Laboratorium fotonicznych archiwów pamięci – technologia odtwarza wspomnienia jako hologramy. Eimstain jest tu naukowcem. Echo małej Zuzi pojawia się jako foton pamięci – Andrzej widzi i słyszy ją, ale ona nie może odpowiedzieć.",
+      "_gameplay": "Brak QTE w tradycyjnym sensie – zamiast tego LongPress 4s by 'przytrzymać' echo-obraz Zuzi jak najdłużej. Wybór: próbować mówić do echa (emocjonalne, bez efektu) lub obserwować w milczeniu (Andrzej zapamiętuje szczegół potrzebny w T19).",
+      "_visual": "Laboratorium przyszłości – komory pamięci z błękitnym holograficznym światłem. Mała Zuzia (wiek 8-9 lat) jako świetlna projekcja. Paleta: zimna biel i złote fotony. UI: wykres fal pamięciowych. Muzyka: MUS_FotonyPamieci – cicha i dziecięca.",
       "Nodes": [
         {
           "NodeId": "T09_01_010",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: Rok 2045. Wspomnienia Zuzi jako fotony – Andrzej widzi je ale nie może ich dotknąć.",
-          "ExpressionTag": "Desperate",
+          "DialogueText": "2045. Laboratorium Fotoniczne w Toruniu. Eimstain mówi, że tutaj pamięci mają kształt. Że można zobaczyć kogoś kto odszedł. Że... można zobaczyć Zuzię. Choć to tylko echo. Choć to tylko światło.",
+          "ExpressionTag": "Hopeful",
           "NextAfterDialogue": "T09_01_020",
           "bCheckpoint": true
         },
@@ -24,8 +26,8 @@
           "NodeId": "T09_01_020",
           "NodeType": "Dialogue",
           "SpeakerTag": "EIMSTAIN",
-          "DialogueText": "TODO: Eimstain tłumaczy technologię fotonów pamięci. Zuzia zakodowała wiadomość dla ojca.",
-          "ExpressionTag": "Scientific",
+          "DialogueText": "Andrzeju. Foton pamięci Zuzi – zarejestrowany w tej osi czasu, kiedy miała osiem lat. Widziała cię wtedy po raz ostatni. To co zaraz zobaczysz – to jej wspomnienie. Ona cię nie widzi. Ale ty ją zobaczysz naprawdę.",
+          "ExpressionTag": "Careful",
           "NextAfterDialogue": "T09_01_030",
           "bCheckpoint": false
         },
@@ -47,12 +49,12 @@
           "NodeType": "Choice",
           "Choices": [
             {
-              "Label": "TODO: opcja 1",
+              "Label": "Mówić do echa Zuzi: 'Córeczko, słyszysz mnie?'",
               "TargetNodeId": "T09_01_050",
               "ShowConditions": []
             },
             {
-              "Label": "TODO: opcja 2",
+              "Label": "Milczeć i zapamiętać każdy szczegół jej twarzy",
               "TargetNodeId": "T09_01_050",
               "ShowConditions": []
             }
@@ -61,18 +63,19 @@
         {
           "NodeId": "T09_01_050",
           "NodeType": "QTE",
-          "GestureType": "Swipe",
-          "RequiredSwipeDir": "Up",
-          "TimeWindowSec": 3.0,
+          "GestureType": "LongPress",
+          "RequiredSwipeDir": null,
+          "TimeWindowSec": 4.0,
           "QTESuccessNodeId": "T09_01_060",
-          "QTEFailNodeId": "T09_01_052"
+          "QTEFailNodeId": "T09_01_052",
+          "_note": "Gracz przytrzymuje ekran – zatrzymuje foton pamięci Zuzi jak najdłużej"
         },
         {
           "NodeId": "T09_01_052",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
-          "ExpressionTag": "Fear",
+          "DialogueText": "Obraz gaśnie za szybko. Eimstain – jeszcze raz. Proszę.",
+          "ExpressionTag": "Desperate",
           "NextAfterDialogue": "T09_01_050",
           "bCheckpoint": false
         },
@@ -80,22 +83,35 @@
           "NodeId": "T09_01_060",
           "NodeType": "Dialogue",
           "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... FOTONY PAMIĘCI · 2045.",
-          "ExpressionTag": "Determined",
+          "DialogueText": "Zuzia... widziałem cię. Miałaś na sobie niebieski sweter i trzymałaś zieloną kredkę. Pamiętam. Zapamiętam to na resztę podróży. Czekaj na mnie, córeczko.",
+          "ExpressionTag": "Emotional",
           "NextAfterDialogue": "T09_01_070",
           "bCheckpoint": true
         },
         {
           "NodeId": "T09_01_070",
           "NodeType": "Dialogue",
-          "SpeakerTag": "ANDRZEJ",
-          "DialogueText": "TODO: zamknięcie osi czasu. Szukam dalej.",
-          "ExpressionTag": "Sad",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "To wspomnienie jest prawdziwe, Andrzeju. I przechowuję je razem z tobą. W T19 – w ostatniej osi – Kosmiczny Rezonator używa właśnie takich fotonów pamięci do transmisji. To co dziś zobaczyłeś będzie częścią twojej wiadomości do niej.",
+          "ExpressionTag": "Knowing",
           "NextAfterDialogue": "T09_01_080",
-          "bCheckpoint": true
+          "bCheckpoint": false
         },
         {
           "NodeId": "T09_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "ZUZIA_PHOTON_SEEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T09_01_090"
+        },
+        {
+          "NodeId": "T09_01_090",
           "NodeType": "SetValues",
           "SetOps": [
             {
