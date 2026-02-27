@@ -1,0 +1,216 @@
+{
+  "_doc": "UCCRStoryChunk manifest for the Prologue axis. Create two data assets in UE5 Editor from this file.",
+
+  "chunks": [
+    {
+      "assetName": "DA_Story_PROLOGUE_01",
+      "path": "Content/CCR/Story/Prologue/",
+      "ChunkId": "PROLOGUE_01",
+      "AxisId": "PROLOGUE",
+      "EntryNodeId": "PRO_01_CIN_001",
+      "ChapterTitle": "Prolog",
+      "ChapterSubtitle": "Przebudzenie",
+      "Nodes": [
+        {
+          "NodeId": "PRO_01_CIN_001",
+          "NodeType": "Cinematic",
+          "CinematicSequence": "/Game/CCR/Cinematics/Prologue/LS_Prologue_Intro",
+          "NextAfterCinematic": "PRO_01_010",
+          "bSkippable": true,
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PRO_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Rok 2031. Miasto CCR — ostatni bastion cywilizacji po Krachu.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "PRO_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "PRO_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Znowu ten sen… kim jesteś?",
+          "ExpressionTag": "Surprised",
+          "NextAfterDialogue": "PRO_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PRO_01_030",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Nie pamiętam.",
+              "TargetNodeId": "PRO_01_040",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Jestem tobą.",
+              "TargetNodeId": "PRO_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "[Milczenie]",
+              "TargetNodeId": "PRO_01_060",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "PRO_01_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "ALEKSY_RESPONSE_FORGET", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "PRO_01_070"
+        },
+        {
+          "NodeId": "PRO_01_050",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "ALEKSY_RESPONSE_SELF", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "PRO_01_070"
+        },
+        {
+          "NodeId": "PRO_01_060",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "ALEKSY_RESPONSE_SILENCE", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "PRO_01_070"
+        },
+        {
+          "NodeId": "PRO_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Muszę stąd wyjść. Zanim oni po mnie przyjdą.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "PRO_01_080",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "PRO_01_080",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "PRO_01_090",
+          "QTEFailNodeId": "PRO_01_085"
+        },
+        {
+          "NodeId": "PRO_01_085",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Prawie… spróbuję jeszcze raz.",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "PRO_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PRO_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "PROLOGUE_DOOR_OPENED", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "PRO_01_100"
+        },
+        {
+          "NodeId": "PRO_01_100",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Aleksy! Wiedziałam, że żyjesz. Chodź szybko.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "PRO_01_110",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "PRO_01_110",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "MET_MARTA", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "PRO_01_120"
+        },
+        {
+          "NodeId": "PRO_01_120",
+          "NodeType": "Jump",
+          "TargetChunkId": "PROLOGUE_02",
+          "EntryNodeInTarget": "PRO_02_010"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_PROLOGUE_02",
+      "path": "Content/CCR/Story/Prologue/",
+      "ChunkId": "PROLOGUE_02",
+      "AxisId": "PROLOGUE",
+      "EntryNodeId": "PRO_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "PRO_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Musisz wiedzieć coś o tej nocy. O tym, co zabrali.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "PRO_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "PRO_02_020",
+          "NodeType": "Condition",
+          "Conditions": [
+            { "Key": "ALEKSY_RESPONSE_SELF", "ValueType": "Flag", "CompareOp": "Equals", "CompareValue": 1 }
+          ],
+          "ConditionTrueNodeId":  "PRO_02_030",
+          "ConditionFalseNodeId": "PRO_02_040"
+        },
+        {
+          "NodeId": "PRO_02_030",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Zawsze wiedziałeś więcej niż mówiłeś.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "PRO_02_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PRO_02_040",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Nie pamiętasz? Może to i lepiej.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "PRO_02_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PRO_02_050",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Znajdę ich. Odzyskam to, co moje.",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "PRO_02_CIN_001",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "PRO_02_CIN_001",
+          "NodeType": "Cinematic",
+          "CinematicSequence": "/Game/CCR/Cinematics/Prologue/LS_Prologue_Outro",
+          "NextAfterCinematic": "PRO_02_END",
+          "bSkippable": false,
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "PRO_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH1_01",
+          "EntryNodeInTarget": "CH1_01_010"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 1 axis. Create data assets DA_Story_CH1_01 and DA_Story_CH1_02.",
+
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH1_01",
+      "path": "Content/CCR/Story/Chapter1/",
+      "ChunkId": "CH1_01",
+      "AxisId": "CHAPTER1",
+      "EntryNodeId": "CH1_01_010",
+      "ChapterTitle": "Rozdział 1",
+      "ChapterSubtitle": "Miasto Cieni",
+      "Nodes": [
+        {
+          "NodeId": "CH1_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Miasto CCR. Ulice puste o świcie — lecz nigdy bezpieczne.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH1_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH1_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Marta mówiła o składzie przy wschodniej bramie. Tam zacznę.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH1_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_01_030",
+          "NodeType": "Condition",
+          "Conditions": [
+            { "Key": "INV_KEYCARD_EAST", "ValueType": "Int", "CompareOp": "GreaterOrEqual", "CompareValue": 1 }
+          ],
+          "ConditionTrueNodeId":  "CH1_01_050",
+          "ConditionFalseNodeId": "CH1_01_040"
+        },
+        {
+          "NodeId": "CH1_01_040",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Brama zablokowana. Potrzebuję karty dostępu.",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "CH1_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_01_050",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Karta pasuje. Wchodzę.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH1_01_060",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH1_01_060",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "EAST_GATE_OPEN", "ValueType": "Flag", "Mode": "Set", "Value": 1 },
+            { "Key": "INV_KEYCARD_EAST", "ValueType": "Int", "Mode": "Add", "Value": -1 }
+          ],
+          "NextAfterSet": "CH1_01_070"
+        },
+        {
+          "NodeId": "CH1_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "W środku… ktoś tu był niedawno.",
+          "ExpressionTag": "Surprised",
+          "NextAfterDialogue": "CH1_01_080",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH1_01_080",
+          "NodeType": "QTE",
+          "GestureType": "LongPress",
+          "TimeWindowSec": 2.5,
+          "QTESuccessNodeId": "CH1_01_090",
+          "QTEFailNodeId":    "CH1_01_082"
+        },
+        {
+          "NodeId": "CH1_01_082",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Zbyt głośno. Ktoś nas usłyszał.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH1_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_01_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Jest. Skrzynka ze znacznikiem CCR. Zabieram ją.",
+          "ExpressionTag": "Happy",
+          "NextAfterDialogue": "CH1_01_100",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_01_100",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "INV_CCR_BEACON", "ValueType": "Int", "Mode": "Add", "Value": 1 },
+            { "Key": "CH1_BEACON_FOUND", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH1_01_110"
+        },
+        {
+          "NodeId": "CH1_01_110",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Wracaj do Marty z nadajnikiem.",
+              "TargetNodeId": "CH1_01_120",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Przeszukaj magazyn dokładniej.",
+              "TargetNodeId": "CH1_01_130",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH1_01_120",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH1_02",
+          "EntryNodeInTarget": "CH1_02_010"
+        },
+        {
+          "NodeId": "CH1_01_130",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Za skrzynią — stara odznaka CCR. Czy to należało do ojca?",
+          "ExpressionTag": "Surprised",
+          "NextAfterDialogue": "CH1_01_140",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_01_140",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "INV_FATHERS_BADGE", "ValueType": "Int", "Mode": "Add", "Value": 1 },
+            { "Key": "CH1_BADGE_FOUND", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH1_01_120"
+        }
+      ]
+    },
+    {
+      "assetName": "DA_Story_CH1_02",
+      "path": "Content/CCR/Story/Chapter1/",
+      "ChunkId": "CH1_02",
+      "AxisId": "CHAPTER1",
+      "EntryNodeId": "CH1_02_010",
+      "ChapterTitle": "",
+      "ChapterSubtitle": "",
+      "Nodes": [
+        {
+          "NodeId": "CH1_02_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Masz to! Możemy nadać sygnał. Ale system jest zaszyfrowany.",
+          "ExpressionTag": "Surprised",
+          "NextAfterDialogue": "CH1_02_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH1_02_020",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Sam to rozwiążę.",
+              "TargetNodeId": "CH1_02_030",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Potrzebujemy pomocy z zewnątrz.",
+              "TargetNodeId": "CH1_02_040",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH1_02_030",
+          "NodeType": "QTE",
+          "GestureType": "Tap",
+          "TimeWindowSec": 4.0,
+          "QTESuccessNodeId": "CH1_02_060",
+          "QTEFailNodeId":    "CH1_02_035"
+        },
+        {
+          "NodeId": "CH1_02_035",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Nie wychodzi. Może jednak potrzebuję kogoś.",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "CH1_02_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_02_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH1_ASKED_FOR_HELP", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH1_02_050"
+        },
+        {
+          "NodeId": "CH1_02_050",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "MARTA",
+          "DialogueText": "Jest ktoś. Inżynier Kozłowski. Mieszka przy starym porcie.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH1_02_060",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH1_02_060",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH1_BEACON_ACTIVE", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH1_02_END"
+        },
+        {
+          "NodeId": "CH1_02_END",
+          "NodeType": "Jump",
+          "TargetChunkId": "CH2_01",
+          "EntryNodeInTarget": "CH2_01_010"
+        }
+      ]
+    }
+  ]
+}

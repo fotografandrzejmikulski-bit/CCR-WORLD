@@ -1,0 +1,72 @@
+{
+  "_doc": "CCR WORLD – Character manifest. Create one DA_Char_<CharacterId> UCCRCharacterDataAsset in Content/CCR/Characters/ for each entry.",
+
+  "characters": [
+    {
+      "assetName": "DA_Char_ALEKSY",
+      "CharacterId": "ALEKSY",
+      "DisplayName": "Aleksy",
+      "ShortName": "Aleksy",
+      "VOKeyPrefix": "ALEKSY",
+      "MetFlag": "",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": ["FATHERS_BADGE"],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Angry" },
+        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Surprised" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ALEKSY/T_ALEKSY_Fear" }
+      ],
+      "_notes": "Playable protagonist. 20s, former CCR technician. Woke up with no memory of the past year."
+    },
+    {
+      "assetName": "DA_Char_MARTA",
+      "CharacterId": "MARTA",
+      "DisplayName": "Marta",
+      "ShortName": "Marta",
+      "VOKeyPrefix": "MARTA",
+      "MetFlag": "MET_MARTA",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": [],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Neutral" },
+        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Happy" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Angry" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/MARTA/T_MARTA_Fear" }
+      ],
+      "_notes": "Aleksy's childhood friend. Resourceful street courier. First NPC the player meets after the prologue."
+    },
+    {
+      "assetName": "DA_Char_KOZLOWSKI",
+      "CharacterId": "KOZLOWSKI",
+      "DisplayName": "Inżynier Kozłowski",
+      "ShortName": "Kozłowski",
+      "VOKeyPrefix": "KOZLOWSKI",
+      "MetFlag": "MET_KOZLOWSKI",
+      "bIsKeyCharacter": true,
+      "AssociatedItemIds": ["CCR_BEACON"],
+      "Portraits": [
+        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Neutral" },
+        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Sad" },
+        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Angry" },
+        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/KOZLOWSKI/T_KOZLOWSKI_Fear" }
+      ],
+      "_notes": "Retired CCR engineer, now living in hiding at the old port. Knows the city's secrets."
+    },
+    {
+      "assetName": "DA_Char_NARRATOR",
+      "CharacterId": "NARRATOR",
+      "DisplayName": "Narrator",
+      "ShortName": "",
+      "VOKeyPrefix": "NARRATOR",
+      "MetFlag": "",
+      "bIsKeyCharacter": false,
+      "AssociatedItemIds": [],
+      "Portraits": [],
+      "_notes": "Off-screen omniscient narrator. No portrait displayed. VO-only."
+    }
+  ]
+}

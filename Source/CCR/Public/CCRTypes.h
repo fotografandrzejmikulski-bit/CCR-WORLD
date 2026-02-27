@@ -167,6 +167,15 @@ struct FCCRNode
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FName NextAfterDialogue;
 
+	/**
+	 * Portrait expression state to display for this dialogue node.
+	 * Must match a FCCRPortraitEntry::StateName registered for the speaker
+	 * in UCCRCharacterDataAsset.  Leave None to use the Neutral portrait.
+	 * Common values: "Neutral", "Happy", "Sad", "Angry", "Surprised", "Fear".
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName ExpressionTag;
+
 	// ---- Choice ----
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TArray<FCCRChoiceOption> Choices;

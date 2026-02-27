@@ -1,0 +1,159 @@
+{
+  "_doc": "UCCRStoryChunk manifest for Chapter 2 axis. Create data asset DA_Story_CH2_01.",
+
+  "chunks": [
+    {
+      "assetName": "DA_Story_CH2_01",
+      "path": "Content/CCR/Story/Chapter2/",
+      "ChunkId": "CH2_01",
+      "AxisId": "CHAPTER2",
+      "EntryNodeId": "CH2_01_010",
+      "ChapterTitle": "Rozdział 2",
+      "ChapterSubtitle": "Stary Port",
+      "Nodes": [
+        {
+          "NodeId": "CH2_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "NARRATOR",
+          "DialogueText": "Stary port. Zapomniane miejsce — ale nie przez wszystkich.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_01_020",
+          "NodeType": "Condition",
+          "Conditions": [
+            { "Key": "CH1_BADGE_FOUND", "ValueType": "Flag", "CompareOp": "Equals", "CompareValue": 1 }
+          ],
+          "ConditionTrueNodeId":  "CH2_01_025",
+          "ConditionFalseNodeId": "CH2_01_030"
+        },
+        {
+          "NodeId": "CH2_01_025",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Odznaka ojca ciąży w kieszeni. Co oznaczał jego związek z CCR?",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH2_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_01_030",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Aleksy. Słyszałem o tobie. Wejdź — szybko, zanim straże wrócą.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH2_01_040",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_01_040",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "MET_KOZLOWSKI", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH2_01_050"
+        },
+        {
+          "NodeId": "CH2_01_050",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "Powiedz mi o nadajniku.",
+              "TargetNodeId": "CH2_01_060",
+              "ShowConditions": []
+            },
+            {
+              "Label": "Znałeś mojego ojca?",
+              "TargetNodeId": "CH2_01_070",
+              "ShowConditions": [
+                { "Key": "CH1_BADGE_FOUND", "ValueType": "Flag", "CompareOp": "Equals", "CompareValue": 1 }
+              ]
+            },
+            {
+              "Label": "Kim są te straże?",
+              "TargetNodeId": "CH2_01_080",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "CH2_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Nadajnik jest dobry — ale klucz szyfrujący jest u Zofii. W wieży.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_01_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Twój ojciec… tak. Był jednym z założycieli CCR. Zanim zmienił zdanie.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "CH2_01_075",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_01_075",
+          "NodeType": "SetValues",
+          "SetOps": [
+            { "Key": "CH2_FATHER_LORE_UNLOCKED", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+          ],
+          "NextAfterSet": "CH2_01_090"
+        },
+        {
+          "NodeId": "CH2_01_080",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Enforcerzy CCR. Wszędzie. Polują na każdego kto wie za dużo.",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "CH2_01_090",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_01_090",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Zofia. Wieża zachodnia. Zapamiętam.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_01_100",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_01_100",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Left",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "CH2_01_110",
+          "QTEFailNodeId":    "CH2_01_105"
+        },
+        {
+          "NodeId": "CH2_01_105",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KOZLOWSKI",
+          "DialogueText": "Uważaj! Prawie nas widzieli.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "CH2_01_100",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "CH2_01_110",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ALEKSY",
+          "DialogueText": "Bezpiecznie. Na razie.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "CH2_01_END",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "CH2_01_END",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

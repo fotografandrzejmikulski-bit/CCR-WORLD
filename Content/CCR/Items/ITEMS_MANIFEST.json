@@ -1,0 +1,66 @@
+{
+  "_doc": "CCR WORLD – Inventory item manifest. Create one DA_Item_<ItemId> UCCRInventoryItemDefinition in Content/CCR/Items/ for each entry.",
+
+  "items": [
+    {
+      "assetName": "DA_Item_KEY_CAVE",
+      "ItemId": "KEY_CAVE",
+      "DisplayName": "Klucz do Jaskini",
+      "Description": "Stary mosiężny klucz z wygrawerowanym symbolem CCR. Otwiera boczne wejście do bunkra.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_KEY_CAVE",
+      "bCanUse": false,
+      "bConsumedOnUse": false,
+      "UseWorldStateFlag": ""
+    },
+    {
+      "assetName": "DA_Item_KEYCARD_EAST",
+      "ItemId": "KEYCARD_EAST",
+      "DisplayName": "Karta Dostępu – Wschód",
+      "Description": "Elektroniczna karta CCR poziomu 2. Aktywuje rygiel bramy wschodniej.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_KEYCARD_EAST",
+      "bCanUse": true,
+      "bConsumedOnUse": true,
+      "UseWorldStateFlag": "EAST_GATE_OPEN"
+    },
+    {
+      "assetName": "DA_Item_CCR_BEACON",
+      "ItemId": "CCR_BEACON",
+      "DisplayName": "Nadajnik CCR",
+      "Description": "Zaszyfrowane urządzenie nadawcze starego systemu CCR. Może nawiązać kontakt z Siecią.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_CCR_BEACON",
+      "bCanUse": false,
+      "bConsumedOnUse": false,
+      "UseWorldStateFlag": ""
+    },
+    {
+      "assetName": "DA_Item_FATHERS_BADGE",
+      "ItemId": "FATHERS_BADGE",
+      "DisplayName": "Odznaka Ojca",
+      "Description": "Srebrna odznaka z numerem 0001 — pierwszego agenta CCR. Musi należeć do kogoś bliskiego.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_FATHERS_BADGE",
+      "bCanUse": false,
+      "bConsumedOnUse": false,
+      "UseWorldStateFlag": ""
+    },
+    {
+      "assetName": "DA_Item_MEDKIT",
+      "ItemId": "MEDKIT",
+      "DisplayName": "Apteczka",
+      "Description": "Standardowy zestaw pierwszej pomocy. Może się przydać w trudnych chwilach.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_MEDKIT",
+      "bCanUse": true,
+      "bConsumedOnUse": true,
+      "UseWorldStateFlag": "PLAYER_HEALED"
+    },
+    {
+      "assetName": "DA_Item_CIPHER_KEY",
+      "ItemId": "CIPHER_KEY",
+      "DisplayName": "Klucz Szyfrujący Zofii",
+      "Description": "Mikrokarta z algorytmem szyfrującym CCR. Niezbędna do aktywacji nadajnika.",
+      "Icon": "/Game/CCR/Textures/Items/T_Item_CIPHER_KEY",
+      "bCanUse": true,
+      "bConsumedOnUse": true,
+      "UseWorldStateFlag": "CH1_BEACON_ACTIVE"
+    }
+  ]
+}
