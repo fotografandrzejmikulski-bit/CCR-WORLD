@@ -26,6 +26,13 @@ void UCCRAudioSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	{
 		NRS->OnNodeChanged.AddDynamic(this, &UCCRAudioSubsystem::OnNodeChanged);
 	}
+
+	// Keep live volumes in sync if the player changes settings from a menu
+	// that calls UCCRSettingsSubsystem setters directly.
+	if (UCCRSettingsSubsystem* Settings = GetGameInstance()->GetSubsystem<UCCRSettingsSubsystem>())
+	{
+		Settings->OnSettingsChanged.AddDynamic(this, &UCCRAudioSubsystem::OnSettingsChanged);
+	}
 }
 
 void UCCRAudioSubsystem::Deinitialize()
@@ -36,6 +43,11 @@ void UCCRAudioSubsystem::Deinitialize()
 		if (NRS)
 		{
 			NRS->OnNodeChanged.RemoveDynamic(this, &UCCRAudioSubsystem::OnNodeChanged);
+		}
+
+		if (UCCRSettingsSubsystem* Settings = GI->GetSubsystem<UCCRSettingsSubsystem>())
+		{
+			Settings->OnSettingsChanged.RemoveDynamic(this, &UCCRAudioSubsystem::OnSettingsChanged);
 		}
 	}
 
@@ -60,6 +72,39 @@ void UCCRAudioSubsystem::OnNodeChanged(FName NodeId)
 	if (VOCues.Contains(NodeId))
 	{
 		PlayVO(NodeId);
+	}
+}
+
+// ---------------------------------------------------------------------------
+// OnSettingsChanged — re-sync volumes when settings are changed externally
+// ---------------------------------------------------------------------------
+
+void UCCRAudioSubsystem::OnSettingsChanged()
+{
+	UGameInstance* GI = GetGameInstance();
+	if (!GI) return;
+
+	UCCRSettingsSubsystem* Settings = GI->GetSubsystem<UCCRSettingsSubsystem>();
+	if (!Settings) return;
+
+	// Absorb new values without triggering another save (SetMusicVolume etc.
+	// would call Settings->SetMusicVolume() and re-fire OnSettingsChanged).
+	MusicVolume = Settings->GetMusicVolume();
+	VOVolume    = Settings->GetVOVolume();
+	SFXVolume   = Settings->GetSFXVolume();
+
+	// Apply immediately to live components
+	if (MusicComponent)
+	{
+		const float AppliedVolume = bMusicDucked
+			? MusicVolume * FMath::Clamp(CinematicDuckVolume, 0.f, 1.f)
+			: MusicVolume;
+		MusicComponent->SetVolumeMultiplier(AppliedVolume);
+	}
+
+	if (IsValid(VOComponent))
+	{
+		VOComponent->SetVolumeMultiplier(VOVolume);
 	}
 }
 

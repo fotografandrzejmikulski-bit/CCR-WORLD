@@ -21,6 +21,7 @@ class CCR_API UCCRCheckpointSubsystem : public UGameInstanceSubsystem
 
 public:
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+	virtual void Deinitialize() override;
 
 	/**
 	 * Signal that the game is in a safe state for saving.

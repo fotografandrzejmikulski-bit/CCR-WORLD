@@ -16,6 +16,18 @@ void UCCRCheckpointSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 	}
 }
 
+void UCCRCheckpointSubsystem::Deinitialize()
+{
+	if (UGameInstance* GI = GetGameInstance())
+	{
+		if (UCCRNarrativeRuntimeSubsystem* NRS = GI->GetSubsystem<UCCRNarrativeRuntimeSubsystem>())
+		{
+			NRS->OnCheckpointRequested.RemoveDynamic(this, &UCCRCheckpointSubsystem::OnCheckpointRequested);
+		}
+	}
+	Super::Deinitialize();
+}
+
 void UCCRCheckpointSubsystem::OnCheckpointRequested(FName NodeId)
 {
 	bPendingCheckpoint = true;

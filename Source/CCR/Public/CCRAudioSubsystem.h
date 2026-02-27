@@ -134,6 +134,9 @@ private:
 	UFUNCTION()
 	void OnNodeChanged(FName NodeId);
 
+	UFUNCTION()
+	void OnSettingsChanged();
+
 	// ---- Cue registries ----
 	UPROPERTY()
 	TMap<FName, TObjectPtr<USoundBase>> MusicCues;
