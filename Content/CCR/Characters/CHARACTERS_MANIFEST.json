@@ -1,6 +1,5 @@
 {
-  "_doc": "CCR WORLD - Character manifest. Create one DA_Char_<CharacterId> UCCRCharacterDefinition in Content/CCR/Characters/ for each entry.",
-
+  "_doc": "CCR WORLD – Character manifest. KLUCZOWE ZASADY NARRACYJNE: (1) ANDRZEJ = ojciec ZUZI, szuka jej przez WSZYSTKIE 19 osi czasu. (2) ZUZIA jest izolowana od ANDRZEJA przez cały czas gry (finał: oś T19). (3) WERONIKA trzyma TYLKO z DAVIDEM – nigdy nie spotkała EVY – ich sceny się NIE krzyżują. (4) CIEŃ = alternatywna wersja ANDRZEJA który poddał się (odkrycie: oś T17). (5) Gra zaczyna się szeptem dziecka: 'Czas nie płynie… czas oddycha.'",
   "characters": [
     {
       "assetName": "DA_Char_ANDRZEJ",
@@ -13,14 +12,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/ANDRZEJ/T_ANDRZEJ_Fear"
+        }
       ],
-      "_notes": "Glowny bohater (main protagonist)."
+      "_notes": "PROTAGONISTA. Ojciec Zuzi. Podróżuje przez WSZYSTKIE 19 osi czasu aby odnaleźć córkę. Nie może poddać się – Cień to alternatywna wersja Andrzeja który poddał się szukaniu."
     },
     {
       "assetName": "DA_Char_ZUZIA",
@@ -33,14 +50,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/ZUZIA/T_ZUZIA_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Córka Andrzeja. Jest izolowana od ojca przez cały czas gry. David i Weronika pilnują jej izolacji. Zuzia szuka ojca tak samo jak on jej – ale system ją blokuje. ZUZIA nigdy NIE pojawia się w tej samej scenie co Andrzej aż do osi T19 (finał)."
     },
     {
       "assetName": "DA_Char_EVA",
@@ -53,14 +88,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/EVA/T_EVA_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Niezależna postać. Pomaga Andrzejowi w kilku osiach czasu. WAŻNE: EVA nigdy NIE spotkała Weroniki i nigdy NIE pojawia się w tej samej scenie co Weronika."
     },
     {
       "assetName": "DA_Char_CIEN",
@@ -73,12 +126,24 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Neutral" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Angry" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Fear" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Surprised" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Neutral"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Angry"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Fear"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/CIEN/T_CIEN_Surprised"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Antagonista – wydaje się wrogiem, ale CIEŃ to alternatywna wersja Andrzeja który poddał się szukaniu Zuzi (odkrycie w osi T17). Blokuje Andrzejowi drogę przez wszystkie osie czasu."
     },
     {
       "assetName": "DA_Char_EIMSTAIN",
@@ -91,14 +156,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/EIMSTAIN/T_EIMSTAIN_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Naukowiec / znawca osi czasu. Pomaga Andrzejowi zrozumieć mechanizm podróży między osiami. Nie jest ani za Andrzejem ani przeciw – szuka prawdy naukowej."
     },
     {
       "assetName": "DA_Char_BATISTA",
@@ -111,14 +194,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/BATISTA/T_BATISTA_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Obserwator. Na początku neutralny, stopniowo przechodzi na stronę Andrzeja. W osi T18 (Devil Mind) staje definitywnie po stronie Andrzeja."
     },
     {
       "assetName": "DA_Char_WERONIKA",
@@ -131,14 +232,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/WERONIKA/T_WERONIKA_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "WAŻNE: Weronika TRZYMA TYLKO Z DAVIDEM. Nigdy nie widziała Evy i nigdy NIE pojawia się w tej samej scenie co Eva. Weronika i David izolują Zuzię od Andrzeja – z nakazu systemu. W osi T16 (Kod Pamięci) Weronika zaczyna wątpić w rozkazy Davida – przełomowy moment."
     },
     {
       "assetName": "DA_Char_DAVID",
@@ -151,14 +270,32 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/DAVID/T_DAVID_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Zawsze jest z Weroniką. David i Weronika to para – działają razem jako strażnicy izolacji Zuzi. David wykonuje rozkazy systemu bezwzględnie, Weronika zaczyna wątpić (T16)."
     },
     {
       "assetName": "DA_Char_KAFKA",
@@ -171,14 +308,46 @@
       "bIsKeyCharacter": true,
       "AssociatedItemIds": [],
       "Portraits": [
-        { "StateName": "Neutral",   "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Neutral" },
-        { "StateName": "Happy",     "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Happy" },
-        { "StateName": "Sad",       "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Sad" },
-        { "StateName": "Angry",     "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Angry" },
-        { "StateName": "Surprised", "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Surprised" },
-        { "StateName": "Fear",      "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Fear" }
+        {
+          "StateName": "Neutral",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Neutral"
+        },
+        {
+          "StateName": "Happy",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Happy"
+        },
+        {
+          "StateName": "Sad",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Sad"
+        },
+        {
+          "StateName": "Angry",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Angry"
+        },
+        {
+          "StateName": "Surprised",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Surprised"
+        },
+        {
+          "StateName": "Fear",
+          "Portrait": "/Game/CCR/Textures/Portraits/KAFKA/T_KAFKA_Fear"
+        }
       ],
-      "_notes": "TODO: uzupelnic opis postaci."
+      "_notes": "Pośrednik informacji. Zna podziemia każdej osi czasu. Pomaga Andrzejowi zdobyć informacje o Zuzi. Czasem ma swój interes, ale ostatecznie jest po stronie Andrzeja."
+    },
+    {
+      "assetName": "DA_Char_DZIECKO",
+      "CharacterId": "DZIECKO",
+      "DisplayName": "Dziecko",
+      "ShortName": "...",
+      "SpeakerTag": "DZIECKO",
+      "VOKeyPrefix": "DZIECKO",
+      "MetFlag": "",
+      "bIsKeyCharacter": false,
+      "bIsVoiceOnly": true,
+      "AssociatedItemIds": [],
+      "Portraits": [],
+      "_notes": "Głos dziecka który otwiera grę. Ciepły szept przed pierwszą cutscenką: 'Czas nie płynie… czas oddycha.' Brak portretu – tylko głos (VA). VO asset: /Game/CCR/Audio/VO/DZIECKO/VO_DZIECKO_WstepSzepty_01"
     }
   ]
 }

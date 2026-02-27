@@ -1,16 +1,40 @@
 {
-  "_doc": "UCCRStoryChunk manifest for the Prologue axis. Create two data assets in UE5 Editor from this file.",
-
+  "_doc": "UCCRStoryChunk manifest for the Prologue. Gra zaczyna się od karty tytulowej CCR WORLD, potem ciepły szept dziecka 'Czas nie plynie... czas oddycha.' Dopiero potem pierwsza cutscenka i dialogi.",
   "chunks": [
     {
       "assetName": "DA_Story_PROLOGUE_01",
       "path": "Content/CCR/Story/Prologue/",
       "ChunkId": "PROLOGUE_01",
       "AxisId": "PROLOGUE",
-      "EntryNodeId": "PRO_01_CIN_001",
+      "EntryNodeId": "PRO_01_TITLE_001",
       "ChapterTitle": "Prolog",
       "ChapterSubtitle": "TODO: podtytul prologu",
       "Nodes": [
+        {
+          "NodeId": "PRO_01_TITLE_001",
+          "NodeType": "TitleCard",
+          "TitleText": "CCR WORLD",
+          "SubtitleText": "",
+          "DisplayDurationSec": 3.0,
+          "FadeInSec": 1.0,
+          "FadeOutSec": 1.0,
+          "NextAfterDisplay": "PRO_01_WHISPER_002",
+          "bCheckpoint": false,
+          "_note": "Kadr tytulowy – wyswietl logo CCR WORLD przed szeptem dziecka."
+        },
+        {
+          "NodeId": "PRO_01_WHISPER_002",
+          "NodeType": "AmbientVoice",
+          "SpeakerTag": "DZIECKO",
+          "DialogueText": "Czas nie płynie… czas oddycha.",
+          "VOAsset": "/Game/CCR/Audio/VO/DZIECKO/VO_DZIECKO_WstepSzepty_01",
+          "ExpressionTag": "Whisper",
+          "bOverlayOnly": true,
+          "bSkippable": false,
+          "NextAfterVoice": "PRO_01_CIN_001",
+          "bCheckpoint": false,
+          "_note": "SZEPT DZIECKA – ciepły, cichy, przed pierwszą cutscenką. Musi byc slyszany przez gracza."
+        },
         {
           "NodeId": "PRO_01_CIN_001",
           "NodeType": "Cinematic",
@@ -48,7 +72,12 @@
           "NodeId": "PRO_01_030",
           "NodeType": "SetValues",
           "SetOps": [
-            { "Key": "PRO_CHOICE_A", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+            {
+              "Key": "PRO_CHOICE_A",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
           ],
           "NextAfterSet": "PRO_01_050"
         },
@@ -56,7 +85,12 @@
           "NodeId": "PRO_01_040",
           "NodeType": "SetValues",
           "SetOps": [
-            { "Key": "PRO_CHOICE_B", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+            {
+              "Key": "PRO_CHOICE_B",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
           ],
           "NextAfterSet": "PRO_01_050"
         },
@@ -92,7 +126,12 @@
           "NodeId": "PRO_01_070",
           "NodeType": "SetValues",
           "SetOps": [
-            { "Key": "MET_ZUZIA", "ValueType": "Flag", "Mode": "Set", "Value": 1 }
+            {
+              "Key": "MET_ZUZIA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
           ],
           "NextAfterSet": "PRO_01_END"
         },
@@ -142,8 +181,8 @@
         {
           "NodeId": "PRO_02_END",
           "NodeType": "Jump",
-          "TargetChunkId": "CH1_01",
-          "EntryNodeInTarget": "CH1_01_010"
+          "TargetChunkId": "T01_01",
+          "EntryNodeInTarget": "T01_01_010"
         }
       ]
     }

@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – CIEŃ SYSTEMU | CIEŃ SYSTEMU · 2035. Axis: T08. CIEŃ manipuluje. EVA (bez Weroniki) dostarcza prawdy. Weronika NIE jest z EVą.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T08_01",
+      "path": "Content/CCR/Story/T08_CienSystemu2035/",
+      "ChunkId": "T08_01",
+      "AxisId": "T08",
+      "EntryNodeId": "T08_01_010",
+      "ChapterTitle": "CIEŃ SYSTEMU",
+      "ChapterSubtitle": "2035",
+      "_narrative": "CIEŃ manipuluje. EVA (bez Weroniki) dostarcza prawdy. Weronika NIE jest z EVą.",
+      "Nodes": [
+        {
+          "NodeId": "T08_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2035. System kontroluje wszystko. Cień jest teraz tożsamy z systemem.",
+          "ExpressionTag": "Angry",
+          "NextAfterDialogue": "T08_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T08_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "TODO: Cień mówi: 'Andrzej – Zuzia nie chce być znaleziona.' To kłamstwo systemu.",
+          "ExpressionTag": "Manipulative",
+          "NextAfterDialogue": "T08_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T08_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_CIEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T08_01_040"
+        },
+        {
+          "NodeId": "T08_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T08_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T08_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T08_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T08_01_060",
+          "QTEFailNodeId": "T08_01_052"
+        },
+        {
+          "NodeId": "T08_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T08_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T08_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... CIEŃ SYSTEMU · 2035.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T08_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T08_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "TODO: Eva pojawia się potajemnie. Przekazuje Andrzejowi dowód, że Zuzia go szuka.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T08_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T08_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T08_01_090"
+        },
+        {
+          "NodeId": "T08_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T08_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T08_01_999"
+        },
+        {
+          "NodeId": "T08_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T09_01",
+          "EntryNodeInTarget": "T09_01_010"
+        }
+      ]
+    }
+  ]
+}

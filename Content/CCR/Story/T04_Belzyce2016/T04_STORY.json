@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – BEŁŻYCE | BEŁŻYCE · 2016. Axis: T04. EVA jest tu BEZ Weroniki (ta jest zawsze z Davidem). Eva wie gdzie jest Zuzia.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T04_01",
+      "path": "Content/CCR/Story/T04_Belzyce2016/",
+      "ChunkId": "T04_01",
+      "AxisId": "T04",
+      "EntryNodeId": "T04_01_010",
+      "ChapterTitle": "BEŁŻYCE",
+      "ChapterSubtitle": "2016",
+      "_narrative": "EVA jest tu BEZ Weroniki (ta jest zawsze z Davidem). Eva wie gdzie jest Zuzia.",
+      "Nodes": [
+        {
+          "NodeId": "T04_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Małe miasteczko, wielka cisza. Andrzej szuka wskazówek w Bełżycach.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T04_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T04_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: Kafka ma list. List od Zuzi – ale daje go za późno.",
+          "ExpressionTag": "Mysterious",
+          "NextAfterDialogue": "T04_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T04_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T04_01_040"
+        },
+        {
+          "NodeId": "T04_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T04_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T04_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T04_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T04_01_060",
+          "QTEFailNodeId": "T04_01_052"
+        },
+        {
+          "NodeId": "T04_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T04_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T04_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... BEŁŻYCE · 2016.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T04_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T04_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "TODO: Eva pojawia się tu sama, bez Weroniki. Wie coś o Zuzi.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T04_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T04_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T04_01_090"
+        },
+        {
+          "NodeId": "T04_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T04_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T04_01_999"
+        },
+        {
+          "NodeId": "T04_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T05_01",
+          "EntryNodeInTarget": "T05_01_010"
+        }
+      ]
+    }
+  ]
+}

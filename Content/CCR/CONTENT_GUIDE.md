@@ -1,7 +1,14 @@
-# CCR WORLD - Content Guide
+# CCR WORLD — Content Guide
 
-This document describes the complete `Content/CCR/` folder structure and explains
-what UE5 assets belong in each folder, with naming conventions and creation steps.
+## Zasady narracyjne (MUST READ przed tworzeniem assets)
+
+| Zasada | Opis |
+|---|---|
+| **ANDRZEJ = ojciec ZUZI** | Protagonista podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę |
+| **ZUZIA jest izolowana** | David i Weronika trzymają Zuzię z dala od Andrzeja przez całą grę |
+| **WERONIKA tylko z DAVIDEM** | Weronika NIGDY nie spotkała Evy. Weronika i Eva NIE pojawiają się razem |
+| **CIEŃ = alter ego ANDRZEJA** | Odkrycie w osi T17: Cień to wersja Andrzeja, który poddał się szukaniu |
+| **Otwarcie gry** | Po tytule: ciepły szept dziecka — *„Czas nie płynie… czas oddycha."* |
 
 ---
 
@@ -9,263 +16,218 @@ what UE5 assets belong in each folder, with naming conventions and creation step
 
 ```
 Content/CCR/
-+-- Maps/                          <- Level maps (.umap) - one per location
-+-- Story/                         <- UCCRStoryChunk data assets
-|   +-- Prologue/
-|   +-- Chapter1/  ... Chapter12/  <- Main story arc (Akt I-IV)
-|   +-- Flashbacks/                <- Osobna os czasu: wspomnienia
-|   +-- Parallel/                  <- Alternatywna os: inne perspektywy
-+-- Characters/                    <- UCCRCharacterDefinition data assets
-+-- Items/                         <- UCCRInventoryItemDefinition data assets
++-- Maps/                           <- Level maps (.umap) – jedna mapa na os czasu
++-- Story/
+|   +-- Prologue/                   <- Otwarcie gry + szept dziecka
+|   +-- T01_PoczatekSwiatla1679/    <- Os 1: POCZATEK SWIATLA 1679
+|   +-- T02_Warszawa1983/           <- Os 2: WARSZAWA 1983
+|   +-- T03_LecznaLublin2010/       <- Os 3: LECZNA–LUBLIN 2010–2018
+|   +-- T04_Belzyce2016/            <- Os 4: BELZYCE 2016
+|   +-- T05_Novaky2018/             <- Os 5: NOVAKY (SLOWACJA) 2018–2023
+|   +-- T06_CsmSever2024/           <- Os 6: CSM SEVER (CZECHY) 2024
+|   +-- T07_Cieszyn2025/            <- Os 7: CIESZYN 2025
+|   +-- T08_CienSystemu2035/        <- Os 8: CIEN SYSTEMU 2035
+|   +-- T09_FotonyPamieci2045/      <- Os 9: FOTONY PAMIECI 2045
+|   +-- T10_ArchiwumCiszy2077/      <- Os 10: ARCHIWUM CISZY 2077
+|   +-- T11_TerminalSwiatla2100/    <- Os 11: TERMINAL SWIATLA 2100
+|   +-- T12_Chicago2135/            <- Os 12: CHICAGO 2135
+|   +-- T13_TransmisjaWspomnien2150/ <- Os 13: TRANSMISJA WSPOMNIEN 2150
+|   +-- T14_SwiatloProzni2222/      <- Os 14: SWIATLO W PROZNI 2222
+|   +-- T15_NeoParis2345/           <- Os 15: NEO PARIS 2345
+|   +-- T16_KodPamieci2378/         <- Os 16: KOD PAMIECI 2378
+|   +-- T17_PowrotyCienia2378/      <- Os 17: POWROTY DO CIENIA 2378
+|   +-- T18_DevilMind2777/          <- Os 18: DEVIL MIND 2777
+|   +-- "T19_SwiatloCo Trwa"/       <- Os 19: SWIATLO KTORE TRWA INFINITY (final)
++-- Characters/
++-- Items/
 +-- Blueprints/
-|   +-- Widgets/                   <- UMG Widget Blueprints (WBP_*)
-|   +-- GameFramework/             <- BP_CCRGameInstance, BP_CCRGameMode, etc.
+|   +-- Widgets/
+|   +-- GameFramework/
 +-- Audio/
-|   +-- Music/                     <- USoundWave / USoundCue
+|   +-- Music/
 |   +-- VO/
-|   |   +-- ANDRZEJ/
-|   |   +-- ZUZIA/
-|   |   +-- EVA/
-|   |   +-- CIEN/
-|   |   +-- EIMSTAIN/
-|   |   +-- BATISTA/
-|   |   +-- WERONIKA/
-|   |   +-- DAVID/
-|   |   +-- KAFKA/
-|   +-- SFX/
-|   +-- Ambient/
+|   |   +-- ANDRZEJ/  ZUZIA/  EVA/  CIEN/  EIMSTAIN/
+|   |   +-- BATISTA/  WERONIKA/  DAVID/  KAFKA/  DZIECKO/
+|   +-- SFX/  Ambient/
 +-- Textures/
 |   +-- Portraits/
-|   |   +-- ANDRZEJ/
-|   |   +-- ZUZIA/
-|   |   +-- EVA/
-|   |   +-- CIEN/
-|   |   +-- EIMSTAIN/
-|   |   +-- BATISTA/
-|   |   +-- WERONIKA/
-|   |   +-- DAVID/
-|   |   +-- KAFKA/
-|   +-- UI/
-|   +-- Items/
+|   |   +-- ANDRZEJ/  ZUZIA/  EVA/  CIEN/  EIMSTAIN/
+|   |   +-- BATISTA/  WERONIKA/  DAVID/  KAFKA/
+|   +-- UI/  Items/
 +-- Cinematics/
-    +-- Prologue/
-    +-- Flashbacks/
-    +-- Chapter12/                 <- Finalne sekwencje filmowe
+    +-- Prologue/  T18_DevilMind2777/  T19_SwiatloCo Trwa/
 ```
 
 ---
 
-## Maps / Lokacje
+## Osie Czasu — 19 Lokacji
 
-Create one `.umap` Level asset per location.
+| Nr | AxisId | Lokacja | Rok | Postacie w scenie | Plik |
+|---|---|---|---|---|---|
+| 0 | `PROLOGUE` | Otwarcie – szept dziecka | — | DZIECKO (glos), ANDRZEJ, ZUZIA | `Prologue/PROLOGUE_STORY.json` |
+| 1 | `T01` | POCZATEK SWIATLA | 1679 | ANDRZEJ, CIEN, EIMSTAIN | `T01_STORY.json` |
+| 2 | `T02` | WARSZAWA | 1983 | ANDRZEJ, KAFKA, BATISTA | `T02_STORY.json` |
+| 3 | `T03` | LECZNA – LUBLIN | 2010–2018 | ANDRZEJ, DAVID, WERONIKA *(EVA NIE)* | `T03_STORY.json` |
+| 4 | `T04` | BELZYCE | 2016 | ANDRZEJ, KAFKA, EVA *(WERONIKA NIE)* | `T04_STORY.json` |
+| 5 | `T05` | NOVAKY (SLOWACJA) | 2018–2023 | ANDRZEJ, BATISTA, CIEN | `T05_STORY.json` |
+| 6 | `T06` | CSM SEVER (CZECHY) | 2024 | ANDRZEJ, EIMSTAIN, KAFKA | `T06_STORY.json` |
+| 7 | `T07` | CIESZYN | 2025 | ANDRZEJ, DAVID, WERONIKA *(EVA NIE; Zuzia za granica)* | `T07_STORY.json` |
+| 8 | `T08` | CIEN SYSTEMU | 2035 | ANDRZEJ, CIEN, EVA *(WERONIKA NIE)* | `T08_STORY.json` |
+| 9 | `T09` | FOTONY PAMIECI | 2045 | ANDRZEJ, EIMSTAIN (echo Zuzi) | `T09_STORY.json` |
+| 10 | `T10` | ARCHIWUM CISZY | 2077 | ANDRZEJ, BATISTA, KAFKA | `T10_STORY.json` |
+| 11 | `T11` | TERMINAL SWIATLA | 2100 | ANDRZEJ, CIEN, DAVID, WERONIKA *(EVA NIE)* | `T11_STORY.json` |
+| 12 | `T12` | CHICAGO | 2135 | ANDRZEJ, EVA, BATISTA *(WERONIKA NIE)* | `T12_STORY.json` |
+| 13 | `T13` | TRANSMISJA WSPOMNIEN | 2150 | ANDRZEJ, KAFKA, CIEN | `T13_STORY.json` |
+| 14 | `T14` | SWIATLO W PROZNI | 2222 | ANDRZEJ, EIMSTAIN | `T14_STORY.json` |
+| 15 | `T15` | NEO PARIS | 2345 | ANDRZEJ, EVA, KAFKA *(WERONIKA NIE)* | `T15_STORY.json` |
+| 16 | `T16` | KOD PAMIECI | 2378 | ANDRZEJ, DAVID, WERONIKA *(EVA NIE; Weronika zaczyna watpic)* | `T16_STORY.json` |
+| 17 | `T17` | POWROTY DO CIENIA | 2378 | ANDRZEJ, CIEN, EIMSTAIN *(odkrycie: Cien = alter Andrzeja)* | `T17_STORY.json` |
+| 18 | `T18` | DEVIL MIND | 2777 | ANDRZEJ, CIEN (finalna konfrontacja), BATISTA | `T18_STORY.json` |
+| 19 | `T19` | SWIATLO KTORE TRWA | ∞ | ANDRZEJ + ZUZIA (FINALNE SPOTKANIE) | `T19_STORY.json` |
 
-| Asset Name | Path | Powiazany rozdzial | Opis lokacji |
+### Przepływ narracyjny
+
+```
+PROLOGUE (szept: "Czas nie plynie... czas oddycha.")
+  -> T01 (1679) -> T02 (1983) -> T03 (2010-2018) -> T04 (2016)
+  -> T05 (Slowacja) -> T06 (Czechy) -> T07 (Cieszyn)
+  -> T08 (2035) -> T09 (2045) -> T10 (2077) -> T11 (2100)
+  -> T12 (Chicago 2135) -> T13 (2150) -> T14 (2222)
+  -> T15 (Neo Paryż 2345) -> T16 (2378-A) -> T17 (2378-B)
+  -> T18 (Devil Mind 2777) -> T19 (∞ – FINAŁ: ojciec odnajduje córkę)
+```
+
+---
+
+## Maps (Lokacje UE5)
+
+Kazda os czasu = osobna mapa `.umap`. Prefiks: `L_CCR_<AxisId>`.
+
+| Mapa | Sciezka | Os | Opis |
 |---|---|---|---|
-| `MainMenu` | `Maps/MainMenu.umap` | -- | Glowne menu |
-| `Loading` | `Maps/Loading.umap` | -- | Poziom przejsciowy |
-| `Prologue` | `Maps/Prologue.umap` | PROLOGUE | TODO: opis |
-| `Chapter1` | `Maps/Chapter1.umap` | CH1 | TODO: opis |
-| `Chapter2` | `Maps/Chapter2.umap` | CH2 | TODO: opis |
-| `Chapter3` | `Maps/Chapter3.umap` | CH3 | TODO: opis |
-| `Chapter4` | `Maps/Chapter4.umap` | CH4 | TODO: opis |
-| `Chapter5` | `Maps/Chapter5.umap` | CH5 | TODO: opis |
-| `Chapter6` | `Maps/Chapter6.umap` | CH6 | TODO: opis |
-| `Chapter7` | `Maps/Chapter7.umap` | CH7 | TODO: opis |
-| `Chapter8` | `Maps/Chapter8.umap` | CH8 | TODO: opis |
-| `Chapter9` | `Maps/Chapter9.umap` | CH9 | TODO: opis |
-| `Chapter10` | `Maps/Chapter10.umap` | CH10 | TODO: opis |
-| `Chapter11` | `Maps/Chapter11.umap` | CH11 | TODO: opis |
-| `Chapter12` | `Maps/Chapter12.umap` | CH12 (Finale) | TODO: opis |
-| `Flashback1` | `Maps/Flashback1.umap` | FB1 | TODO: opis |
-| `Flashback2` | `Maps/Flashback2.umap` | FB2 | TODO: opis |
-| `Flashback3` | `Maps/Flashback3.umap` | FB3 | TODO: opis |
-| `Parallel1` | `Maps/Parallel1.umap` | PAR1 (Cien) | TODO: opis |
-| `Parallel2` | `Maps/Parallel2.umap` | PAR2 (Eva) | TODO: opis |
+| `L_CCR_MainMenu` | `Maps/MainMenu.umap` | — | Menu glowne |
+| `L_CCR_Loading` | `Maps/Loading.umap` | — | Poziom przejsciowy |
+| `L_CCR_Prologue` | `Maps/Prologue.umap` | PROLOGUE | Otwarcie gry |
+| `L_CCR_T01` | `Maps/T01_PoczatekSwiatla1679.umap` | T01 | Rok 1679 |
+| `L_CCR_T02` | `Maps/T02_Warszawa1983.umap` | T02 | Warszawa 1983 |
+| `L_CCR_T03` | `Maps/T03_LecznaLublin2010.umap` | T03 | Leczna-Lublin 2010-2018 |
+| `L_CCR_T04` | `Maps/T04_Belzyce2016.umap` | T04 | Belzyce 2016 |
+| `L_CCR_T05` | `Maps/T05_Novaky2018.umap` | T05 | Novaky Slowacja 2018-2023 |
+| `L_CCR_T06` | `Maps/T06_CsmSever2024.umap` | T06 | CSM Sever Czechy 2024 |
+| `L_CCR_T07` | `Maps/T07_Cieszyn2025.umap` | T07 | Cieszyn 2025 |
+| `L_CCR_T08` | `Maps/T08_CienSystemu2035.umap` | T08 | Cien Systemu 2035 |
+| `L_CCR_T09` | `Maps/T09_FotonyPamieci2045.umap` | T09 | Fotony Pamieci 2045 |
+| `L_CCR_T10` | `Maps/T10_ArchiwumCiszy2077.umap` | T10 | Archiwum Ciszy 2077 |
+| `L_CCR_T11` | `Maps/T11_TerminalSwiatla2100.umap` | T11 | Terminal Swiatla 2100 |
+| `L_CCR_T12` | `Maps/T12_Chicago2135.umap` | T12 | Chicago 2135 |
+| `L_CCR_T13` | `Maps/T13_TransmisjaWspomnien2150.umap` | T13 | Transmisja Wspomnien 2150 |
+| `L_CCR_T14` | `Maps/T14_SwiatloProzni2222.umap` | T14 | Swiatlo w Prozni 2222 |
+| `L_CCR_T15` | `Maps/T15_NeoParis2345.umap` | T15 | Neo Paris 2345 |
+| `L_CCR_T16` | `Maps/T16_KodPamieci2378.umap` | T16 | Kod Pamieci 2378 |
+| `L_CCR_T17` | `Maps/T17_PowrotyCienia2378.umap` | T17 | Powroty do Cienia 2378 |
+| `L_CCR_T18` | `Maps/T18_DevilMind2777.umap` | T18 | Devil Mind 2777 |
+| `L_CCR_T19` | `Maps/T19_SwiatloCo Trwa.umap` | T19 | Swiatlo Ktore Trwa ∞ (final) |
 
 **Setup dla kazdego poziomu:**
 1. Dodaj `BP_CCRGameMode` do WorldSettings -> GameMode Override.
-2. Dodaj `ACCRSpawnPoint` z unikalnymi `SpawnTag`.
+2. Dodaj `ACCRSpawnPoint` z unikalnymi `SpawnTag` dla ANDRZEJA i obecnych postaci.
 3. Dodaj `ACCREventTriggerActor` w strefach narracyjnych.
-4. Dodaj `ACCRAmbientSoundZoneActor` z dźwiękiem otoczenia.
-5. Ustaw `GameDefaultMap` w `DefaultEngine.ini` na `MainMenu`.
+4. Dodaj `ACCRAmbientSoundZoneActor` z muzyka tematyczna osi czasu.
 
 ---
 
 ## Story Assets (UCCRStoryChunk)
 
-### Os glowna (MAIN ARC)
-
-Przepływ: PROLOGUE_01 -> PROLOGUE_02 -> CH1_01 -> CH1_02 -> ... -> CH12_02 -> End
-
-| Chunk | AxisId | Rozdzial | Postacie | Plik manifestu |
-|---|---|---|---|---|
-| PROLOGUE_01, PROLOGUE_02 | PROLOGUE | Prolog | ANDRZEJ, ZUZIA | `Prologue/PROLOGUE_STORY.json` |
-| CH1_01, CH1_02 | ACT1 | Rozdzial 1 | ANDRZEJ, EVA, CIEN | `Chapter1/CHAPTER1_STORY.json` |
-| CH2_01, CH2_02 | ACT1 | Rozdzial 2 | ANDRZEJ, EIMSTAIN, BATISTA, WERONIKA | `Chapter2/CHAPTER2_STORY.json` |
-| CH3_01, CH3_02 | ACT1 | Rozdzial 3 | ANDRZEJ, DAVID, KAFKA | `Chapter3/CHAPTER3_STORY.json` |
-| CH4_01, CH4_02 | ACT1 | Rozdzial 4 | ANDRZEJ, ZUZIA, CIEN | `Chapter4/CHAPTER4_STORY.json` |
-| CH5_01, CH5_02 | ACT1 | Rozdzial 5 | ANDRZEJ, EVA, ZUZIA, KAFKA | `Chapter5/CHAPTER5_STORY.json` |
-| CH6_01, CH6_02 | ACT1 | Rozdzial 6 | ANDRZEJ, EIMSTAIN, EVA | `Chapter6/CHAPTER6_STORY.json` |
-| CH7_01, CH7_02 | ACT2 | Rozdzial 7 | ANDRZEJ, BATISTA, WERONIKA, CIEN | `Chapter7/CHAPTER7_STORY.json` |
-| CH8_01, CH8_02 | ACT2 | Rozdzial 8 | ANDRZEJ, DAVID, BATISTA | `Chapter8/CHAPTER8_STORY.json` |
-| CH9_01, CH9_02 | ACT2 | Rozdzial 9 | ANDRZEJ, KAFKA, DAVID, ZUZIA | `Chapter9/CHAPTER9_STORY.json` |
-| CH10_01, CH10_02 | ACT3 | Rozdzial 10 | ANDRZEJ, WERONIKA, KAFKA | `Chapter10/CHAPTER10_STORY.json` |
-| CH11_01, CH11_02 | ACT3 | Rozdzial 11 | ANDRZEJ, CIEN, EIMSTAIN, WERONIKA | `Chapter11/CHAPTER11_STORY.json` |
-| CH12_01, CH12_02 | ACT3 | Rozdzial 12 (Finale) | ANDRZEJ, EVA, CIEN | `Chapter12/CHAPTER12_STORY.json` |
-
-### Os Wspomnien (FLASHBACK axis)
-
-Osobna os czasu — uruchamiana ze scen glownych. Nie wchodzi w glowny lancuch Jump.
-
-| Chunk | AxisId | Tytul | Postacie | Plik manifestu |
-|---|---|---|---|---|
-| FB1_01 | FLASHBACK | Wspomnienie 1 | ANDRZEJ, KAFKA | `Flashbacks/FLASHBACK1_STORY.json` |
-| FB2_01 | FLASHBACK | Wspomnienie 2 | KAFKA, DAVID | `Flashbacks/FLASHBACK2_STORY.json` |
-| FB3_01 | FLASHBACK | Wspomnienie 3 | ZUZIA, ANDRZEJ | `Flashbacks/FLASHBACK3_STORY.json` |
-
-### Os Rownolegla (PARALLEL axis)
-
-Alternatywne perspektywy — inne POV, te same wydarzenia.
-
-| Chunk | AxisId | Tytul | POV | Plik manifestu |
-|---|---|---|---|---|
-| PAR1_01 | PARALLEL | Perspektywa: Cien | CIEN, EIMSTAIN | `Parallel/PARALLEL1_STORY.json` |
-| PAR2_01 | PARALLEL | Perspektywa: Eva | EVA, WERONIKA | `Parallel/PARALLEL2_STORY.json` |
-
 ### Tworzenie Story Chunk w UE5 Editor
 
-1. PPM w `Content/CCR/Story/<Rozdzial>/`.
+1. PPM w odpowiednim folderze `Content/CCR/Story/<OsCzasu>/`.
 2. **Miscellaneous -> Data Asset -> CCRStoryChunk**.
-3. Nazwa: `DA_Story_<ChunkId>` (np. `DA_Story_CH4_01`).
+3. Nazwa: `DA_Story_<ChunkId>` (np. `DA_Story_T01_01`).
 4. Wypelnij `ChunkId`, `AxisId`, `EntryNodeId`, `ChapterTitle`, `ChapterSubtitle`.
 5. Dodaj `FCCRNode` do tablicy `Nodes`.
 
-### Konwencja nazewnictwa Node ID
+### Konwencja NodeId
 
 ```
-<Skrot>_<Chunk>_<Sekwencja>
-np.:  PRO_01_010    (Prologue, chunk 01, wezel 010)
-      CH4_01_030    (Chapter 4, chunk 01, wezel 030)
-      FB1_01_020    (Flashback 1, chunk 01, wezel 020)
-      PAR2_01_010   (Parallel 2, chunk 01, wezel 010)
+<AxisId>_<ChunkNr>_<Sekwencja>
+np.:  T01_01_010    (os T01, chunk 01, wezel 010)
+      T13_01_060    (os T13, chunk 01, wezel 060)
+      PRO_01_WHISPER_002  (Prologue, chunk 01, wezel szeptu)
 ```
 
----
+### Node Types uzywane w CCR WORLD
 
-## Character Assets (UCCRCharacterDefinition)
-
-| CharacterId | Wyswietlana nazwa | MetFlag | Pierwszy rozdzial |
-|---|---|---|---|
-| `ANDRZEJ` | Andrzej | -- | Protagonista – wszystkie |
-| `ZUZIA` | Zuzia | `MET_ZUZIA` | Prolog |
-| `EVA` | Eva | `MET_EVA` | Rozdzial 1 |
-| `CIEN` | Cien | `MET_CIEN` | Rozdzial 1 |
-| `EIMSTAIN` | Eimstain | `MET_EIMSTAIN` | Rozdzial 2 |
-| `BATISTA` | Batista | `MET_BATISTA` | Rozdzial 2 |
-| `WERONIKA` | Weronika | `MET_WERONIKA` | Rozdzial 2 |
-| `DAVID` | David | `MET_DAVID` | Rozdzial 3 |
-| `KAFKA` | Kafka | `MET_KAFKA` | Rozdzial 3 |
-
-Pelna definicja: `Characters/CHARACTERS_MANIFEST.json`
-
-### Konwencja nazewnictwa portretow
-
-```
-T_<CharacterId>_<StateName>
-np.: T_ANDRZEJ_Neutral.png
-     T_CIEN_Fear.png
-```
-
-Importuj do `Content/CCR/Textures/Portraits/<CharacterId>/`.
-
----
-
-## Item Assets (UCCRInventoryItemDefinition)
-
-Pelna definicja: `Items/ITEMS_MANIFEST.json`
-
-Konwencja ikon: `T_Item_<ItemId>` -> `Content/CCR/Textures/Items/`
-
----
-
-## Blueprint Widgets
-
-| Blueprint | Baza C++ | Folder |
-|---|---|---|
-| `WBP_CCRDialogue` | `UCCRDialogueWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRQTE` | `UCCRQTEWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRPause` | `UCCRPauseWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRLoading` | `UCCRLoadingWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRMainMenu` | `UCCRMainMenuWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRSettings` | `UCCRSettingsWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRNotification` | `UCCRNotificationWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRChapterTransition` | `UCCRChapterTransitionWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRCredits` | `UCCRCreditsWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRCutsceneSkip` | `UCCRCutsceneSkipWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRObjective` | `UCCRObjectiveWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRInventory` | `UCCRInventoryWidget` | `Blueprints/Widgets/` |
-| `WBP_CCRChapterSelect` | `UCCRChapterSelectWidget` | `Blueprints/Widgets/` |
-
----
-
-## Game Framework Blueprints
-
-| Blueprint | Baza C++ |
+| Typ | Opis |
 |---|---|
-| `BP_CCRGameInstance` | `UCCRGameInstance` |
-| `BP_CCRGameMode` | `ACCRGameMode` |
-| `BP_CCRGameHUD` | `ACCRGameHUD` |
-| `BP_CCRTouchController` | `ACCRTouchController` |
+| `TitleCard` | Karta tytulowa (logo + napis). Uzywana na otwarciu gry. |
+| `AmbientVoice` | Glos w tle bez portretu. Uzywany do szeptu dziecka. |
+| `Cinematic` | Level Sequence cutscenka. |
+| `Dialogue` | Kwestia postaci z portretem. |
+| `Choice` | Wybor gracza (2-4 opcje). |
+| `QTE` | Quick Time Event (Swipe / Tap / LongPress). |
+| `SetValues` | Ustaw flagi/wartosci w stanie gry. |
+| `Condition` | Rozgalezienie na podstawie stanu gry. |
+| `Jump` | Przejscie do innego ChunkId. |
+| `End` | Koniec podrozy / koniec gry. |
+
+---
+
+## Characters
+
+| CharacterId | Rola | Relacje |
+|---|---|---|
+| `ANDRZEJ` | Protagonist, ojciec Zuzi | Szuka Zuzi przez WSZYSTKIE 19 osi czasu |
+| `ZUZIA` | Corka Andrzeja | Izolowana przez Davida i Weronikę. Pojawia sie bezposrednio tylko w T19 |
+| `DZIECKO` | Glos otwarcia | Szept: "Czas nie plynie... czas oddycha." – tylko VO, brak portretu |
+| `EVA` | Niezalezna sojuszniczka | NIGDY z Weronika w tej samej scenie |
+| `CIEN` | Antagonista / alter ego | Odkrycie T17: to wersja Andrzeja ktory sie poddal |
+| `EIMSTAIN` | Znawca osi czasu | Wyjasnia mechanizm podrozy |
+| `BATISTA` | Obserwator -> sojusznik | W T18 definitywnie staje po stronie Andrzeja |
+| `WERONIKA` | Strasznik izolacji Zuzi | TYLKO z DAVIDEM. Nigdy nie widziala EVY. Watpliwosci: T16 |
+| `DAVID` | Strasznik izolacji Zuzi | Zawsze z WERONIKA. Wykonuje rozkazy systemu |
+| `KAFKA` | Posrednik informacji | Zna podziemia kazdej osi czasu |
 
 ---
 
 ## Audio
 
-### Muzyka
+### Muzyka tematyczna
 
-| Klucz | Plik | Opis |
+| Klucz | Plik | Ery |
 |---|---|---|
-| `MENU` | `MUS_MainMenu.wav` | Temat menu glownego |
-| `PROLOGUE` | `MUS_Prologue.wav` | Muzyka prologu |
-| `ACT1` | `MUS_Act1.wav` | Temat Aktu I |
-| `ACT2` | `MUS_Act2.wav` | Temat Aktu II |
-| `ACT3` | `MUS_Act3.wav` | Temat Aktu III |
-| `FLASHBACK` | `MUS_Flashback.wav` | Temat wspomnien |
-| `PARALLEL` | `MUS_Parallel.wav` | Temat osi rownoleglejnej |
-| `TENSION` | `MUS_Tension.wav` | Muzyka QTE / napiecia |
-| `FINALE` | `MUS_Finale.wav` | Finale – Rozdzial 12 |
+| `MUS_MainMenu` | `Audio/Music/MUS_MainMenu.wav` | Menu |
+| `MUS_Prologue` | `Audio/Music/MUS_Prologue.wav` | Otwarcie + szept |
+| `MUS_Historical` | `Audio/Music/MUS_Historical.wav` | T01–T07 (1679–2025) |
+| `MUS_NearFuture` | `Audio/Music/MUS_NearFuture.wav` | T08–T11 (2035–2100) |
+| `MUS_DeepFuture` | `Audio/Music/MUS_DeepFuture.wav` | T12–T15 (2135–2345) |
+| `MUS_Eternal` | `Audio/Music/MUS_Eternal.wav` | T16–T19 (2378–∞) |
+| `MUS_Tension` | `Audio/Music/MUS_Tension.wav` | Sceny z CIEN / QTE |
+| `MUS_Finale` | `Audio/Music/MUS_Finale.wav` | T19 – finalne spotkanie |
 
-### SFX
+### VO Szept dziecka
 
-| Asset | Opis |
-|---|---|
-| `SFX_QTE_Success` | Sukces QTE |
-| `SFX_QTE_Fail` | Porazka QTE |
-| `SFX_CheckpointSaved` | Zapis checkpointu |
-| `SFX_ItemPickup` | Pobranie przedmiotu |
-| `SFX_UIConfirm` | Potwierdzenie UI |
-| `SFX_UIBack` | Cofniecie UI |
+| Asset | Sciezka | Uzycie |
+|---|---|---|
+| `VO_DZIECKO_WstepSzepty_01` | `Audio/VO/DZIECKO/VO_DZIECKO_WstepSzepty_01.wav` | Node PRO_01_WHISPER_002 |
+
+Tekst: *„Czas nie płynie… czas oddycha."*  
+Styl: ciepły, delikatny szept dziecka, bez muzyki w tle, cisza otoczenia.
 
 ---
 
-## Cinematics (Level Sequences)
+## Cinematics
 
-| Asset | Rozdzial | Wezel | Opis |
+| Asset | Os | Wezel | Opis |
 |---|---|---|---|
-| `LS_Prologue_Intro` | PROLOGUE_01 | PRO_01_CIN_001 | Intro prologu |
-| `LS_Prologue_Outro` | PROLOGUE_02 | PRO_02_CIN_001 | Outro prologu |
-| `LS_FB1_Intro` | FB1_01 | FB1_01_010 | Wspomnienie 1 - wejscie |
-| `LS_FB3_Intro` | FB3_01 | FB3_01_010 | Wspomnienie 3 - wejscie |
-| `LS_Chapter12_Finale` | CH12_02 | CH12_02_010 | Finale |
-| `LS_Chapter12_Epilogue` | CH12_02 | CH12_02_050 | Epilog (mozliwy do pominiecia) |
+| `LS_Prologue_Intro` | PROLOGUE_01 | PRO_01_CIN_001 | Pierwsza cutscenka po szepcie |
+| `LS_Prologue_Outro` | PROLOGUE_02 | PRO_02_CIN_001 | Przejscie do T01 |
+| `LS_T18_FinalBattle` | T18_01 | T18_01_CIN (TODO) | Konfrontacja z Cieniem |
+| `LS_T19_Reunion` | T19_01 | T19_01_CIN (TODO) | Finalne spotkanie Andrzeja i Zuzi |
 
 ---
 
-## .gitignore dla Content
+## .gitattributes (Git LFS)
 
-Binarne pliki `.uasset` i `.umap` nie powinny byc sledzone przez Git (uzywaj Perforce lub Git LFS).
-
-Git LFS – dodaj do `.gitattributes`:
 ```
 Content/**/*.uasset filter=lfs diff=lfs merge=lfs -text
 Content/**/*.umap    filter=lfs diff=lfs merge=lfs -text

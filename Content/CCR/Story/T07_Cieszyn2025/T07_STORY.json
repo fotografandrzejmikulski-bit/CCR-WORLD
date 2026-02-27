@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – CIESZYN | CIESZYN · 2025. Axis: T07. WERONIKA jest z DAVIDEM. Zuzia jest po drugiej stronie granicy – widzą się ale nie mogą dotrzeć. EVA tu NIE ma.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T07_01",
+      "path": "Content/CCR/Story/T07_Cieszyn2025/",
+      "ChunkId": "T07_01",
+      "AxisId": "T07",
+      "EntryNodeId": "T07_01_010",
+      "ChapterTitle": "CIESZYN",
+      "ChapterSubtitle": "2025",
+      "_narrative": "WERONIKA jest z DAVIDEM. Zuzia jest po drugiej stronie granicy – widzą się ale nie mogą dotrzeć. EVA tu NIE ma.",
+      "Nodes": [
+        {
+          "NodeId": "T07_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Cieszyn – miasto na granicy. Andrzej jest po jednej stronie, Zuzia po drugiej. Nie mogą się spotkać.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "T07_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T07_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: David strzeże granicy między nimi. Ma rozkaz trzymać Zuzię od ojca.",
+          "ExpressionTag": "Cold",
+          "NextAfterDialogue": "T07_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T07_01_040"
+        },
+        {
+          "NodeId": "T07_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T07_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T07_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T07_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T07_01_060",
+          "QTEFailNodeId": "T07_01_052"
+        },
+        {
+          "NodeId": "T07_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T07_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... CIESZYN · 2025.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T07_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T07_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "TODO: Weronika mówi Andrzejowi żeby odpuścił. Ale to nieprawda – ona go tylko zatrzymuje.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T07_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T07_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T07_01_090"
+        },
+        {
+          "NodeId": "T07_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T07_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T07_01_999"
+        },
+        {
+          "NodeId": "T07_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T08_01",
+          "EntryNodeInTarget": "T08_01_010"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – ARCHIWUM CISZY | ARCHIWUM CISZY · 2077. Axis: T10. Archiwum Ciszy skrywa wszystkie zagubione wiadomości Zuzi do ojca.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T10_01",
+      "path": "Content/CCR/Story/T10_ArchiwumCiszy2077/",
+      "ChunkId": "T10_01",
+      "AxisId": "T10",
+      "EntryNodeId": "T10_01_010",
+      "ChapterTitle": "ARCHIWUM CISZY",
+      "ChapterSubtitle": "2077",
+      "_narrative": "Archiwum Ciszy skrywa wszystkie zagubione wiadomości Zuzi do ojca.",
+      "Nodes": [
+        {
+          "NodeId": "T10_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2077. Archiwum Ciszy – miejsce gdzie przechowywane są zagubione głosy. Wśród nich głos Zuzi.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T10_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T10_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "TODO: Batista jest strażnikiem Archiwum. Ma dostęp do głosu Zuzi.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T10_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T10_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T10_01_040"
+        },
+        {
+          "NodeId": "T10_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T10_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T10_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T10_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T10_01_060",
+          "QTEFailNodeId": "T10_01_052"
+        },
+        {
+          "NodeId": "T10_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T10_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T10_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... ARCHIWUM CISZY · 2077.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T10_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T10_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: Kafka znalazł w Archiwum wpis Zuzi sprzed dziesięcioleci.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T10_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T10_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T10_01_090"
+        },
+        {
+          "NodeId": "T10_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T10_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T10_01_999"
+        },
+        {
+          "NodeId": "T10_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T11_01",
+          "EntryNodeInTarget": "T11_01_010"
+        }
+      ]
+    }
+  ]
+}

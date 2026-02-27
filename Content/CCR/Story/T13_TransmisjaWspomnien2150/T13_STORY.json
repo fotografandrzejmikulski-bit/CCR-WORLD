@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – TRANSMISJA WSPOMNIEŃ | TRANSMISJA WSPOMNIEŃ · 2150. Axis: T13. Przełom – Andrzej słyszy Zuzię przez transmisję wspomnień po raz pierwszy od lat.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T13_01",
+      "path": "Content/CCR/Story/T13_TransmisjaWspomnien2150/",
+      "ChunkId": "T13_01",
+      "AxisId": "T13",
+      "EntryNodeId": "T13_01_010",
+      "ChapterTitle": "TRANSMISJA WSPOMNIEŃ",
+      "ChapterSubtitle": "2150",
+      "_narrative": "Przełom – Andrzej słyszy Zuzię przez transmisję wspomnień po raz pierwszy od lat.",
+      "Nodes": [
+        {
+          "NodeId": "T13_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2150. Technologia transmisji wspomnień. Andrzej odbiera sygnał – to Zuzia.",
+          "ExpressionTag": "Emotional",
+          "NextAfterDialogue": "T13_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T13_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: Kafka jest operatorem transmisji. Pomaga Andrzejowi odebrać sygnał od córki.",
+          "ExpressionTag": "Focused",
+          "NextAfterDialogue": "T13_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T13_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T13_01_040"
+        },
+        {
+          "NodeId": "T13_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T13_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T13_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T13_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T13_01_060",
+          "QTEFailNodeId": "T13_01_052"
+        },
+        {
+          "NodeId": "T13_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T13_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T13_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... TRANSMISJA WSPOMNIEŃ · 2150.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T13_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T13_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "TODO: Cień zakłóca transmisję. Chce zniszczyć połączenie między ojcem a córką.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T13_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T13_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_CIEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T13_01_090"
+        },
+        {
+          "NodeId": "T13_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T13_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T13_01_999"
+        },
+        {
+          "NodeId": "T13_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T14_01",
+          "EntryNodeInTarget": "T14_01_010"
+        }
+      ]
+    }
+  ]
+}

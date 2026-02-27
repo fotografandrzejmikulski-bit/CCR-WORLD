@@ -1,0 +1,119 @@
+{
+  "_doc": "UCCRStoryChunk manifest – ŚWIATŁO W PRÓŻNI | ŚWIATŁO W PRÓŻNI · 2222. Axis: T14. Andrzej i Zuzia są bardzo blisko – dzieli ich tylko 'próżnia' osi czasu.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T14_01",
+      "path": "Content/CCR/Story/T14_SwiatloProzni2222/",
+      "ChunkId": "T14_01",
+      "AxisId": "T14",
+      "EntryNodeId": "T14_01_010",
+      "ChapterTitle": "ŚWIATŁO W PRÓŻNI",
+      "ChapterSubtitle": "2222",
+      "_narrative": "Andrzej i Zuzia są bardzo blisko – dzieli ich tylko 'próżnia' osi czasu.",
+      "Nodes": [
+        {
+          "NodeId": "T14_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2222. Kosmiczna cisza. Andrzej i Zuzia są w tej samej próżni, po różnych stronach.",
+          "ExpressionTag": "Melancholic",
+          "NextAfterDialogue": "T14_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T14_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "TODO: Eimstain zna sposób na przebicie się przez próżnię. To wymaga ofiary.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T14_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T14_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EIMSTAIN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T14_01_040"
+        },
+        {
+          "NodeId": "T14_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T14_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T14_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T14_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T14_01_060",
+          "QTEFailNodeId": "T14_01_052"
+        },
+        {
+          "NodeId": "T14_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T14_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T14_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... ŚWIATŁO W PRÓŻNI · 2222.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T14_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T14_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie osi czasu. Szukam dalej.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "T14_01_080",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T14_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T14_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T14_01_999"
+        },
+        {
+          "NodeId": "T14_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T15_01",
+          "EntryNodeInTarget": "T15_01_010"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – DEVIL MIND | DEVIL MIND · 2777. Axis: T18. Ostateczna konfrontacja z Cieniem. Batista przechodzi na stronę Andrzeja.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T18_01",
+      "path": "Content/CCR/Story/T18_DevilMind2777/",
+      "ChunkId": "T18_01",
+      "AxisId": "T18",
+      "EntryNodeId": "T18_01_010",
+      "ChapterTitle": "DEVIL MIND",
+      "ChapterSubtitle": "2777",
+      "_narrative": "Ostateczna konfrontacja z Cieniem. Batista przechodzi na stronę Andrzeja.",
+      "Nodes": [
+        {
+          "NodeId": "T18_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2777. Devil Mind – ostatnia bariera przed wiecznością. Andrzej musi pokonać Cień.",
+          "ExpressionTag": "Furious",
+          "NextAfterDialogue": "T18_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T18_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "CIEN",
+          "DialogueText": "TODO: Ostateczna konfrontacja Andrzeja z Cieniem (wersją siebie który poddał się).",
+          "ExpressionTag": "Desperate",
+          "NextAfterDialogue": "T18_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T18_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_CIEN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T18_01_040"
+        },
+        {
+          "NodeId": "T18_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T18_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T18_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T18_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T18_01_060",
+          "QTEFailNodeId": "T18_01_052"
+        },
+        {
+          "NodeId": "T18_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T18_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T18_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... DEVIL MIND · 2777.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T18_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T18_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "BATISTA",
+          "DialogueText": "TODO: Batista staje po stronie Andrzeja. Pierwsza pełna sojusznicza deklaracja.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T18_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T18_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_BATISTA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T18_01_090"
+        },
+        {
+          "NodeId": "T18_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T18_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T18_01_999"
+        },
+        {
+          "NodeId": "T18_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T19_01",
+          "EntryNodeInTarget": "T19_01_010"
+        }
+      ]
+    }
+  ]
+}

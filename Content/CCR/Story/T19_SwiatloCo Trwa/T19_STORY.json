@@ -1,0 +1,117 @@
+{
+  "_doc": "UCCRStoryChunk manifest – ŚWIATŁO KTÓRE TRWA | ŚWIATŁO KTÓRE TRWA · ∞. Axis: T19. FINAŁ – Andrzej odnajduje Zuzię. Koniec podróży przez 19 osi czasu. ZUZIA WOŁA OJCA.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T19_01",
+      "path": "Content/CCR/Story/T19_SwiatloCo Trwa/",
+      "ChunkId": "T19_01",
+      "AxisId": "T19",
+      "EntryNodeId": "T19_01_010",
+      "ChapterTitle": "ŚWIATŁO KTÓRE TRWA",
+      "ChapterSubtitle": "∞",
+      "_narrative": "FINAŁ – Andrzej odnajduje Zuzię. Koniec podróży przez 19 osi czasu. ZUZIA WOŁA OJCA.",
+      "Nodes": [
+        {
+          "NodeId": "T19_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Wieczność. Andrzej odnajduje Zuzię. 'Znalazłem cię, córeczko. Przez wszystkie czasy.'",
+          "ExpressionTag": "Overjoyed",
+          "NextAfterDialogue": "T19_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T19_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ZUZIA",
+          "DialogueText": "TODO: Zuzia: 'Tato. Wiedziałam że przyjdziesz. Słyszałam cię w każdym oddechu czasu.'",
+          "ExpressionTag": "Emotional",
+          "NextAfterDialogue": "T19_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T19_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_ZUZIA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T19_01_040"
+        },
+        {
+          "NodeId": "T19_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T19_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T19_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T19_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T19_01_060",
+          "QTEFailNodeId": "T19_01_052"
+        },
+        {
+          "NodeId": "T19_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T19_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T19_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Andrzej znalazł Zuzię. Koniec podróży przez wszystkie osie czasu. 'Córeczko, znalazłem cię.'",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T19_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T19_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Zamknięcie finału. Andrzej i Zuzia razem. Koniec drogi.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "T19_01_080",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T19_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T19_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T19_01_999"
+        },
+        {
+          "NodeId": "T19_01_999",
+          "NodeType": "End"
+        }
+      ]
+    }
+  ]
+}

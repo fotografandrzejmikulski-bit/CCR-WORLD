@@ -1,0 +1,119 @@
+{
+  "_doc": "UCCRStoryChunk manifest – FOTONY PAMIĘCI | FOTONY PAMIĘCI · 2045. Axis: T09. Echo Zuzi pojawia się jako foton pamięci – Andrzej widzi jej wspomnienie ale nie może się z nią porozumieć.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T09_01",
+      "path": "Content/CCR/Story/T09_FotonyPamieci2045/",
+      "ChunkId": "T09_01",
+      "AxisId": "T09",
+      "EntryNodeId": "T09_01_010",
+      "ChapterTitle": "FOTONY PAMIĘCI",
+      "ChapterSubtitle": "2045",
+      "_narrative": "Echo Zuzi pojawia się jako foton pamięci – Andrzej widzi jej wspomnienie ale nie może się z nią porozumieć.",
+      "Nodes": [
+        {
+          "NodeId": "T09_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2045. Wspomnienia Zuzi jako fotony – Andrzej widzi je ale nie może ich dotknąć.",
+          "ExpressionTag": "Desperate",
+          "NextAfterDialogue": "T09_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T09_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "TODO: Eimstain tłumaczy technologię fotonów pamięci. Zuzia zakodowała wiadomość dla ojca.",
+          "ExpressionTag": "Scientific",
+          "NextAfterDialogue": "T09_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T09_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EIMSTAIN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T09_01_040"
+        },
+        {
+          "NodeId": "T09_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T09_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T09_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T09_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T09_01_060",
+          "QTEFailNodeId": "T09_01_052"
+        },
+        {
+          "NodeId": "T09_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T09_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T09_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... FOTONY PAMIĘCI · 2045.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T09_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T09_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: zamknięcie osi czasu. Szukam dalej.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "T09_01_080",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T09_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T09_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T09_01_999"
+        },
+        {
+          "NodeId": "T09_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T10_01",
+          "EntryNodeInTarget": "T10_01_010"
+        }
+      ]
+    }
+  ]
+}

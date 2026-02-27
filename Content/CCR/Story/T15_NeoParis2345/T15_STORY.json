@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – NEO PARIS | NEO PARIS · 2345. Axis: T15. EVA jest tu SAMA – Weronika NIE tu. Eva pomaga Andrzejowi znaleźć adres Zuzi.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T15_01",
+      "path": "Content/CCR/Story/T15_NeoParis2345/",
+      "ChunkId": "T15_01",
+      "AxisId": "T15",
+      "EntryNodeId": "T15_01_010",
+      "ChapterTitle": "NEO PARIS",
+      "ChapterSubtitle": "2345",
+      "_narrative": "EVA jest tu SAMA – Weronika NIE tu. Eva pomaga Andrzejowi znaleźć adres Zuzi.",
+      "Nodes": [
+        {
+          "NodeId": "T15_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Neo Paryż roku 2345. Miasto świateł i wspomnień. Zuzia zostawiła tu ślad.",
+          "ExpressionTag": "Hopeful",
+          "NextAfterDialogue": "T15_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T15_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EVA",
+          "DialogueText": "TODO: Eva jest w Neo Paryżu. Ma ostatni adres Zuzi. Jest sama – Weronika nigdy tu nie była.",
+          "ExpressionTag": "Warm",
+          "NextAfterDialogue": "T15_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T15_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EVA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T15_01_040"
+        },
+        {
+          "NodeId": "T15_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T15_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T15_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T15_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T15_01_060",
+          "QTEFailNodeId": "T15_01_052"
+        },
+        {
+          "NodeId": "T15_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T15_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T15_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... NEO PARIS · 2345.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T15_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T15_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: Kafka prowadzi Andrzeja do adresu Zuzi. Ale droga jest strzeżona.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T15_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T15_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T15_01_090"
+        },
+        {
+          "NodeId": "T15_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T15_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T15_01_999"
+        },
+        {
+          "NodeId": "T15_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T16_01",
+          "EntryNodeInTarget": "T16_01_010"
+        }
+      ]
+    }
+  ]
+}

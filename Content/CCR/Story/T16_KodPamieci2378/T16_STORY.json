@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – KOD PAMIĘCI | KOD PAMIĘCI · 2378. Axis: T16. WERONIKA jest z DAVIDEM (zawsze razem). Weronika zaczyna wątpić w Davida – przełomowy moment.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T16_01",
+      "path": "Content/CCR/Story/T16_KodPamieci2378/",
+      "ChunkId": "T16_01",
+      "AxisId": "T16",
+      "EntryNodeId": "T16_01_010",
+      "ChapterTitle": "KOD PAMIĘCI",
+      "ChapterSubtitle": "2378",
+      "_narrative": "WERONIKA jest z DAVIDEM (zawsze razem). Weronika zaczyna wątpić w Davida – przełomowy moment.",
+      "Nodes": [
+        {
+          "NodeId": "T16_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Rok 2378. Pamięć jest kodem. Zuzia zakodowała wiadomość dla ojca w strukturze czasu.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T16_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T16_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: David jest strażnikiem kodu. Weronika stoi u jego boku. Blokują dostęp.",
+          "ExpressionTag": "Cold",
+          "NextAfterDialogue": "T16_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T16_01_040"
+        },
+        {
+          "NodeId": "T16_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T16_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T16_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T16_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T16_01_060",
+          "QTEFailNodeId": "T16_01_052"
+        },
+        {
+          "NodeId": "T16_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T16_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... KOD PAMIĘCI · 2378.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T16_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T16_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "TODO: Weronika mówi 'Nie ma tu nic dla ciebie, Andrzeju.' Ale w jej oczach jest wątpliwość.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T16_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T16_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T16_01_090"
+        },
+        {
+          "NodeId": "T16_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T16_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T16_01_999"
+        },
+        {
+          "NodeId": "T16_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T17_01",
+          "EntryNodeInTarget": "T17_01_010"
+        }
+      ]
+    }
+  ]
+}

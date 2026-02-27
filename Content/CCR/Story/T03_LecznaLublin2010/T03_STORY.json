@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – ŁĘCZNA – LUBLIN | ŁĘCZNA – LUBLIN · 2010–2018. Axis: T03. WERONIKA jest z DAVIDEM – izolują Zuzię od Andrzeja. EVA NIE ma w tej scenie.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T03_01",
+      "path": "Content/CCR/Story/T03_LecznaLublin2010/",
+      "ChunkId": "T03_01",
+      "AxisId": "T03",
+      "EntryNodeId": "T03_01_010",
+      "ChapterTitle": "ŁĘCZNA – LUBLIN",
+      "ChapterSubtitle": "2010–2018",
+      "_narrative": "WERONIKA jest z DAVIDEM – izolują Zuzię od Andrzeja. EVA NIE ma w tej scenie.",
+      "Nodes": [
+        {
+          "NodeId": "T03_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Andrzej wraca do Łęcznej. Pamięta Zuzię tu, jako małe dziecko. Ale jej nie ma.",
+          "ExpressionTag": "Sad",
+          "NextAfterDialogue": "T03_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T03_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "DAVID",
+          "DialogueText": "TODO: David jest tu z Weroniką. Pilnuje, żeby Andrzej nie dotarł do Zuzi.",
+          "ExpressionTag": "Protective",
+          "NextAfterDialogue": "T03_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_DAVID",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T03_01_040"
+        },
+        {
+          "NodeId": "T03_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T03_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T03_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T03_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T03_01_060",
+          "QTEFailNodeId": "T03_01_052"
+        },
+        {
+          "NodeId": "T03_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T03_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... ŁĘCZNA – LUBLIN · 2010–2018.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T03_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T03_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "WERONIKA",
+          "DialogueText": "TODO: Weronika jest TYLKO z Davidem. Nigdy nie widziała Evy. Izoluje Zuzię.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T03_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T03_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_WERONIKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T03_01_090"
+        },
+        {
+          "NodeId": "T03_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T03_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T03_01_999"
+        },
+        {
+          "NodeId": "T03_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T04_01",
+          "EntryNodeInTarget": "T04_01_010"
+        }
+      ]
+    }
+  ]
+}

@@ -150,58 +150,65 @@ Content/
 > JSON manifest files in each Story / Characters / Items subfolder describe the full
 > data to enter in the UE5 Editor when creating the `.uasset` instances.
 
+### Zasady narracyjne
+
+| Zasada | Opis |
+|---|---|
+| **ANDRZEJ = ojciec ZUZI** | Protagonista podróżuje przez WSZYSTKIE 19 osi czasu, aby odnaleźć córkę |
+| **ZUZIA jest izolowana** | David i Weronika trzymają Zuzię z dala od Andrzeja przez całą grę |
+| **WERONIKA tylko z DAVIDEM** | Weronika NIGDY nie spotkała Evy. Sceny Weroniki i Evy NIE krzyżują się |
+| **CIEŃ = alter ego ANDRZEJA** | Odkrycie w osi T17: Cień to wersja Andrzeja, który poddał się szukaniu |
+| **Otwarcie gry** | Po tytule: ciepły szept dziecka — *„Czas nie płynie… czas oddycha."* |
+
 ### Complete Story Flow
 
-**Główna oś narracyjna (MAIN ARC):**
+**Przepływ główny — 19 osi czasu:**
+
 ```
-PROLOGUE_01 -> ... -> PROLOGUE_02
-  -> CH1_01 -> CH1_02
-  -> CH2_01 -> CH2_02
-  -> CH3_01 -> CH3_02
-  -> CH4_01 -> CH4_02
-  -> CH5_01 -> CH5_02
-  -> CH6_01 -> CH6_02
-  -> CH7_01 -> CH7_02
-  -> CH8_01 -> CH8_02
-  -> CH9_01 -> CH9_02
-  -> CH10_01 -> CH10_02
-  -> CH11_01 -> CH11_02
-  -> CH12_01 -> CH12_02 -> End
+PROLOGUE → szept dziecka: "Czas nie płynie… czas oddycha."
+  → T01: POCZĄTEK ŚWIATŁA 1679
+  → T02: WARSZAWA 1983
+  → T03: ŁĘCZNA–LUBLIN 2010–2018
+  → T04: BEŁŻYCE 2016
+  → T05: NOVAKY (SŁOWACJA) 2018–2023
+  → T06: CSM SEVER (CZECHY) 2024
+  → T07: CIESZYN 2025
+  → T08: CIEŃ SYSTEMU 2035
+  → T09: FOTONY PAMIĘCI 2045
+  → T10: ARCHIWUM CISZY 2077
+  → T11: TERMINAL ŚWIATŁA 2100
+  → T12: CHICAGO 2135
+  → T13: TRANSMISJA WSPOMNIEŃ 2150
+  → T14: ŚWIATŁO W PRÓŻNI 2222
+  → T15: NEO PARIS 2345
+  → T16: KOD PAMIĘCI 2378
+  → T17: POWROTY DO CIENIA 2378
+  → T18: DEVIL MIND 2777
+  → T19: ŚWIATŁO KTÓRE TRWA ∞  ← FINAŁ: Andrzej odnajduje Zuzię
 ```
 
-**Oś Wspomnień (FLASHBACK) – osobna oś czasu:**
-```
-FB1_01 -> End    (Wspomnienie 1: ANDRZEJ + KAFKA)
-FB2_01 -> End    (Wspomnienie 2: KAFKA + DAVID)
-FB3_01 -> End    (Wspomnienie 3: ZUZIA + ANDRZEJ)
-```
-
-**Oś Równoległa (PARALLEL) – alternatywne perspektywy:**
-```
-PAR1_01 -> End   (Perspektywa: CIEŃ)
-PAR2_01 -> End   (Perspektywa: EVA)
-```
-
-| Chunk | Akt | Postacie |
-|---|---|---|
-| `PROLOGUE_01-02` | Prolog | ANDRZEJ, ZUZIA |
-| `CH1_01-02` | Akt I (Rozdział 1) | ANDRZEJ, EVA, CIEŃ |
-| `CH2_01-02` | Akt I (Rozdział 2) | ANDRZEJ, EIMSTAIN, BATISTA, WERONIKA |
-| `CH3_01-02` | Akt I (Rozdział 3) | ANDRZEJ, DAVID, KAFKA |
-| `CH4_01-02` | Akt I (Rozdział 4) | ANDRZEJ, ZUZIA, CIEŃ |
-| `CH5_01-02` | Akt I (Rozdział 5) | ANDRZEJ, EVA, ZUZIA, KAFKA |
-| `CH6_01-02` | Akt I (Rozdział 6) | ANDRZEJ, EIMSTAIN, EVA |
-| `CH7_01-02` | Akt II (Rozdział 7) | ANDRZEJ, BATISTA, WERONIKA, CIEŃ |
-| `CH8_01-02` | Akt II (Rozdział 8) | ANDRZEJ, DAVID, BATISTA |
-| `CH9_01-02` | Akt II (Rozdział 9) | ANDRZEJ, KAFKA, DAVID, ZUZIA |
-| `CH10_01-02` | Akt III (Rozdział 10) | ANDRZEJ, WERONIKA, KAFKA |
-| `CH11_01-02` | Akt III (Rozdział 11) | ANDRZEJ, CIEŃ, EIMSTAIN, WERONIKA |
-| `CH12_01-02` | Akt III (Rozdział 12 – Finale) | ANDRZEJ, EVA, CIEŃ |
-| `FB1_01` | Wspomnienie 1 | ANDRZEJ, KAFKA |
-| `FB2_01` | Wspomnienie 2 | KAFKA, DAVID |
-| `FB3_01` | Wspomnienie 3 | ZUZIA, ANDRZEJ |
-| `PAR1_01` | Perspektywa: Cień | CIEŃ, EIMSTAIN |
-| `PAR2_01` | Perspektywa: Eva | EVA, WERONIKA |
+| Chunk | Oś | Lokacja | Postacie (skrócone) |
+|---|---|---|---|
+| `PROLOGUE_01` + `PROLOGUE_02` | PROLOGUE | Otwarcie | DZIECKO (szept), ANDRZEJ, ZUZIA |
+| `T01_01` | T01 | POCZĄTEK ŚWIATŁA 1679 | ANDRZEJ, CIEŃ, EIMSTAIN |
+| `T02_01` | T02 | WARSZAWA 1983 | ANDRZEJ, KAFKA, BATISTA |
+| `T03_01` | T03 | ŁĘCZNA–LUBLIN 2010–2018 | ANDRZEJ, DAVID, WERONIKA |
+| `T04_01` | T04 | BEŁŻYCE 2016 | ANDRZEJ, KAFKA, EVA |
+| `T05_01` | T05 | NOVAKY (SŁOWACJA) 2018–2023 | ANDRZEJ, BATISTA, CIEŃ |
+| `T06_01` | T06 | CSM SEVER (CZECHY) 2024 | ANDRZEJ, EIMSTAIN, KAFKA |
+| `T07_01` | T07 | CIESZYN 2025 | ANDRZEJ, DAVID, WERONIKA |
+| `T08_01` | T08 | CIEŃ SYSTEMU 2035 | ANDRZEJ, CIEŃ, EVA |
+| `T09_01` | T09 | FOTONY PAMIĘCI 2045 | ANDRZEJ, EIMSTAIN |
+| `T10_01` | T10 | ARCHIWUM CISZY 2077 | ANDRZEJ, BATISTA, KAFKA |
+| `T11_01` | T11 | TERMINAL ŚWIATŁA 2100 | ANDRZEJ, CIEŃ, DAVID, WERONIKA |
+| `T12_01` | T12 | CHICAGO 2135 | ANDRZEJ, EVA, BATISTA |
+| `T13_01` | T13 | TRANSMISJA WSPOMNIEŃ 2150 | ANDRZEJ, KAFKA, CIEŃ |
+| `T14_01` | T14 | ŚWIATŁO W PRÓŻNI 2222 | ANDRZEJ, EIMSTAIN |
+| `T15_01` | T15 | NEO PARIS 2345 | ANDRZEJ, EVA, KAFKA |
+| `T16_01` | T16 | KOD PAMIĘCI 2378 | ANDRZEJ, DAVID, WERONIKA |
+| `T17_01` | T17 | POWROTY DO CIENIA 2378 | ANDRZEJ, CIEŃ, EIMSTAIN |
+| `T18_01` | T18 | DEVIL MIND 2777 | ANDRZEJ, CIEŃ, BATISTA |
+| `T19_01` | T19 | ŚWIATŁO KTÓRE TRWA ∞ | **ANDRZEJ + ZUZIA** (finał) |
 
 ### Authoring Story Content
 

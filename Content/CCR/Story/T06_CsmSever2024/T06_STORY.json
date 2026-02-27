@@ -1,0 +1,132 @@
+{
+  "_doc": "UCCRStoryChunk manifest – CSM SEVER | CSM SEVER · CZECHY · 2024. Axis: T06. EIMSTAIN i KAFKA pomagają zrozumieć mechanizm izolacji Zuzi.",
+  "chunks": [
+    {
+      "assetName": "DA_Story_T06_01",
+      "path": "Content/CCR/Story/T06_CsmSever2024/",
+      "ChunkId": "T06_01",
+      "AxisId": "T06",
+      "EntryNodeId": "T06_01_010",
+      "ChapterTitle": "CSM SEVER",
+      "ChapterSubtitle": "Czechy · 2024",
+      "_narrative": "EIMSTAIN i KAFKA pomagają zrozumieć mechanizm izolacji Zuzi.",
+      "Nodes": [
+        {
+          "NodeId": "T06_01_010",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: Obóz CSM Sever w Czechach. Andrzej szuka kolejnego śladu po Zuzi.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T06_01_020",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T06_01_020",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "EIMSTAIN",
+          "DialogueText": "TODO: Eimstain prowadzi badania w CSM Sever. Zna mechanizm osi czasu.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T06_01_030",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T06_01_030",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_EIMSTAIN",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T06_01_040"
+        },
+        {
+          "NodeId": "T06_01_040",
+          "NodeType": "Choice",
+          "Choices": [
+            {
+              "Label": "TODO: opcja 1",
+              "TargetNodeId": "T06_01_050",
+              "ShowConditions": []
+            },
+            {
+              "Label": "TODO: opcja 2",
+              "TargetNodeId": "T06_01_050",
+              "ShowConditions": []
+            }
+          ]
+        },
+        {
+          "NodeId": "T06_01_050",
+          "NodeType": "QTE",
+          "GestureType": "Swipe",
+          "RequiredSwipeDir": "Up",
+          "TimeWindowSec": 3.0,
+          "QTESuccessNodeId": "T06_01_060",
+          "QTEFailNodeId": "T06_01_052"
+        },
+        {
+          "NodeId": "T06_01_052",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: reakcja Andrzeja na porażkę QTE.",
+          "ExpressionTag": "Fear",
+          "NextAfterDialogue": "T06_01_050",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T06_01_060",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "ANDRZEJ",
+          "DialogueText": "TODO: kwestia Andrzeja po udanym QTE. Wciąż szukam Zuzi... CSM SEVER · CZECHY · 2024.",
+          "ExpressionTag": "Determined",
+          "NextAfterDialogue": "T06_01_070",
+          "bCheckpoint": true
+        },
+        {
+          "NodeId": "T06_01_070",
+          "NodeType": "Dialogue",
+          "SpeakerTag": "KAFKA",
+          "DialogueText": "TODO: Kafka przynosi wiadomość – Zuzia była tu, ale już jej nie ma.",
+          "ExpressionTag": "Neutral",
+          "NextAfterDialogue": "T06_01_080",
+          "bCheckpoint": false
+        },
+        {
+          "NodeId": "T06_01_080",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "MET_KAFKA",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T06_01_090"
+        },
+        {
+          "NodeId": "T06_01_090",
+          "NodeType": "SetValues",
+          "SetOps": [
+            {
+              "Key": "T06_COMPLETED",
+              "ValueType": "Flag",
+              "Mode": "Set",
+              "Value": 1
+            }
+          ],
+          "NextAfterSet": "T06_01_999"
+        },
+        {
+          "NodeId": "T06_01_999",
+          "NodeType": "Jump",
+          "TargetChunkId": "T07_01",
+          "EntryNodeInTarget": "T07_01_010"
+        }
+      ]
+    }
+  ]
+}
