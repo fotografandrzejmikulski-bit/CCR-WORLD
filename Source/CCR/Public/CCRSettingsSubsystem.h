@@ -99,6 +99,16 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
 	void SetHighContrast(bool bEnabled);
 
+	// ---- Language ----
+
+	/** Returns the saved culture name (BCP 47, e.g. "pl", "en"). Empty = system default. */
+	UFUNCTION(BlueprintPure, Category = "CCR|Settings")
+	FString GetCultureName() const;
+
+	/** Persist the chosen culture name. */
+	UFUNCTION(BlueprintCallable, Category = "CCR|Settings")
+	void SetCultureName(const FString& CultureName);
+
 private:
 	UPROPERTY()
 	TObjectPtr<class UCCRSettingsSaveGame> ActiveSettings = nullptr;

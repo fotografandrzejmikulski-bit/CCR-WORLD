@@ -85,15 +85,15 @@ bool UCCRInventorySubsystem::HasItems(FName ItemId, int32 Count) const
 
 void UCCRInventorySubsystem::ClearAll()
 {
-	// ClearAll() is intentionally a no-op in the C++ base class.
-	// Inventory counts are stored as world-state integers (key: "INV_<ItemId>")
-	// managed by UCCRWorldStateSubsystemV2, which does not expose an iteration
-	// API.  To clear all inventory, either:
-	//   (a) Call UCCRWorldStateSubsystemV2::ImportState() with a clean state, or
-	//   (b) Override this function in a Blueprint or C++ subclass that maintains
-	//       its own registered item list and calls SetInt("INV_<Id>", 0) for each.
+	// ClearAll() has no base implementation because inventory counts are stored
+	// in UCCRWorldStateSubsystemV2 (keys: "INV_<ItemId>"), which does not expose
+	// an iteration API for bulk deletion.  This is intentional.
+	// To clear inventory, either:
+	//   (a) Override this method in a subclass that maintains a registered item
+	//       list and calls UCCRWorldStateSubsystemV2::SetInt("INV_<Id>", 0) for each.
+	//   (b) Use UCCRWorldStateSubsystemV2::ImportState() to reset the entire world state.
 	UE_LOG(LogTemp, Warning,
-		TEXT("UCCRInventorySubsystem::ClearAll() was called but is not implemented "
-			 "in the C++ base class.  Override in a subclass or use "
-			 "UCCRWorldStateSubsystemV2::ImportState() to reset all inventory counts."));
+		TEXT("UCCRInventorySubsystem::ClearAll() has no base-class implementation. "
+			 "Override in a subclass or use UCCRWorldStateSubsystemV2::ImportState() "
+			 "to reset the world state."));
 }

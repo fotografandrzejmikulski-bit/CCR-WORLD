@@ -144,19 +144,31 @@ void UCCRSettingsSubsystem::SetFontScale(float Scale)
 {
 	if (!ActiveSettings) return;
 	ActiveSettings->FontScale = FMath::Clamp(Scale, 0.5f, 2.f);
-	SaveNow();
+	SaveNow(); // also fires OnSettingsChanged
 }
 
 void UCCRSettingsSubsystem::SetReducedMotion(bool bEnabled)
 {
 	if (!ActiveSettings) return;
 	ActiveSettings->bReducedMotion = bEnabled;
-	SaveNow();
+	SaveNow(); // also fires OnSettingsChanged
 }
 
 void UCCRSettingsSubsystem::SetHighContrast(bool bEnabled)
 {
 	if (!ActiveSettings) return;
 	ActiveSettings->bHighContrast = bEnabled;
+	SaveNow(); // also fires OnSettingsChanged
+}
+
+FString UCCRSettingsSubsystem::GetCultureName() const
+{
+	return ActiveSettings ? ActiveSettings->CultureName : FString();
+}
+
+void UCCRSettingsSubsystem::SetCultureName(const FString& CultureName)
+{
+	if (!ActiveSettings) return;
+	ActiveSettings->CultureName = CultureName;
 	SaveNow();
 }

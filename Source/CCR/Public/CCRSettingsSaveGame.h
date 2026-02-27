@@ -65,4 +65,13 @@ public:
 	/** Use high-contrast colour overrides in dialogue, subtitles, and HUD. */
 	UPROPERTY(BlueprintReadWrite, Category = "CCR|Settings")
 	bool bHighContrast = false;
+
+	// ---- Language ----
+
+	/**
+	 * IETF BCP 47 culture name chosen by the player (e.g. "pl", "en", "de").
+	 * Empty string = use the OS / engine default culture.
+	 */
+	UPROPERTY(BlueprintReadWrite, Category = "CCR|Settings")
+	FString CultureName;
 };
