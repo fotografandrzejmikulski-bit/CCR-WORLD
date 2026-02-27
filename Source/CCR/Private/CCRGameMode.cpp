@@ -41,6 +41,16 @@ void ACCRGameMode::PostLogin(APlayerController* NewPlayer)
 	const FPrimaryAssetId AssetId = Registry->GetAssetIdForChunk(NewGameStartChunkId);
 	if (!AssetId.IsValid()) return;
 
+	// Transition to Loading phase so the HUD can display a loading overlay
+	// while the entry chunk streams in.
+	if (UWorld* World = GetWorld())
+	{
+		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+		{
+			GS->SetGamePhase(ECCRGamePhase::Loading);
+		}
+	}
+
 	TArray<FPrimaryAssetId> Required;
 	Required.Add(AssetId);
 	Loader->PreloadChunks(Required, {});

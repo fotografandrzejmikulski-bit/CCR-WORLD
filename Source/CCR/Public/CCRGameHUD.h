@@ -7,6 +7,7 @@
 class UCCRDialogueWidget;
 class UCCRQTEWidget;
 class UCCRPauseWidget;
+class UCCRLoadingWidget;
 
 /**
  * ACCRGameHUD
@@ -43,6 +44,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
 	TSoftClassPtr<UCCRPauseWidget> PauseWidgetClass;
 
+	/** Blueprint subclass of UCCRLoadingWidget */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CCR|HUD")
+	TSoftClassPtr<UCCRLoadingWidget> LoadingWidgetClass;
+
 	// ---- Live widget instances ----
 
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
@@ -54,6 +59,9 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
 	UCCRPauseWidget* PauseWidget = nullptr;
 
+	UPROPERTY(BlueprintReadOnly, Category = "CCR|HUD")
+	UCCRLoadingWidget* LoadingWidget = nullptr;
+
 	/** Show or hide the dialogue panel */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetDialogueVisible(bool bVisible);
@@ -61,6 +69,10 @@ public:
 	/** Show or hide the QTE overlay */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
 	void SetQTEVisible(bool bVisible);
+
+	/** Show or hide the loading overlay */
+	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")
+	void SetLoadingVisible(bool bVisible);
 
 	/** Toggle the pause menu (creates it on first use) */
 	UFUNCTION(BlueprintCallable, Category = "CCR|HUD")

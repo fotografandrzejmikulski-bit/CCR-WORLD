@@ -2,6 +2,7 @@
 #include "CCRDialogueWidget.h"
 #include "CCRQTEWidget.h"
 #include "CCRPauseWidget.h"
+#include "CCRLoadingWidget.h"
 #include "CCRGameState.h"
 #include "Blueprint/UserWidget.h"
 #include "Kismet/GameplayStatics.h"
@@ -55,6 +56,26 @@ void ACCRGameHUD::BeginPlay()
 	}
 	// Note: PauseWidget is created on demand in TogglePause().
 
+	// ---- Loading widget ----
+	TSubclassOf<UCCRLoadingWidget> LoadingClass = LoadingWidgetClass.IsValid()
+		? LoadingWidgetClass.Get()
+		: nullptr;
+
+	if (!LoadingClass)
+	{
+		UE_LOG(LogTemp, Warning,
+			TEXT("ACCRGameHUD: LoadingWidgetClass is not set. "
+				 "Assign a Blueprint subclass of UCCRLoadingWidget in the HUD defaults."));
+	}
+	else
+	{
+		LoadingWidget = CreateWidget<UCCRLoadingWidget>(PC, LoadingClass);
+		if (LoadingWidget)
+		{
+			LoadingWidget->AddToViewport(20); // z-order 20: above QTE overlay (1) and pause menu (10)
+		}
+	}
+
 	// ---- Subscribe to game phase changes ----
 	// Also apply the current phase immediately so widgets start in the correct
 	// visibility state (e.g. dialogue hidden while phase is Loading or Cinematic).
@@ -94,6 +115,15 @@ void ACCRGameHUD::SetQTEVisible(bool bVisible)
 	if (QTEWidget)
 	{
 		QTEWidget->SetVisibility(
+			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
+	}
+}
+
+void ACCRGameHUD::SetLoadingVisible(bool bVisible)
+{
+	if (LoadingWidget)
+	{
+		LoadingWidget->SetVisibility(
 			bVisible ? ESlateVisibility::Visible : ESlateVisibility::Collapsed);
 	}
 }
@@ -179,6 +209,9 @@ bool ACCRGameHUD::IsPaused() const
 
 void ACCRGameHUD::HandleGamePhaseChanged(ECCRGamePhase NewPhase)
 {
+	// Loading overlay: visible only during the Loading phase.
+	SetLoadingVisible(NewPhase == ECCRGamePhase::Loading);
+
 	// Dialogue panel: visible during Narrative and QTE phases only.
 	const bool bShowDialogue = (NewPhase == ECCRGamePhase::Narrative ||
 	                            NewPhase == ECCRGamePhase::QTE);

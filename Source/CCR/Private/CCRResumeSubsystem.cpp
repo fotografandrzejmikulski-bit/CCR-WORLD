@@ -4,6 +4,7 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRStoryRegistrySubsystem.h"
 #include "CCRAsyncNarrativeLoaderSubsystem.h"
+#include "CCRGameState.h"
 #include "Engine/AssetManager.h"
 #include "Engine/StreamableManager.h"
 #include "Kismet/GameplayStatics.h"
@@ -36,6 +37,16 @@ bool UCCRResumeSubsystem::ResumeFromDefaultSlot()
 
 	PendingChunkId = Save->CurrentChunkId;
 	PendingNodeId  = Save->CurrentNodeId;
+
+	// Transition to Loading phase before opening a new level or triggering
+	// the async chunk load so the HUD shows the loading overlay.
+	if (UWorld* World = GetGameInstance()->GetWorld())
+	{
+		if (ACCRGameState* GS = World->GetGameState<ACCRGameState>())
+		{
+			GS->SetGamePhase(ECCRGamePhase::Loading);
+		}
+	}
 
 	// 2. Open the saved level
 	const FString LevelName = Save->PlayerSpatial.bHasSpatial
