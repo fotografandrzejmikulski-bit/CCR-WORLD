@@ -1,0 +1,224 @@
+#pragma once
+
+#include "CoreMinimal.h"
+#include "Engine/DataAsset.h"
+#include "CCRTypes.generated.h"
+
+// ---------------------------------------------------------------------------
+// Enumerations
+// ---------------------------------------------------------------------------
+
+UENUM(BlueprintType)
+enum class ECCRNodeType : uint8
+{
+	Dialogue       UMETA(DisplayName = "Dialogue"),
+	Choice         UMETA(DisplayName = "Choice"),
+	Condition      UMETA(DisplayName = "Condition"),
+	SetValues      UMETA(DisplayName = "SetValues"),
+	QTE            UMETA(DisplayName = "QTE"),
+	Cinematic      UMETA(DisplayName = "Cinematic"),
+	Jump           UMETA(DisplayName = "Jump"),
+	End            UMETA(DisplayName = "End"),
+};
+
+UENUM(BlueprintType)
+enum class ECCRCompareOp : uint8
+{
+	Equals         UMETA(DisplayName = "=="),
+	NotEquals      UMETA(DisplayName = "!="),
+	Less           UMETA(DisplayName = "<"),
+	LessOrEqual    UMETA(DisplayName = "<="),
+	Greater        UMETA(DisplayName = ">"),
+	GreaterOrEqual UMETA(DisplayName = ">="),
+};
+
+UENUM(BlueprintType)
+enum class ECCRGestureType : uint8
+{
+	LongPress      UMETA(DisplayName = "LongPress"),
+	Tap            UMETA(DisplayName = "Tap"),
+	Swipe          UMETA(DisplayName = "Swipe"),
+};
+
+UENUM(BlueprintType)
+enum class ECCRStateValueType : uint8
+{
+	Flag  UMETA(DisplayName = "Flag"),
+	Float UMETA(DisplayName = "Float"),
+	Int   UMETA(DisplayName = "Int"),
+};
+
+// ---------------------------------------------------------------------------
+// Condition
+// ---------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct FCCRCondition
+{
+	GENERATED_BODY()
+
+	/** World-state variable name */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName Key;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRStateValueType ValueType = ECCRStateValueType::Flag;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRCompareOp CompareOp = ECCRCompareOp::Equals;
+
+	/** Compared value (cast to matching type) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float CompareValue = 0.f;
+};
+
+// ---------------------------------------------------------------------------
+// SetOp – single "write" instruction
+// ---------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct FCCRSetOp
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName Key;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRStateValueType ValueType = ECCRStateValueType::Flag;
+
+	/** Value to set (cast to matching type) */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float Value = 0.f;
+};
+
+// ---------------------------------------------------------------------------
+// Choice option
+// ---------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct FCCRChoiceOption
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText Label;
+
+	/** Node to jump to when this option is picked */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName TargetNodeId;
+
+	/** Optional conditions that must all be true to show this option */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FCCRCondition> ShowConditions;
+};
+
+// ---------------------------------------------------------------------------
+// Narrative Node
+// ---------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct FCCRNode
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName NodeId;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRNodeType NodeType = ECCRNodeType::Dialogue;
+
+	// ---- Dialogue / narration ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FText DialogueText;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName SpeakerTag;
+
+	/** Next node after dialogue line plays */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName NextAfterDialogue;
+
+	// ---- Choice ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FCCRChoiceOption> Choices;
+
+	// ---- Condition ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FCCRCondition> Conditions;
+
+	/** Node taken when all conditions are true */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName ConditionTrueNodeId;
+
+	/** Node taken when any condition fails */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName ConditionFalseNodeId;
+
+	// ---- SetValues ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TArray<FCCRSetOp> SetOps;
+
+	/** Node to continue to after applying set ops */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName NextAfterSet;
+
+	// ---- QTE ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	ECCRGestureType GestureType = ECCRGestureType::LongPress;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float TimeWindowSec = 2.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName QTESuccessNodeId;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName QTEFailNodeId;
+
+	// ---- Cinematic ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSoftObjectPtr<class ULevelSequence> CinematicSequence;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName NextAfterCinematic;
+
+	// ---- Jump ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName TargetChunkId;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FName EntryNodeInTarget;
+
+	// ---- Checkpoint flag ----
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool bCheckpoint = false;
+};
+
+// ---------------------------------------------------------------------------
+// Player spatial save data
+// ---------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct FCCRPlayerSpatialSave
+{
+	GENERATED_BODY()
+
+	UPROPERTY()
+	FString LevelName;
+
+	UPROPERTY()
+	FTransform PlayerTransform;
+
+	UPROPERTY()
+	float CameraYaw = 0.f;
+
+	UPROPERTY()
+	float CameraPitch = 0.f;
+
+	UPROPERTY()
+	FName SpawnTag;
+
+	UPROPERTY()
+	bool bHasSpatial = false;
+};
