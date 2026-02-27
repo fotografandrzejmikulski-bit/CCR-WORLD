@@ -2,6 +2,8 @@
 #include "CCRNarrativeRuntimeSubsystem.h"
 #include "CCRCinematicSubsystem.h"
 #include "CCRGameHUD.h"
+#include "CCRDialogueWidget.h"
+#include "CCRTypewriterHelper.h"
 #include "CCRHapticLibrarySubsystem.h"
 #include "CCRQTEWidget.h"
 #include "CCRTypes.h"
@@ -55,9 +57,20 @@ void ACCRTouchController::HandleTouchBegin(ETouchIndex::Type FingerIndex, FVecto
 	FCCRNode CurrentNode;
 	if (!NRS->GetCurrentNode(CurrentNode)) return;
 
-	// Tap during a Dialogue node advances the narrative (tap-to-continue).
+	// Tap during a Dialogue node:
+	//   - If the typewriter is still animating, skip to the full text first.
+	//   - Only advance to the next node once the text is fully revealed.
 	if (CurrentNode.NodeType == ECCRNodeType::Dialogue)
 	{
+		ACCRGameHUD* HUD = Cast<ACCRGameHUD>(GetHUD());
+		UCCRTypewriterHelper* TW = HUD && HUD->DialogueWidget
+			? HUD->DialogueWidget->TypewriterHelper
+			: nullptr;
+		if (TW && TW->IsActive())
+		{
+			TW->Skip();
+			return;
+		}
 		NRS->AdvanceDialogue();
 		return;
 	}
